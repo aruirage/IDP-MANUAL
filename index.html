@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeosAI IDP マニュアル</title>
+<link rel="stylesheet" href="common.css">
+</head>
+<body>
+<div class="manual-shell">
+
+    <aside class="toc-panel" aria-label="目次">
+      <div class="toc-title">目次</div>
+      <nav>
+        <details class="toc-group" open>
+          <summary class="toc-parent">
+            <a href="#manual-home">総覧</a>
+            <span class="toc-caret" aria-hidden="true"></span>
+          </summary>
+          <a class="toc-child" href="#overview-system"><span class="toc-label">処理全体の流れ</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+          <a class="toc-child" href="#overview-roles"><span class="toc-label">ロール設定</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+          <a class="toc-child" href="#overview-modules"><span class="toc-label">機能モジュール</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+        </details>
+        <details class="toc-group" open>
+          <summary class="toc-parent">
+            <a href="#admin-guide">ルール設定モジュール</a>
+            <span class="toc-caret" aria-hidden="true"></span>
+          </summary>
+          <details class="toc-subgroup" open>
+            <summary class="toc-child">
+              <span class="toc-label"><a href="#admin-model-config">モデル設定</a></span>
+              <span class="toc-caret" aria-hidden="true"></span>
+            </summary>
+            <a class="toc-grandchild" href="#model-function">機能説明</a>
+            <a class="toc-grandchild" href="#model-operation">画面操作</a>
+            <a class="toc-grandchild" href="#model-impact">関連影響</a>
+          </details>
+          <details class="toc-subgroup" open>
+            <summary class="toc-child">
+              <span class="toc-label"><a href="#admin-api-config">API設定</a></span>
+              <span class="toc-caret" aria-hidden="true"></span>
+            </summary>
+            <a class="toc-grandchild" href="#api-function">機能説明</a>
+            <a class="toc-grandchild" href="#api-operation">画面操作</a>
+          </details>
+          <details class="toc-subgroup" open>
+            <summary class="toc-child">
+              <span class="toc-label"><a href="#admin-master-data-config">マスターデータ設定</a></span>
+              <span class="toc-caret" aria-hidden="true"></span>
+            </summary>
+            <a class="toc-grandchild" href="#master-function">機能説明</a>
+            <a class="toc-grandchild" href="#master-operation">画面操作</a>
+            <a class="toc-grandchild" href="#master-impact">関連影響</a>
+          </details>
+          <details class="toc-subgroup" open>
+            <summary class="toc-child">
+              <span class="toc-label"><a href="#admin-doctype-config">帳票タイプ設定</a></span>
+              <span class="toc-caret" aria-hidden="true"></span>
+            </summary>
+            <a class="toc-grandchild" href="#doctype-function">機能説明</a>
+            <a class="toc-grandchild" href="#doctype-operation">画面操作</a>
+            <a class="toc-grandchild" href="#doctype-impact">関連影響</a>
+          </details>
+          <details class="toc-subgroup" open>
+            <summary class="toc-child">
+              <span class="toc-label"><a href="#admin-scene-config">業務シーン設定</a></span>
+              <span class="toc-caret" aria-hidden="true"></span>
+            </summary>
+            <a class="toc-grandchild" href="#scene-function">機能説明</a>
+            <a class="toc-grandchild" href="#scene-operation">画面操作</a>
+            <a class="toc-grandchild" href="#scene-impact">関連影響</a>
+          </details>
+          <details class="toc-subgroup" open>
+            <summary class="toc-child">
+              <span class="toc-label"><a href="#admin-data-mapping-config">データマッピング設定</a></span>
+              <span class="toc-caret" aria-hidden="true"></span>
+            </summary>
+            <a class="toc-grandchild" href="#data-mapping-function">機能説明</a>
+            <a class="toc-grandchild" href="#data-mapping-operation">画面操作</a>
+            <a class="toc-grandchild" href="#data-mapping-impact">関連影響</a>
+          </details>
+          <details class="toc-subgroup" open>
+            <summary class="toc-child">
+              <span class="toc-label"><a href="#admin-ai-verification-config">AI検証設定</a></span>
+              <span class="toc-caret" aria-hidden="true"></span>
+            </summary>
+            <a class="toc-grandchild" href="#ai-verification-function">機能説明</a>
+            <a class="toc-grandchild" href="#ai-verification-operation">画面操作</a>
+            <a class="toc-grandchild" href="#ai-verification-impact">関連影響</a>
+          </details>
+        </details>
+        <details class="toc-group" open>
+          <summary class="toc-parent">
+            <a href="#operator-guide">業務操作モジュール</a>
+            <span class="toc-caret" aria-hidden="true"></span>
+          </summary>
+          <details class="toc-subgroup" open>
+            <summary class="toc-child">
+              <span class="toc-label"><a href="#operator-upload-module">新規アップロード</a></span>
+              <span class="toc-caret" aria-hidden="true"></span>
+            </summary>
+            <a class="toc-grandchild" href="#upload-function">機能説明</a>
+            <a class="toc-grandchild" href="#upload-operation">画面操作</a>
+          </details>
+          <details class="toc-subgroup" open>
+            <summary class="toc-child">
+              <span class="toc-label"><a href="#operator-case-module">案件一覧</a></span>
+              <span class="toc-caret" aria-hidden="true"></span>
+            </summary>
+            <a class="toc-grandchild" href="#case-function">機能説明</a>
+            <a class="toc-grandchild" href="#case-operation">画面操作</a>
+          </details>
+          <details class="toc-subgroup" open>
+            <summary class="toc-child">
+              <span class="toc-label"><a href="#operator-task-module">マイタスク</a></span>
+              <span class="toc-caret" aria-hidden="true"></span>
+            </summary>
+            <a class="toc-grandchild" href="#task-function">機能説明</a>
+            <a class="toc-grandchild" href="#task-operation">画面操作</a>
+          </details>
+        </details>
+        <details class="toc-group" open>
+          <summary class="toc-parent">
+            <a href="#system-settings">システム設定モジュール</a>
+            <span class="toc-caret" aria-hidden="true"></span>
+          </summary>
+          <a class="toc-child" href="#system-user-management"><span class="toc-label">ユーザー管理</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+          <a class="toc-child" href="#system-role-management"><span class="toc-label">権限管理</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+          <a class="toc-child" href="#system-security-settings"><span class="toc-label">セキュリティ設定</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+        </details>
+      </nav>
+    </aside>
+
+  <main class="manual-content">
+<section class="section-card" id="manual-home">
+          <h2>NeosAI IDP マニュアル</h2>
+          <p>NeosAI IDP は、保険金請求などの業務書類を対象に、アップロードされた資料を案件単位で集約し、AI-OCR、業務ルール、AI検証、人工確認を組み合わせて処理する Intelligent Document Processing システムです。</p>
+          <p>管理者が事前に設定したルールに基づき、複数種類の帳票を自動分類・読取・検証し、業務担当者は <span class="ui-text">案件一覧</span> と <span class="ui-text">マイタスク</span> で確認・修正・出力処理を行います。</p>
+        </section>
+
+        <section class="section-card" id="overview-system">
+          <h2>処理全体の流れ</h2>
+          <p>admin 側で処理ルールを定義し、業務操作側では公開済みの設定に基づいて案件処理を進めます。エクスポート結果の確認や出力操作は <span class="ui-text">マイタスク</span> 内で実施します。</p>
+          <div class="overview-lanes">
+            <div class="overview-lane">
+              <div class="lane-title">admin 設定</div>
+              <div class="flow-chart compact-flow">
+                <a class="flow-node" href="#admin-model-config">モデル設定</a>
+                <div class="flow-arrow">→</div>
+                <a class="flow-node" href="#admin-api-config">API設定</a>
+                <div class="flow-arrow">→</div>
+                <a class="flow-node" href="#admin-master-data-config">マスターデータ設定</a>
+                <div class="flow-arrow">→</div>
+                <a class="flow-node" href="#admin-doctype-config">帳票タイプ設定</a>
+                <div class="flow-arrow">→</div>
+                <a class="flow-node" href="#admin-scene-config">業務シーン設定</a>
+                <div class="flow-arrow">→</div>
+                <a class="flow-node" href="#admin-data-mapping-config">データマッピング設定</a>
+                <div class="flow-arrow">→</div>
+                <a class="flow-node" href="#admin-ai-verification-config">AI検証設定</a>
+              </div>
+            </div>
+            <div class="overview-lane">
+              <div class="lane-title">業務操作</div>
+              <div class="flow-chart compact-flow">
+                <a class="flow-node" href="#operator-upload-module">資料アップロード</a>
+                <div class="flow-arrow">→</div>
+                <a class="flow-node" href="#operator-case-module">案件確認</a>
+                <div class="flow-arrow">→</div>
+                <a class="flow-node" href="#operator-task-module">マイタスク</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="overview-roles">
+          <h2>ロール設定</h2>
+          <table class="info-table">
+            <thead><tr><th>ロール</th><th>主な役割</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ui-text">admin</span></td><td>システム設定、ルール設定、ユーザー・権限管理を行う管理者。</td></tr>
+              <tr><td><span class="ui-text">操作員</span></td><td>資料アップロード、案件確認、<span class="ui-text">マイタスク</span> <span class="ui-text">対応</span>、<span class="ui-text">処理中止</span>。</td></tr>
+              <tr><td><span class="ui-text">操作管理者</span></td><td>操作員に加え、<span class="ui-text">割当</span>（案件担当者・タスク改派）が可能。</td></tr>
+              <tr><td><span class="ui-text">案件担当者</span></td><td>案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初の人工確認ノードで選択したロール（操作員または操作管理者）の中から自動で指名され、以降の人工確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。<span class="ui-text">案件一覧</span> で操作管理者が手動改派も可能。</td></tr>
+            </tbody>
+          </table>
+          <p><span class="ui-text">マイタスク</span> は人工確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3 通知設定は割当とは無関係です。通知先は操作員・操作管理者のみ選択可能です。</p>
+        </section>
+
+        <section class="section-card" id="overview-modules">
+          <h2>機能モジュール</h2>
+          <table class="module-overview-table">
+            <thead>
+              <tr>
+                <th>区分</th>
+                <th>説明</th>
+                <th>子モジュール</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ルール設定モジュール</td>
+                <td>業務処理を自動化するためのモデル、帳票、業務ルールを設定します。</td>
+                <td class="module-cell">
+                  <a href="#admin-model-config">モデル設定</a>
+                  <a href="#admin-api-config">API設定</a>
+                  <a href="#admin-master-data-config">マスターデータ設定</a>
+                  <a href="#admin-doctype-config">帳票タイプ設定</a>
+                  <a href="#admin-scene-config">業務シーン設定</a>
+                  <a href="#admin-data-mapping-config">データマッピング設定</a>
+                  <a href="#admin-ai-verification-config">AI検証設定</a>
+                </td>
+              </tr>
+              <tr>
+                <td>業務操作モジュール</td>
+                <td>公開済みの業務シーンに基づいて、資料アップロードから案件確認、人工確認までを行います。</td>
+                <td class="module-cell">
+                  <a href="#operator-upload-module">資料アップロード</a>
+                  <a href="#operator-case-module">案件一覧</a>
+                  <a href="#operator-task-module">マイタスク</a>
+                </td>
+              </tr>
+              <tr>
+                <td>システム設定モジュール</td>
+                <td>ユーザー、権限、安全設定など、システム利用の前提となる管理項目を設定します。</td>
+                <td class="module-cell">
+                  <a href="#system-user-management">ユーザー管理</a>
+                  <a href="#system-role-management">権限管理</a>
+                  <a href="#system-security-settings">セキュリティ設定</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+<section class="chapter-page" id="admin-guide">
+          <h2>ルール設定モジュール</h2>
+          <p>保険金請求のケースに沿って、推奨順序は <strong>モデル → API → マスターデータ → 帳票タイプ → 業務シーン → データマッピング → AI検証</strong> です。</p>
+          <p>各画面への到達順：<strong>モデル設定 → API設定 → マスターデータ設定 → 帳票タイプ設定 → 業務シーン設定 → データマッピング設定 → AI検証設定</strong>。各機能モジュールの操作手順と、画面だけでは分かりにくい適用タイミングを説明します。ロール詳細は <a class="jump-link" href="#overview-roles">ロール設定</a> を参照してください。</p>
+        </section>
+<section class="section-card" id="admin-model-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>モデル設定</h2>
+          <p>本モジュールでは、NeosAI IDP で利用するモデルリソースを一元管理します。OCR抽出、AI検証、データマッピングで使うモデルを、用途ごとに割り当てて管理します。</p>
+
+          <section class="manual-subsection" id="model-function">
+            <h3>機能説明</h3>
+            <p><strong>権限：</strong>本機能は <span class="ui-text">admin</span> が設定します。操作員はモデル接続や用途割当を編集せず、公開済みの業務シーンを通じて割当済みモデルの処理結果を利用します。</p>
+            <p><strong>設定ロジック：</strong><span class="ui-text">API 接続</span> では外部モデルプロバイダへの接続情報を登録し、<span class="ui-text">用途割当</span> では OCR 抽出、AI 検証、データマッピングごとに使用するモデルを指定します。</p>
+            <p><strong>利用タイミング：</strong>OCR 抽出、AI 検証、データマッピングで使うモデルを、用途ごとに先に登録・割当しておきます。保険金請求では、診断書や診療明細書の読取、請求内容の整合性確認、出力データの変換処理で参照されます。</p>
+          </section>
+
+          <section class="manual-subsection" id="model-operation">
+            <h3>画面操作</h3>
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">業務ルール設定</span> → <span class="ui-text">モデル設定</span> を開き、<span class="ui-text">API 接続</span> タブで登録済みの接続を確認します。新規登録する場合は <span class="ui-text">+ 接続を追加</span> をクリックします。</span></p> 保存後、<span class="ui-text">接続テスト</span>を実施して初めてステータスが有効となり、当該モデルを利用可能になります。
+            <figure class="screenshot-figure" data-shot="admin-model-config">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/model-api-add-flow.png?v=8" data-lightbox="manual-shots" aria-label="モデル設定 API 接続と接続追加を拡大表示">
+                  <img src="assets/model-api-add-flow.png?v=8" alt="モデル設定 API 接続と接続追加">
+                </a>
+              </div>
+            </figure>
+          </div>
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">接続を追加</span> 画面で <span class="ui-text">プロバイダ</span>、API ベース URL、API キー、モデル名、<span class="ui-text">状態</span> を設定し、<span class="ui-text">保存</span> します。プロバイダに独自エンドポイントを使用する場合は <span class="ui-text">カスタム (OpenAI 互換)</span> を選択します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/model-provider-select-flow.png?v=8" data-lightbox="manual-shots" aria-label="接続追加 プロバイダ選択を拡大表示">
+                  <img src="assets/model-provider-select-flow.png?v=8" alt="接続追加 プロバイダ選択">
+                </a>
+              </div>
+            </figure>
+          </div>
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">用途割当</span> タブで OCR 抽出・AI 検証などの用途ごとにモデルを割り当てます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/model-usage-assignment-new.png?v=8" data-lightbox="manual-shots" aria-label="モデル設定 用途割当を拡大表示">
+                  <img src="assets/model-usage-assignment-new.png?v=8" alt="モデル設定 用途割当">
+                </a>
+              </div>
+            </figure>
+          </div>
+          </section>
+
+          <section class="manual-subsection" id="model-impact">
+            <h3>関連影響</h3>
+            <table class="info-table">
+              <thead><tr><th>影響先</th><th>影響内容</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">帳票タイプ設定</span></td><td><span class="ui-text">AI読取設定</span> の <span class="ui-text">読取モデル設定</span> で選択できるモデル候補に影響します。</td></tr>
+                <tr><td><span class="ui-text">業務シーン設定</span></td><td>Step2 の <span class="ui-text">OCR 抽出</span> や <span class="ui-text">AI検証</span> ノードで参照されるモデル候補に影響します。</td></tr>
+                <tr><td><span class="ui-text">OCR 確認</span></td><td>メインモデルと検証モデルの結果が一致しない場合は、OCR 確認タスクで人工確認の対象になります。</td></tr>
+                <tr><td><span class="ui-text">マイタスク</span></td><td>モデル接続エラー、低信頼度、モデル間不一致が発生した場合、OCR 確認や AI 検証確認タスクで確認対象になります。</td></tr>
+              </tbody>
+            </table>
+            <div class="notice info">
+              <strong>注意事項</strong>
+              接続テストに成功していないモデル、または無効状態のモデルは、後続設定で利用できません。用途割当を変更すると、同じ業務シーンでも読取結果や検証結果が変わる可能性があるため、変更後は対象帳票タイプの効果テストを実行してください。
+            </div>
+          </section>
+        </section>
+<section class="section-card" id="admin-api-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>API設定</h2>
+          <p>本章では、外部システムから NeosAI IDP を利用するための API 利用前提を確認します。具体的なリクエスト形式、認証方式、レスポンス項目、エラーコードは専用の API 接続文書を参照してください。</p>
+
+          <section class="manual-subsection" id="api-function">
+            <h3>機能説明</h3>
+            <p><strong>権限：</strong>本機能は <span class="ui-text">admin</span> が確認・管理します。操作員は API 設定を編集せず、画面操作または公開済み業務シーンに基づく処理結果を利用します。</p>
+            <p><strong>用途：</strong>API は、社内システム、RPA、基幹システムなどから IDP のアップロード、読取、結果取得を呼び出すための連携入口です。画面から手動アップロードする代わりに、外部システムから案件処理を開始したい場合に利用します。</p>
+            <p><strong>参照先：</strong>このマニュアルでは API の詳細仕様を記載しません。接続方式、API Key、エンドポイント、サンプルリクエストは専用の API 接続文書で確認してください。</p>
+          </section>
+
+          <section class="manual-subsection" id="api-operation">
+            <h3>画面操作</h3>
+            <ol>
+              <li><span class="ui-text">業務ルール設定</span> → <span class="ui-text">API設定</span> を開きます。</li>
+              <li>利用する API Key やエンドポイントの有効状態を確認します。</li>
+              <li>外部システムへ連携する具体的な項目は、専用の API 接続文書に従って設定します。</li>
+            </ol>
+          </section>
+
+        </section>
+<section class="section-card" id="admin-master-data-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>マスターデータ設定</h2>
+          <p>本章では、OCR で読み取った値を業務で利用できる標準名称やコードへ変換するためのマスターデータを管理します。医療機関名、傷病名、薬剤名、銀行名、支店名など、表記ゆれや略称が発生しやすい項目をマスター表として登録します。</p>
+          <p>ここで作成したマスター表、列設定、照会コード、登録データ、ベクトル化状態は、帳票タイプ設定の処理ルールから <span class="ui-text">マスタ照合</span> として参照されます。</p>
+
+          <section class="manual-subsection" id="master-function">
+            <h3>機能説明</h3>
+            <p><strong>権限：</strong>本機能は <span class="ui-text">admin</span> が設定します。操作員はマスターデータを編集せず、OCR 確認画面で照合結果や候補値を確認・選択します。</p>
+            <p><strong>参照元：</strong><span class="ui-text">マスタ照合</span> で参照するデータは、本章で登録したマスター表です。列設定で定義した列名、<span class="ui-text">照会コード</span> の有無、登録済みデータ、<span class="ui-text">ベクトル化状態</span> がそのまま照合に利用されます。</p>
+            <p><strong>セル単位の照合：</strong>帳票タイプ設定でグループを指定しない場合、対象項目の OCR 値だけを使ってマスター表を検索します。例：診断書の <span class="ui-text">傷病名</span> を傷病名マスターに照合し、表記ゆれを標準傷病名へ寄せます。</p>
+            <p><strong>グループ単位の照合：</strong>複数項目に同じグループ番号を設定した場合、それらの OCR 値を組み合わせて 1 回の照合条件として扱います。例：<span class="ui-text">銀行名</span> と <span class="ui-text">支店名</span> を同じグループにし、銀行・支店マスターを行単位で照合します。</p>
+            <p><strong>検索・返却の方針：</strong><span class="ui-text">照会コード</span> が設定された列がある場合は、コード系の値による完全一致・優先一致を試みます。該当がない場合は、対象列に対して表記ゆれを考慮した類似検索を行います。候補が一意に確定できる場合は、命中したマスター行の標準値やコードを返却します。</p>
+          </section>
+
+          <section class="manual-subsection" id="master-operation">
+            <h3>画面操作</h3>
+
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">業務ルール設定</span> → <span class="ui-text">マスターデータ設定</span> を開き、<span class="ui-text">+ マスター追加</span> でマスター表を作成します（例：医薬品情報、銀行情報）。</span></p>
+            <figure class="screenshot-figure" data-shot="admin-master-data-config">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/master-data-list-empty.png?v=8" data-lightbox="manual-shots" aria-label="マスターデータ設定 マスター追加を拡大表示">
+                  <img src="assets/master-data-list-empty.png?v=8" alt="マスターデータ設定 マスター追加">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">列設定</span> でマスター表の列を定義します。コード検索や完全一致を優先したい列には <span class="ui-text">照会コード</span> を設定します。例：ICD10 コード、銀行コード、支店コード。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap shot-wrap-narrow">
+                <a class="shot-link" href="assets/master-data-column-marked.png?v=8" data-lightbox="manual-shots" aria-label="マスターデータ設定 列設定を拡大表示">
+                  <img src="assets/master-data-column-marked.png?v=8" alt="マスターデータ設定 列設定">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text">大量データは <span class="ui-text">一括インポート</span> からテンプレートをダウンロードし、Excel / CSV ファイルでまとめて登録します。更新方式は <span class="ui-text">追加更新</span> または <span class="ui-text">上書更新</span> を選択します。1 回のインポートは最大 50,000 行です。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap shot-wrap-narrow">
+                <a class="shot-link" href="assets/master-data-import-flow.png?v=8" data-lightbox="manual-shots" aria-label="マスターデータ設定 一括インポートを拡大表示">
+                  <img src="assets/master-data-import-flow.png?v=8" alt="マスターデータ設定 一括インポート">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text">少量のデータは <span class="ui-text">+ 項目追加</span> で 1 行ずつ登録します。登録済みデータは行内編集・削除・再ベクトル化でメンテナンスします。登録後は一覧の <span class="ui-text">ベクトル化状態</span> を確認し、<span class="ui-text">完了</span> になったデータからマスタ照合に利用します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/master-data-table-vector.png?v=8" data-lightbox="manual-shots" aria-label="マスターデータ設定 データ一覧とベクトル化状態を拡大表示">
+                  <img src="assets/master-data-table-vector.png?v=8" alt="マスターデータ設定 データ一覧とベクトル化状態">
+                </a>
+              </div>
+            </figure>
+          </div>
+          </section>
+
+          <section class="manual-subsection" id="master-impact">
+            <h3>関連影響</h3>
+            <table class="info-table">
+              <thead><tr><th>影響先</th><th>影響内容</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">帳票タイプ設定</span></td><td><span class="ui-text">処理ルール設定</span> で <span class="ui-text">マスタ照合</span> を選択した項目は、本章で登録したマスター表、列設定、照会コード、ベクトル化状態を参照します。</td></tr>
+                <tr><td><span class="ui-text">OCR 確認</span></td><td>候補が複数、類似度が低い、または未命中の場合は自動確定せず、OCR 確認タスクで人工確認の対象になります。</td></tr>
+                <tr><td><span class="ui-text">業務シーン設定</span></td><td>OCR 抽出後の項目に対して、業務シーンで設定したマスタ照合が適用されます。ベクトル化未完了のデータは照合候補として利用できません。</td></tr>
+              </tbody>
+            </table>
+            <div class="notice info">
+              <strong>注意事項</strong>
+              1 万行規模以上の大量データでは、ベクトル化に 30 分以上かかる場合があります。インポート直後に業務設定へ進む場合は、ベクトル化完了を待ってから帳票タイプ設定側で効果テストを行ってください。状態が <span class="ui-text">失敗</span> の行は、再ベクトル化で手動リトライできます。
+            </div>
+          </section>
+        </section>
+<section class="section-card" id="admin-doctype-config" data-shot="admin-doctype-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>帳票タイプ設定</h2>
+          <p>本章では、業務で扱う帳票ごとに、分類条件、読取項目、後処理ルール、画像処理方法を定義します。ここで設定した内容は、アップロード後の帳票分類、案件集約時のファイル整理、OCR 抽出、人工確認、出力確認に反映されます。帳票間を 1 件の案件としてまとめるルールは業務シーン Step1 で設定します。</p>
+          <p>保険金請求では、請求書、診断書、診療明細書などを帳票タイプとして登録し、それぞれの帳票から読み取る項目や表格列を設定します。帳票ごとの特徴を明確にしておくことで、後続の業務シーンで正しい帳票を選択し、安定した処理フローを構成できます。</p>
+
+          <section class="manual-subsection" id="doctype-function">
+            <h3>機能説明</h3>
+            <p><strong>権限：</strong>本機能は <span class="ui-text">admin</span> が設定します。操作員は帳票タイプそのものを編集せず、公開済みの業務シーンを通じて設定結果を利用します。</p>
+            <p><strong>設定ロジック：</strong><span class="ui-text">AI分類設定</span> は帳票タイプ判定、<span class="ui-text">AI読取設定</span> は OCR 抽出、<span class="ui-text">処理ルール設定</span> は値の補正・標準化、<span class="ui-text">画像処理設定</span> は案件集約時に使う画像分割・組合と OCR 前の画像整理を定義します。<span class="ui-text">効果テスト</span> では、業務シーンに組み込む前に実帳票で結果を確認します。</p>
+            <table class="info-table">
+              <thead><tr><th>設定</th><th>何を決めるか</th><th>反映先</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><span class="ui-text">AI分類設定</span></td>
+                  <td>この帳票を他の帳票タイプと区別するためのサンプル画像と分類説明を定義します。</td>
+                  <td>新規アップロード後の帳票分類、業務シーンで選択する帳票タイプ候補。</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">AI読取設定</span></td>
+                  <td>OCR 抽出で読み取る項目・表格列・プロンプト・正解サンプル・読取モデルを定義します。</td>
+                  <td>ワークフローの <span class="ui-text">OCR 抽出</span> ノード、条件分岐、データマッピング、AI 検証、マイタスクの OCR 確認画面。</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">処理ルール設定</span></td>
+                  <td>OCR 値の後処理、<span class="ui-text">マスタ照合</span>、信頼度閾値を定義します。</td>
+                  <td>OCR 抽出後の値補正・標準化、低信頼度・未照合時の人工確認判定。</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">画像処理設定</span></td>
+                  <td>画像分割、同一帳票タイプ内のファイル組合、画像整列、OCR 実行単位を定義します。</td>
+                  <td>案件集約時の論理ファイル判定、OCR 抽出前の画像整理、同一帳票タイプ内ファイルの組合。</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">効果テスト</span></td>
+                  <td>サンプル画像で分類・抽出・処理ルール・画像処理の結果を確認します。</td>
+                  <td>業務シーンへ組み込む前の事前検証。</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="manual-subsection" id="doctype-operation">
+            <h3>画面操作</h3>
+
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">タイプ追加</span> と <span class="ui-text">AI分類設定</span>：<span class="ui-text">業務ルール設定</span> → <span class="ui-text">帳票タイプ設定</span> で <span class="ui-text">+ タイプ追加</span> をクリックし、帳票タイプ名を作成します。その後 Step1 で代表サンプルをアップロードし、帳票の特徴とファイル分割ルールを設定します。AI がサンプルから分類説明と分割ルールを生成するため、帳票の開始位置、終了位置、同一ファイル内に複数帳票が含まれる場合の切り分け条件を確認し、必要に応じて編集します。例：<span class="ui-text">診断書</span> は医師名、医療機関名、傷病名、発行日を含む医療書類として説明し、複数ページ PDF に診断書と別帳票が混在する場合は帳票単位に分割できるようにします。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-1-flow.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 タイプ追加とAI分類設定を拡大表示">
+                  <img src="assets/doctype-step-1-flow.png?v=8" alt="帳票タイプ設定 タイプ追加とAI分類設定">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">AI読取設定</span>：まずテンプレートをダウンロードし、抽出したい項目とテーブル列を表形式で一括インポートします。次に <span class="ui-text">AI自動生成</span> をクリックし、登録済みの項目名に対してプロンプトと正解サンプルを自動生成します。生成結果を確認し、保険金請求の業務表現に合わせて人手で微調整します。最後に設定アイコンから <span class="ui-text">読取モデル設定</span> を開き、メインモデルと検証モデルを選択します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-2-read-flow.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 AI読取設定を拡大表示">
+                  <img src="assets/doctype-step-2-read-flow.png?v=8" alt="帳票タイプ設定 AI読取設定">
+                </a>
+              </div>
+            </figure>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap shot-wrap-narrow">
+                <a class="shot-link" href="assets/doctype-step-2-model-flow.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 読取モデル設定を拡大表示">
+                  <img src="assets/doctype-step-2-model-flow.png?v=8" alt="帳票タイプ設定 読取モデル設定">
+                </a>
+              </div>
+            </figure>
+            <div class="notice info">
+              <strong>人工確認が発生する条件</strong>
+              検証モデルを設定している場合、メインモデルの読取結果と検証モデルの読取結果が一致しない項目は、OCR 確認タスクで確認対象になります。あわせて、後続の処理ルール設定で設定した信頼度閾値を下回る項目、またはマスタ照合で候補が確定できない項目も人工確認の対象になります。
+            </div>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">処理ルール設定</span>：Step2 で定義した項目に、日付整形、数値整形、マスタ照合などの後処理を割り当てます。<span class="ui-text">AIマッチング</span> を使うと、項目名から適した処理ルールを一括提案できます。信頼度閾値を下回る項目は、OCR 確認タスクで確認対象になります。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-3-marked.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 処理ルール設定を拡大表示">
+                  <img src="assets/doctype-step-3-marked.png?v=8" alt="帳票タイプ設定 処理ルール設定">
+                </a>
+              </div>
+            </figure>
+            <div class="notice info">
+              <strong>マスタ照合の設定</strong>
+              参照元は <span class="ui-text">マスターデータ設定</span> で登録済みのマスター表です。<span class="ui-text">マスタ照合</span> を選ぶと <span class="ui-text">マスターデータ</span> の選択欄が表示され、表名と照合対象列を指定します。列構成と <span class="ui-text">照会コード</span> はマスター表側の <span class="ui-text">列設定</span> で定義した内容がそのまま使われます。表が未登録の場合は選択候補が空となり、保存できません。
+              <br><br>
+              <strong>照合単位（セル照合 / グループ照合）</strong>
+              <span class="ui-text">グループ</span> を空欄にした項目は、当該項目の OCR 値だけをマスター表に照会します。<span class="ui-text">グループ</span> に同じ番号を入力した複数項目は、OCR 値を組み合わせて 1 回の照合クエリとして扱います。例：振込先金融機関名・振込先支店名をともに <span class="ui-text">グループ</span> <span class="code-text">1</span> に設定し、銀行・支店マスターへ同時照合します。
+              <br><br>
+              <strong>マッチング戦略と返却</strong>
+              <span class="ui-text">ハイブリッド検索</span> で表記ゆれを許容しつつ類似候補を取得し、<span class="ui-text">コード照会</span> では <span class="ui-text">照会コード</span> 列による完全一致も試みます。照合成功時は、命中したマスター行の正規値を当該項目へ書き戻します。類似度が <span class="ui-text">自信度</span> 閾値を下回る、候補が複数、または未命中の場合は書き戻さず要確認となり、OCR 確認タスクの対象になります。
+            </div>
+
+            <div class="rule-box">
+              <div class="rule-title">後処理ルール一覧</div>
+              <p class="table-scroll-hint">列が画面幅を超える場合は、表内を左右にドラッグ（またはスクロール）して <span class="ui-text">処理後例</span> まで表示できます。</p>
+              <div class="table-scroll">
+                <table class="info-table">
+                  <thead>
+                    <tr>
+                      <th>規則名称</th>
+                      <th>処理機能説明</th>
+                      <th>処理前例</th>
+                      <th>処理後例</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>全ての文字（1行）</td><td>特殊な後処理を行わず、1 行のまま識別結果を出力します。</td><td>請求番号</td><td>請求番号</td></tr>
+                    <tr><td>数字のみ</td><td>数字だけを残し、英字・空白・記号を削除します。</td><td>23459T78 / 080-0471-0732</td><td>2345978 / 08004710732</td></tr>
+                    <tr><td>小数点付きの数字</td><td>数字と小数点だけを残し、その他の文字を削除します。</td><td>10-00.19</td><td>1000.19</td></tr>
+                    <tr><td>カタカナ</td><td>結果を日本語のカタカナに統一します。</td><td>もやし</td><td>モヤシ</td></tr>
+                    <tr><td>ひらがな</td><td>結果を日本語のひらがなに統一します。</td><td>モヤシ</td><td>もやし</td></tr>
+                    <tr><td>日付</td><td>標準日付形式 yyyy/mm/dd に整えます。和暦の場合は西暦に変換します。</td><td>R4年09月2日</td><td>2022/09/02</td></tr>
+                    <tr><td>金額（JPY）</td><td>日本円の金額形式に整え、不要な文字を削除して桁区切りを付けます。</td><td>100000</td><td>100,000</td></tr>
+                    <tr><td>金額（USD）</td><td>米ドルの金額形式に整え、2 桁の小数と桁区切りを付けます。</td><td>100000</td><td>100,000.00</td></tr>
+                    <tr><td>スペース削除</td><td>識別結果中の空白をすべて削除します。</td><td>左乳 癌</td><td>左乳癌</td></tr>
+                    <tr><td>全角変換</td><td>識別結果をすべて全角文字に変換します。</td><td>ABC 123</td><td>ＡＢＣ　１２３</td></tr>
+                    <tr><td>半角変換</td><td>識別結果をすべて半角文字に変換します。</td><td>ＡＢＣ １２３</td><td>ABC 123</td></tr>
+                    <tr><td>半角変換（数字）</td><td>結果中の数字だけを半角文字に変換します。</td><td>ＡＢＣ １２３</td><td>ＡＢＣ 123</td></tr>
+                    <tr><td>マスタ照合</td><td>OCR 結果をマスター表に照合し、標準値を返します。</td><td>腫瘍</td><td>悪性腫瘍</td></tr>
+                    <tr><td>指定値置換</td><td>元の値を、設定済みの固定値またはマッピング値に置換します。</td><td>男 / 女 / その他</td><td>M / F / ""</td></tr>
+                    <tr><td>バーコード</td><td>バーコード内容を読み取り、対象項目に設定します。</td><td>バーコード画像</td><td>バーコード文字列</td></tr>
+                    <tr><td>QRコード</td><td>QR コード内容を読み取り、対象項目に設定します。</td><td>QR 画像</td><td>QR 文字列</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">画像処理設定</span>：画像分割、画像組合、画像整列を設定します。複数ページ PDF や同一帳票タイプの画像が混在する場合に、どの画像を切り分け、どの画像を 1 つの論理ファイルとしてまとめるかを制御します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-4-overview.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 画像分割と組合キーを拡大表示">
+                  <img src="assets/doctype-step-4-overview.png?v=8" alt="帳票タイプ設定 画像分割と組合キー">
+                </a>
+              </div>
+            </figure>
+            <div class="notice info">
+              <strong>画像分割の使いどころ</strong>
+              画像分割は、1 つの PDF や画像束の中に複数の論理帳票が含まれる場合に使用します。例：複数の診療明細書が連続してスキャンされている、領収書と明細書が 1 ファイルに含まれている、ページ境界だけでは業務上の帳票単位が分からない場合です。分割後の画像は、帳票分類、案件集約、OCR 抽出の入力になります。
+              <br><br>
+              <strong>組合キーの判定</strong>
+              案件内の同一帳票タイプのファイルは、<span class="ui-text">組合必須キー</span> と <span class="ui-text">組合任意キー</span> により、1 つの論理ファイルへまとめるかを判定します。必須キーを設定している場合は、選択したすべての項目の OCR 値が一致すればまとめます。任意キーを設定している場合は、必須キーの条件を満たしたうえで、いずれか 1 項目の OCR 値が一致すればまとめます。例：発行日を必須キー、診療機関または患者番号を任意キーにします。
+              <br><br>
+              <strong>実行効果</strong>
+              一致した画像は 1 つにまとめて出力され、後続ノードで 1 つの論理ファイルとして利用されます。これにより、同じ診療明細書が複数画像に分かれていても、OCR 抽出や出力ではまとめた単位で扱えます。
+            </div>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">効果テスト</span>：別版式のサンプルで <span class="ui-text">テスト</span> を実行し、分類・OCR 抽出・処理ルールの結果を確認します。期待値と違う場合は、Step1 の説明文、Step2 のプロンプト、Step3 の処理ルール、Step4 の画像処理設定を見直してから保存します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-5-flow.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 効果テスト結果を拡大表示">
+                  <img src="assets/doctype-step-5-flow.png?v=8" alt="帳票タイプ設定 効果テスト結果">
+                </a>
+              </div>
+            </figure>
+          </div>
+          </section>
+
+          <section class="manual-subsection" id="doctype-impact">
+            <h3>関連影響</h3>
+            <p><strong>実現効果：</strong>帳票タイプを設定すると、アップロード資料を正しい帳票種別へ分類し、帳票ごとに必要な OCR 項目・表格列を抽出できます。抽出値は後処理やマスタ照合で標準化され、同一帳票タイプ内の画像は分割・組合・整列の設定に沿って OCR しやすい単位へ整理されます。</p>
+            <table class="info-table">
+              <thead><tr><th>影響先</th><th>影響内容</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">資料アップロード</span></td><td>アップロード後の帳票分類で、分類説明とサンプル画像が参照されます。</td></tr>
+                <tr><td><span class="ui-text">案件集約</span></td><td>画像分割・組合設定は、同一帳票タイプ内の画像をどの論理ファイルとして扱うかに使われます。帳票間を 1 件の案件としてまとめる条件は業務シーン Step1 で設定します。</td></tr>
+                <tr><td><span class="ui-text">OCR 抽出</span></td><td>業務シーン Step2 の OCR 抽出ノードは、帳票タイプ内の抽出項目・表格列・読取モデル・処理ルールを参照します。</td></tr>
+                <tr><td><span class="ui-text">後続設定</span></td><td>業務シーンの案件集約条件、条件分岐、データマッピング、AI 検証、出力項目では、帳票タイプで定義した OCR 項目を候補として利用します。</td></tr>
+                <tr><td><span class="ui-text">マイタスク</span></td><td>低信頼度、マスタ照合未命中、モデル間不一致などの項目は OCR 確認タスクで確認対象になります。</td></tr>
+              </tbody>
+            </table>
+            <div class="notice info">
+              <strong>注意事項</strong>
+              帳票タイプを作成しただけでは業務操作には表示されません。業務シーンに追加し、公開されたバージョンで利用されます。OCR 抽出項目を変更すると、その項目を参照している業務シーン、データマッピング、AI 検証、出力項目に影響する場合があります。マスタ照合を使う場合は、対象マスターデータのベクトル化状態が完了していることを確認してください。
+            </div>
+          </section>
+    </section>
+<section class="section-card" id="admin-scene-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>業務シーン設定</h2>
+          <p>業務シーン設定では、アップロード後の案件をどのように集約し、どのノード順で処理し、いつ通知し、何を出力するかをまとめて定義します。ここで公開した設定だけが新規案件に使われます。</p>
+          <p>本マニュアルでは <span class="ui-text">保険金請求</span> を例に、<span class="ui-text">Step1 案件集約</span>、<span class="ui-text">Step2 ワークフロー</span>、<span class="ui-text">Step3 通知</span>、<span class="ui-text">Step4 出力・公開</span> の順で説明します。</p>
+
+          <section class="manual-subsection" id="scene-function">
+            <h3>機能説明</h3>
+            <p><strong>権限：</strong><span class="ui-text">admin</span> と業務ルール設定権限を持つユーザーが編集します。操作員は公開済みの業務シーンだけを利用します。</p>
+            <p><strong>設定の考え方：</strong>Step1 で案件集約条件を決め、Step2 で導入時に設定済みのワークフローを確認し、Step3 で通知条件を決め、Step4 で出力項目と公開版を決めます。Step1 の <span class="ui-text">関連チェック</span> に成功した場合のみ <span class="ui-text">次へ</span> で Step2 へ進め、成功時は内容が自動保存されます。Step2 の <span class="ui-text">設定チェック</span> は構成確認のみで、実案件は動かしません。チェックに通ると公開可能になり、<span class="ui-text">公開</span> 後は新規案件がその版を参照します。</p>
+            <table class="info-table">
+              <thead><tr><th>Step</th><th>何を決めるか</th><th>下流への影響</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">Step1 案件集約</span></td><td>関連帳票、主帳票、業務キー、帳票間の関連条件。<span class="ui-text">関連チェック</span> 通過後に Step2 へ進行。</td><td>案件一覧の集約結果、新規アップロード時の集約判定。</td></tr>
+                <tr><td><span class="ui-text">Step2 ワークフロー</span></td><td>導入時に設定済みのワークフローの確認。<span class="ui-text">設定チェック</span> で構成を検証。</td><td>処理順、マイタスクの発生、再処理や補件の流れ。</td></tr>
+                <tr><td><span class="ui-text">Step3 通知</span></td><td>どのノードのどの結果で、誰へ通知するか。</td><td>要確認、補件、完了などの通知送信。</td></tr>
+                <tr><td><span class="ui-text">Step4 出力・公開</span></td><td>出力項目と公開対象の確定。</td><td>マイタスクのエクスポート内容、新規案件に使われる公開版。</td></tr>
+              </tbody>
+            </table>
+            <p>本製品の導入時には、業務シーンごとに案件集約・ワークフロー・通知・出力項目などが<strong>あらかじめ設定された状態</strong>で提供されます。お客様は通常、内容を確認し、必要に応じて調整するだけで構いません。</p>
+
+            <h4>Step2 各ノードの用途</h4>
+            <p>Step2 キャンバスでは、案件集約完了後の処理順序と分岐を確認します。導入時に<strong>ワークフローが設定済み</strong>のため、各ノードを一から構成する必要はありません。下表は各ノードの役割の参考です。OCR 抽出・データマッピング・AI 検証のルール本体は、それぞれ <span class="ui-text">帳票タイプ設定</span>・<span class="ui-text">データマッピング設定</span>・<span class="ui-text">AI検証設定</span> で管理します。</p>
+            <table class="info-table">
+              <thead>
+                <tr><th>ノード</th><th>用途</th><th>主な出力変数</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="ui-text">開始</span></td>
+                  <td>案件集約完了後にワークフローを起動する固定入口。</td>
+                  <td><span class="code-text">caseId</span>、<span class="code-text">files[]</span>（条件には不可）</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">前処理</span></td>
+                  <td>OCR 前に画像を回転・補正・整列し、読取精度を安定させる。本期では前処理結果を人工確認タスクとして起票しません。</td>
+                  <td><span class="code-text">preprocessStatus</span>（通知）、<span class="code-text">preprocessResult</span>（条件）</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">OCR 抽出</span></td>
+                  <td>Step1 で選んだ帳票ごとに OCR テンプレートを実行し、項目・表格列を抽出する。</td>
+                  <td><span class="code-text">ocrStatus</span>（通知）、<span class="code-text">ocrResult</span>（条件）</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">データマッピング</span></td>
+                  <td>複数帳票の OCR 項目を案件単位の標準変数に統一する。</td>
+                  <td><span class="code-text">mappingStatus</span>（通知）、<span class="code-text">standardFields.*</span>（条件）</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">AI 検証</span></td>
+                  <td>必須フィールド、必要書類、各種検証ルールを AI で実行する。</td>
+                  <td><span class="code-text">verifyStatus</span>（通知）、<span class="code-text">verifyResult</span>（条件）</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">IF/ELSE</span></td>
+                  <td>OCR 抽出や AI 検証など、人工確認対象となる上流ノードの処理結果で分岐し、主フローか人工確認かを決める。</td>
+                  <td>なし</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">人工確認</span></td>
+                  <td>要確認・低信頼・検証 NG などを担当者が目視確認し、完了 / 補件 / 案件中止のいずれかで後続へ進める。指派先ロールは操作員・操作管理者のみ選択可能。最初の人工確認ノードで選択したロールから案件担当者が自動指名され、以降同じロールのノードは同じ担当者が継続、ロール切替時は新ロールから再指名される。</td>
+                  <td><span class="code-text">hitlStatus</span>（通知）</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">カスタム関数</span></td>
+                  <td>JavaScript でファイル名生成・データ変換など任意処理を行う（任意ノード）。</td>
+                  <td><span class="code-text">codeStatus</span> のみ（条件不可）</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">終了</span></td>
+                  <td>ワークフローインスタンスの終点。</td>
+                  <td>なし</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h5>処理結果と分岐の読み方</h5>
+            <p>各処理ノードは <strong>処理状態</strong>（<span class="code-text">*Status</span>：実行進捗・異常）と <strong>処理結果</strong>（<span class="code-text">*Result</span>：業務上通過か要確認か）を出力します。IF/ELSE では通常 <span class="code-text">*Result</span> のみを参照します。Step3 通知では <span class="code-text">*Status</span> と <span class="code-text">*Result</span> の両方をトリガーに選べます。前処理の人工確認タスク化は本期対象外です。</p>
+            <table class="info-table">
+              <thead><tr><th>変数</th><th>取り得る値</th><th>意味</th></tr></thead>
+              <tbody>
+                <tr><td><span class="code-text">preprocessResult</span></td><td><span class="code-text">passed</span></td><td>前処理問題なし</td></tr>
+                <tr><td><span class="code-text">preprocessResult</span></td><td><span class="code-text">reviewRequired</span></td><td>画像品質等要確認</td></tr>
+                <tr><td><span class="code-text">ocrResult</span></td><td><span class="code-text">passed</span></td><td>OCR 問題なし（低信頼なし）</td></tr>
+                <tr><td><span class="code-text">ocrResult</span></td><td><span class="code-text">reviewRequired</span></td><td>低信頼・モデル不一致等</td></tr>
+                <tr><td><span class="code-text">verifyResult</span></td><td><span class="code-text">passed</span></td><td>AI 検証通過</td></tr>
+                <tr><td><span class="code-text">verifyResult</span></td><td><span class="code-text">reviewRequired</span></td><td>欠件・不整合・要確認</td></tr>
+              </tbody>
+            </table>
+            <div class="notice info">
+              <strong>設定チェックで確認される主な項目</strong>
+              終了ノード到達、分岐出口の接続、前処理・OCR・AI 検証の最低 1 項目 ON、人工確認の補件回流、無効な条件変数参照。設定チェックは静的検証のみで、テスト案件の実行は行いません。公開時も同じ設定チェックを使います。
+            </div>
+            <p>操作手順は <a class="jump-link" href="#scene-operation">画面操作</a> を参照してください。</p>
+            <p><strong>状態：</strong>画面上の主状態は <span class="ui-text">下書き</span>、<span class="ui-text">公開可能</span>、<span class="ui-text">公開済み</span> の 3 種類です。Step1 の <span class="ui-text">関連チェック</span> 成功時は内容が自動保存され、<span class="ui-text">次へ</span> で Step2 へ進みます。Step2～Step4 の <span class="ui-text">保存</span> 成功後は下書きに戻ります。Step2 <span class="ui-text">設定チェック</span> 通過で <span class="ui-text">公開可能</span> になり、<span class="ui-text">公開</span> を押した時点で <span class="ui-text">公開可能</span> でなければ Step2 の設定チェックを再実行します。チェックに通れば公開確認後にバージョン番号が付与され <span class="ui-text">公開済み</span> になり、失敗した場合は Step2 に戻って修正します。新規案件は公開済みバージョンのみ参照します。</p>
+          </section>
+
+          <section class="manual-subsection" id="scene-operation">
+            <h3>画面操作</h3>
+            <div class="operation-step">
+              <p><span class="step-code">1</span><span class="step-text">Step1 — <span class="ui-text">案件集約</span>：<span class="ui-text">業務ルール設定</span> → <span class="ui-text">業務シーン設定</span> を開き、<span class="ui-text">＋ 業務シーン追加</span> で <span class="ui-text">保険金請求</span> を作成します。<span class="ui-text">+ 帳票追加</span> で主帳票・関連帳票・業務キー（例：<span class="ui-text">請求番号</span>）を設定し、<span class="ui-text">案件集約ルール</span> で帳票間のフィールド関係を定義します。<span class="ui-text">関連チェック</span> に成功したら <span class="ui-text">次へ</span> で Step2 へ進みます（成功時に自動保存されるため、Step1 では <span class="ui-text">保存</span> は不要です）。</span></p>
+              <figure class="screenshot-figure" data-shot="business-scene-step1-1"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step1-1-flow.png?v=11" data-lightbox="manual-shots" aria-label="Step1 業務シーン追加と基本情報を拡大表示"><img src="assets/business-scene-step1-1-flow.png?v=11" alt="Step1 ＋ 業務シーン追加と基本情報"></a></div><figcaption>Step1：<span class="ui-text">＋ 業務シーン追加</span> と業務シーン名・説明の入力。</figcaption></figure>
+              <figure class="screenshot-figure" data-shot="business-scene-step1-2"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step1-2-flow.png?v=11" data-lightbox="manual-shots" aria-label="Step1 関連帳票と主帳票を拡大表示"><img src="assets/business-scene-step1-2-flow.png?v=11" alt="Step1 関連帳票 · 主帳票 · 業務キー"></a></div><figcaption>Step1：<span class="ui-text">+ 帳票追加</span>、主帳票指定、業務キー選択。</figcaption></figure>
+              <figure class="screenshot-figure" data-shot="business-scene-step1-3-4"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step1-3-4-flow.png?v=11" data-lightbox="manual-shots" aria-label="Step1 案件集約ルールと関連チェックを拡大表示"><img src="assets/business-scene-step1-3-4-flow.png?v=11" alt="Step1 案件集約ルールと関連チェック"></a></div><figcaption>Step1：<span class="ui-text">案件集約ルール</span> の Group 設定と <span class="ui-text">関連チェック</span> 成功後の <span class="ui-text">次へ</span>。</figcaption></figure>
+            </div>
+            <div class="operation-step">
+              <p><span class="step-code">2</span><span class="step-text">Step2 — <span class="ui-text">ワークフロー</span>：導入時に設定済みのワークフロー（<span class="ui-text">開始</span> → <span class="ui-text">前処理</span> → <span class="ui-text">OCR 抽出</span> → … → <span class="ui-text">終了</span>）を確認します。通常は内容確認のみで、一から構成する必要はありません。<span class="ui-text">設定チェック</span> で問題なければ保存します（公開は Step4 で行います）。</span></p>
+              <figure class="screenshot-figure" data-shot="business-scene-step2-canvas"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step2-canvas-flow.png?v=11" data-lightbox="manual-shots" aria-label="Step2 ワークフローキャンバスを拡大表示"><img src="assets/business-scene-step2-canvas-flow.png?v=11" alt="Step2 保険金請求ワークフロー キャンバス"></a></div><figcaption>Step2：初期投入された主チェーンと <span class="ui-text">設定チェック</span>。各ノードの役割は <a class="jump-link" href="#scene-function">機能説明</a> を参照してください。</figcaption></figure>
+            </div>
+            <div class="operation-step">
+              <p><span class="step-code">3</span><span class="step-text">Step3 — <span class="ui-text">通知</span>：<span class="ui-text">通知ルール追加</span> で対象ノード・条件・通知先を登録します（通知先は操作員・操作管理者のみ選択可能。例：OCR 要確認 → 操作員、AI 検証要確認 → 操作管理者）。通知文には <span class="code-text">{caseId}</span> などの変数を差し込めます。Step2 に対象ノードがあるルールのみ実行されます。</span></p>
+              <figure class="screenshot-figure" data-shot="business-scene-notify"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step3-notify-flow.png?v=11" data-lightbox="manual-shots" aria-label="Step3 通知設定を拡大表示"><img src="assets/business-scene-step3-notify-flow.png?v=11" alt="Step3 保険金請求 通知設定"></a></div><figcaption>Step3：通知ルール追加フォームと一覧。</figcaption></figure>
+            </div>
+            <div class="operation-step">
+              <p><span class="step-code">4</span><span class="step-text">Step4 — <span class="ui-text">出力・公開</span>：<span class="ui-text">出力項目を設定</span> でエクスポート項目を選び、<span class="ui-text">保存</span> 後に <span class="ui-text">公開</span> します。公開時に <span class="ui-text">公開可能</span> でなければ Step2 の <span class="ui-text">設定チェック</span> が先に実行され、通過後に正式版として公開されます。</span></p>
+              <figure class="screenshot-figure" data-shot="business-scene-export"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step4-export-flow.png?v=11" data-lightbox="manual-shots" aria-label="Step4 出力項目と公開を拡大表示"><img src="assets/business-scene-step4-export-flow.png?v=11" alt="Step4 保険金請求 出力項目と公開"></a></div><figcaption>Step4：出力項目の選択と <span class="ui-text">公開</span> ボタン。</figcaption></figure>
+            </div>
+          </section>
+
+          <section class="manual-subsection" id="scene-impact">
+            <h3>関連影響</h3>
+            <table class="info-table">
+              <thead><tr><th>影響先</th><th>影響内容</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">新規アップロード</span></td><td>公開済みの業務シーンだけが選択できます。下書きは表示されません。</td></tr>
+                <tr><td><span class="ui-text">案件一覧</span></td><td>Step1 の関連帳票と業務キーが、案件の集約結果に反映されます。</td></tr>
+                <tr><td><span class="ui-text">マイタスク</span></td><td>Step2 のノード構成で、OCR 確認、AI 検証確認、エクスポートの発生条件が決まります。</td></tr>
+                <tr><td><span class="ui-text">帳票タイプ設定</span></td><td>Step1 の対象帳票と Step2 の OCR 対象帳票は、帳票タイプの設定を参照します。</td></tr>
+                <tr><td><span class="ui-text">データマッピング設定</span></td><td>Step2 のデータマッピングノードで、当該業務シーン向けに登録した標準変数ルールが使われます。</td></tr>
+                <tr><td><span class="ui-text">AI検証設定</span></td><td>Step2 の AI 検証ノードで、ON にした検証ルールだけが実行されます。</td></tr>
+                <tr><td><span class="ui-text">通知</span></td><td>Step3 の条件に一致したとき、操作端画面上部のメッセージアイコンへ届きます。対象ノードがないルールは実行されません。</td></tr>
+              </tbody>
+            </table>
+            <figure class="screenshot-figure" data-shot="business-scene-impact"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-impact-flow.png?v=11" data-lightbox="manual-shots" aria-label="業務シーン公開版切替と通知表示例を拡大表示"><img src="assets/business-scene-impact-flow.png?v=11" alt="公開版切替と Step3 通知の表示例"></a></div><figcaption>公開版の切替位置と、Step3 通知実行後の操作端 <span class="ui-text">通知</span> 表示例です。</figcaption></figure>
+            <div class="notice info">
+              <strong>注意事項</strong>
+              Step1 で設定した案件集約条件は、アップロード後の集約結果に反映されます。公開済みの設定は新規案件にのみ使われ、進行中の既存案件は開始時点の版をそのまま使います。
+            </div>
+          </section>
+        </section>
+<section class="section-card" id="admin-data-mapping-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>データマッピング設定</h2>
+          <p>本章では、複数の帳票タイプから抽出された OCR 項目を、案件単位で利用する標準変数へ整理します。保険金請求では、被保険者名、医療機関名、請求金額、証券番号などが複数帳票にまたがるため、同じ意味の項目を 1 つの標準変数として扱えるようにします。</p>
+
+          <section class="manual-subsection" id="data-mapping-function">
+            <h3>機能説明</h3>
+            <p><strong>権限：</strong>本機能は <span class="ui-text">admin</span> が設定します。操作員はマッピングルールを編集せず、公開済みの業務シーン内でマッピング後の値を確認・利用します。</p>
+            <p><strong>用途：</strong>帳票タイプごとに異なる項目名や値の形式を、業務で使う共通項目へそろえるために使用します。例：保険金請求書の <span class="ui-text">被保険者氏名</span> と診断書の <span class="ui-text">患者氏名</span> を、標準変数 <span class="ui-text">被保険者名</span> へまとめます。マッピングルールは、業務シーンの Step1～Step2 を設定した後、当該業務シーン向けに登録します。</p>
+            <p><strong>実行ロジック：</strong>データマッピングは、<span class="ui-text">業務シーン設定</span> のワークフロー内に配置された <span class="ui-text">データマッピング</span> ノードで実行されます。OCR 抽出後の値、処理ルール適用後の値、マスタ照合後の標準値を参照し、設定された標準変数へ変換します。</p>
+          </section>
+
+          <section class="manual-subsection" id="data-mapping-operation">
+            <h3>画面操作</h3>
+
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">業務ルール設定</span> → <span class="ui-text">データマッピング設定</span> を開き、<span class="ui-text">マッピングルール生成</span> で <span class="ui-text">標準変数</span>、<span class="ui-text">表示名</span>、参照元の <span class="ui-text">帳票タイプ</span> と <span class="ui-text">フィールド</span> を選択します。必要に応じて <span class="ui-text">標準化ルール</span> を入力し、<span class="ui-text">追加</span> します。</span></p>
+            <figure class="screenshot-figure" data-shot="admin-data-mapping-config">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/data-mapping-list.png?v=8" data-lightbox="manual-shots" aria-label="データマッピング設定 マッピングルール生成を拡大表示">
+                  <img src="assets/data-mapping-list.png?v=8" alt="データマッピング設定 マッピングルール生成">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text">複数帳票から同じ意味の項目を集約する場合は、<span class="ui-text">マッピング一覧</span> の <span class="ui-text">編集</span> から <span class="ui-text">ソースフィールド</span> を追加します。値の表記や形式をそろえる必要がある場合は <span class="ui-text">標準化ルール</span> を確認・調整して <span class="ui-text">OK</span> します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/data-mapping-flow.png?v=8" data-lightbox="manual-shots" aria-label="データマッピング設定 マッピング編集を拡大表示">
+                  <img src="assets/data-mapping-flow.png?v=8" alt="データマッピング設定 マッピング編集">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">AIルール最適化</span> を使用すると、標準化ルールの候補を生成できます。生成結果はそのまま確定せず、保険金請求の業務表現や後続出力形式に合わせて確認・修正します。</span></p>
+          </div>
+          </section>
+
+          <section class="manual-subsection" id="data-mapping-impact">
+            <h3>関連影響</h3>
+            <table class="info-table">
+              <thead><tr><th>影響先</th><th>影響内容</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">帳票タイプ設定</span></td><td>マッピング元として選択できる項目は、帳票タイプ設定の <span class="ui-text">AI読取設定</span> で定義された項目です。項目名を変更・削除すると、マッピング設定に影響します。</td></tr>
+                <tr><td><span class="ui-text">業務シーン設定</span></td><td>データマッピングは、ワークフロー内の <span class="ui-text">データマッピング</span> ノードで実行されます。ノードが配置されていない場合、マッピング設定は実行されません。</td></tr>
+                <tr><td><span class="ui-text">AI検証設定</span></td><td>標準変数に複数の参照元がある場合、<span class="ui-text">標準データ整合性</span> で一致確認の対象にできます。</td></tr>
+                <tr><td><span class="ui-text">出力項目</span></td><td>マッピング後の標準変数は、業務シーン設定の出力候補として利用されます。</td></tr>
+              </tbody>
+            </table>
+            <div class="notice info">
+              <strong>注意事項</strong>
+              データマッピングは値を標準変数へ整理する機能です。項目の競合や業務上の整合性判定は、AI 検証設定で扱います。
+            </div>
+          </section>
+        </section>
+<section class="section-card" id="admin-ai-verification-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>AI検証設定</h2>
+          <p>本章では、OCR 抽出結果や案件内の帳票構成を AI で検証するためのルールを設定します。保険金請求では、必須フィールド、必要書類、標準データ整合性、テキスト検証、データ検証、署名・印鑑検証の 6 モジュールで確認します。</p>
+
+          <section class="manual-subsection" id="ai-verification-function">
+            <h3>機能説明</h3>
+            <p><strong>権限：</strong>本機能は <span class="ui-text">admin</span> が設定します。操作員は AI 検証ルールを編集せず、<span class="ui-text">マイタスク</span> で検証結果を確認・修正します。</p>
+            <p><strong>実行ロジック：</strong>AI 検証ルールは、<span class="ui-text">業務シーン設定</span> のワークフロー内に配置された <span class="ui-text">AI検証</span> ノードで実行されます。業務シーンの Step1～Step2 を設定したうえで <span class="ui-text">AI検証設定</span> にルールを登録し、業務シーン側の AI 検証ノードで対象の検証種別を ON にすると実行対象になります。</p>
+            <table class="info-table">
+              <thead><tr><th>検証モジュール</th><th>確認する内容</th><th>ルール例</th><th>保険金請求での例</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">必須フィールド</span></td><td>指定した項目が空欄ではないかを確認します。</td><td>対象項目が未入力の場合は要確認にする。</td><td>請求番号、被保険者名、診断日、請求金額が入力されているか。</td></tr>
+                <tr><td><span class="ui-text">必要書類</span></td><td>案件に必要な帳票タイプが提出されているかを確認します。</td><td>必須帳票が存在しない場合は不足書類として扱う。</td><td>保険金請求書、診断書、診療明細書がそろっているか。</td></tr>
+                <tr><td><span class="ui-text">標準データ整合性</span></td><td>マッピング済みの標準変数どうしの値が一致しているかを確認します。</td><td>比較対象の標準変数が異なる場合は不整合にする。</td><td>請求書の被保険者氏名と診断書の患者氏名が一致しているか。</td></tr>
+                <tr><td><span class="ui-text">テキスト検証</span></td><td>自然文ルールに基づき、自由記述や長文項目の妥当性を確認します。</td><td><span class="code-text">{{診断書・医療機関名}}</span> と <span class="code-text">{{診療明細書・診療機関名}}</span> の名称が完全一致していること。</td><td>帳票間の医療機関名が一致しているか。</td></tr>
+                <tr><td><span class="ui-text">データ検証</span></td><td>数値、日付、期間、合計などの構造化データを確認します。</td><td><span class="code-text">{{入院・通院・手術状況報告書・今回のご請求の入院期間起期}}</span> <= <span class="code-text">{{入院・通院・手術状況報告書・今回のご請求の入院期間止期}}</span></td><td>入院期間の開始日が終了日以前であるか。</td></tr>
+                <tr><td><span class="ui-text">署名・印鑑検証</span></td><td>対象帳票に署名または印影が存在するかを確認します。</td><td>対象帳票の指定領域または全文から署名・印影の有無を検出する。</td><td>請求書の署名欄、医師の押印欄、同意書の署名有無。</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="manual-subsection" id="ai-verification-operation">
+            <h3>画面操作</h3>
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">必須フィールド</span> — <span class="ui-text">ルール一括追加</span> で <span class="ui-text">適用シーン</span>、<span class="ui-text">帳票タイプ</span>、<span class="ui-text">フィールド</span> を選び、<span class="ui-text">挿入</span> で <span class="ui-text">選択フィールド</span> に追加して <span class="ui-text">追加</span> します。標準変数を対象にする場合は <span class="ui-text">標準フィールド</span> を <span class="ui-text">はい</span> に切り替えます。追加後は <span class="ui-text">ルール一覧</span> に反映され、行の <span class="ui-text">削除</span> で無効化できます。</span></p>
+            <figure class="screenshot-figure" data-shot="admin-ai-verification-config">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-required-fields.png?v=8" data-lightbox="manual-shots" aria-label="AI検証設定 必須フィールドを拡大表示">
+                  <img src="assets/ai-verification-required-fields.png?v=8" alt="AI検証設定 必須フィールド">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">必要書類</span> — <span class="ui-text">業務シーン</span> を選び、案件に必要な帳票タイプを <span class="ui-text">必須</span> または <span class="ui-text">任意</span> に設定します。保険金請求では、診断書・保険金請求書・診療明細書などの提出有無を案件単位で確認します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-required-documents.png?v=8" data-lightbox="manual-shots" aria-label="AI検証設定 必要書類を拡大表示">
+                  <img src="assets/ai-verification-required-documents.png?v=8" alt="AI検証設定 必要書類">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">標準データ整合性</span> — <span class="ui-text">データマッピング設定</span> で参照元が 2 件以上ある標準変数が一覧表示されます。<span class="ui-text">データ整合性検証</span> スイッチを ON にすると、同一標準変数に紐づく OCR 値の一致を検証します。マッピング自体はデータマッピング設定で編集します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-standard-consistency.png?v=8" data-lightbox="manual-shots" aria-label="AI検証設定 標準データ整合性を拡大表示">
+                  <img src="assets/ai-verification-standard-consistency.png?v=8" alt="AI検証設定 標準データ整合性">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">テキスト検証</span> — <span class="ui-text">ルール追加</span> で <span class="ui-text">適用シーン</span>、<span class="ui-text">ルール名</span>、<span class="ui-text">ルール記述</span> を設定します。フィールド参照は <span class="ui-text">挿入</span> で <code>{{帳票タイプ.フィールド名}}</code> 形式のトークンを書き込み、少なくとも 1 件の有効なフィールド参照が必要です。必要に応じて <span class="ui-text">AIルール最適化</span> を使い、<span class="ui-text">ルール一覧</span> の <span class="ui-text">編集</span> で内容を更新します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-text-rules.png?v=8" data-lightbox="manual-shots" aria-label="AI検証設定 テキスト検証を拡大表示">
+                  <img src="assets/ai-verification-text-rules.png?v=8" alt="AI検証設定 テキスト検証">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">データ検証</span> — 数値・日付・期間・合計などの構造化データを、算術式または自然文 + フィールドトークンで検証します。入院期間、請求日、点数合計など、帳票間の整合性確認に使います。<span class="ui-text">AIルール最適化</span> で式の整理も可能です。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-data-rules.png?v=8" data-lightbox="manual-shots" aria-label="AI検証設定 データ検証を拡大表示">
+                  <img src="assets/ai-verification-data-rules.png?v=8" alt="AI検証設定 データ検証">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">6</span><span class="step-text"><span class="ui-text">署名・印鑑検証</span> — <span class="ui-text">適用シーン</span>、<span class="ui-text">ルール名</span>、<span class="ui-text">対象帳票</span>、<span class="ui-text">検出対象</span>（印影／署名／両方）、必要に応じて <span class="ui-text">照合先</span> を設定して <span class="ui-text">追加</span> します。各ルールは <span class="ui-text">状態</span> スイッチで個別に ON/OFF できます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-signature-seal.png?v=8" data-lightbox="manual-shots" aria-label="AI検証設定 署名・印鑑検証を拡大表示">
+                  <img src="assets/ai-verification-signature-seal.png?v=8" alt="AI検証設定 署名・印鑑検証">
+                </a>
+              </div>
+            </figure>
+          </div>
+          </section>
+
+          <section class="manual-subsection" id="ai-verification-impact">
+            <h3>関連影響</h3>
+            <table class="info-table">
+              <thead><tr><th>影響先</th><th>影響内容</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">業務シーン設定</span></td><td>AI 検証ルールは、ワークフロー内の <span class="ui-text">AI検証</span> ノードで実行されます。ノードがない場合、ルールを設定していても実行されません。</td></tr>
+                <tr><td><span class="ui-text">AI検証ノード</span></td><td>ノード内の検証種別スイッチで、必須フィールド、必要書類、標準データ整合性、テキスト検証、データ検証、署名・印鑑検証のどれを実行するかを制御します。OFF の種別はルールが登録済みでも実行されません。</td></tr>
+                <tr><td><span class="ui-text">データマッピング設定</span></td><td><span class="ui-text">標準データ整合性</span> は、複数帳票から同じ標準変数へまとめた項目を参照します。</td></tr>
+                <tr><td><span class="ui-text">マイタスク</span></td><td>要確認の結果はワークフロー条件に従って <span class="ui-text">AI検証確認</span> タスクに起票されます。</td></tr>
+              </tbody>
+            </table>
+            <div class="notice info">
+              <strong>注意事項</strong>
+              適用シーンを先に選んでから帳票タイプ・フィールドを指定します。業務シーンや帳票タイプ、データマッピングを変更した場合は、AI 検証ルールの参照先が変わる可能性があるため、対象ルールを確認してください。
+            </div>
+          </section>
+        </section>
+<section class="chapter-page" id="operator-guide">
+          <p class="chapter-label">業務操作モジュール</p>
+          <h2>業務操作モジュール</h2>
+          <p>公開済みの業務シーン（本マニュアルでは <span class="ui-text">保険金請求</span>）を前提に、資料アップロードから案件確認、<span class="ui-text">マイタスク</span> での人工確認・出力までを説明します。</p>
+        </section>
+<section class="section-card" id="operator-upload-module">
+          <p class="section-label">業務操作モジュール</p>
+          <h2>新規アップロード</h2>
+          <p>本章では、公開済みの業務シーンを選択し、保険金請求に関する資料をアップロードして案件処理を開始します。新規アップロードは、帳票分類と案件集約を実行する入口です。</p>
+
+          <section class="manual-subsection" id="upload-function">
+            <h3>機能説明</h3>
+            <p><strong>権限：</strong>本機能は <span class="ui-text">admin</span>、<span class="ui-text">操作員</span>、<span class="ui-text">操作管理者</span>、または該当メニュー権限を持つユーザーが利用します。</p>
+            <p><strong>利用シーン：</strong>新しい保険金請求案件を開始する場合に使用します。請求書、診断書、診療明細書などをまとめてアップロードし、公開済みの <span class="ui-text">業務シーン</span> に基づいて帳票分類と案件集約を行います。</p>
+            <p><strong>処理ロジック：</strong><span class="ui-text">分類・案件集約を実行</span> をクリックすると、アップロード済みの合格ファイルを対象に、帳票分類と案件集約が順に実行されます。帳票タイプ設定の分類説明と、業務シーン設定の案件集約条件が参照されます。</p>
+            <p><strong>3 つの資料追加経路：</strong>新規案件の開始は <span class="ui-text">新規アップロード</span>（新規集約経路）。既存案件への補件は、<span class="ui-text">案件一覧</span> からの直付けと、<span class="ui-text">新規アップロード</span> からの集約の 2 通りがあります。</p>
+            <table class="info-table">
+              <thead><tr><th>経路</th><th>入口</th><th>前提</th><th>処理</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>新規集約経路</td>
+                  <td><span class="ui-text">新規アップロード</span></td>
+                  <td>公開済み <span class="ui-text">業務シーン</span> を選択</td>
+                  <td>帳票分類 → 案件集約 → <span class="ui-text">案件一覧</span> へ反映</td>
+                </tr>
+                <tr>
+                  <td>補件・直付け経路</td>
+                  <td><span class="ui-text">案件一覧</span> · <span class="ui-text">補件</span></td>
+                  <td>案件ステータスが <span class="ui-text">補件</span>（<span class="ui-text">マイタスク</span> で審査員が補件を選択した後など）</td>
+                  <td>対象案件に直接書き込み。分類・集約は経由しない</td>
+                </tr>
+                <tr>
+                  <td>補件・集約経路</td>
+                  <td><span class="ui-text">新規アップロード</span></td>
+                  <td>公開済み <span class="ui-text">業務シーン</span> を選択（案件番号は不要）</td>
+                  <td>新規集約と同様に分類・案件集約を実行。関連キーが <span class="ui-text">補件</span> 状態の案件に一致すれば優先的に紐付け。未自動归属のファイルは <span class="ui-text">未集約ファイル</span> に残る</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="manual-subsection" id="upload-operation">
+            <h3>画面操作</h3>
+            <div class="operation-step">
+              <p><span class="step-code">1</span><span class="step-text"><strong>新規集約経路</strong> — サイドバーの <span class="ui-text">新規アップロード</span> を開き、<span class="ui-text">業務シーン</span> を選択します。<span class="ui-text">ファイル選択</span>、<span class="ui-text">フォルダ選択</span>、<span class="ui-text">ZIP 選択</span>、またはドラッグ＆ドロップで資料を追加します（JPG / PNG / TIF / PDF、各 50MB まで）。<span class="ui-text">アップロード済ファイル</span> 一覧で取込結果を確認し、<span class="ui-text">分類・案件集約を実行</span> で一覧内のすべての合格ファイルを一括処理します（<span class="ui-text">一括削除</span> は選択行のみ、集約は一部選択では実行されません）。</span></p>
+              <figure class="screenshot-figure" data-shot="operator-upload-module">
+                <div class="shot-wrap">
+                  <a class="shot-link" href="assets/operator-upload-main.png?v=8" data-lightbox="manual-shots" aria-label="新規アップロード画面を拡大表示">
+                    <img src="assets/operator-upload-main.png?v=8" alt="新規アップロード画面">
+                  </a>
+                </div>
+              </figure>
+            </div>
+
+            <div class="operation-step">
+              <p><span class="step-code">2</span><span class="step-text">分類・案件集約が完了すると、<span class="ui-text">案件一覧</span> の <span class="ui-text">未集約ファイル</span> タブへ遷移します。自動で案件にまとまったファイルは <span class="ui-text">集約済み案件</span> タブで確認でき、自動集約できなかったファイルは <span class="ui-text">未集約ファイル</span> に残ります。未集約ファイルは <span class="ui-text">新規アップロード</span> から再度集約を実行するか、<span class="ui-text">案件一覧</span> で手動紐付けを行います。</span></p>
+              <figure class="screenshot-figure" data-shot="operator-upload-aggregation-result">
+                <div class="shot-wrap">
+                  <a class="shot-link" href="assets/case-list-unaggregated.png?v=8" data-lightbox="manual-shots" aria-label="集約完了後の未集約ファイルタブを拡大表示">
+                    <img src="assets/case-list-unaggregated.png?v=8" alt="案件一覧 未集約ファイルタブ">
+                  </a>
+                </div>
+                <figcaption>集約完了後は <span class="ui-text">未集約ファイル</span> タブが開きます。自動集約に成功したファイルは <span class="ui-text">集約済み案件</span> タブで確認してください。</figcaption>
+              </figure>
+            </div>
+
+            <div class="operation-step">
+              <p><span class="step-code">3</span><span class="step-text"><strong>補件・直付け経路</strong> — <span class="ui-text">案件一覧</span> · <span class="ui-text">集約済み案件</span> で、案件ステータスが <span class="ui-text">補件</span> の行の <span class="ui-text">補件</span> をクリックします（補件アップロード API も同じ経路。案件番号は必須）。<span class="ui-text">書類追加アップロード</span> ダイアログは対象案件 ID に固定され、<span class="ui-text">業務シーン</span> の選択欄は表示されません。ファイルを追加して <span class="ui-text">アップロード確定</span> すると当該案件へ直接書き込まれます（形式・50MB 上限は新規集約経路と同じ）。</span></p>
+              <figure class="screenshot-figure" data-shot="operator-upload-supplement">
+                <div class="shot-wrap">
+                  <a class="shot-link" href="assets/operator-upload-supplement-flow.png?v=8" data-lightbox="manual-shots" aria-label="案件一覧から補件アップロードを拡大表示">
+                    <img src="assets/operator-upload-supplement-flow.png?v=8" alt="案件一覧の補件操作と書類追加アップロード">
+                  </a>
+                </div>
+                <figcaption>左：<span class="ui-text">集約済み案件</span> で <span class="ui-text">補件</span> をクリック → 右：<span class="ui-text">書類追加アップロード</span> で対象案件へ直接追加。</figcaption>
+              </figure>
+            </div>
+
+            <div class="operation-step">
+              <p><span class="step-code">4</span><span class="step-text"><strong>補件・集約経路</strong> — 案件番号が分からない場合は、<span class="ui-text">新規アップロード</span> と同じ手順で公開済み <span class="ui-text">業務シーン</span> を選び、補件書類を追加して <span class="ui-text">分類・案件集約を実行</span> します。関連キーが <span class="ui-text">補件</span> 状態の既存案件に一致すれば優先的に紐付けられ、一致しなかったファイルは <span class="ui-text">未集約ファイル</span> に残ります（Step 2 と同様に手動紐付けまたは再実行）。</span></p>
+            </div>
+          </section>
+
+        </section>
+<section class="section-card" id="operator-case-module">
+          <p class="section-label">業務操作モジュール</p>
+          <h2>案件一覧</h2>
+          <p>本モジュールでは、案件の集約状態、配下ファイル、詳細プレビュー、ワークフロー進捗、操作ダイアログを順に確認します。保険金請求では、<span class="ui-text">集約済み案件</span> で進行中案件を把握し、展開後のファイル、詳細画面、担当者割当、ファイルの案件変更、未集約ファイルの手動紐付けまでを確認します。</p>
+          <section class="manual-subsection" id="case-function">
+            <h3>機能説明</h3>
+            <p><strong>権限：</strong><span class="ui-text">admin</span>、<span class="ui-text">操作員</span>、<span class="ui-text">操作管理者</span>、または該当メニュー権限を持つユーザーが利用。<span class="ui-text">処理中止</span> は操作員も可。<span class="ui-text">割当</span>（案件担当者改派）は操作管理者・<span class="ui-text">admin</span> のみ。案件担当者は最初の人工確認ノードの指派先ロールから自動指名されますが、操作管理者がここで手動改派することも可能（改派後、未完了タスク担当者も同期更新）。</p>
+            <p><strong>利用シーン：</strong>アップロード後に案件へ集約された資料、または自動集約できなかった未集約ファイルを確認します。保険金請求では、案件単位で提出書類、配下ファイル、担当者、処理ステータス、ワークフロー進捗を確認します。</p>
+            <p><strong>確認ロジック：</strong><span class="ui-text">集約済み案件</span> では、案件単位にまとまったファイルと進捗を確認します。<span class="ui-text">未集約ファイル</span> では、分類または案件集約に失敗したファイルを確認し、再集約または手動紐付けを行います。</p>
+          </section>
+
+          <section class="manual-subsection" id="case-operation">
+            <h3>画面操作</h3>
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">集約済み案件</span> タブで、案件 ID、業務シーン、業務 key、作成日時、更新日時、ファイル数、入力済書類、案件ステータス、担当者を確認します。案件 ID または <span class="ui-text">詳細</span> から詳細画面へ進めます。上部の検索条件で絞り込み、<span class="ui-text">すべて展開</span> で配下ファイルを一括表示できます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-overview-marked.png?v=8" data-lightbox="manual-shots" aria-label="案件一覧の集約済み案件を拡大表示">
+                  <img src="assets/case-list-overview-marked.png?v=8" alt="案件一覧の集約済み案件">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text">案件行を展開すると、配下ファイルのファイル名、帳票タイプ、アップロード日時、更新日時、帳票枚数、ファイルサイズ、ファイルステータスを確認できます。各行の <span class="ui-text">プレビュー</span>、<span class="ui-text">案件変更</span>、<span class="ui-text">削除</span> でファイル単位の操作が可能です。案件行では <span class="ui-text">詳細</span>、<span class="ui-text">割当</span>、<span class="ui-text">処理中止</span>、<span class="ui-text">削除</span> が利用できます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-expanded-marked.png?v=8" data-lightbox="manual-shots" aria-label="展開後の案件とファイル一覧を拡大表示">
+                  <img src="assets/case-list-expanded-marked.png?v=8" alt="展開後の案件とファイル一覧">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text">案件 ID または <span class="ui-text">詳細</span> から詳細画面を開き、<span class="ui-text">ファイル一覧</span> タブで帳票タイプ別のツリーと画像プレビューを確認します。プレビュー上のツールバーで拡大・回転ができ、不要ファイルは <span class="ui-text">削除</span> で除去できます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-file-detail-marked.png?v=8" data-lightbox="manual-shots" aria-label="案件詳細のファイル一覧タブを拡大表示">
+                  <img src="assets/case-list-file-detail-marked.png?v=8" alt="案件詳細のファイル一覧タブ">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">ワークフロー明細</span> タブでは、<span class="ui-text">処理フロー</span> で本案件の経路（実線）と未採用分岐（点線）を確認し、<span class="ui-text">経過ノード</span> で各ノードの開始・完了日時と担当者、<span class="ui-text">ファイル処理明細</span> でファイル単位の OCR 進捗を確認します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-workflow-tab-flow.png?v=8" data-lightbox="manual-shots" aria-label="ワークフロー明細タブの処理フロー・経過ノード・ファイル処理明細を拡大表示">
+                  <img src="assets/case-list-workflow-tab-flow.png?v=8" alt="ワークフロー明細タブの処理フロー・経過ノード・ファイル処理明細">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">割当</span> で <span class="ui-text">案件担当者</span> を改派（操作管理者のみ）。<span class="ui-text">処理中止</span> でワークフローを終了し未完了タスクを無効化（操作員・操作管理者、確認ダイアログで <span class="ui-text">OK</span>）。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-case-modals-flow.png?v=8" data-lightbox="manual-shots" aria-label="担当者割当と処理中止ダイアログを拡大表示">
+                  <img src="assets/case-list-case-modals-flow.png?v=8" alt="担当者割当と処理中止ダイアログ">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">6</span><span class="step-text">展開後のファイル行で <span class="ui-text">案件変更</span> をクリックし、帳票タイプ・関連 key・紐付け先案件を指定して別案件へ移動します。分類失敗などで誤った案件に紐付いたファイルの修正に使います。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-file-change-flow.png?v=8" data-lightbox="manual-shots" aria-label="ファイルの案件変更操作とダイアログを拡大表示">
+                  <img src="assets/case-list-file-change-flow.png?v=8" alt="ファイルの案件変更操作とダイアログ">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">7</span><span class="step-text"><span class="ui-text">未集約ファイル</span> タブでは、自動集約に失敗したファイル（集約ステータス <span class="ui-text">紐づけ失敗</span>、失敗理由など）を確認します。<span class="ui-text">案件集約を実行</span> で再処理するか、<span class="ui-text">手動紐付け</span> で <span class="ui-text">手動校正</span> ダイアログを開き、帳票タイプと紐付け先案件を指定します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-unaggregated-flow.png?v=8" data-lightbox="manual-shots" aria-label="未集約ファイル一覧と手動校正ダイアログを拡大表示">
+                  <img src="assets/case-list-unaggregated-flow.png?v=8" alt="未集約ファイル一覧と手動校正ダイアログ">
+                </a>
+              </div>
+            </figure>
+          </div>
+          </section>
+
+        </section>
+<section class="section-card" id="operator-task-module">
+          <p class="section-label">業務操作モジュール</p>
+          <h2>マイタスク</h2>
+          <p>本章では、ワークフローから起票された作業を確認し、割当先のロールまたは担当者が必要な確認・修正・出力を行います。マイタスクは、人工確認とエクスポートの実行入口です。<span class="ui-text">admin</span> は全体権限として本章の機能も利用できます。</p>
+
+          <section class="manual-subsection" id="task-function">
+            <h3>機能説明</h3>
+            <p><strong>権限：</strong>該当ロールまたは担当者に表示。操作員は <span class="ui-text">対応</span> のみ、<span class="ui-text">割当</span> は操作管理者・<span class="ui-text">admin</span> のみ（<span class="ui-text">案件一覧</span> の改派とは独立）。人工確認ノードの指派先は操作員・操作管理者のみ選択可能で、最初の人工確認ノードで選択したロールから案件担当者が自動指名されます。以降同じロールの人工確認ノードは同一担当者が継続処理し、ロール切替時に新ロールから再指名されます。</p>
+            <p><strong>処理対象：</strong>本画面では <span class="ui-text">OCR 抽出確認</span>、<span class="ui-text">AI 検証確認</span>、<span class="ui-text">エクスポート</span> の 3 種類のタスクを扱います。前処理確認タスクは本期対象外です。</p>
+            <table class="info-table">
+              <thead><tr><th>タスク種別</th><th>発生する場面</th><th>担当者が行うこと</th><th>完了後の動き</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">OCR 抽出確認</span></td><td>OCR 値の信頼度が低い、モデル間で結果が一致しない、マスタ照合の候補が確定できない場合。</td><td>帳票画像と抽出値を照合し、テキスト・テーブル・マスタ候補を確認、必要に応じて修正します。</td><td><span class="ui-text">OCR 抽出完了</span> で後続ノードへ進みます。補件または案件中止を選択することもできます。</td></tr>
+                <tr><td><span class="ui-text">AI 検証確認</span></td><td>AI 検証ノード実行後、1 件以上の検証ルールが <span class="ui-text">確認待ち</span> となった場合（必須フィールド不足、必要書類不足、標準データ不整合、テキスト検証 NG、データ検証 NG、署名・印影不足など）。</td><td><span class="ui-text">AI 検証要約結果</span> で当該案件の実行済み検証ルールをすべて確認します。緑の <span class="ui-text">確認済み</span> は確認済みのルール、青の <span class="ui-text">確認待ち</span> は人工確認対象です。要確認ルールについて判定理由・対象帳票・フィールドを確認し、<span class="ui-text">確認済み</span>・補件・案件中止を選択します。</td><td><span class="ui-text">AI 検証完了</span> で後続ノードへ進みます。補件時は案件一覧から追加書類を受け付けます。</td></tr>
+                <tr><td><span class="ui-text">エクスポート</span></td><td>ワークフローの確認処理が完了し、出力可能になった場合。</td><td>業務シーン設定の出力項目に沿って内容を確認し、結果を提出します。</td><td>提出後、案件は <span class="ui-text">エクスポート済</span> として扱われます。</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="manual-subsection" id="task-operation">
+            <h3>画面操作</h3>
+
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">未対応</span> / <span class="ui-text">対応済</span> でタスクを切り替え、タスク種別・案件キー・業務シーン・業務 key で絞り込みます。未対応行の <span class="ui-text">対応</span> で実行ページへ進みます。</span></p>
+            <figure class="screenshot-figure" data-shot="operator-task-list">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/operator-task-list-marked.png?v=8" data-lightbox="manual-shots" aria-label="マイタスク一覧を拡大表示">
+                  <img src="assets/operator-task-list-marked.png?v=8" alt="マイタスク一覧">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">OCR 抽出確認</span>：一覧の <span class="ui-text">対応</span> から実行画面を開き、左の帳票プレビューと右の <span class="ui-text">テキスト読取</span> / <span class="ui-text">テーブル情報読取</span> で抽出値を確認・修正します。<span class="ui-text">項目位置を非表示</span> を ON にすると切り出し画像と帳票上の対応領域が連動します。マスタ照合フィールドでは <span class="ui-text">類似度検索</span> 候補から正規値を選べます。確認後、フッターの <span class="ui-text">OCR 抽出完了</span> で後続ノードへ進みます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/operator-task-ocr-entry-flow.png?v=8" data-lightbox="manual-shots" aria-label="マイタスク一覧から OCR 抽出確認画面への遷移を拡大表示">
+                  <img src="assets/operator-task-ocr-entry-flow.png?v=8" alt="マイタスク一覧から OCR 抽出確認画面">
+                </a>
+              </div>
+              <figcaption>Step2：一覧から OCR 抽出確認画面への遷移。</figcaption>
+            </figure>
+            <figure class="screenshot-figure" data-shot="operator-task-ocr">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/operator-task-ocr-position-marked.png?v=8" data-lightbox="manual-shots" aria-label="項目位置を非表示にした OCR 抽出確認画面を拡大表示">
+                  <img src="assets/operator-task-ocr-position-marked.png?v=8" alt="項目位置を非表示にした OCR 抽出確認画面">
+                </a>
+              </div>
+              <figcaption>Step2：<span class="ui-text">テキスト読取</span> と <span class="ui-text">テーブル情報読取</span>、マスタ照合候補の確認。</figcaption>
+            </figure>
+            <div class="notice info">
+              <strong>人工確認ノードとの連動（OCR / AI 検証共通）</strong>
+              実行画面フッターの <span class="ui-text">OCR 抽出完了</span> / <span class="ui-text">AI 検証完了</span> は、ワークフローキャンバス上の <span class="ui-text">人工確認</span> ノードの <span class="ui-text">完了</span> 出口に対応し、後続ノードへ進みます。前処理の人工確認タスクは本期対象外です。<span class="ui-text">補件</span> は <span class="ui-text">補件</span> 出口へルーティングされ、キャンバスで設定した前段ノード（例：OCR 抽出）へ戻ります。案件は <span class="ui-text">補件</span> 状態となり、<span class="ui-text">案件一覧</span> から追加書類をアップロードします。<span class="ui-text">案件中止</span> はキャンバス上では接続せず、選択時に現在のワークフローインスタンスを終了します（案件自体は再実行可能）。<span class="ui-text">保存</span> は進捗のみ保存し、出口は確定しません。
+            </div>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">AI 検証確認</span>：<span class="ui-text">AI 検証要約結果</span> タブで実行済み検証ルールを確認します。緑の <span class="ui-text">確認済み</span> は確認済みのルール、青の <span class="ui-text">確認待ち</span> は人工確認対象です。<span class="ui-text">必須フィールド</span>・<span class="ui-text">必要書類</span>・<span class="ui-text">標準データ整合性</span>・<span class="ui-text">テキスト検証</span>・<span class="ui-text">データ検証</span>・<span class="ui-text">署名・印鑑検証</span> ごとに判定理由と対象帳票を確認し、問題なければ <span class="ui-text">確認済み</span> に更新します。すべて処理したら <span class="ui-text">AI 検証完了</span> で後続ノードへ進みます。</span></p>
+            <figure class="screenshot-figure" data-shot="operator-task-ai-verify">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/operator-task-ai-verify-flow.png?v=8" data-lightbox="manual-shots" aria-label="AI 検証確認画面を拡大表示">
+                  <img src="assets/operator-task-ai-verify-flow.png?v=8" alt="AI 検証確認の完備性・データ検証・印鑑署名検証">
+                </a>
+              </div>
+              <figcaption>Step3：<span class="ui-text">AI 検証要約結果</span> と各モジュールの確認待ちルール。</figcaption>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">エクスポート</span>：<span class="ui-text">出力形式</span>（CSV / JSON / EXCEL）を選び、左の <span class="ui-text">エクスポート対象</span> ツリーと右のプレビューで出力内容を確認します。<span class="ui-text">処理結果をエクスポート</span> で結果ファイルを出力し、必要に応じて <span class="ui-text">前処理済み ZIP</span> を取得したうえで <span class="ui-text">エクスポート完了</span> をクリックします。</span></p>
+            <figure class="screenshot-figure" data-shot="operator-task-export">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/operator-task-export-confirm.png?v=8" data-lightbox="manual-shots" aria-label="マイタスク エクスポート確認画面を拡大表示">
+                  <img src="assets/operator-task-export-confirm.png?v=8" alt="マイタスク エクスポート確認画面">
+                </a>
+              </div>
+              <figcaption>Step4：出力形式・対象ファイル・フィールド値の確認とエクスポート。</figcaption>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">割当</span> でタスク担当者を変更（操作管理者のみ）。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/operator-task-assign-flow.png?v=8" data-lightbox="manual-shots" aria-label="タスク割当ダイアログを拡大表示">
+                  <img src="assets/operator-task-assign-flow.png?v=8" alt="マイタスク一覧とタスク割当ダイアログ">
+                </a>
+              </div>
+            </figure>
+          </div>
+          </section>
+
+        </section>
+<section class="chapter-page" id="system-settings">
+          <p class="chapter-label">システム設定モジュール</p>
+          <h2>システム設定モジュール</h2>
+          <p><span class="ui-text">ユーザー管理</span>、<span class="ui-text">権限管理</span>、<span class="ui-text">セキュリティ設定</span> で、アカウント・メニュー権限・データ保存期限を管理します。</p>
+        </section>
+<section class="section-card" id="system-user-management">
+          <p class="section-label">システム設定モジュール</p>
+          <h2>ユーザー管理</h2>
+          <p>ユーザーの作成、権限割当、状態管理を行います。</p>
+          <h3>操作ポイント</h3>
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">システム設定</span> → <span class="ui-text">ユーザー管理</span> を開き、<span class="ui-text">+ ユーザー追加</span> でユーザーを作成します。画面上部の <span class="ui-text">有効なユーザー</span> で上限（例：1/50）を確認できます。</span></p>
+            <figure class="screenshot-figure" data-shot="system-user-management">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/system-user-list-add.png?v=8" data-lightbox="manual-shots" aria-label="ユーザー管理 ユーザー追加を拡大表示">
+                  <img src="assets/system-user-list-add.png?v=8" alt="ユーザー管理 ユーザー追加">
+                </a>
+              </div>
+            </figure>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/system-user-list-quota.png?v=8" data-lightbox="manual-shots" aria-label="ユーザー管理 有効ユーザー数を拡大表示">
+                  <img src="assets/system-user-list-quota.png?v=8" alt="ユーザー管理 有効ユーザー数">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text">既存ユーザーは <span class="ui-text">無効</span>、<span class="ui-text">編集</span>、<span class="ui-text">パスワードリセット</span>、<span class="ui-text">削除</span> で管理します。</span></p>
+          </div>
+        </section>
+<section class="section-card" id="system-role-management">
+          <p class="section-label">システム設定モジュール</p>
+          <h2>権限管理</h2>
+          <p>権限テンプレートを作成し、各ロールがアクセスできるメニュー範囲を設定します。</p>
+          <h3>操作ポイント</h3>
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">システム設定</span> → <span class="ui-text">権限管理</span> を開き、<span class="ui-text">+ 権限追加</span> で権限テンプレートを作成します。</span></p>
+            <figure class="screenshot-figure" data-shot="system-role-management">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/system-role-list-add.png?v=8" data-lightbox="manual-shots" aria-label="権限管理 権限追加を拡大表示">
+                  <img src="assets/system-role-list-add.png?v=8" alt="権限管理 権限追加">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text">一覧の <span class="ui-text">メニュー権限</span> を開き、付与する機能モジュールを選択して <span class="ui-text">OK</span> で保存します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/system-role-menu-flow.png?v=8" data-lightbox="manual-shots" aria-label="権限管理 メニュー権限を拡大表示">
+                  <img src="assets/system-role-menu-flow.png?v=8" alt="権限管理 メニュー権限">
+                </a>
+              </div>
+            </figure>
+          </div>
+        </section>
+<section class="section-card" id="system-security-settings">
+          <p class="section-label">システム設定モジュール</p>
+          <h2>セキュリティ設定</h2>
+          <p>データ保存期限とアイドルセッション（自動ログアウト）を設定します。</p>
+          <h3>操作ポイント</h3>
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">システム設定</span> → <span class="ui-text">セキュリティ設定</span> を開きます。</span></p>
+            <figure class="screenshot-figure" data-shot="system-security-settings">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/security-settings-overview.png?v=8" data-lightbox="manual-shots" aria-label="セキュリティ設定 画面全体を拡大表示">
+                  <img src="assets/security-settings-overview.png?v=8" alt="セキュリティ設定 画面全体">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">データ保存期限設定</span> で読取データの自動削除サイクルを選びます（7 日～12 ヶ月）。期限超過後のデータは復元できません。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap shot-wrap-narrow">
+                <a class="shot-link" href="assets/security-duration-dropdown.png?v=8" data-lightbox="manual-shots" aria-label="セキュリティ設定 保存期限を拡大表示">
+                  <img src="assets/security-duration-dropdown.png?v=8" alt="セキュリティ設定 保存期限">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">アイドルセッション設定</span> で <span class="ui-text">自動ログアウト時間</span> を選び（15 分～2 時間、または制限なし）、<span class="ui-text">保存</span> します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap shot-wrap-narrow">
+                <a class="shot-link" href="assets/security-idle-dropdown.png?v=8" data-lightbox="manual-shots" aria-label="セキュリティ設定 自動ログアウトを拡大表示">
+                  <img src="assets/security-idle-dropdown.png?v=8" alt="セキュリティ設定 自動ログアウト">
+                </a>
+              </div>
+            </figure>
+          </div>
+        </section>
+  </main>
+</div>
+
+<div id="manualLightbox" class="lightbox" aria-hidden="true">
+  <div class="lightbox-backdrop" data-lightbox-close></div>
+  <div class="lightbox-panel">
+    <button type="button" class="lightbox-close" aria-label="閉じる">×</button>
+    <button type="button" class="lightbox-nav lightbox-prev" aria-label="前へ">‹</button>
+    <figure class="lightbox-figure">
+      <img id="lightboxImage" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button type="button" class="lightbox-nav lightbox-next" aria-label="次へ">›</button>
+    <div class="lightbox-toolbar">
+      <button type="button" class="lightbox-zoom-out" aria-label="縮小">−</button>
+      <button type="button" class="lightbox-zoom-reset" aria-label="リセット">100%</button>
+      <button type="button" class="lightbox-zoom-in" aria-label="拡大">+</button>
+    </div>
+  </div>
+</div>
+
+  <button type="button" class="back-to-top" id="backToTop" aria-label="ページ先頭へ戻る">↑</button>
+
+<script>
+(function () {
+  document.querySelectorAll('.toc-panel summary a').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+  });
+
+  const tocLinks = Array.from(document.querySelectorAll('.toc-panel a[href^="#"]'));
+  const tocItems = Array.from(document.querySelectorAll('.toc-panel .toc-parent, .toc-panel .toc-child, .toc-panel .toc-grandchild'));
+  const tocTargets = tocLinks
+    .map((link) => ({ link, target: document.querySelector(link.getAttribute('href')) }))
+    .filter(({ target }) => target);
+
+  function setActiveToc(targetId, options) {
+    const scrollSidebar = options && options.scrollSidebar;
+    let activeLink = null;
+    tocLinks.forEach((link) => {
+      const isActive = link.getAttribute('href') === '#' + targetId;
+      link.classList.toggle('active', isActive);
+      if (isActive) activeLink = link;
+    });
+    tocItems.forEach((item) => item.classList.remove('active'));
+    if (activeLink) {
+      const closestItem = activeLink.closest('.toc-grandchild, summary.toc-child, a.toc-child, .toc-parent');
+      if (closestItem) {
+        closestItem.classList.add('active');
+        const parentSummary = closestItem.closest('details')?.querySelector(':scope > summary');
+        if (parentSummary) parentSummary.classList.add('active');
+        const parentGroup = closestItem.closest('.toc-group')?.querySelector(':scope > summary');
+        if (parentGroup) parentGroup.classList.add('active');
+        if (scrollSidebar) {
+          const panel = document.querySelector('.toc-panel');
+          const itemRect = closestItem.getBoundingClientRect();
+          const panelRect = panel ? panel.getBoundingClientRect() : null;
+          const needsScroll = !panelRect || itemRect.top < panelRect.top || itemRect.bottom > panelRect.bottom;
+          if (needsScroll) closestItem.scrollIntoView({ block: 'nearest' });
+        }
+      }
+    }
+  }
+
+  const manualContent = document.querySelector('.manual-content');
+  const mobileMq = window.matchMedia('(max-width: 960px)');
+
+  function getScrollRoot() {
+    return mobileMq.matches ? null : manualContent;
+  }
+
+  function getScrollTop() {
+    const root = getScrollRoot();
+    return root ? root.scrollTop : window.scrollY;
+  }
+
+  function scrollMainTo(top, behavior) {
+    const root = getScrollRoot();
+    if (root) root.scrollTo({ top: top, behavior: behavior || 'auto' });
+    else window.scrollTo({ top: top, behavior: behavior || 'auto' });
+  }
+
+  tocLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      const id = link.getAttribute('href').slice(1);
+      if (id) setActiveToc(id, { scrollSidebar: true });
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link || !getScrollRoot()) return;
+    const id = link.getAttribute('href').slice(1);
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target || !manualContent.contains(target)) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setActiveToc(id, { scrollSidebar: true });
+  });
+
+  if ('IntersectionObserver' in window && tocTargets.length) {
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) {
+        setActiveToc(visible.target.id);
+      }
+    }, {
+      root: getScrollRoot(),
+      rootMargin: '-35% 0px -55% 0px',
+      threshold: [0.15, 0.3, 0.5, 0.75]
+    });
+
+    tocTargets.forEach(({ target }) => observer.observe(target));
+  } else if (tocTargets.length) {
+    setActiveToc(tocTargets[0].target.id);
+  }
+
+  if (location.hash) {
+    const hashTarget = document.querySelector(location.hash);
+    if (hashTarget) {
+      hashTarget.scrollIntoView();
+      setActiveToc(hashTarget.id, { scrollSidebar: true });
+    }
+  }
+
+  const backToTop = document.getElementById('backToTop');
+  function toggleBackToTop() {
+    if (!backToTop) return;
+    backToTop.classList.toggle('is-visible', getScrollTop() > 400);
+  }
+  if (backToTop) {
+    const scrollRoot = getScrollRoot();
+    (scrollRoot || window).addEventListener('scroll', toggleBackToTop, { passive: true });
+    toggleBackToTop();
+    backToTop.addEventListener('click', () => {
+      scrollMainTo(0, 'smooth');
+    });
+  }
+
+  const lightbox = document.getElementById('manualLightbox');
+  const img = document.getElementById('lightboxImage');
+  const caption = document.getElementById('lightboxCaption');
+  const links = Array.from(document.querySelectorAll('[data-lightbox="manual-shots"]'));
+  let index = 0;
+  let scale = 1;
+  let baseWidth = 0;
+
+  function fitLightboxWidth() {
+    const panel = lightbox.querySelector('.lightbox-panel');
+    const figure = lightbox.querySelector('.lightbox-figure');
+    if (!panel || !figure || !baseWidth) return;
+    const styles = window.getComputedStyle(panel);
+    const padX = parseFloat(styles.paddingLeft) + parseFloat(styles.paddingRight);
+    const navReserve = 112;
+    return Math.max(320, panel.clientWidth - padX - navReserve);
+  }
+
+  function applyScale() {
+    if (!baseWidth) return;
+    const fitWidth = fitLightboxWidth();
+    const target = fitWidth ? Math.min(baseWidth, Math.round(baseWidth * scale)) : Math.round(baseWidth * scale);
+    img.style.width = target + 'px';
+    img.style.height = 'auto';
+  }
+
+  function show(i) {
+    index = (i + links.length) % links.length;
+    const link = links[index];
+    img.src = link.getAttribute('href');
+    caption.textContent = link.getAttribute('aria-label') || '';
+    scale = 1;
+    baseWidth = 0;
+    img.onload = () => {
+      baseWidth = img.naturalWidth || img.width;
+      applyScale();
+    };
+    if (img.complete && img.naturalWidth) {
+      baseWidth = img.naturalWidth;
+      applyScale();
+    }
+  }
+
+  function openAt(link) {
+    const i = links.indexOf(link);
+    if (i === -1) return;
+    show(i);
+    lightbox.classList.add('is-open');
+    document.body.classList.add('lightbox-open');
+  }
+
+  function closeBox() {
+    lightbox.classList.remove('is-open');
+    document.body.classList.remove('lightbox-open');
+    img.src = '';
+  }
+
+  document.querySelectorAll('.shot-link[data-lightbox="manual-shots"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      openAt(link);
+    });
+  });
+
+  lightbox.querySelector('.lightbox-close').addEventListener('click', closeBox);
+  lightbox.querySelector('[data-lightbox-close]').addEventListener('click', closeBox);
+  lightbox.querySelector('.lightbox-prev').addEventListener('click', () => show(index - 1));
+  lightbox.querySelector('.lightbox-next').addEventListener('click', () => show(index + 1));
+  lightbox.querySelector('.lightbox-zoom-in').addEventListener('click', () => {
+    scale = Math.min(scale + 0.25, 3);
+    applyScale();
+  });
+  lightbox.querySelector('.lightbox-zoom-out').addEventListener('click', () => {
+    scale = Math.max(scale - 0.25, 0.5);
+    applyScale();
+  });
+  lightbox.querySelector('.lightbox-zoom-reset').addEventListener('click', () => {
+    scale = 1;
+    applyScale();
+  });
+
+  window.addEventListener('resize', () => {
+    if (lightbox.classList.contains('is-open')) applyScale();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (event.key === 'Escape') closeBox();
+    if (event.key === 'ArrowLeft') show(index - 1);
+    if (event.key === 'ArrowRight') show(index + 1);
+  });
+})();
+</script>
+
+</body>
+</html>
