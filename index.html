@@ -993,7 +993,7 @@
           <p>本モジュールでは、案件の集約状態、配下ファイル、詳細プレビュー、ワークフロー進捗、操作ダイアログを順に確認します。保険金請求では、<span class="ui-text">集約済み案件</span> で進行中案件を把握し、展開後のファイル、詳細画面、担当者割当、ファイルの案件変更、未集約ファイルの手動紐付けまでを確認します。</p>
           <section class="manual-subsection" id="case-function">
             <h3>機能説明</h3>
-            <p><strong>権限：</strong><span class="ui-text">admin</span>、<span class="ui-text">操作員</span>、<span class="ui-text">操作管理者</span>、または該当メニュー権限を持つユーザーが利用。<span class="ui-text">処理中止</span> は操作員も可。<span class="ui-text">割当</span>（案件担当者改派）は操作管理者・<span class="ui-text">admin</span> のみ。案件担当者は最初の人工確認ノードの指派先ロールから自動指名されますが、操作管理者がここで手動改派することも可能（改派後、未完了タスク担当者も同期更新）。</p>
+            <p><strong>権限：</strong><strong><span class="ui-text">admin</span></strong>、<strong><span class="ui-text">操作員</span></strong>、<strong><span class="ui-text">操作管理者</span></strong>、または該当メニュー権限を持つユーザーが利用。<span class="ui-text">処理中止</span> は <strong><span class="ui-text">操作員</span></strong> も可。<span class="ui-text">割当</span>（案件担当者改派）は <strong><span class="ui-text">操作管理者</span></strong>・<strong><span class="ui-text">admin</span></strong> のみ。案件担当者は最初の人工確認ノードの指派先ロールから自動指名されますが、<strong><span class="ui-text">操作管理者</span></strong> がここで手動改派することも可能（改派後、未完了タスク担当者も同期更新）。</p>
             <p><strong>利用シーン：</strong>アップロード後に案件へ集約された資料、または自動集約できなかった未集約ファイルを確認します。保険金請求では、案件単位で提出書類、配下ファイル、担当者、処理ステータス、ワークフロー進捗を確認します。</p>
             <p><strong>確認ロジック：</strong><span class="ui-text">集約済み案件</span> では、案件単位にまとまったファイルと進捗を確認します。<span class="ui-text">未集約ファイル</span> では、分類または案件集約に失敗したファイルを確認し、再集約または手動紐付けを行います。</p>
           </section>
@@ -1045,7 +1045,7 @@
           </div>
 
           <div class="operation-step">
-            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">割当</span> で <span class="ui-text">案件担当者</span> を改派（操作管理者のみ）。<span class="ui-text">処理中止</span> でワークフローを終了し未完了タスクを無効化（操作員・操作管理者、確認ダイアログで <span class="ui-text">OK</span>）。</span></p>
+            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">割当</span> で <span class="ui-text">案件担当者</span> を改派（<strong><span class="ui-text">操作管理者</span></strong> のみ）。<span class="ui-text">処理中止</span> でワークフローを終了し未完了タスクを無効化（<strong><span class="ui-text">操作員</span></strong>・<strong><span class="ui-text">操作管理者</span></strong>、確認ダイアログで <span class="ui-text">OK</span>）。</span></p>
             <figure class="screenshot-figure">
               <div class="shot-wrap">
                 <a class="shot-link" href="assets/case-list-case-modals-flow.png?v=8" data-lightbox="manual-shots" aria-label="担当者割当と処理中止ダイアログを拡大表示">
