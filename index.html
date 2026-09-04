@@ -42,6 +42,7 @@
             </summary>
             <a class="toc-grandchild" href="#api-function">機能説明</a>
             <a class="toc-grandchild" href="#api-operation">画面操作</a>
+            <a class="toc-grandchild" href="#api-impact">関連影響</a>
           </details>
           <details class="toc-subgroup" open>
             <summary class="toc-child">
@@ -303,22 +304,84 @@
 <section class="section-card" id="admin-api-config">
           <p class="section-label">ルール設定モジュール</p>
           <h2>API設定</h2>
-          <p>本章では、外部システムから NeosAI IDP を利用するための API 利用前提を確認します。具体的なリクエスト形式、認証方式、レスポンス項目、エラーコードは専用の API 接続文書を参照してください。</p>
+          <p>本章では、外部システムから NeosAI IDP を呼び出すための Open API を管理します。設定画面は <span class="ui-text">通知先URL</span>、<span class="ui-text">APIキー管理</span>、<span class="ui-text">API URL</span> の 3 タブです。パス、フィールド英語名、エラーコードは専用の API 接続文書を参照してください。</p>
 
           <section class="manual-subsection" id="api-function">
             <h3>機能説明</h3>
-            <p><strong>権限：</strong>本機能は <span class="ui-text">admin</span> が確認・管理します。操作員は API 設定を編集せず、画面操作または公開済み業務シーンに基づく処理結果を利用します。</p>
-            <p><strong>用途：</strong>API は、社内システム、RPA、基幹システムなどから IDP のアップロード、読取、結果取得を呼び出すための連携入口です。画面から手動アップロードする代わりに、外部システムから案件処理を開始したい場合に利用します。</p>
-            <p><strong>参照先：</strong>このマニュアルでは API の詳細仕様を記載しません。接続方式、API Key、エンドポイント、サンプルリクエストは専用の API 接続文書で確認してください。</p>
+            <p><strong>権限：</strong>本機能は <span class="ui-text">admin</span> が設定します。操作員は API 設定を編集せず、画面操作または公開済み業務シーンに基づく処理結果を利用します。</p>
+            <p><strong>設定ロジック：</strong><span class="ui-text">APIキー管理</span> では外部システムが使う API キーを発行・管理します。<span class="ui-text">通知先URL</span> では、プラットフォームが外部へ送るコールバック先と <span class="ui-text">署名鍵</span> を設定します。<span class="ui-text">API URL</span> では、ファイルアップロード、案件一覧照会、バッチ別案件照会、追加資料アップロード、一括エクスポート、エクスポートタスク照会のエンドポイントを確認し、コピーできます。</p>
+            <p><strong>利用タイミング：</strong>画面から手動アップロードする代わりに、社内システムや RPA から案件投入、進捗照会、補件、一括出力を行う場合に利用します。リクエストは API キーで認証します。</p>
           </section>
 
           <section class="manual-subsection" id="api-operation">
             <h3>画面操作</h3>
-            <ol>
-              <li><span class="ui-text">業務ルール設定</span> → <span class="ui-text">API設定</span> を開きます。</li>
-              <li>利用する API Key やエンドポイントの有効状態を確認します。</li>
-              <li>外部システムへ連携する具体的な項目は、専用の API 接続文書に従って設定します。</li>
-            </ol>
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">業務ルール設定</span> → <span class="ui-text">API設定</span> を開き、<span class="ui-text">APIキー管理</span> で登録済みの API キーと有効状態を確認します。新規発行する場合は <span class="ui-text">+API キー</span> をクリックします。</span></p>
+            <figure class="screenshot-figure" data-shot="admin-api-config">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/api-config-list.png?v=2" data-lightbox="manual-shots" aria-label="API設定 APIキー管理を拡大表示">
+                  <img src="assets/api-config-list.png?v=2" alt="API設定 APIキー管理">
+                </a>
+              </div>
+            </figure>
+          </div>
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">+API キー</span> のダイアログで <span class="ui-text">名称</span> を入力し、<span class="ui-text">有効期限</span> を <span class="ui-text">7日間</span> / <span class="ui-text">1年</span> / <span class="ui-text">3年</span> から選択して発行します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap shot-wrap-narrow">
+                <a class="shot-link" href="assets/api-config-add-modal.png?v=1" data-lightbox="manual-shots" aria-label="API設定 APIキー発行ダイアログを拡大表示">
+                  <img src="assets/api-config-add-modal.png?v=1" alt="API設定 APIキー発行ダイアログ">
+                </a>
+              </div>
+            </figure>
+          </div>
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">通知先URL</span> タブで <span class="ui-text">外部通知設定</span> を確認します。<span class="ui-text">通知先URL</span> と <span class="ui-text">署名鍵</span> を変更する場合は <span class="ui-text">編集</span> をクリックします。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/api-config-notify-url.png?v=1" data-lightbox="manual-shots" aria-label="API設定 通知先URLを拡大表示">
+                  <img src="assets/api-config-notify-url.png?v=1" alt="API設定 通知先URL">
+                </a>
+              </div>
+            </figure>
+          </div>
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text">編集画面で <span class="ui-text">通知先URL</span> を入力します。<span class="ui-text">署名鍵</span> は <span class="ui-text">生成</span> で発行し、<span class="ui-text">保存</span> します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/api-config-notify-url-edit.png?v=2" data-lightbox="manual-shots" aria-label="API設定 通知先URLの編集を拡大表示">
+                  <img src="assets/api-config-notify-url-edit.png?v=2" alt="API設定 通知先URLの編集">
+                </a>
+              </div>
+            </figure>
+          </div>
+          <div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">API URL</span> タブで、ファイルアップロード、案件一覧照会、バッチ別案件照会、追加資料アップロード、一括エクスポート、エクスポートタスク照会のエンドポイントを確認します。コピーアイコンで URL を取得できます。リクエスト形式などの詳細は専用の API 接続文書を参照してください。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/api-config-api-url.png?v=2" data-lightbox="manual-shots" aria-label="API設定 API URLを拡大表示">
+                  <img src="assets/api-config-api-url.png?v=2" alt="API設定 API URL">
+                </a>
+              </div>
+            </figure>
+          </div>
+          </section>
+
+          <section class="manual-subsection" id="api-impact">
+            <h3>関連影響</h3>
+            <table class="info-table">
+              <thead><tr><th>影響先</th><th>影響内容</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">新規アップロード</span></td><td>API の <span class="ui-text">ファイルアップロード</span> は画面と同じく、公開済みの <span class="ui-text">業務シーン</span> を必須とし、帳票分類と案件集約を起動します。形式・サイズ・解像度の検証も画面アップロードと同じです。API の <span class="ui-text">追加資料アップロード</span> は <span class="ui-text">案件一覧</span> の補件直付けと同じで、案件番号を指定し、案件ステータスが <span class="ui-text">補件</span> のときだけ対象案件へ直接書き込みます（案件集約は経由しません）。</td></tr>
+                <tr><td><span class="ui-text">案件一覧</span></td><td>API の <span class="ui-text">案件一覧照会</span> で案件の進捗と属性を取得します。<span class="ui-text">バッチ別案件照会</span> は、ファイルアップロードが返すバッチ識別子で、集約後の案件帰属を確認します。API 経由で投入した案件・ファイルは、画面の <span class="ui-text">集約済み案件</span> / <span class="ui-text">未集約ファイル</span> と同じ一覧に表示されます。</td></tr>
+                <tr><td><span class="ui-text">マイタスク</span></td><td>API の <span class="ui-text">一括エクスポート</span> は、業務シーンの出力ルールに従います。データ量が多い場合は非同期になり、<span class="ui-text">エクスポートタスク照会</span> で進捗とダウンロード先を取得します。画面側のエクスポートタスクは <span class="ui-text">マイタスク</span> で処理します。</td></tr>
+                <tr><td><span class="ui-text">業務シーン設定</span></td><td>ファイルアップロードで指定できるのは公開済みシーンのみです。出力形式は業務シーンの出力設定に従います。<span class="ui-text">通知先URL</span> への外部コールバックは、少なくともエクスポート完了時、および案件が <span class="ui-text">処理完了</span> または <span class="ui-text">エクスポート済</span> になったときに送ります。業務シーン Step3 の操作端通知とは別経路です。</td></tr>
+              </tbody>
+            </table>
+            <div class="notice info">
+              <strong>注意事項</strong>
+              無効、期限切れ、または停止中の API キーでは外部システムから呼び出せません。<span class="ui-text">通知先URL</span> の保存時は <span class="ui-text">署名鍵</span> が必須です。署名鍵を再生成すると既存の外部受信側の検証が失敗するため、連携先と同時に更新してください。案件が補件不可・エクスポート不可のときは API も拒否します。リクエスト形式、認証方式、エラーコードは専用の API 接続文書を参照してください。
+            </div>
           </section>
 
         </section>
@@ -410,14 +473,23 @@
           <section class="manual-subsection" id="doctype-function">
             <h3>機能説明</h3>
             <p><strong>権限：</strong>本機能は <span class="ui-text">admin</span> が設定します。操作員は帳票タイプそのものを編集せず、公開済みの業務シーンを通じて設定結果を利用します。</p>
-            <p><strong>設定ロジック：</strong><span class="ui-text">AI分類設定</span> は帳票タイプ判定、<span class="ui-text">AI読取設定</span> は OCR 抽出、<span class="ui-text">処理ルール設定</span> は値の補正・標準化、<span class="ui-text">画像処理設定</span> は案件集約時に使う画像分割・組合と OCR 前の画像整理を定義します。<span class="ui-text">効果テスト</span> では、業務シーンに組み込む前に実帳票で結果を確認します。</p>
+            <p>生成 AI による柔軟性の高い帳票抽出の可視化設定機能です。帳票タイプは次の 5 ステップで設定します。</p>
+            <figure class="screenshot-figure compact-shot">
+              <div class="shot-wrap shot-wrap-narrow">
+                <a class="shot-link" href="assets/doctype-stepper.png?v=1" data-lightbox="manual-shots" aria-label="帳票タイプ設定の5ステップを拡大表示">
+                  <img src="assets/doctype-stepper.png?v=1" alt="帳票タイプ設定 5ステップ">
+                </a>
+              </div>
+              <figcaption>分類 → 読取 → 処理ルール → 画像処理 → 効果テストの順で設定します。</figcaption>
+            </figure>
+
             <table class="info-table">
               <thead><tr><th>設定</th><th>何を決めるか</th><th>反映先</th></tr></thead>
               <tbody>
                 <tr>
                   <td><span class="ui-text">AI分類設定</span></td>
-                  <td>この帳票を他の帳票タイプと区別するためのサンプル画像と分類説明を定義します。</td>
-                  <td>新規アップロード後の帳票分類、業務シーンで選択する帳票タイプ候補。</td>
+                  <td>代表サンプル、<span class="ui-text">説明文</span>（AI 分類基準）、<span class="ui-text">ファイル分割ルール</span> を定義します。説明文は帳票タイプ判定、分割ルールは同一ファイル内の帳票切り分けに使います。</td>
+                  <td>新規アップロード後の帳票分類、混在ファイルの論理分割、業務シーンで選択する帳票タイプ候補。</td>
                 </tr>
                 <tr>
                   <td><span class="ui-text">AI読取設定</span></td>
@@ -447,49 +519,63 @@
             <h3>画面操作</h3>
 
           <div class="operation-step">
-            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">タイプ追加</span> と <span class="ui-text">AI分類設定</span>：<span class="ui-text">業務ルール設定</span> → <span class="ui-text">帳票タイプ設定</span> で <span class="ui-text">+ タイプ追加</span> をクリックし、帳票タイプ名を作成します。その後 Step1 で代表サンプルをアップロードし、帳票の特徴とファイル分割ルールを設定します。AI がサンプルから分類説明と分割ルールを生成するため、帳票の開始位置、終了位置、同一ファイル内に複数帳票が含まれる場合の切り分け条件を確認し、必要に応じて編集します。例：<span class="ui-text">診断書</span> は医師名、医療機関名、傷病名、発行日を含む医療書類として説明し、複数ページ PDF に診断書と別帳票が混在する場合は帳票単位に分割できるようにします。</span></p>
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">タイプ追加</span> と <span class="ui-text">AI分類設定</span>：<span class="ui-text">帳票タイプ設定</span> で <span class="ui-text">+ タイプ追加</span> し、<span class="ui-text">帳票名</span> を付けて代表サンプルをアップロードします。<span class="ui-text">説明文</span>（分類基準）と <span class="ui-text">ファイル分割ルール</span> を記入します。例：<span class="ui-text">診断書</span> の説明文を「医療機関が発行する診断書」とし、分割ルールを「ページ番号の連続性が途切れる位置で分割」にします。</span></p>
             <figure class="screenshot-figure">
               <div class="shot-wrap">
-                <a class="shot-link" href="assets/doctype-step-1-flow.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 タイプ追加とAI分類設定を拡大表示">
-                  <img src="assets/doctype-step-1-flow.png?v=8" alt="帳票タイプ設定 タイプ追加とAI分類設定">
+                <a class="shot-link" href="assets/doctype-step-1-flow.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 タイプ追加を拡大表示">
+                  <img src="assets/doctype-step-1-flow.png?v=8" alt="帳票タイプ設定 タイプ追加">
                 </a>
               </div>
+              <figcaption>タイプ追加。</figcaption>
             </figure>
           </div>
 
           <div class="operation-step">
-            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">AI読取設定</span>：まずテンプレートをダウンロードし、抽出したい項目とテーブル列を表形式で一括インポートします。次に <span class="ui-text">AI自動生成</span> をクリックし、登録済みの項目名に対してプロンプトと正解サンプルを自動生成します。生成結果を確認し、保険金請求の業務表現に合わせて人手で微調整します。最後に設定アイコンから <span class="ui-text">読取モデル設定</span> を開き、メインモデルと検証モデルを選択します。</span></p>
-            <figure class="screenshot-figure">
-              <div class="shot-wrap">
-                <a class="shot-link" href="assets/doctype-step-2-read-flow.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 AI読取設定を拡大表示">
-                  <img src="assets/doctype-step-2-read-flow.png?v=8" alt="帳票タイプ設定 AI読取設定">
-                </a>
-              </div>
-            </figure>
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">AI読取設定</span>：保存アイコンから <span class="ui-text">テンプレートをダウンロード</span> し、項目を記入して <span class="ui-text">一括インポート</span> します。プロンプトと正解サンプルはテンプレートで手書きしても、項目名だけ入れて次の手順の <span class="ui-text">AI自動生成</span> に任せても構いません。</span></p>
             <figure class="screenshot-figure">
               <div class="shot-wrap shot-wrap-narrow">
                 <a class="shot-link" href="assets/doctype-step-2-import-marked.png" data-lightbox="manual-shots" aria-label="帳票タイプ設定 テンプレートダウンロードと一括インポートを拡大表示">
                   <img src="assets/doctype-step-2-import-marked.png" alt="帳票タイプ設定 テンプレートダウンロードと一括インポート">
                 </a>
               </div>
-              <figcaption>Step2：テンプレートのダウンロードと一括インポート。</figcaption>
+              <figcaption>テンプレートのダウンロードと一括インポート。</figcaption>
             </figure>
             <figure class="screenshot-figure">
               <div class="shot-wrap shot-wrap-narrow">
-                <a class="shot-link" href="assets/doctype-step-2-model-flow.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 読取モデル設定を拡大表示">
-                  <img src="assets/doctype-step-2-model-flow.png?v=8" alt="帳票タイプ設定 読取モデル設定">
+                <a class="shot-link" href="assets/doctype-step-2-template.png" data-lightbox="manual-shots" aria-label="AI読取設定 ダウンロード用テンプレートを拡大表示">
+                  <img src="assets/doctype-step-2-template.png" alt="AI読取設定 ダウンロード用テンプレート（全体プロンプトと項目表）">
                 </a>
               </div>
-              <figcaption>Step2：AI自動生成と読取モデル設定。</figcaption>
+              <figcaption>ダウンロードしたテンプレートの例。</figcaption>
             </figure>
-            <div class="notice info">
-              <strong>人工確認が発生する条件</strong>
-              検証モデルを設定している場合、メインモデルの読取結果と検証モデルの読取結果が一致しない項目は、OCR 確認タスクで確認対象になります。あわせて、後続の処理ルール設定で設定した信頼度閾値を下回る項目、またはマスタ照合で候補が確定できない項目も人工確認の対象になります。
-            </div>
           </div>
 
           <div class="operation-step">
-            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">処理ルール設定</span>：Step2 で定義した項目に、日付整形、数値整形、マスタ照合などの後処理を割り当てます。<span class="ui-text">AIマッチング</span> を使うと、項目名から適した処理ルールを一括提案できます。信頼度閾値を下回る項目は、OCR 確認タスクで確認対象になります。</span></p>
+            <p><span class="step-code">3</span><span class="step-text">必要に応じて <span class="ui-text">AI自動生成</span> でプロンプトと正解サンプルを生成し、内容を確認・微調整します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-2-read.png?v=2" data-lightbox="manual-shots" aria-label="帳票タイプ設定 AI読取設定を拡大表示">
+                  <img src="assets/doctype-step-2-read.png?v=2" alt="帳票タイプ設定 AI読取設定（診療明細書）">
+                </a>
+              </div>
+              <figcaption>項目・プロンプト・正解サンプルの確認。</figcaption>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text">設定アイコンから <span class="ui-text">読取モデル設定</span>（メイン／検証モデル）と <span class="ui-text">エクスポート設定</span>（ファイル名・文字コード）を行います。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-2-settings-flow.png?v=6" data-lightbox="manual-shots" aria-label="帳票タイプ設定 設定メニューと各設定画面を拡大表示">
+                  <img src="assets/doctype-step-2-settings-flow.png?v=6" alt="帳票タイプ設定 設定メニューからエクスポート設定・読取モデル設定へ">
+                </a>
+              </div>
+              <figcaption>エクスポート設定と読取モデル設定。</figcaption>
+            </figure>
+          </div>
+
+<div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">処理ルール設定</span>：各項目に日付整形・数値整形・マスタ照合などの後処理を割り当てます。<span class="ui-text">AIマッチング</span> で一括提案もできます。</span></p>
             <figure class="screenshot-figure">
               <div class="shot-wrap">
                 <a class="shot-link" href="assets/doctype-step-3-marked.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 処理ルール設定を拡大表示">
@@ -545,7 +631,7 @@
           </div>
 
           <div class="operation-step">
-            <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">画像処理設定</span>：画像分割、画像組合、画像整列を設定します。複数ページ PDF や同一帳票タイプの画像が混在する場合に、どの画像を切り分け、どの画像を 1 つの論理ファイルとしてまとめるかを制御します。</span></p>
+            <p><span class="step-code">6</span><span class="step-text"><span class="ui-text">画像処理設定</span>：画像分割・組合・整列を設定します。</span></p>
             <figure class="screenshot-figure">
               <div class="shot-wrap">
                 <a class="shot-link" href="assets/doctype-step-4-overview.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 画像分割と組合キーを拡大表示">
@@ -553,24 +639,42 @@
                 </a>
               </div>
             </figure>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-4-split-example.png?v=4" data-lightbox="manual-shots" aria-label="画像分割の前後比較を拡大表示">
+                  <img src="assets/doctype-step-4-split-example.png?v=4" alt="画像分割 分割前と分割後">
+                </a>
+              </div>
+              <figcaption>画像分割の例：1 スキャンに含まれる複数帳票を切り分け、個別の論理ファイルとして出力します。</figcaption>
+            </figure>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-4-combine-example.png?v=4" data-lightbox="manual-shots" aria-label="画像組合の前後比較を拡大表示">
+                  <img src="assets/doctype-step-4-combine-example.png?v=4" alt="画像組合 組合前と組合後">
+                </a>
+              </div>
+              <figcaption>画像組合の例：診断書と別紙を、同一案件内の 1 つの論理ファイルへまとめます。</figcaption>
+            </figure>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-4-align-example.png?v=4" data-lightbox="manual-shots" aria-label="画像整列の前後比較を拡大表示">
+                  <img src="assets/doctype-step-4-align-example.png?v=4" alt="画像整列 整列前と整列後">
+                </a>
+              </div>
+              <figcaption>画像整列の例：発行日などのキー項目で昇順・降順に並べ替えます。</figcaption>
+            </figure>
             <div class="notice info">
-              <strong>画像分割の使いどころ</strong>
-              画像分割は、1 つの PDF や画像束の中に複数の論理帳票が含まれる場合に使用します。例：複数の診療明細書が連続してスキャンされている、領収書と明細書が 1 ファイルに含まれている、ページ境界だけでは業務上の帳票単位が分からない場合です。分割後の画像は、帳票分類、案件集約、OCR 抽出の入力になります。
-              <br><br>
               <strong>組合キーの判定</strong>
-              案件内の同一帳票タイプのファイルは、<span class="ui-text">組合必須キー</span> と <span class="ui-text">組合任意キー</span> により、1 つの論理ファイルへまとめるかを判定します。必須キーを設定している場合は、選択したすべての項目の OCR 値が一致すればまとめます。任意キーを設定している場合は、必須キーの条件を満たしたうえで、いずれか 1 項目の OCR 値が一致すればまとめます。例：発行日を必須キー、診療機関または患者番号を任意キーにします。
-              <br><br>
-              <strong>実行効果</strong>
-              一致した画像は 1 つにまとめて出力され、後続ノードで 1 つの論理ファイルとして利用されます。これにより、同じ診療明細書が複数画像に分かれていても、OCR 抽出や出力ではまとめた単位で扱えます。
+              <span class="ui-text">組合必須キー</span> は選択した項目の OCR 値がすべて一致したときまとめます。<span class="ui-text">組合任意キー</span> は必須キーを満たしたうえで、いずれか 1 項目が一致すればまとめます。
             </div>
           </div>
 
           <div class="operation-step">
-            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">効果テスト</span>：別版式のサンプルで <span class="ui-text">テスト</span> を実行し、分類・OCR 抽出・処理ルールの結果を確認します。期待値と違う場合は、Step1 の説明文、Step2 のプロンプト、Step3 の処理ルール、Step4 の画像処理設定を見直してから保存します。</span></p>
+            <p><span class="step-code">7</span><span class="step-text"><span class="ui-text">効果テスト</span>：別サンプルで <span class="ui-text">テスト</span> し、分類・抽出・処理ルールの結果を確認します。ずれがあれば該当ステップを見直して保存します。</span></p>
             <figure class="screenshot-figure">
               <div class="shot-wrap">
-                <a class="shot-link" href="assets/doctype-step-5-flow.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 効果テスト結果を拡大表示">
-                  <img src="assets/doctype-step-5-flow.png?v=8" alt="帳票タイプ設定 効果テスト結果">
+                <a class="shot-link" href="assets/doctype-step-5-flow.png?v=9" data-lightbox="manual-shots" aria-label="帳票タイプ設定 効果テスト結果を拡大表示">
+                  <img src="assets/doctype-step-5-flow.png?v=9" alt="帳票タイプ設定 効果テスト結果">
                 </a>
               </div>
             </figure>
@@ -605,14 +709,14 @@
           <section class="manual-subsection" id="scene-function">
             <h3>機能説明</h3>
             <p><strong>権限：</strong><span class="ui-text">admin</span> と業務ルール設定権限を持つユーザーが編集します。操作員は公開済みの業務シーンだけを利用します。</p>
-            <p><strong>設定の考え方：</strong>Step1 で案件集約条件を決め、Step2 で導入時に設定済みのワークフローを確認し、Step3 で通知条件を決め、Step4 で出力項目と公開版を決めます。Step1 の <span class="ui-text">関連チェック</span> に成功した場合のみ <span class="ui-text">次へ</span> で Step2 へ進め、成功時は内容が自動保存されます。Step2 の <span class="ui-text">設定チェック</span> は構成確認のみで、実案件は動かしません。チェックに通ると公開可能になり、<span class="ui-text">公開</span> 後は新規案件がその版を参照します。</p>
+            <p><strong>設定の考え方：</strong>Step1 で案件集約条件を決め、Step2 で導入時に設定済みのワークフローを確認し、Step3 で通知ルールを決め、Step4 で出力項目と公開版を決めます。Step1 の <span class="ui-text">関連チェック</span> に成功した場合のみ <span class="ui-text">次へ</span> で Step2 へ進め、成功時は内容が自動保存されます。Step2 の <span class="ui-text">設定チェック</span> は構成確認のみで、実案件は動かしません。チェックに通ると公開可能になり、<span class="ui-text">公開</span> 後は新規案件がその版を参照します。</p>
             <table class="info-table">
               <thead><tr><th>Step</th><th>何を決めるか</th><th>下流への影響</th></tr></thead>
               <tbody>
-                <tr><td><span class="ui-text">Step1 案件集約</span></td><td>関連帳票、主帳票、業務キー、帳票間の関連条件。<span class="ui-text">関連チェック</span> 通過後に Step2 へ進行。</td><td>案件一覧の集約結果、新規アップロード時の集約判定。</td></tr>
-                <tr><td><span class="ui-text">Step2 ワークフロー</span></td><td>導入時に設定済みのワークフローの確認。<span class="ui-text">設定チェック</span> で構成を検証。</td><td>処理順、マイタスクの発生、再処理や補件の流れ。</td></tr>
-                <tr><td><span class="ui-text">Step3 通知</span></td><td>どのノードのどの結果で、誰へ通知するか。</td><td>要確認、補件、完了などの通知送信。</td></tr>
-                <tr><td><span class="ui-text">Step4 出力・公開</span></td><td>出力項目と公開対象の確定。</td><td>マイタスクのエクスポート内容、新規案件に使われる公開版。</td></tr>
+                <tr><td><span class="ui-text">Step1 案件集約</span></td><td>関連帳票、主帳票、業務キー、帳票間の関連項目。関連項目が一致すると帳票間に関連が生じます。グループ内は AND、グループ間は OR。<span class="ui-text">関連チェック</span> 通過後に Step2 へ進行。</td><td>案件一覧の集約結果、新規アップロード時の集約判定。</td></tr>
+                <tr><td><span class="ui-text">Step2 ワークフロー</span></td><td>導入時に設定済みのワークフローの確認。<span class="ui-text">設定チェック</span> で構成を検証。</td><td>案件の処理順、マイタスクの起票、再処理・補件の経路。</td></tr>
+                <tr><td><span class="ui-text">Step3 通知</span></td><td>どのノードのどのイベントで、誰へ通知するか。件名・本文は変数プールから変数を選んで自由に作成します。</td><td>トリガーイベント発生時に、設定した宛先へサイト内メッセージが自動送信されます。</td></tr>
+                <tr><td><span class="ui-text">Step4 出力・公開</span></td><td>出力項目と公開対象の確定。</td><td>マイタスクのエクスポート内容、新規案件が参照する公開版。</td></tr>
               </tbody>
             </table>
             <p>本製品の導入時には、業務シーンごとに案件集約・ワークフロー・通知・出力項目などが<strong>あらかじめ設定された状態</strong>で提供されます。お客様は通常、内容を確認し、必要に応じて調整するだけで構いません。</p>
@@ -660,11 +764,6 @@
                   <td><span class="code-text">hitlStatus</span>（通知）</td>
                 </tr>
                 <tr>
-                  <td><span class="ui-text">カスタム関数</span></td>
-                  <td>JavaScript でファイル名生成・データ変換など任意処理を行う（任意ノード）。</td>
-                  <td><span class="code-text">codeStatus</span> のみ（条件不可）</td>
-                </tr>
-                <tr>
                   <td><span class="ui-text">終了</span></td>
                   <td>ワークフローインスタンスの終点。</td>
                   <td>なし</td>
@@ -693,29 +792,54 @@
             <p><strong>状態：</strong>画面上の主状態は <span class="ui-text">下書き</span>、<span class="ui-text">公開可能</span>、<span class="ui-text">公開済み</span> の 3 種類です。Step1 の <span class="ui-text">関連チェック</span> 成功時は内容が自動保存され、<span class="ui-text">次へ</span> で Step2 へ進みます。Step2～Step4 の <span class="ui-text">保存</span> 成功後は下書きに戻ります。Step2 <span class="ui-text">設定チェック</span> 通過で <span class="ui-text">公開可能</span> になり、<span class="ui-text">公開</span> を押した時点で <span class="ui-text">公開可能</span> でなければ Step2 の設定チェックを再実行します。チェックに通れば公開確認後にバージョン番号が付与され <span class="ui-text">公開済み</span> になり、失敗した場合は Step2 に戻って修正します。新規案件は公開済みバージョンのみ参照します。</p>
           </section>
 
-          <section class="manual-subsection" id="scene-operation">
+                    <section class="manual-subsection" id="scene-operation">
             <h3>画面操作</h3>
             <div class="operation-step">
-              <p><span class="step-code">1</span><span class="step-text">Step1 — <span class="ui-text">案件集約</span>：<span class="ui-text">業務ルール設定</span> → <span class="ui-text">業務シーン設定</span> を開き、<span class="ui-text">＋ 業務シーン追加</span> で <span class="ui-text">保険金請求</span> を作成します。<span class="ui-text">+ 帳票追加</span> で主帳票・関連帳票・業務キー（例：<span class="ui-text">請求番号</span>）を設定し、<span class="ui-text">案件集約ルール</span> で帳票間のフィールド関係を定義します。<span class="ui-text">関連チェック</span> に成功したら <span class="ui-text">次へ</span> で Step2 へ進みます（成功時に自動保存されるため、Step1 では <span class="ui-text">保存</span> は不要です）。</span></p>
-              <figure class="screenshot-figure" data-shot="business-scene-step1-1"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step1-1-flow.png?v=11" data-lightbox="manual-shots" aria-label="Step1 業務シーン追加と基本情報を拡大表示"><img src="assets/business-scene-step1-1-flow.png?v=11" alt="Step1 ＋ 業務シーン追加と基本情報"></a></div><figcaption>Step1：<span class="ui-text">＋ 業務シーン追加</span> と業務シーン名・説明の入力。</figcaption></figure>
-              <figure class="screenshot-figure" data-shot="business-scene-step1-2"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step1-2-flow.png?v=11" data-lightbox="manual-shots" aria-label="Step1 関連帳票と主帳票を拡大表示"><img src="assets/business-scene-step1-2-flow.png?v=11" alt="Step1 関連帳票 · 主帳票 · 業務キー"></a></div><figcaption>Step1：<span class="ui-text">+ 帳票追加</span>、主帳票指定、業務キー選択。</figcaption></figure>
-              <figure class="screenshot-figure" data-shot="business-scene-step1-3-4"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step1-3-4-flow.png?v=11" data-lightbox="manual-shots" aria-label="Step1 案件集約ルールと関連チェックを拡大表示"><img src="assets/business-scene-step1-3-4-flow.png?v=11" alt="Step1 案件集約ルールと関連チェック"></a></div><figcaption>Step1：<span class="ui-text">案件集約ルール</span> の Group 設定と <span class="ui-text">関連チェック</span> 成功後の <span class="ui-text">次へ</span>。</figcaption></figure>
+              <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">業務シーン追加</span>：<span class="ui-text">業務ルール設定</span> → <span class="ui-text">業務シーン設定</span> で <span class="ui-text">＋ 業務シーン追加</span> をクリックし、<span class="ui-text">業務シーン名</span>・説明を入力します。</span></p>
+              <figure class="screenshot-figure"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-s1-flow-add-basic.png?v=1" data-lightbox="manual-shots" aria-label="業務シーン追加と基本情報を拡大表示"><img src="assets/business-scene-s1-flow-add-basic.png?v=1" alt="業務シーン追加と基本情報"></a></div><figcaption>シーン追加と基本情報の入力。</figcaption></figure>
             </div>
             <div class="operation-step">
-              <p><span class="step-code">2</span><span class="step-text">Step2 — <span class="ui-text">ワークフロー</span>：導入時に設定済みのワークフロー（<span class="ui-text">開始</span> → <span class="ui-text">前処理</span> → <span class="ui-text">OCR 抽出</span> → … → <span class="ui-text">終了</span>）を確認します。通常は内容確認のみで、一から構成する必要はありません。<span class="ui-text">設定チェック</span> で問題なければ保存します（公開は Step4 で行います）。</span></p>
-              <figure class="screenshot-figure" data-shot="business-scene-step2-canvas"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step2-canvas-flow.png?v=11" data-lightbox="manual-shots" aria-label="Step2 ワークフローキャンバスを拡大表示"><img src="assets/business-scene-step2-canvas-flow.png?v=11" alt="Step2 保険金請求ワークフロー キャンバス"></a></div><figcaption>Step2：初期投入された主チェーンと <span class="ui-text">設定チェック</span>。各ノードの役割は <a class="jump-link" href="#scene-function">機能説明</a> を参照してください。</figcaption></figure>
+              <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">関連帳票</span>：<span class="ui-text">+ 帳票追加</span> で帳票タイプを選びます。追加後、主帳票を指定し、業務キー（例：<span class="ui-text">証券番号</span>）を設定します。</span></p>
+              <figure class="screenshot-figure"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-s1-flow-docs.png?v=1" data-lightbox="manual-shots" aria-label="帳票選択と主帳票・業務キーを拡大表示"><img src="assets/business-scene-s1-flow-docs.png?v=1" alt="帳票タイプ選択と主帳票・業務キー"></a></div><figcaption>帳票選択 → 主帳票と業務キー。</figcaption></figure>
             </div>
             <div class="operation-step">
-              <p><span class="step-code">3</span><span class="step-text">Step3 — <span class="ui-text">通知</span>：<span class="ui-text">通知ルール追加</span> で対象ノード・条件・通知先を登録します（通知先は操作員・操作管理者のみ選択可能。例：OCR 要確認 → 操作員、AI 検証要確認 → 操作管理者）。通知文には <span class="code-text">{caseId}</span> などの変数を差し込めます。Step2 に対象ノードがあるルールのみ実行されます。</span></p>
-              <figure class="screenshot-figure" data-shot="business-scene-notify"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step3-notify-flow.png?v=11" data-lightbox="manual-shots" aria-label="Step3 通知設定を拡大表示"><img src="assets/business-scene-step3-notify-flow.png?v=11" alt="Step3 保険金請求 通知設定"></a></div><figcaption>Step3：通知ルール追加フォームと一覧。</figcaption></figure>
+              <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">案件集約ルール</span>：帳票間の関連項目を設定します。関連項目の値が一致すると、その帳票どうしに関連が生じ、同一案件へまとめられます（例：<span class="ui-text">請求番号</span>、<span class="ui-text">氏名</span>）。<span class="ui-text">AI自動関連付け</span> で候補を生成し、必要に応じて手修正します。</span></p>
+              <div class="notice info">
+                <strong>グループと AND / OR</strong>
+                帳票ペアごとに関連を <span class="ui-text">グループ</span> 単位で定義します。
+                <br>• <strong>グループ内は AND</strong>：同じグループ内に複数の関連項目を追加した場合、それらの値がすべて一致したときだけ関連成立とみなします。
+                <br>• <strong>グループ間は OR</strong>：複数グループがある場合、いずれか 1 つのグループ条件を満たせば関連成立とみなします。
+                <br>例：グループ A で「請求番号＝請求番号」、グループ B で「氏名＝氏名」とした場合、請求番号が一致するか、氏名が一致するか、どちらかで帳票がつながります。
+              </div>
+              <figure class="screenshot-figure"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-s1-flow-rules.png?v=1" data-lightbox="manual-shots" aria-label="AI自動関連付けと集約ルールを拡大表示"><img src="assets/business-scene-s1-flow-rules.png?v=1" alt="AI自動関連付けとグループ設定"></a></div><figcaption>AI自動関連付けとグループ設定（グループ間 OR／グループ内 AND）。</figcaption></figure>
             </div>
             <div class="operation-step">
-              <p><span class="step-code">4</span><span class="step-text">Step4 — <span class="ui-text">出力・公開</span>：<span class="ui-text">出力項目を設定</span> でエクスポート項目を選び、<span class="ui-text">保存</span> 後に <span class="ui-text">公開</span> します。公開時に <span class="ui-text">公開可能</span> でなければ Step2 の <span class="ui-text">設定チェック</span> が先に実行され、通過後に正式版として公開されます。</span></p>
-              <figure class="screenshot-figure" data-shot="business-scene-export"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step4-export-flow.png?v=11" data-lightbox="manual-shots" aria-label="Step4 出力項目と公開を拡大表示"><img src="assets/business-scene-step4-export-flow.png?v=11" alt="Step4 保険金請求 出力項目と公開"></a></div><figcaption>Step4：出力項目の選択と <span class="ui-text">公開</span> ボタン。</figcaption></figure>
+              <p><span class="step-code">4</span><span class="step-text">右側の <span class="ui-text">関連プレビュー</span> で関連図を確認し、<span class="ui-text">関連チェック</span> を実行します。すべての帳票が関連でつながっていることを確認できたら <span class="ui-text">次へ</span> で進めます（成功時は自動保存のため、ここでは <span class="ui-text">保存</span> 不要です）。</span></p>
+              <figure class="screenshot-figure"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-s1-flow-preview-check.png?v=1" data-lightbox="manual-shots" aria-label="関連プレビューと関連チェックを拡大表示"><img src="assets/business-scene-s1-flow-preview-check.png?v=1" alt="関連プレビューと関連チェック成功"></a></div><figcaption>関連プレビューと関連チェック成功。</figcaption></figure>
+            </div>
+            <div class="operation-step">
+              <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">ワークフロー</span>：導入時に設定済みのフロー（<span class="ui-text">開始</span> → <span class="ui-text">前処理</span> → <span class="ui-text">OCR 抽出</span> → … → <span class="ui-text">終了</span>）を確認します。通常は一から構成する必要はありません。</span></p>
+              <figure class="screenshot-figure" data-shot="business-scene-step2-canvas"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step2-canvas-flow.png?v=11" data-lightbox="manual-shots" aria-label="ワークフローキャンバスを拡大表示"><img src="assets/business-scene-step2-canvas-flow.png?v=11" alt="保険金請求ワークフロー キャンバス"></a></div><figcaption>初期投入されたワークフロー。各ノードの役割は <a class="jump-link" href="#scene-function">機能説明</a> を参照。</figcaption></figure>
+            </div>
+            <div class="operation-step">
+              <p><span class="step-code">6</span><span class="step-text">各ノードを開き、前処理・OCR・データマッピング・AI 検証などの対象が意図どおりか確認します。詳細ルールは各設定画面へのリンクから編集します。</span></p>
+              <figure class="screenshot-figure"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step2-nodes-process-flow.png" data-lightbox="manual-shots" aria-label="ワークフロー各ノード設定を拡大表示"><img src="assets/business-scene-step2-nodes-process-flow.png" alt="前処理・OCR・データマッピング・AI検証のノード設定"></a></div><figcaption>主要ノードの設定例。</figcaption></figure>
+            </div>
+            <div class="operation-step">
+              <p><span class="step-code">7</span><span class="step-text"><span class="ui-text">設定チェック</span> を実行し、問題なければ保存します（公開は後続で行います）。</span></p>
+              <figure class="screenshot-figure"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step2-check-flow.png" data-lightbox="manual-shots" aria-label="設定チェック完了を拡大表示"><img src="assets/business-scene-step2-check-flow.png" alt="設定チェック完了・公開可能"></a></div><figcaption><span class="ui-text">設定チェック</span> 通過で公開可能になります。</figcaption></figure>
+            </div>
+            <div class="operation-step">
+              <p><span class="step-code">8</span><span class="step-text"><span class="ui-text">通知</span>：対象ノード・トリガー・通知先を設定し、件名・本文は変数プールから変数を選んで作成します。イベント発生時にサイト内メッセージが自動送信されます。</span></p>
+              <figure class="screenshot-figure" data-shot="business-scene-notify"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step3-notify-flow.png?v=11" data-lightbox="manual-shots" aria-label="通知設定を拡大表示"><img src="assets/business-scene-step3-notify-flow.png?v=11" alt="保険金請求 通知設定"></a></div><figcaption>通知ルール追加フォームと一覧。</figcaption></figure>
+            </div>
+            <div class="operation-step">
+              <p><span class="step-code">9</span><span class="step-text"><span class="ui-text">出力・公開</span>：出力項目を選び、<span class="ui-text">保存</span> 後に <span class="ui-text">公開</span> します。</span></p>
+              <figure class="screenshot-figure" data-shot="business-scene-export"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step4-export-flow.png?v=11" data-lightbox="manual-shots" aria-label="出力項目と公開を拡大表示"><img src="assets/business-scene-step4-export-flow.png?v=11" alt="保険金請求 出力項目と公開"></a></div><figcaption>出力項目の選択と <span class="ui-text">公開</span>。</figcaption></figure>
             </div>
           </section>
 
-          <section class="manual-subsection" id="scene-impact">
+<section class="manual-subsection" id="scene-impact">
             <h3>関連影響</h3>
             <table class="info-table">
               <thead><tr><th>影響先</th><th>影響内容</th></tr></thead>
@@ -726,7 +850,7 @@
                 <tr><td><span class="ui-text">帳票タイプ設定</span></td><td>Step1 の対象帳票と Step2 の OCR 対象帳票は、帳票タイプの設定を参照します。</td></tr>
                 <tr><td><span class="ui-text">データマッピング設定</span></td><td>Step2 のデータマッピングノードで、当該業務シーン向けに登録した標準変数ルールが使われます。</td></tr>
                 <tr><td><span class="ui-text">AI検証設定</span></td><td>Step2 の AI 検証ノードで、ON にした検証ルールだけが実行されます。</td></tr>
-                <tr><td><span class="ui-text">通知</span></td><td>Step3 の条件に一致したとき、操作端画面上部のメッセージアイコンへ届きます。対象ノードがないルールは実行されません。</td></tr>
+                <tr><td><span class="ui-text">通知</span></td><td>Step3 のトリガーイベント発生時に、設定した宛先へサイト内メッセージが自動送信されます。件名・本文は変数プールから選んだ変数で組み立てられます。対象ノードがないルールは実行されません。</td></tr>
               </tbody>
             </table>
             <figure class="screenshot-figure" data-shot="business-scene-impact"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-impact-flow.png?v=11" data-lightbox="manual-shots" aria-label="業務シーン公開版切替と通知表示例を拡大表示"><img src="assets/business-scene-impact-flow.png?v=11" alt="公開版切替と Step3 通知の表示例"></a></div><figcaption>公開版の切替位置と、Step3 通知実行後の操作端 <span class="ui-text">通知</span> 表示例です。</figcaption></figure>
