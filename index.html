@@ -714,15 +714,25 @@
               <thead><tr><th>Step</th><th>何を決めるか</th><th>下流への影響</th></tr></thead>
               <tbody>
                 <tr><td><span class="ui-text">Step1 案件集約</span></td><td>関連帳票、主帳票、業務キー、帳票間の関連項目。関連項目が一致すると帳票間に関連が生じます。グループ内は AND、グループ間は OR。<span class="ui-text">関連チェック</span> 通過後に Step2 へ進行。</td><td>案件一覧の集約結果、新規アップロード時の集約判定。</td></tr>
-                <tr><td><span class="ui-text">Step2 ワークフロー</span></td><td>導入時に設定済みのワークフローの確認。<span class="ui-text">設定チェック</span> で構成を検証。</td><td>案件の処理順、マイタスクの起票、再処理・補件の経路。</td></tr>
+                <tr><td><span class="ui-text">Step2 ワークフロー</span></td><td>キャンバスでのノード編成・接続・設定チェック。各ノードの対象 ON/OFF と分岐条件。ルール本体は帳票タイプ／データマッピング／AI 検証と連携。</td><td>案件の処理順、マイタスクの起票、再処理・補件の経路。</td></tr>
                 <tr><td><span class="ui-text">Step3 通知</span></td><td>どのノードのどのイベントで、誰へ通知するか。件名・本文は変数プールから変数を選んで自由に作成します。</td><td>トリガーイベント発生時に、設定した宛先へサイト内メッセージが自動送信されます。</td></tr>
                 <tr><td><span class="ui-text">Step4 出力・公開</span></td><td>出力項目と公開対象の確定。</td><td>マイタスクのエクスポート内容、新規案件が参照する公開版。</td></tr>
               </tbody>
             </table>
             <p>本製品の導入時には、業務シーンごとに案件集約・ワークフロー・通知・出力項目などが<strong>あらかじめ設定された状態</strong>で提供されます。お客様は通常、内容を確認し、必要に応じて調整するだけで構いません。</p>
 
-            <h4>Step2 各ノードの用途</h4>
-            <p>Step2 キャンバスでは、案件集約完了後の処理順序と分岐を確認します。導入時に<strong>ワークフローが設定済み</strong>のため、各ノードを一から構成する必要はありません。下表は各ノードの役割の参考です。OCR 抽出・データマッピング・AI 検証のルール本体は、それぞれ <span class="ui-text">帳票タイプ設定</span>・<span class="ui-text">データマッピング設定</span>・<span class="ui-text">AI検証設定</span> で管理します。</p>
+            <h4>Step2 キャンバスの操作</h4>
+            <p>Step2 では、案件集約後の処理順をノードで編成します。導入時に<strong>ワークフローが設定済み</strong>のため、通常は確認・微調整が中心です。キャンバスでは次ができます。</p>
+            <ul>
+              <li><strong>ノードの追加・配置</strong>：右下の <span class="ui-text">ノード追加</span>、またはノード一覧から前処理・OCR・データマッピング・AI 検証などを追加し、ドラッグで配置します。</li>
+              <li><strong>接続の編成</strong>：ノード間を線でつなぎ、処理順と分岐先を決めます。<span class="ui-text">開始</span> から <span class="ui-text">終了</span> まで到達できる必要があります。</li>
+              <li><strong>左下の編集ツールバー</strong>：左から <span class="ui-text">元に戻す</span> / <span class="ui-text">やり直し</span> / <span class="ui-text">変更履歴</span>（この画面を開いている間のみ保持）/ <span class="ui-text">削除</span>（開始ノード以外を一括削除。確認ダイアログあり）。</li>
+              <li><strong>右下のツールバー</strong>：左から <span class="ui-text">ノード追加</span> / <span class="ui-text">拡大</span> / <span class="ui-text">縮小</span> / <span class="ui-text">整列・適応サイズ</span>（ノード配置を整え、全ノードが画面に収まるよう表示を合わせる）。</li>
+              <li><strong>設定チェック</strong>：終了到達・分岐出口・必須 ON 項目などを静的検証し、通過すると <span class="ui-text">公開可能</span> になります（テスト案件は実行しません）。</li>
+            </ul>
+
+            <h4>Step2 各ノードの用途と他モジュール連携</h4>
+            <p>各ノードはキャンバス上の「実行単位」です。ルール本体は他モジュールで管理し、ノード側では対象の ON/OFF や分岐条件を決めます。下表を参考にしてください。</p>
             <table class="info-table">
               <thead>
                 <tr><th>ノード</th><th>用途</th><th>主な出力変数</th></tr>
@@ -735,32 +745,32 @@
                 </tr>
                 <tr>
                   <td><span class="ui-text">前処理</span></td>
-                  <td>OCR 前に画像を回転・補正・整列し、読取精度を安定させる。本期では前処理結果を人工確認タスクとして起票しません。</td>
+                  <td>OCR 前に画像を回転・補正・整列。帳票タイプの画像処理設定と連携し、対象帳票をノードで ON にします。本期は前処理結果を人工確認タスク化しません。</td>
                   <td><span class="code-text">preprocessStatus</span>（通知）、<span class="code-text">preprocessResult</span>（条件）</td>
                 </tr>
                 <tr>
                   <td><span class="ui-text">OCR 抽出</span></td>
-                  <td>Step1 で選んだ帳票ごとに OCR テンプレートを実行し、項目・表格列を抽出する。</td>
+                  <td>帳票ごとに OCR を実行。<span class="ui-text">帳票タイプ設定</span> の AI 読取・処理ルール・読取モデルを参照し、対象帳票をノードで ON にします。</td>
                   <td><span class="code-text">ocrStatus</span>（通知）、<span class="code-text">ocrResult</span>（条件）</td>
                 </tr>
                 <tr>
                   <td><span class="ui-text">データマッピング</span></td>
-                  <td>複数帳票の OCR 項目を案件単位の標準変数に統一する。</td>
+                  <td>OCR 項目を標準変数へ統一。<span class="ui-text">データマッピング設定</span> のルールを実行し、後続の AI 検証・出力で使います。</td>
                   <td><span class="code-text">mappingStatus</span>（通知）、<span class="code-text">standardFields.*</span>（条件）</td>
                 </tr>
                 <tr>
                   <td><span class="ui-text">AI 検証</span></td>
-                  <td>必須フィールド、必要書類、各種検証ルールを AI で実行する。</td>
+                  <td>必須・必要書類・整合性などを検証。<span class="ui-text">AI検証設定</span> のルールを参照し、モジュールをノードで ON にします。結果は IF/ELSE・人工確認へ渡します。</td>
                   <td><span class="code-text">verifyStatus</span>（通知）、<span class="code-text">verifyResult</span>（条件）</td>
                 </tr>
                 <tr>
                   <td><span class="ui-text">IF/ELSE</span></td>
-                  <td>OCR 抽出や AI 検証など、人工確認対象となる上流ノードの処理結果で分岐し、主フローか人工確認かを決める。</td>
+                  <td>上流の <span class="code-text">*Result</span> などで分岐（例：<span class="code-text">verifyResult = passed</span>）。主フローへ進むか人工確認へ回すかを編成します。</td>
                   <td>なし</td>
                 </tr>
                 <tr>
                   <td><span class="ui-text">人工確認</span></td>
-                  <td>要確認・低信頼・検証 NG などを担当者が目視確認し、完了 / 補件 / 案件中止のいずれかで後続へ進める。指派先ロールは操作員・操作管理者のみ選択可能。最初の人工確認ノードで選択したロールから案件担当者が自動指名され、以降同じロールのノードは同じ担当者が継続、ロール切替時は新ロールから再指名される。</td>
+                  <td>要確認を <span class="ui-text">マイタスク</span> で目視確認（完了／補件／案件中止）。担当ロールは操作員・操作管理者のみ。最初の人工確認ノードのロールから案件担当者を自動指名し、同ロールは継続、ロール切替時は再指名。</td>
                   <td><span class="code-text">hitlStatus</span>（通知）</td>
                 </tr>
                 <tr>
@@ -817,17 +827,17 @@
               <p><span class="step-code">4</span><span class="step-text">右側の <span class="ui-text">関連プレビュー</span> で関連図を確認し、<span class="ui-text">関連チェック</span> を実行します。すべての帳票が関連でつながっていることを確認できたら <span class="ui-text">次へ</span> で進めます（成功時は自動保存のため、ここでは <span class="ui-text">保存</span> 不要です）。</span></p>
               <figure class="screenshot-figure"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-s1-flow-preview-check.png?v=1" data-lightbox="manual-shots" aria-label="関連プレビューと関連チェックを拡大表示"><img src="assets/business-scene-s1-flow-preview-check.png?v=1" alt="関連プレビューと関連チェック成功"></a></div><figcaption>関連プレビューと関連チェック成功。</figcaption></figure>
             </div>
-            <div class="operation-step">
-              <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">ワークフロー</span>：導入時に設定済みのフロー（<span class="ui-text">開始</span> → <span class="ui-text">前処理</span> → <span class="ui-text">OCR 抽出</span> → … → <span class="ui-text">終了</span>）を確認します。通常は一から構成する必要はありません。</span></p>
-              <figure class="screenshot-figure" data-shot="business-scene-step2-canvas"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step2-canvas-flow.png?v=11" data-lightbox="manual-shots" aria-label="ワークフローキャンバスを拡大表示"><img src="assets/business-scene-step2-canvas-flow.png?v=11" alt="保険金請求ワークフロー キャンバス"></a></div><figcaption>初期投入されたワークフロー。各ノードの役割は <a class="jump-link" href="#scene-function">機能説明</a> を参照。</figcaption></figure>
+                        <div class="operation-step">
+              <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">ワークフロー・キャンバス</span>：導入済みフローの全体（<span class="ui-text">開始</span> → 処理ノード → 分岐 → <span class="ui-text">人工確認</span> → <span class="ui-text">終了</span>）を確認します。通常は一から組み直す必要はありません。</span></p>
+              <figure class="screenshot-figure" data-shot="business-scene-step2-canvas"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step2-canvas-flow.png?v=11" data-lightbox="manual-shots" aria-label="ワークフローキャンバスを拡大表示"><img src="assets/business-scene-step2-canvas-flow.png?v=11" alt="保険金請求ワークフロー キャンバス"></a></div><figcaption>キャンバス全体。ノードの役割は <a class="jump-link" href="#scene-function">機能説明</a> を参照。</figcaption></figure>
             </div>
             <div class="operation-step">
-              <p><span class="step-code">6</span><span class="step-text">各ノードを開き、前処理・OCR・データマッピング・AI 検証などの対象が意図どおりか確認します。詳細ルールは各設定画面へのリンクから編集します。</span></p>
-              <figure class="screenshot-figure"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step2-nodes-process-flow.png" data-lightbox="manual-shots" aria-label="ワークフロー各ノード設定を拡大表示"><img src="assets/business-scene-step2-nodes-process-flow.png" alt="前処理・OCR・データマッピング・AI検証のノード設定"></a></div><figcaption>主要ノードの設定例。</figcaption></figure>
+              <p><span class="step-code">6</span><span class="step-text"><span class="ui-text">ノードの編成</span>：必要に応じてノードを追加し、ドラッグで配置、線で接続して処理順を組みます。<span class="ui-text">開始</span> から各処理・分岐を経て <span class="ui-text">終了</span> まで到達できる経路にします。ショートカット（元に戻す／ノード追加／整列・適応サイズなど）は <a class="jump-link" href="#scene-function">機能説明</a> を参照してください。
+              </span></p>
             </div>
             <div class="operation-step">
-              <p><span class="step-code">7</span><span class="step-text"><span class="ui-text">設定チェック</span> を実行し、問題なければ保存します（公開は後続で行います）。</span></p>
-              <figure class="screenshot-figure"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step2-check-flow.png" data-lightbox="manual-shots" aria-label="設定チェック完了を拡大表示"><img src="assets/business-scene-step2-check-flow.png" alt="設定チェック完了・公開可能"></a></div><figcaption><span class="ui-text">設定チェック</span> 通過で公開可能になります。</figcaption></figure>
+              <p><span class="step-code">7</span><span class="step-text"><span class="ui-text">設定チェック</span>：編成後に実行し、終了到達・分岐出口・必須項目などを検証します。通過すると <span class="ui-text">公開可能</span> になります。問題なければ保存し、次へ進みます（公開は後続ステップ）。各ノードの用途・設定・他モジュール連携は <a class="jump-link" href="#scene-function">機能説明</a> を参照してください。</span></p>
+              <figure class="screenshot-figure"><div class="shot-wrap"><a class="shot-link" href="assets/business-scene-step2-check-flow.png?v=2" data-lightbox="manual-shots" aria-label="設定チェック完了を拡大表示"><img src="assets/business-scene-step2-check-flow.png?v=2" alt="設定チェック完了・公開可能"></a></div><figcaption><span class="ui-text">設定チェック</span> 通過で公開可能。</figcaption></figure>
             </div>
             <div class="operation-step">
               <p><span class="step-code">8</span><span class="step-text"><span class="ui-text">通知</span>：対象ノード・トリガー・通知先を設定し、件名・本文は変数プールから変数を選んで作成します。イベント発生時にサイト内メッセージが自動送信されます。</span></p>
@@ -1240,16 +1250,16 @@
             <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">OCR 抽出確認</span>：一覧の <span class="ui-text">対応</span> から実行画面を開き、左の帳票プレビューと右の <span class="ui-text">テキスト読取</span> / <span class="ui-text">テーブル情報読取</span> で抽出値を確認・修正します。<span class="ui-text">項目位置を非表示</span> を ON にすると切り出し画像と帳票上の対応領域が連動します。マスタ照合フィールドでは <span class="ui-text">類似度検索</span> 候補から正規値を選べます。確認後、フッターの <span class="ui-text">OCR 抽出完了</span> で後続ノードへ進みます。</span></p>
             <figure class="screenshot-figure">
               <div class="shot-wrap">
-                <a class="shot-link" href="assets/operator-task-ocr-entry-flow.png?v=8" data-lightbox="manual-shots" aria-label="マイタスク一覧から OCR 抽出確認画面への遷移を拡大表示">
-                  <img src="assets/operator-task-ocr-entry-flow.png?v=8" alt="マイタスク一覧から OCR 抽出確認画面">
+                <a class="shot-link" href="assets/operator-task-ocr-entry-flow.png?v=9" data-lightbox="manual-shots" aria-label="マイタスク一覧から OCR 抽出確認画面への遷移を拡大表示">
+                  <img src="assets/operator-task-ocr-entry-flow.png?v=9" alt="マイタスク一覧から OCR 抽出確認画面">
                 </a>
               </div>
               <figcaption>Step2：一覧から OCR 抽出確認画面への遷移。</figcaption>
             </figure>
             <figure class="screenshot-figure" data-shot="operator-task-ocr">
               <div class="shot-wrap">
-                <a class="shot-link" href="assets/operator-task-ocr-position-marked.png?v=8" data-lightbox="manual-shots" aria-label="項目位置を非表示にした OCR 抽出確認画面を拡大表示">
-                  <img src="assets/operator-task-ocr-position-marked.png?v=8" alt="項目位置を非表示にした OCR 抽出確認画面">
+                <a class="shot-link" href="assets/operator-task-ocr-position-marked.png?v=10" data-lightbox="manual-shots" aria-label="項目位置を非表示にした OCR 抽出確認画面を拡大表示">
+                  <img src="assets/operator-task-ocr-position-marked.png?v=10" alt="項目位置を非表示にした OCR 抽出確認画面">
                 </a>
               </div>
               <figcaption>Step2：<span class="ui-text">テキスト読取</span> と <span class="ui-text">テーブル情報読取</span>、マスタ照合候補の確認。</figcaption>
@@ -1276,8 +1286,8 @@
             <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">エクスポート</span>：<span class="ui-text">出力形式</span>（CSV / JSON / EXCEL）を選び、左の <span class="ui-text">エクスポート対象</span> ツリーと右のプレビューで出力内容を確認します。<span class="ui-text">処理結果をエクスポート</span> で結果ファイルを出力し、必要に応じて <span class="ui-text">前処理済み ZIP</span> を取得したうえで <span class="ui-text">エクスポート完了</span> をクリックします。</span></p>
             <figure class="screenshot-figure" data-shot="operator-task-export">
               <div class="shot-wrap">
-                <a class="shot-link" href="assets/operator-task-export-confirm.png?v=8" data-lightbox="manual-shots" aria-label="マイタスク エクスポート確認画面を拡大表示">
-                  <img src="assets/operator-task-export-confirm.png?v=8" alt="マイタスク エクスポート確認画面">
+                <a class="shot-link" href="assets/operator-task-export-confirm.png?v=9" data-lightbox="manual-shots" aria-label="マイタスク エクスポート確認画面を拡大表示">
+                  <img src="assets/operator-task-export-confirm.png?v=9" alt="マイタスク エクスポート確認画面">
                 </a>
               </div>
               <figcaption>Step4：出力形式・対象ファイル・フィールド値の確認とエクスポート。</figcaption>
