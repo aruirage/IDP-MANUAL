@@ -1,0 +1,3726 @@
+[
+  {
+    "id": "manual-0001",
+    "source_ja": "NeosAI IDP マニュアル",
+    "ui_text": {},
+    "zh-CN": "NeosAI IDP 操作手册",
+    "en": "NeosAI IDP Manual"
+  },
+  {
+    "id": "manual-0002",
+    "source_ja": "NeosAI IDP は、保険金請求などの業務書類を対象に、アップロードされた資料を案件単位で集約し、AI-OCR、業務ルール、AI検証、人工確認を組み合わせて処理する Intelligent Document Processing システムです。",
+    "ui_text": {},
+    "zh-CN": "NeosAI IDP 是一套智能文档处理系统，以保险金理赔申请等业务单据为处理对象，按案件维度汇总上传的资料，结合 AI‑OCR、业务规则、AI 校验以及人工复核完成文档处理。",
+    "en": "NeosAI IDP is an Intelligent Document Processing system that aggregates uploaded documents by case, and processes them using a combination of AI-OCR, business rules, AI validation, and manual review."
+  },
+  {
+    "id": "manual-0003",
+    "source_ja": "管理者が事前に設定したルールに基づき、複数種類の帳票を自動分類・読取・検証し、業務担当者は [[UI_01]] と [[UI_02]] で確認・修正・出力処理を行います。",
+    "ui_text": {
+      "[[UI_01]]": "案件一覧",
+      "[[UI_02]]": "マイタスク"
+    },
+    "zh-CN": "基于管理员预先配置的规则，对多种类型的表单自动完成分类、识别读取与校验；业务操作人员可在 [[UI_01]] 和 [[UI_02]] 界面中执行确认、修正以及输出处理。",
+    "en": "Based on pre‑configured rules set by administrators, the system automatically classifies, reads, and verifies multiple types of forms. Business operators can perform confirmation, correction, and output operations in [[UI_01]] and [[UI_02]]."
+  },
+  {
+    "id": "manual-0004",
+    "source_ja": "処理全体の流れ",
+    "ui_text": {},
+    "zh-CN": "处理整体流程",
+    "en": "Overall Processing Flow"
+  },
+  {
+    "id": "manual-0005",
+    "source_ja": "admin 側で処理ルールを定義し、業務操作側では公開済みの設定に基づいて案件処理を進めます。エクスポート結果の確認や出力操作は [[UI_01]] 内で実施します。",
+    "ui_text": {
+      "[[UI_01]]": "マイタスク"
+    },
+    "zh-CN": "管理员端定义处理规则，业务操作人员基于已发布的配置开展案件处理。导出结果的确认以及输出操作在 [[UI_01]] 界面中执行。",
+    "en": "Processing rules are defined on the admin side, while business users proceed with case‑based processing based on published settings. Verification of export results and output operations are performed within [[UI_01]]."
+  },
+  {
+    "id": "manual-0006",
+    "source_ja": "ロール設定",
+    "ui_text": {},
+    "zh-CN": "角色设置",
+    "en": "Role Settings"
+  },
+  {
+    "id": "manual-0007",
+    "source_ja": "ロール",
+    "ui_text": {},
+    "zh-CN": "角色",
+    "en": "Role"
+  },
+  {
+    "id": "manual-0008",
+    "source_ja": "主な役割",
+    "ui_text": {},
+    "zh-CN": "主要角色",
+    "en": "Main Roles"
+  },
+  {
+    "id": "manual-0009",
+    "source_ja": "システム設定、ルール設定、ユーザー・権限管理を行う管理者。",
+    "ui_text": {},
+    "zh-CN": "负责系统设置、规则设置、用户和权限管理的管理员。",
+    "en": "Administrators who manage system settings, rule settings, and user permissions."
+  },
+  {
+    "id": "manual-0010",
+    "source_ja": "資料アップロード、案件確認、[[UI_01]] [[UI_02]]、[[UI_03]]。",
+    "ui_text": {
+      "[[UI_01]]": "マイタスク",
+      "[[UI_02]]": "対応",
+      "[[UI_03]]": "処理中止"
+    },
+    "zh-CN": "资料上传、案件确认、[[UI_01]]、[[UI_02]]、[[UI_03]]。",
+    "en": "Document upload, case confirmation, [[UI_01]], [[UI_02]], [[UI_03]]."
+  },
+  {
+    "id": "manual-0011",
+    "source_ja": "操作員に加え、[[UI_01]]（案件担当者・タスク改派）が可能。",
+    "ui_text": {
+      "[[UI_01]]": "割当"
+    },
+    "zh-CN": "除了操作员，还可以进行 [[UI_01]]（案件负责人和任务重新分配）。",
+    "en": "In addition to business operators, [[UI_01]] (case owners and task reallocation) is also possible."
+  },
+  {
+    "id": "manual-0012",
+    "source_ja": "案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初の人工確認ノードで選択したロール（操作員または操作管理者）の中から自動で指名され、以降の人工確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。[[UI_01]] で操作管理者が手動改派も可能。",
+    "ui_text": {
+      "[[UI_01]]": "案件一覧"
+    },
+    "zh-CN": "分配至案件的负责用户（非登录角色）。在工作流首个人工复核节点，从已选择的角色（操作员或操作管理员）中自动指定该用户；后续人工复核节点若选择同一角色，则沿用同一负责人。当角色发生切换时，将从新角色中重新指定负责人。操作管理员也可在 [[UI_01]] 界面执行手动改派。",
+    "en": "Assigned user for the case (not the login role).The user is automatically designated from roles selected at the first manual‑review node of the workflow (Operator or Operation Administrator). If the same role is selected for subsequent manual‑review nodes, the same assignee will be retained.When the role is switched, a new assignee will be designated from the new role.Operation Administrators can also perform manual reassignment via [[UI_01]]."
+  },
+  {
+    "id": "manual-0013",
+    "source_ja": "[[UI_01]] は人工確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3 通知設定は割当とは無関係です。通知先は操作員・操作管理者のみ選択可能です。",
+    "ui_text": {
+      "[[UI_01]]": "マイタスク"
+    },
+    "zh-CN": "[[UI_01]]是从人工检查/导出节点获取的，并根据步骤2中的分配设置显示给相关用户。第3步通知设置与分配无关。通知目的地只能由操作员/操作经理选择。",
+    "en": "[[UI_01]] is taken from the Artificial Check/Export node and displayed to the relevant user based on the assignment settings in Step 2. Step 3 The notification settings are independent of the assignment. The notification destination can only be selected by the operator/operation manager."
+  },
+  {
+    "id": "manual-0014",
+    "source_ja": "機能モジュール",
+    "ui_text": {},
+    "zh-CN": "功能模块",
+    "en": "Functional Modules"
+  },
+  {
+    "id": "manual-0015",
+    "source_ja": "子モジュール",
+    "ui_text": {},
+    "zh-CN": "子模块",
+    "en": "Child Modules"
+  },
+  {
+    "id": "manual-0016",
+    "source_ja": "ルール設定モジュール",
+    "ui_text": {},
+    "zh-CN": "规则设置模块",
+    "en": "Rule Setting Module"
+  },
+  {
+    "id": "manual-0017",
+    "source_ja": "業務処理を自動化するためのモデル、帳票、業務ルールを設定します。",
+    "ui_text": {},
+    "zh-CN": "设置模型、表单和业务规则以实现业务流程自动化。",
+    "en": "Set up models, forms, and business rules to automate business processes."
+  },
+  {
+    "id": "manual-0018",
+    "source_ja": "モデル設定 API設定 マスターデータ設定 帳票タイプ設定 業務シーン設定 データマッピング設定 AI検証設定",
+    "ui_text": {},
+    "zh-CN": "型号设置API设置主数据设置文档类型设置业务场景设置数据映射设置AI验证设置",
+    "en": "Model Setting API Setting Master Data Setting Document Type Setting Business Scene Setting Data Mapping Setting AI Verification Setting"
+  },
+  {
+    "id": "manual-0019",
+    "source_ja": "業務操作モジュール",
+    "ui_text": {},
+    "zh-CN": "业务运营模块",
+    "en": "Business Operation Module"
+  },
+  {
+    "id": "manual-0020",
+    "source_ja": "公開済みの業務シーンに基づいて、資料アップロードから案件確認、人工確認までを行います。",
+    "ui_text": {},
+    "zh-CN": "根据已发布的工作场景，我们将上传文件、确认个案并手动确认。",
+    "en": "Based on the published work scenario, we will upload documents, confirm the case, and manually confirm."
+  },
+  {
+    "id": "manual-0021",
+    "source_ja": "資料アップロード 案件一覧 マイタスク",
+    "ui_text": {},
+    "zh-CN": "文档上传作业列表我的任务",
+    "en": "Documents Upload Job List My Tasks"
+  },
+  {
+    "id": "manual-0022",
+    "source_ja": "システム設定モジュール",
+    "ui_text": {},
+    "zh-CN": "系统配置模块",
+    "en": "System Configuration Module"
+  },
+  {
+    "id": "manual-0023",
+    "source_ja": "ユーザー、権限、安全設定など、システム利用の前提となる管理項目を設定します。",
+    "ui_text": {},
+    "zh-CN": "设置假定使用系统的管理项目，例如用户、权限和安全设置。",
+    "en": "Set the management items that are assumed to use the system, such as users, permissions, and safety settings."
+  },
+  {
+    "id": "manual-0024",
+    "source_ja": "ユーザー管理 権限管理 セキュリティ設定",
+    "ui_text": {},
+    "zh-CN": "用户管理权限管理安全设置",
+    "en": "User Management Permissions Management Security Settings"
+  },
+  {
+    "id": "manual-0025",
+    "source_ja": "保険金請求のケースに沿って、推奨順序は モデル → API → マスターデータ → 帳票タイプ → 業務シーン → データマッピング → AI検証 です。",
+    "ui_text": {},
+    "zh-CN": "与保险理赔案件一致，推荐订单为Model → API → Master Data → Form Type → Business Scene → Data Mapping → AI Validation。",
+    "en": "In line with the insurance claim case, the recommended order is Model → API → Master Data → Form Type → Business Scene → Data Mapping → AI Validation."
+  },
+  {
+    "id": "manual-0026",
+    "source_ja": "各画面への到達順：モデル設定 → API設定 → マスターデータ設定 → 帳票タイプ設定 → 業務シーン設定 → データマッピング設定 → AI検証設定。各機能モジュールの操作手順と、画面だけでは分かりにくい適用タイミングを説明します。ロール詳細は ロール設定 を参照してください。",
+    "ui_text": {},
+    "zh-CN": "到达每个屏幕的顺序：模型设置→API设置→主数据设置→表单类型设置→业务场景设置→数据映射设置→AI验证设置。描述每个功能模块的操作步骤以及仅靠屏幕难以理解的应用时机。有关角色的详细信息，请参阅角色设置。",
+    "en": "Reach order to each screen: Model setting → API setting → Master data setting → Form type setting → Business scene setting → Data mapping setting → AI verification setting. Describe the operation procedure of each function module and the application timing that is difficult to understand with the screen alone. For more information on roles, see Role settings."
+  },
+  {
+    "id": "manual-0027",
+    "source_ja": "モデル設定",
+    "ui_text": {},
+    "zh-CN": "型号设置",
+    "en": "Model Setup"
+  },
+  {
+    "id": "manual-0028",
+    "source_ja": "本モジュールでは、NeosAI IDP で利用するモデルリソースを一元管理します。OCR抽出、AI検証、データマッピングで使うモデルを、用途ごとに割り当てて管理します。",
+    "ui_text": {},
+    "zh-CN": "在本模块中，您将集中管理NeosAI IDP使用的模型资源。按应用程序分配和管理OCR提取、AI验证和数据映射的模型。",
+    "en": "In this module, you will centrally manage the model resources used by the NeosAI IDP. Assign and manage models for OCR extraction, AI validation, and data mapping by application."
+  },
+  {
+    "id": "manual-0029",
+    "source_ja": "権限：本機能は [[UI_01]] が設定します。操作員はモデル接続や用途割当を編集せず、公開済みの業務シーンを通じて割当済みモデルの処理結果を利用します。",
+    "ui_text": {
+      "[[UI_01]]": "admin"
+    },
+    "zh-CN": "权限：此功能由[[UI_01]]设置。操作员不编辑模型连接或应用程序分配，而是通过已发布的工作场景利用分配的模型的处理结果。",
+    "en": "Permissions: This function is set by [[UI_01]]. The operator does not edit the model connection or application assignment, but takes advantage of the assigned model's processing results through published work scenarios."
+  },
+  {
+    "id": "manual-0030",
+    "source_ja": "設定ロジック：[[UI_01]] では外部モデルプロバイダへの接続情報を登録し、[[UI_02]] では OCR 抽出、AI 検証、データマッピングごとに使用するモデルを指定します。",
+    "ui_text": {
+      "[[UI_01]]": "API 接続",
+      "[[UI_02]]": "用途割当"
+    },
+    "zh-CN": "配置逻辑： [[UI_01]]将连接信息注册到外部模型提供程序， [[UI_02]]指定用于每个OCR提取、AI验证和数据映射的模型。",
+    "en": "Configuration logic: [[UI_01]] registers the connection information to the external model provider, and [[UI_02]] specifies the model to use for each OCR extraction, AI verification, and data mapping."
+  },
+  {
+    "id": "manual-0031",
+    "source_ja": "利用タイミング：OCR 抽出、AI 検証、データマッピングで使うモデルを、用途ごとに先に登録・割当しておきます。保険金請求では、診断書や診療明細書の読取、請求内容の整合性確認、出力データの変換処理で参照されます。",
+    "ui_text": {},
+    "zh-CN": "使用时间：首先为每个应用程序注册和分配OCR提取、AI验证和数据映射的模型。通过阅读医疗证明和执业声明、检查索赔的完整性以及转换输出数据来引用保险索赔。",
+    "en": "Timing of use: Register and assign models for OCR extraction, AI verification, and data mapping first for each application. Insurance claims are referenced by reading medical certificates and practice statements, checking the integrity of claims, and converting output data."
+  },
+  {
+    "id": "manual-0032",
+    "source_ja": "1[[UI_01]] → [[UI_02]] を開き、[[UI_03]] タブで登録済みの接続を確認します。新規登録する場合は [[UI_04]] をクリックします。",
+    "ui_text": {
+      "[[UI_01]]": "業務ルール設定",
+      "[[UI_02]]": "モデル設定",
+      "[[UI_03]]": "API 接続",
+      "[[UI_04]]": "+ 接続を追加"
+    },
+    "zh-CN": "打开1 [[UI_01]] → [[UI_02]] ，在[[UI_03]]选项卡中查看已注册的连接。点击[[UI_04]]注册新账号。",
+    "en": "Open 1 [[UI_01]] → [[UI_02]] and check the registered connections in the [[UI_03]] tab. Click [[UI_04]] to register a new account."
+  },
+  {
+    "id": "manual-0033",
+    "source_ja": "2[[UI_01]] 画面で [[UI_02]]、API ベース URL、API キー、モデル名、[[UI_03]] を設定し、[[UI_04]] します。プロバイダに独自エンドポイントを使用する場合は [[UI_05]] を選択します。",
+    "ui_text": {
+      "[[UI_01]]": "接続を追加",
+      "[[UI_02]]": "プロバイダ",
+      "[[UI_03]]": "状態",
+      "[[UI_04]]": "保存",
+      "[[UI_05]]": "カスタム (OpenAI 互換)"
+    },
+    "zh-CN": "2在[[UI_01]]屏幕上，设置[[UI_02]]、基于API的URL、API密钥、模型名称、[[UI_03]]和[[UI_04]]。如果要为提供程序使用自己的端点，请选择[[UI_05]]。",
+    "en": "2 On the [[UI_01]] screen, set [[UI_02]], API-based URL, API key, model name, [[UI_03]], and [[UI_04]]. Select [[UI_05]] if you want to use your own endpoint for the provider."
+  },
+  {
+    "id": "manual-0034",
+    "source_ja": "3[[UI_01]] タブで OCR 抽出・AI 検証などの用途ごとにモデルを割り当てます。",
+    "ui_text": {
+      "[[UI_01]]": "用途割当"
+    },
+    "zh-CN": "3在[[UI_01]]选项卡中为每个应用程序分配模型，例如OCR提取/AI验证。",
+    "en": "3 Assign the model for each application such as OCR extraction/AI verification in the [[UI_01]] tab."
+  },
+  {
+    "id": "manual-0035",
+    "source_ja": "[[UI_01]] の [[UI_02]] で選択できるモデル候補に影響します。",
+    "ui_text": {
+      "[[UI_01]]": "AI読取設定",
+      "[[UI_02]]": "読取モデル設定"
+    },
+    "zh-CN": "它影响可以在[[UI_01]]的[[UI_02]]中选择的模型候选者。",
+    "en": "It affects the model candidates that can be selected in [[UI_02]] of [[UI_01]]."
+  },
+  {
+    "id": "manual-0036",
+    "source_ja": "Step2 の [[UI_01]] や [[UI_02]] ノードで参照されるモデル候補に影響します。",
+    "ui_text": {
+      "[[UI_01]]": "OCR 抽出",
+      "[[UI_02]]": "AI検証"
+    },
+    "zh-CN": "它影响步骤2的[[UI_01]]和[[UI_02]]节点中引用的模型建议。",
+    "en": "It affects the model suggestions referenced in the [[UI_01]] and [[UI_02]] nodes of Step 2."
+  },
+  {
+    "id": "manual-0037",
+    "source_ja": "メインモデルと検証モデルの結果が一致しない場合は、OCR 確認タスクで人工確認の対象になります。",
+    "ui_text": {},
+    "zh-CN": "如果主模型和验证模型的结果不匹配，将在OCR确认任务中进行手动确认。",
+    "en": "If the results of the main model and the validation model do not match, they will be subject to manual confirmation in the OCR confirmation task."
+  },
+  {
+    "id": "manual-0038",
+    "source_ja": "低信頼度、モデル間不一致が発生した場合、OCR 確認や AI 検証確認タスクで確認対象になります。",
+    "ui_text": {},
+    "zh-CN": "如果模型之间的可靠性较低或不匹配，将在OCR确认或AI验证确认任务中进行检查。",
+    "en": "If there is a low level of reliability or a mismatch between models, it will be checked in the OCR confirmation or AI validation confirmation task."
+  },
+  {
+    "id": "manual-0039",
+    "source_ja": "本章では、外部システムから NeosAI IDP を呼び出すための Open API を管理します。設定画面は [[UI_01]]、[[UI_02]]、[[UI_03]] の 3 タブです。パス、フィールド英語名、エラーコードは専用の API 接続文書を参照してください。",
+    "ui_text": {
+      "[[UI_01]]": "通知先URL",
+      "[[UI_02]]": "APIキー管理",
+      "[[UI_03]]": "API URL"
+    },
+    "zh-CN": "本章管理从外部系统调用NeosAI IDP的Open API。设置屏幕分为三个选项卡： [[UI_01]]、[[UI_02]]和[[UI_03]]。有关路径、字段英文名称和错误代码，请参阅专用的API连接文档。",
+    "en": "This chapter manages the Open API for calling the NeosAI IDP from an external system. The settings screen is divided into three tabs: [[UI_01]], [[UI_02]], and [[UI_03]]. Refer to the dedicated API connection documentation for paths, field English names, and error codes."
+  },
+  {
+    "id": "manual-0040",
+    "source_ja": "権限：本機能は [[UI_01]] が設定します。操作員は API 設定を編集せず、画面操作または公開済み業務シーンに基づく処理結果を利用します。",
+    "ui_text": {
+      "[[UI_01]]": "admin"
+    },
+    "zh-CN": "权限：此功能由[[UI_01]]设置。操作员不会编辑API设置，也不会根据屏幕操作或发布的工作场景使用结果。",
+    "en": "Permissions: This function is set by [[UI_01]]. Operators do not edit API settings and use the results based on on-screen operations or published work scenarios."
+  },
+  {
+    "id": "manual-0041",
+    "source_ja": "設定ロジック：[[UI_01]] では外部システムが使う API キーを発行・管理します。[[UI_02]] では、プラットフォームが外部へ送るコールバック先と [[UI_03]] を設定します。[[UI_04]] では、ファイルアップロード、案件一覧照会、バッチ別案件照会、追加資料アップロード、一括エクスポート、エクスポートタスク照会のエンドポイントを確認し、コピーできます。",
+    "ui_text": {
+      "[[UI_01]]": "APIキー管理",
+      "[[UI_02]]": "通知先URL",
+      "[[UI_03]]": "署名鍵",
+      "[[UI_04]]": "API URL"
+    },
+    "zh-CN": "配置逻辑： [[UI_01]]发布并管理外部系统使用的API密钥。在[[UI_02]]中，设置平台发送的回调目标和[[UI_03]]。在[[UI_04]]中，您可以查看和复制文件上传、交易列表查询、批量交易查询、其他材料上传、批量导出和导出任务查询的端点。",
+    "en": "Configuration logic: [[UI_01]] issues and manages API keys used by external systems. In [[UI_02]], set the callback destination and [[UI_03]] that the platform sends out. In [[UI_04]], you can review and copy endpoints for File Upload, Deal List Inquiry, Batch Deal Inquiry, Additional Material Upload, Batch Export, and Export Task Inquiry."
+  },
+  {
+    "id": "manual-0042",
+    "source_ja": "利用タイミング：画面から手動アップロードする代わりに、社内システムや RPA から案件投入、進捗照会、補件、一括出力を行う場合に利用します。リクエストは API キーで認証します。",
+    "ui_text": {},
+    "zh-CN": "使用时间：不是从屏幕手动上传，而是用于提交项目，查询内部系统或RPA的进度、补充和批量输出。使用API密钥验证请求。",
+    "en": "Timing of use: Instead of manually uploading from the screen, it is used to submit projects, inquire about progress, supplement, and bulk output from the internal system or RPA. Authenticate the request with the API key."
+  },
+  {
+    "id": "manual-0043",
+    "source_ja": "1[[UI_01]] → [[UI_02]] を開き、[[UI_03]] で登録済みの API キーと有効状態を確認します。新規発行する場合は [[UI_04]] をクリックします。",
+    "ui_text": {
+      "[[UI_01]]": "業務ルール設定",
+      "[[UI_02]]": "API設定",
+      "[[UI_03]]": "APIキー管理",
+      "[[UI_04]]": "+API キー"
+    },
+    "zh-CN": "打开1 [[UI_01]] → [[UI_02]]并转到[[UI_03]]以检查注册的API密钥和有效性状态。点击[[UI_04]]发布一个新的。",
+    "en": "Open 1 [[UI_01]] → [[UI_02]] and go to [[UI_03]] to check the registered API key and validity status. Click [[UI_04]] to publish a new one."
+  },
+  {
+    "id": "manual-0044",
+    "source_ja": "2[[UI_01]] のダイアログで [[UI_02]] を入力し、[[UI_03]] を [[UI_04]] / [[UI_05]] / [[UI_06]] から選択して発行します。",
+    "ui_text": {
+      "[[UI_01]]": "+API キー",
+      "[[UI_02]]": "名称",
+      "[[UI_03]]": "有効期限",
+      "[[UI_04]]": "7日間",
+      "[[UI_05]]": "1年",
+      "[[UI_06]]": "3年"
+    },
+    "zh-CN": "在2 [[UI_01]]的对话框中输入[[UI_02]] ，并从[[UI_04]]/[[UI_05]]/[[UI_06]]中选择[[UI_03]]进行发布。",
+    "en": "Enter [[UI_02]] in the dialog of 2 [[UI_01]] and select [[UI_03]] from [[UI_04]]/[[UI_05]]/[[UI_06]] to publish."
+  },
+  {
+    "id": "manual-0045",
+    "source_ja": "3[[UI_01]] タブで [[UI_02]] を確認します。[[UI_03]] と [[UI_04]] を変更する場合は [[UI_05]] をクリックします。",
+    "ui_text": {
+      "[[UI_01]]": "通知先URL",
+      "[[UI_02]]": "外部通知設定",
+      "[[UI_03]]": "通知先URL",
+      "[[UI_04]]": "署名鍵",
+      "[[UI_05]]": "編集"
+    },
+    "zh-CN": "3在[[UI_01]]选项卡中选中[[UI_02]]。单击[[UI_05]]更改[[UI_03]]和[[UI_04]]。",
+    "en": "3 Check [[UI_02]] in the [[UI_01]] tab. Click [[UI_05]] to change [[UI_03]] and [[UI_04]]."
+  },
+  {
+    "id": "manual-0046",
+    "source_ja": "4編集画面で [[UI_01]] を入力します。[[UI_02]] は [[UI_03]] で発行し、[[UI_04]] します。",
+    "ui_text": {
+      "[[UI_01]]": "通知先URL",
+      "[[UI_02]]": "署名鍵",
+      "[[UI_03]]": "生成",
+      "[[UI_04]]": "保存"
+    },
+    "zh-CN": "4在编辑屏幕上输入[[UI_01]]。[[UI_02]]发布于[[UI_03]]和[[UI_04]]。",
+    "en": "4 Enter [[UI_01]] on the edit screen. [[UI_02]] is published in [[UI_03]] and [[UI_04]]."
+  },
+  {
+    "id": "manual-0047",
+    "source_ja": "5[[UI_01]] タブで、ファイルアップロード、案件一覧照会、バッチ別案件照会、追加資料アップロード、一括エクスポート、エクスポートタスク照会のエンドポイントを確認します。コピーアイコンで URL を取得できます。リクエスト形式などの詳細は専用の API 接続文書を参照してください。",
+    "ui_text": {
+      "[[UI_01]]": "API URL"
+    },
+    "zh-CN": "5在[[UI_01]]选项卡上，查看文件上传、交易列表查询、批量交易查询、其他材料上传、批量导出和导出任务查询端点。您可以使用复制图标获取网址。有关请求格式等详细信息，请参阅专用的API连接文档。",
+    "en": "5 On the [[UI_01]] tab, review the File Upload, Deal List Inquiry, Batch Deal Inquiry, Additional Material Upload, Batch Export, and Export Task Inquiry endpoints. You can get the URL with the copy icon. Please refer to the dedicated API connection documentation for details such as the request format."
+  },
+  {
+    "id": "manual-0048",
+    "source_ja": "API の [[UI_01]] は画面と同じく、公開済みの [[UI_02]] を必須とし、帳票分類と案件集約を起動します。形式・サイズ・解像度の検証も画面アップロードと同じです。API の [[UI_03]] は [[UI_04]] の補件直付けと同じで、案件番号を指定し、案件ステータスが [[UI_05]] のときだけ対象案件へ直接書き込みます（案件集約は経由しません）。",
+    "ui_text": {
+      "[[UI_01]]": "ファイルアップロード",
+      "[[UI_02]]": "業務シーン",
+      "[[UI_03]]": "追加資料アップロード",
+      "[[UI_04]]": "案件一覧",
+      "[[UI_05]]": "補件"
+    },
+    "zh-CN": "API的[[UI_01]]需要发布的[[UI_02]]以及屏幕，并启动文档分类和案例聚合。验证格式、大小和分辨率与上传屏幕相同。API中的[[UI_03]]与[[UI_04]]直接附件相同，指定案例编号并仅在案例状态为[[UI_05]] （不使用案例聚合）时直接写入案例。",
+    "en": "The [[UI_01]] of the API requires the published [[UI_02]] as well as the screen, and launches document classification and case aggregation. Verifying the format, size, and resolution is the same as uploading the screen. [[UI_03]] in the API is the same as [[UI_04]] direct attachment, specifying the case number and writing directly to the case only when the case status is [[UI_05]] (case aggregation is not used)."
+  },
+  {
+    "id": "manual-0049",
+    "source_ja": "API の [[UI_01]] で案件の進捗と属性を取得します。[[UI_02]] は、ファイルアップロードが返すバッチ識別子で、集約後の案件帰属を確認します。API 経由で投入した案件・ファイルは、画面の [[UI_03]] / [[UI_04]] と同じ一覧に表示されます。",
+    "ui_text": {
+      "[[UI_01]]": "案件一覧照会",
+      "[[UI_02]]": "バッチ別案件照会",
+      "[[UI_03]]": "集約済み案件",
+      "[[UI_04]]": "未集約ファイル"
+    },
+    "zh-CN": "在[[UI_01]] API中获取案例的进度和属性。[[UI_02]]是文件上传返回的批量标识符，用于聚合后确认案例归属。通过API填充的问题和文件将显示在与屏幕上的[[UI_03]]/[[UI_04]]相同的列表中。",
+    "en": "Get the progress and attributes of the case in the [[UI_01]] API. [[UI_02]] is the batch identifier returned by the file upload to confirm the case attribution after aggregation. Issues and files populated via the API will appear in the same list as [[UI_03]]/[[UI_04]] on the screen."
+  },
+  {
+    "id": "manual-0050",
+    "source_ja": "API の [[UI_01]] は、業務シーンの出力ルールに従います。データ量が多い場合は非同期になり、[[UI_02]] で進捗とダウンロード先を取得します。画面側のエクスポートタスクは [[UI_03]] で処理します。",
+    "ui_text": {
+      "[[UI_01]]": "一括エクスポート",
+      "[[UI_02]]": "エクスポートタスク照会",
+      "[[UI_03]]": "マイタスク"
+    },
+    "zh-CN": "API的[[UI_01]]遵循业务场景的输出规则。如果有大量数据，它将是异步的，并在[[UI_02]]中获取进度和下载目标。屏幕侧的导出任务由[[UI_03]]处理。",
+    "en": "The [[UI_01]] of the API follows the output rules of the business scene. If there is a large amount of data, it will be asynchronous and get the progress and download destination in [[UI_02]]. The export task on the screen side is processed with [[UI_03]]."
+  },
+  {
+    "id": "manual-0051",
+    "source_ja": "ファイルアップロードで指定できるのは公開済みシーンのみです。出力形式は業務シーンの出力設定に従います。[[UI_01]] への外部コールバックは、少なくともエクスポート完了時、および案件が [[UI_02]] または [[UI_03]] になったときに送ります。業務シーン Step3 の操作端通知とは別経路です。",
+    "ui_text": {
+      "[[UI_01]]": "通知先URL",
+      "[[UI_02]]": "処理完了",
+      "[[UI_03]]": "エクスポート済"
+    },
+    "zh-CN": "只能为文件上传指定已发布的场景。输出格式遵循业务场景的输出设置。[[UI_01]]的外部回调至少在导出完成以及案例变为[[UI_02]]或[[UI_03]]时发送。它是与业务场景中的运营结束通知分开的路线步骤3.",
+    "en": "Only published scenes can be specified for file uploads. The output format follows the output settings of the business scene. External callbacks to [[UI_01]] are sent at least when the export is complete and when the case becomes [[UI_02]] or [[UI_03]]. It is a separate route from the operation end notification in the business scene Step 3."
+  },
+  {
+    "id": "manual-0052",
+    "source_ja": "マスターデータ設定",
+    "ui_text": {},
+    "zh-CN": "主数据设置",
+    "en": "Master Data Settings"
+  },
+  {
+    "id": "manual-0053",
+    "source_ja": "本章では、OCR で読み取った値を業務で利用できる標準名称やコードへ変換するためのマスターデータを管理します。医療機関名、傷病名、薬剤名、銀行名、支店名など、表記ゆれや略称が発生しやすい項目をマスター表として登録します。",
+    "ui_text": {},
+    "zh-CN": "本章管理主数据，用于将OCR读取值转换为可用于业务的标准名称和代码。将医疗机构名称、伤病名称、药品名称、银行名称、分行名称等容易出现波动或缩写的项目登记为主表。",
+    "en": "This chapter manages master data for converting OCR-read values into standard names and codes that can be used in business. Register items that are prone to fluctuations or abbreviations, such as medical institution name, injury and illness name, drug name, bank name, and branch name, as the master table."
+  },
+  {
+    "id": "manual-0054",
+    "source_ja": "ここで作成したマスター表、列設定、照会コード、登録データ、ベクトル化状態は、帳票タイプ設定の処理ルールから [[UI_01]] として参照されます。",
+    "ui_text": {
+      "[[UI_01]]": "マスタ照合"
+    },
+    "zh-CN": "此处创建的主表、列设置、查询代码、注册数据和矢量化状态从表单类型设置的处理规则中引用为[[UI_01]]。",
+    "en": "The master table, column settings, query code, registration data, and vectorization state created here are referenced as [[UI_01]] from the processing rules of the form type setting."
+  },
+  {
+    "id": "manual-0055",
+    "source_ja": "権限：本機能は [[UI_01]] が設定します。操作員はマスターデータを編集せず、OCR 確認画面で照合結果や候補値を確認・選択します。",
+    "ui_text": {
+      "[[UI_01]]": "admin"
+    },
+    "zh-CN": "权限：此功能由[[UI_01]]设置。操作员不编辑主数据，而是在OCR确认屏幕上确认并选择匹配结果和候选值。",
+    "en": "Permissions: This function is set by [[UI_01]]. The operator does not edit the master data, but confirms and selects the matching results and candidate values on the OCR confirmation screen."
+  },
+  {
+    "id": "manual-0056",
+    "source_ja": "参照元：[[UI_01]] で参照するデータは、本章で登録したマスター表です。列設定で定義した列名、[[UI_02]] の有無、登録済みデータ、[[UI_03]] がそのまま照合に利用されます。",
+    "ui_text": {
+      "[[UI_01]]": "マスタ照合",
+      "[[UI_02]]": "照会コード",
+      "[[UI_03]]": "ベクトル化状態"
+    },
+    "zh-CN": "来源： [[UI_01]]中引用的数据是本章中注册的主表。列设置中定义的列名、[[UI_02]]的存在与否、注册数据和[[UI_03]]用于按原样匹配。",
+    "en": "Source: The data referenced in [[UI_01]] is the master table registered in this chapter. The column name defined in the column settings, the presence or absence of [[UI_02]], registered data, and [[UI_03]] are used for matching as is."
+  },
+  {
+    "id": "manual-0057",
+    "source_ja": "セル単位の照合：帳票タイプ設定でグループを指定しない場合、対象項目の OCR 値だけを使ってマスター表を検索します。例：診断書の [[UI_01]] を傷病名マスターに照合し、表記ゆれを標準傷病名へ寄せます。",
+    "ui_text": {
+      "[[UI_01]]": "傷病名"
+    },
+    "zh-CN": "按单元格匹配：如果未在文档类型设置中指定组，则仅使用目标项的OCR值来搜索主表。示例：将医疗证明中的[[UI_01]]与伤害名称主文件进行比较，并将符号更改发送到标准伤害名称。",
+    "en": "Per-cell matching: If you do not specify a group in the document type settings, only the OCR value of the target item is used to search the master table. Example: Compare [[UI_01]] in the medical certificate with the injury name master, and send the notation change to the standard injury name."
+  },
+  {
+    "id": "manual-0058",
+    "source_ja": "グループ単位の照合：複数項目に同じグループ番号を設定した場合、それらの OCR 値を組み合わせて 1 回の照合条件として扱います。例：[[UI_01]] と [[UI_02]] を同じグループにし、銀行・支店マスターを行単位で照合します。",
+    "ui_text": {
+      "[[UI_01]]": "銀行名",
+      "[[UI_02]]": "支店名"
+    },
+    "zh-CN": "组单位匹配：当为多个项目设置相同的组编号时， OCR值被合并并视为单个匹配条件。示例：将[[UI_01]]和[[UI_02]]设为同一组，并逐行匹配银行/分行主控形状。",
+    "en": "Group unit matching: When the same group number is set for multiple items, the OCR values are combined and treated as a single match condition. Example: Make [[UI_01]] and [[UI_02]] the same group and match bank/branch masters on a line-by-line basis."
+  },
+  {
+    "id": "manual-0059",
+    "source_ja": "検索・返却の方針：[[UI_01]] が設定された列がある場合は、コード系の値による完全一致・優先一致を試みます。該当がない場合は、対象列に対して表記ゆれを考慮した類似検索を行います。候補が一意に確定できる場合は、命中したマスター行の標準値やコードを返却します。",
+    "ui_text": {
+      "[[UI_01]]": "照会コード"
+    },
+    "zh-CN": "搜索和返回策略：如果设置了[[UI_01]]列，我们将根据代码系统的值尝试匹配完全匹配和优先级匹配。如果不适用，请考虑目标列的符号变化进行类似的搜索。如果候选人可以唯一确认，则返回命中主行的标准值或代码。",
+    "en": "Search and return policy: If there is a column with [[UI_01]] set, we will try to match the exact match and priority match according to the value of the code system. If not applicable, perform a similar search considering the notation variation for the target column. If the candidate can be uniquely confirmed, return the standard value or code of the hit master line."
+  },
+  {
+    "id": "manual-0060",
+    "source_ja": "1[[UI_01]] → [[UI_02]] を開き、[[UI_03]] でマスター表を作成します（例：医薬品情報、銀行情報）。",
+    "ui_text": {
+      "[[UI_01]]": "業務ルール設定",
+      "[[UI_02]]": "マスターデータ設定",
+      "[[UI_03]]": "+ マスター追加"
+    },
+    "zh-CN": "打开1 [[UI_01]] → [[UI_02]]并在[[UI_03]]中创建主表（例如药品信息、银行信息）。",
+    "en": "Open 1 [[UI_01]] → [[UI_02]] and create a master table in [[UI_03]] (e.g. pharmaceutical information, bank information)."
+  },
+  {
+    "id": "manual-0061",
+    "source_ja": "2[[UI_01]] でマスター表の列を定義します。コード検索や完全一致を優先したい列には [[UI_02]] を設定します。例：ICD10 コード、銀行コード、支店コード。",
+    "ui_text": {
+      "[[UI_01]]": "列設定",
+      "[[UI_02]]": "照会コード"
+    },
+    "zh-CN": "2在[[UI_01]]中定义主表中的列。将[[UI_02]]设置为要优先进行代码搜索和精确匹配的列。示例： ICD10代码、银行代码、分行代码。",
+    "en": "2 Define the columns in the master table in [[UI_01]]. Set [[UI_02]] to the column where you want to prioritize code searches and exact matches. Example: ICD10 code, bank code, branch code."
+  },
+  {
+    "id": "manual-0062",
+    "source_ja": "3大量データは [[UI_01]] からテンプレートをダウンロードし、Excel / CSV ファイルでまとめて登録します。更新方式は [[UI_02]] または [[UI_03]] を選択します。1 回のインポートは最大 50,000 行です。",
+    "ui_text": {
+      "[[UI_01]]": "一括インポート",
+      "[[UI_02]]": "追加更新",
+      "[[UI_03]]": "上書更新"
+    },
+    "zh-CN": "3从[[UI_01]]下载模板，并在Excel/CSV文件中注册批量数据。选择更新方法[[UI_02]]或[[UI_03]]。每次导入最多50,000行。",
+    "en": "3 Download the template from [[UI_01]] and register the bulk data in an Excel/CSV file. Select the update method [[UI_02]] or [[UI_03]]. Maximum 50,000 rows per import."
+  },
+  {
+    "id": "manual-0063",
+    "source_ja": "4少量のデータは [[UI_01]] で 1 行ずつ登録します。登録済みデータは行内編集・削除・再ベクトル化でメンテナンスします。登録後は一覧の [[UI_02]] を確認し、[[UI_03]] になったデータからマスタ照合に利用します。",
+    "ui_text": {
+      "[[UI_01]]": "+ 項目追加",
+      "[[UI_02]]": "ベクトル化状態",
+      "[[UI_03]]": "完了"
+    },
+    "zh-CN": "4在[[UI_01]]中每次注册一行少量数据。注册数据通过在线编辑、删除和再矢量化进行维护。注册后，在列表中选中[[UI_02]] ，并将其用于从已变为[[UI_03]]的数据进行母版匹配。",
+    "en": "4 A small amount of data is registered one row at a time in [[UI_01]]. The registered data is maintained by in-line editing, deletion, and re-vectorization. After registration, check [[UI_02]] in the list and use it for master matching from the data that has become [[UI_03]]."
+  },
+  {
+    "id": "manual-0064",
+    "source_ja": "[[UI_01]] で [[UI_02]] を選択した項目は、本章で登録したマスター表、列設定、照会コード、ベクトル化状態を参照します。",
+    "ui_text": {
+      "[[UI_01]]": "処理ルール設定",
+      "[[UI_02]]": "マスタ照合"
+    },
+    "zh-CN": "[[UI_01]]中选择的项目[[UI_02]]是指本章中注册的主表、列设置、查询代码和矢量化状态。",
+    "en": "Items selected [[UI_02]] in [[UI_01]] refer to the master table, column settings, query code, and vectorization state registered in this chapter."
+  },
+  {
+    "id": "manual-0065",
+    "source_ja": "候補が複数、類似度が低い、または未命中の場合は自動確定せず、OCR 確認タスクで人工確認の対象になります。",
+    "ui_text": {},
+    "zh-CN": "若求职者不止一人，相似度较低，或遗漏，则不会自动确认，需在OCR确认任务中进行人工确认。",
+    "en": "If there are more than one candidate, the similarity is low, or it is missed, it will not be automatically confirmed, and it will be subject to manual confirmation in the OCR confirmation task."
+  },
+  {
+    "id": "manual-0066",
+    "source_ja": "OCR 抽出後の項目に対して、業務シーンで設定したマスタ照合が適用されます。ベクトル化未完了のデータは照合候補として利用できません。",
+    "ui_text": {},
+    "zh-CN": "业务场景中的主匹配集应用于OCR提取后的项目。矢量化不完整数据不可用作匹配候选项。",
+    "en": "The master matching set in the business scene is applied to the items after the OCR extraction. Vectorized incomplete data is not available as a match candidate."
+  },
+  {
+    "id": "manual-0067",
+    "source_ja": "帳票タイプ設定",
+    "ui_text": {},
+    "zh-CN": "文档类型设置",
+    "en": "Document Type Settings"
+  },
+  {
+    "id": "manual-0068",
+    "source_ja": "本章では、業務で扱う帳票ごとに、分類条件、読取項目、後処理ルール、画像処理方法を定義します。ここで設定した内容は、アップロード後の帳票分類、案件集約時のファイル整理、OCR 抽出、人工確認、出力確認に反映されます。帳票間を 1 件の案件としてまとめるルールは業務シーン Step1 で設定します。",
+    "ui_text": {},
+    "zh-CN": "本章定义了业务中处理的每个文档的分类条件、读取项目、后处理规则和图像处理方法。此处设置的内容将反映在上传后的文档分类、案例聚合时的文件组织、OCR提取、手动确认、输出确认中。将文档分组到单个问题中的规则在业务场景步骤1中设置。",
+    "en": "This chapter defines classification conditions, read items, post-processing rules, and image processing methods for each document handled in business. The content set here will be reflected in the document classification after upload, file organization at the time of case aggregation, OCR extraction, manual confirmation, and output confirmation. The rules for grouping documents into a single issue are set in Business Scene Step 1."
+  },
+  {
+    "id": "manual-0069",
+    "source_ja": "保険金請求では、請求書、診断書、診療明細書などを帳票タイプとして登録し、それぞれの帳票から読み取る項目や表格列を設定します。帳票ごとの特徴を明確にしておくことで、後続の業務シーンで正しい帳票を選択し、安定した処理フローを構成できます。",
+    "ui_text": {},
+    "zh-CN": "对于保险理赔，将发票、医疗证明、医疗报表等作为单据类型进行登记，并设置每个表格中的项目和表格列。通过明确每个文档的特点，您可以在后续工作场景中选择正确的文档，并配置稳定的处理流程。",
+    "en": "For insurance claims, register invoices, medical certificates, medical statements, etc. as document types, and set the items and table columns to be read from each form. By clarifying the characteristics of each document, you can select the correct document in subsequent work scenarios and configure a stable processing flow."
+  },
+  {
+    "id": "manual-0070",
+    "source_ja": "権限：本機能は [[UI_01]] が設定します。操作員は帳票タイプそのものを編集せず、公開済みの業務シーンを通じて設定結果を利用します。",
+    "ui_text": {
+      "[[UI_01]]": "admin"
+    },
+    "zh-CN": "权限：此功能由[[UI_01]]设置。操作员不编辑文档类型本身，而是通过已发布的工作场景使用设置结果。",
+    "en": "Permissions: This function is set by [[UI_01]]. The operator does not edit the document type itself, but makes use of the setting results through published work scenarios."
+  },
+  {
+    "id": "manual-0071",
+    "source_ja": "生成 AI による柔軟性の高い帳票抽出の可視化設定機能です。帳票タイプは次の 5 ステップで設定します。",
+    "ui_text": {},
+    "zh-CN": "它是一种可视化设置功能，用于通过生成式AI进行高度灵活的表单提取。在接下来的5个步骤中设置文件类型。",
+    "en": "It is a visualization setting function for highly flexible form extraction by generative AI. Set the document type in the next 5 steps."
+  },
+  {
+    "id": "manual-0072",
+    "source_ja": "分類 → 読取 → 処理ルール → 画像処理 → 効果テストの順で設定します。",
+    "ui_text": {},
+    "zh-CN": "分类→ 读取→处理规则按照→图像处理→效果测试的顺序设置。",
+    "en": "Classification → Reading → Processing Rules Set in the order of the → image processing → effect test."
+  },
+  {
+    "id": "manual-0073",
+    "source_ja": "何を決めるか",
+    "ui_text": {},
+    "zh-CN": "决定什么",
+    "en": "What to decide"
+  },
+  {
+    "id": "manual-0074",
+    "source_ja": "代表サンプル、[[UI_01]]（AI 分類基準）、[[UI_02]] を定義します。説明文は帳票タイプ判定、分割ルールは同一ファイル内の帳票切り分けに使います。",
+    "ui_text": {
+      "[[UI_01]]": "説明文",
+      "[[UI_02]]": "ファイル分割ルール"
+    },
+    "zh-CN": "定义代表性样本， [[UI_01]] （ AI分类标准） ， [[UI_02]]。描述用于确定表单类型，拆分规则用于分隔同一文件中的表单。",
+    "en": "Define representative samples, [[UI_01]] (AI classification criteria), [[UI_02]]. The description is used to determine the form type, and the split rule is used to separate the forms in the same file."
+  },
+  {
+    "id": "manual-0075",
+    "source_ja": "新規アップロード後の帳票分類、混在ファイルの論理分割、業務シーンで選択する帳票タイプ候補。",
+    "ui_text": {},
+    "zh-CN": "新上传后的文档分类，混合文件的逻辑拆分，以及在业务场景中选择文档类型的建议。",
+    "en": "Document classification after new upload, logical splitting of mixed files, and suggestions for document types to select in business scenarios."
+  },
+  {
+    "id": "manual-0076",
+    "source_ja": "OCR 抽出で読み取る項目・表格列・プロンプト・正解サンプル・読取モデルを定義します。",
+    "ui_text": {},
+    "zh-CN": "定义要在OCR提取中读取的项目、表列、提示、正确样本和读取模型。",
+    "en": "Define the items, table columns, prompts, correct samples, and read models to be read in the OCR extraction."
+  },
+  {
+    "id": "manual-0077",
+    "source_ja": "ワークフローの [[UI_01]] ノード、条件分岐、データマッピング、AI 検証、マイタスクの OCR 確認画面。",
+    "ui_text": {
+      "[[UI_01]]": "OCR 抽出"
+    },
+    "zh-CN": "工作流程中[[UI_01]]节点、条件分支、数据映射、AI验证和“我的任务”的OCR确认屏幕。",
+    "en": "OCR confirmation screen for [[UI_01]] nodes, condition branches, data mapping, AI validation, and My Tasks in the workflow."
+  },
+  {
+    "id": "manual-0078",
+    "source_ja": "OCR 値の後処理、[[UI_01]]、信頼度閾値を定義します。",
+    "ui_text": {
+      "[[UI_01]]": "マスタ照合"
+    },
+    "zh-CN": "定义OCR值后处理， [[UI_01]] ，置信阈值。",
+    "en": "Define OCR value post-processing, [[UI_01]], confidence threshold."
+  },
+  {
+    "id": "manual-0079",
+    "source_ja": "OCR 抽出後の値補正・標準化、低信頼度・未照合時の人工確認判定。",
+    "ui_text": {},
+    "zh-CN": "OCR提取后数值校正/标准化，未对账时可靠性低/人工确认判断。",
+    "en": "Value correction/standardization after OCR extraction, low reliability/artificial confirmation judgment at the time of unreconciled."
+  },
+  {
+    "id": "manual-0080",
+    "source_ja": "画像分割、同一帳票タイプ内のファイル組合、画像整列、OCR 実行単位を定義します。",
+    "ui_text": {},
+    "zh-CN": "定义图像拆分、同一文档类型中的文件关联、图像对齐和OCR执行单元。",
+    "en": "Defines image splitting, file associations within the same document type, image alignment, and OCR execution units."
+  },
+  {
+    "id": "manual-0081",
+    "source_ja": "案件集約時の論理ファイル判定、OCR 抽出前の画像整理、同一帳票タイプ内ファイルの組合。",
+    "ui_text": {},
+    "zh-CN": "案例聚合时的逻辑文件判断、OCR提取前的图像组织、同一文档类型中的文件合并。",
+    "en": "Logical file judgment at the time of case aggregation, image organization before OCR extraction, union of files within the same document type."
+  },
+  {
+    "id": "manual-0082",
+    "source_ja": "サンプル画像で分類・抽出・処理ルール・画像処理の結果を確認します。",
+    "ui_text": {},
+    "zh-CN": "检查样本图像的分类、提取、处理规则和图像处理结果。",
+    "en": "Check the results of classification, extraction, processing rules, and image processing in the sample image."
+  },
+  {
+    "id": "manual-0083",
+    "source_ja": "業務シーンへ組み込む前の事前検証。",
+    "ui_text": {},
+    "zh-CN": "在纳入业务场景之前进行预验证。",
+    "en": "Pre-validation prior to incorporation into the business scenario."
+  },
+  {
+    "id": "manual-0084",
+    "source_ja": "1[[UI_01]] と [[UI_02]]：[[UI_03]] で [[UI_04]] し、[[UI_05]] を付けて代表サンプルをアップロードします。[[UI_06]]（分類基準）と [[UI_07]] を記入します。例：[[UI_08]] の説明文を「医療機関が発行する診断書」とし、分割ルールを「ページ番号の連続性が途切れる位置で分割」にします。",
+    "ui_text": {
+      "[[UI_01]]": "タイプ追加",
+      "[[UI_02]]": "AI分類設定",
+      "[[UI_03]]": "帳票タイプ設定",
+      "[[UI_04]]": "+ タイプ追加",
+      "[[UI_05]]": "帳票名",
+      "[[UI_06]]": "説明文",
+      "[[UI_07]]": "ファイル分割ルール",
+      "[[UI_08]]": "診断書"
+    },
+    "zh-CN": "1 [[UI_01]]和[[UI_02]] ：在[[UI_03]]中， [[UI_04]]并使用[[UI_05]]上传代表性示例。填写[[UI_06]] （分类标准）和[[UI_07]]。示例： [[UI_08]]的描述应为“医疗机构出具的医疗证明” ，拆分规则应为“在页码连续性中断的位置拆分”。",
+    "en": "1 [[UI_01]] and [[UI_02]]: In [[UI_03]], [[UI_04]] and upload the representative sample with [[UI_05]]. Fill in [[UI_06]] (classification criteria) and [[UI_07]]. Example: The description of [[UI_08]] should be \"Medical certificate issued by medical institution\", and the splitting rule should be \"Split at the position where the page number continuity is interrupted\"."
+  },
+  {
+    "id": "manual-0085",
+    "source_ja": "タイプ追加。",
+    "ui_text": {},
+    "zh-CN": "添加类型。",
+    "en": "Add type."
+  },
+  {
+    "id": "manual-0086",
+    "source_ja": "2[[UI_01]]：保存アイコンから [[UI_02]] し、項目を記入して [[UI_03]] します。プロンプトと正解サンプルはテンプレートで手書きしても、項目名だけ入れて次の手順の [[UI_04]] に任せても構いません。",
+    "ui_text": {
+      "[[UI_01]]": "AI読取設定",
+      "[[UI_02]]": "テンプレートをダウンロード",
+      "[[UI_03]]": "一括インポート",
+      "[[UI_04]]": "AI自動生成"
+    },
+    "zh-CN": "2 [[UI_01]] ：在保存图标[[UI_02]]中，填写项目和[[UI_03]]。您可以在模板中手动编写提示和正确答案示例，也可以在下一步中仅输入项目名称并将其留给[[UI_04]]。",
+    "en": "2 [[UI_01]]: From the save icon, [[UI_02]], fill in the items and [[UI_03]]. You can manually write the prompt and the correct answer sample in the template, or you can put only the item name and leave it to [[UI_04]] in the next step."
+  },
+  {
+    "id": "manual-0087",
+    "source_ja": "テンプレートのダウンロードと一括インポート。",
+    "ui_text": {},
+    "zh-CN": "下载并批量导入模板。",
+    "en": "Download and bulk import templates."
+  },
+  {
+    "id": "manual-0088",
+    "source_ja": "ダウンロードしたテンプレートの例。",
+    "ui_text": {},
+    "zh-CN": "下载的模板示例。",
+    "en": "Example of a downloaded template."
+  },
+  {
+    "id": "manual-0089",
+    "source_ja": "3必要に応じて [[UI_01]] でプロンプトと正解サンプルを生成し、内容を確認・微調整します。",
+    "ui_text": {
+      "[[UI_01]]": "AI自動生成"
+    },
+    "zh-CN": "3根据需要在[[UI_01]]中生成提示并更正样本，以查看和微调内容。",
+    "en": "3 Generate prompts and correct samples in [[UI_01]] as needed to review and fine-tune the content."
+  },
+  {
+    "id": "manual-0090",
+    "source_ja": "項目・プロンプト・正解サンプルの確認。",
+    "ui_text": {},
+    "zh-CN": "项目、提示和正确答案示例的确认。",
+    "en": "Confirmation of items, prompts, and correct answer samples."
+  },
+  {
+    "id": "manual-0091",
+    "source_ja": "4設定アイコンから [[UI_01]]（メイン／検証モデル）と [[UI_02]]（ファイル名・文字コード）を行います。",
+    "ui_text": {
+      "[[UI_01]]": "読取モデル設定",
+      "[[UI_02]]": "エクスポート設定"
+    },
+    "zh-CN": "4在设置图标中，执行[[UI_01]] （主/验证模型）和[[UI_02]] （文件名/字符代码）。",
+    "en": "4 From the settings icon, perform [[UI_01]] (main/validation model) and [[UI_02]] (file name/character code)."
+  },
+  {
+    "id": "manual-0092",
+    "source_ja": "エクスポート設定と読取モデル設定。",
+    "ui_text": {},
+    "zh-CN": "导出设置并读取模型设置。",
+    "en": "Export settings and read model settings."
+  },
+  {
+    "id": "manual-0093",
+    "source_ja": "5[[UI_01]]：各項目に日付整形・数値整形・マスタ照合などの後処理を割り当てます。[[UI_02]] で一括提案もできます。",
+    "ui_text": {
+      "[[UI_01]]": "処理ルール設定",
+      "[[UI_02]]": "AIマッチング"
+    },
+    "zh-CN": "5 [[UI_01]] ：为每个项目分配后处理，如日期格式、数字格式和主匹配。您也可以在[[UI_02]]中提出批量建议。",
+    "en": "5 [[UI_01]]: Assign post-processing such as date formatting, numeric formatting, and master matching to each item. You can also make bulk suggestions in [[UI_02]]."
+  },
+  {
+    "id": "manual-0094",
+    "source_ja": "列が画面幅を超える場合は、表内を左右にドラッグ（またはスクロール）して [[UI_01]] まで表示できます。",
+    "ui_text": {
+      "[[UI_01]]": "処理後例"
+    },
+    "zh-CN": "如果列超出屏幕宽度，您可以在表格中向左或向右拖动（或滚动）到[[UI_01]]。",
+    "en": "If the column exceeds the width of the screen, you can drag (or scroll) left or right in the table to [[UI_01]]."
+  },
+  {
+    "id": "manual-0095",
+    "source_ja": "全ての文字（1行）",
+    "ui_text": {},
+    "zh-CN": "所有字符（单行）",
+    "en": "All characters (single line)"
+  },
+  {
+    "id": "manual-0096",
+    "source_ja": "特殊な後処理を行わず、1 行のまま識別結果を出力します。",
+    "ui_text": {},
+    "zh-CN": "无特殊后处理，识别结果输出为一行。",
+    "en": "No special post-processing is performed, and the identification result is output as one line."
+  },
+  {
+    "id": "manual-0097",
+    "source_ja": "数字のみ",
+    "ui_text": {},
+    "zh-CN": "仅数字",
+    "en": "Numbers only"
+  },
+  {
+    "id": "manual-0098",
+    "source_ja": "数字だけを残し、英字・空白・記号を削除します。",
+    "ui_text": {},
+    "zh-CN": "仅保留数字并删除字母、空格和符号。",
+    "en": "Leave only numbers and delete alphabets, spaces, and symbols."
+  },
+  {
+    "id": "manual-0099",
+    "source_ja": "小数点付きの数字",
+    "ui_text": {},
+    "zh-CN": "带小数的数字",
+    "en": "Numbers with decimals"
+  },
+  {
+    "id": "manual-0100",
+    "source_ja": "数字と小数点だけを残し、その他の文字を削除します。",
+    "ui_text": {},
+    "zh-CN": "仅保留数字和小数，并删除其他字符。",
+    "en": "Leave only numbers and decimals and remove other characters."
+  },
+  {
+    "id": "manual-0101",
+    "source_ja": "カタカナ",
+    "ui_text": {},
+    "zh-CN": "片假名",
+    "en": "Katakana"
+  },
+  {
+    "id": "manual-0102",
+    "source_ja": "結果を日本語のカタカナに統一します。",
+    "ui_text": {},
+    "zh-CN": "我们将把结果统一为日语片假名。",
+    "en": "We will unify the results into Japanese katakana."
+  },
+  {
+    "id": "manual-0103",
+    "source_ja": "もやし",
+    "ui_text": {},
+    "zh-CN": "豆芽菜",
+    "en": "Moyashi"
+  },
+  {
+    "id": "manual-0104",
+    "source_ja": "モヤシ",
+    "ui_text": {},
+    "zh-CN": "Moyashi",
+    "en": "Bean sprout"
+  },
+  {
+    "id": "manual-0105",
+    "source_ja": "ひらがな",
+    "ui_text": {},
+    "zh-CN": "平假名",
+    "en": "Hiragana"
+  },
+  {
+    "id": "manual-0106",
+    "source_ja": "結果を日本語のひらがなに統一します。",
+    "ui_text": {},
+    "zh-CN": "统一结果的是日本平假名。",
+    "en": "What unifies the results is the Japanese hiragana."
+  },
+  {
+    "id": "manual-0107",
+    "source_ja": "標準日付形式 yyyy/mm/dd に整えます。和暦の場合は西暦に変換します。",
+    "ui_text": {},
+    "zh-CN": "排列为标准日期格式yyyy/mm/dd。如果是日本日历，则会转换为西式日历。",
+    "en": "Arrange to standard date format yyyy/mm/dd. If it is a Japanese calendar, it will be converted to a Western calendar."
+  },
+  {
+    "id": "manual-0108",
+    "source_ja": "日本円の金額形式に整え、不要な文字を削除して桁区切りを付けます。",
+    "ui_text": {},
+    "zh-CN": "请以日元为单位设置金额格式，删除不必要的字符，并添加分隔符。",
+    "en": "Format the amount in Japanese yen, remove unnecessary characters, and add a separator."
+  },
+  {
+    "id": "manual-0109",
+    "source_ja": "米ドルの金額形式に整え、2 桁の小数と桁区切りを付けます。",
+    "ui_text": {},
+    "zh-CN": "将美元金额格式化为两位数小数分隔符。",
+    "en": "Format the dollar amount as a two-digit decimal separator."
+  },
+  {
+    "id": "manual-0110",
+    "source_ja": "スペース削除",
+    "ui_text": {},
+    "zh-CN": "移除空间",
+    "en": "Remove space"
+  },
+  {
+    "id": "manual-0111",
+    "source_ja": "識別結果中の空白をすべて削除します。",
+    "ui_text": {},
+    "zh-CN": "删除标识结果中的所有空格。",
+    "en": "Removes all whitespace in the identification results."
+  },
+  {
+    "id": "manual-0112",
+    "source_ja": "識別結果をすべて全角文字に変換します。",
+    "ui_text": {},
+    "zh-CN": "将所有标识结果转换为全角字符。",
+    "en": "Converts all identification results to full-width characters."
+  },
+  {
+    "id": "manual-0113",
+    "source_ja": "識別結果をすべて半角文字に変換します。",
+    "ui_text": {},
+    "zh-CN": "将所有标识结果转换为半角字符。",
+    "en": "Converts all identification results to half-width characters."
+  },
+  {
+    "id": "manual-0114",
+    "source_ja": "結果中の数字だけを半角文字に変換します。",
+    "ui_text": {},
+    "zh-CN": "仅将结果中的数字转换为半角字符。",
+    "en": "Converts only the digits in the result to half-width characters."
+  },
+  {
+    "id": "manual-0115",
+    "source_ja": "マスタ照合",
+    "ui_text": {},
+    "zh-CN": "主验证",
+    "en": "Master Verification"
+  },
+  {
+    "id": "manual-0116",
+    "source_ja": "OCR 結果をマスター表に照合し、標準値を返します。",
+    "ui_text": {},
+    "zh-CN": "将OCR结果与主表进行比较并返回标准值。",
+    "en": "Compares the OCR results to the master table and returns the standard values."
+  },
+  {
+    "id": "manual-0117",
+    "source_ja": "元の値を、設定済みの固定値またはマッピング値に置換します。",
+    "ui_text": {},
+    "zh-CN": "将原始值替换为设置的固定值或映射值。",
+    "en": "Replace the original value with a set fixed or mapped value."
+  },
+  {
+    "id": "manual-0118",
+    "source_ja": "男 / 女 / その他",
+    "ui_text": {},
+    "zh-CN": "男/女/其他",
+    "en": "Male/Female/Other"
+  },
+  {
+    "id": "manual-0119",
+    "source_ja": "バーコード",
+    "ui_text": {},
+    "zh-CN": "条形码",
+    "en": "BARCODE"
+  },
+  {
+    "id": "manual-0120",
+    "source_ja": "バーコード内容を読み取り、対象項目に設定します。",
+    "ui_text": {},
+    "zh-CN": "读取条形码内容并将其设置为目标项。",
+    "en": "Read the barcode content and set it as the target item."
+  },
+  {
+    "id": "manual-0121",
+    "source_ja": "バーコード画像",
+    "ui_text": {},
+    "zh-CN": "条形码图像",
+    "en": "Barcode Image"
+  },
+  {
+    "id": "manual-0122",
+    "source_ja": "バーコード文字列",
+    "ui_text": {},
+    "zh-CN": "条码字符串",
+    "en": "Barcode String"
+  },
+  {
+    "id": "manual-0123",
+    "source_ja": "QRコード",
+    "ui_text": {},
+    "zh-CN": "二维码",
+    "en": "QR CODE"
+  },
+  {
+    "id": "manual-0124",
+    "source_ja": "QR コード内容を読み取り、対象項目に設定します。",
+    "ui_text": {},
+    "zh-CN": "读取二维码内容并将其设置为目标项。",
+    "en": "Read the QR code content and set it as the target item."
+  },
+  {
+    "id": "manual-0125",
+    "source_ja": "6[[UI_01]]：画像分割・組合・整列を設定します。",
+    "ui_text": {
+      "[[UI_01]]": "画像処理設定"
+    },
+    "zh-CN": "6 [[UI_01]] ：设置图像划分、关联和对齐。",
+    "en": "6 [[UI_01]]: Set image division, association, and alignment."
+  },
+  {
+    "id": "manual-0126",
+    "source_ja": "画像分割の例：1 スキャンに含まれる複数帳票を切り分け、個別の論理ファイルとして出力します。",
+    "ui_text": {},
+    "zh-CN": "图像拆分示例：在一次扫描中拆分多个文档，并将其作为单独的逻辑文件输出。",
+    "en": "Image Splitting Example: Splits multiple documents in one scan and outputs them as separate logical files."
+  },
+  {
+    "id": "manual-0127",
+    "source_ja": "画像組合の例：診断書と別紙を、同一案件内の 1 つの論理ファイルへまとめます。",
+    "ui_text": {},
+    "zh-CN": "Image Guild示例：将医疗证明和附件合并到同一个案例中的一个逻辑文件中。",
+    "en": "Image Guild example: Combine the medical certificate and attachment into one logical file within the same case."
+  },
+  {
+    "id": "manual-0128",
+    "source_ja": "画像整列の例：発行日などのキー項目で昇順・降順に並べ替えます。",
+    "ui_text": {},
+    "zh-CN": "图像对齐示例：按关键项目（如发布日期）按升序或降序排序。",
+    "en": "Image alignment example: Sort in ascending or descending order by a key item such as the date of publication."
+  },
+  {
+    "id": "manual-0129",
+    "source_ja": "7[[UI_01]]：別サンプルで [[UI_02]] し、分類・抽出・処理ルールの結果を確認します。ずれがあれば該当ステップを見直して保存します。",
+    "ui_text": {
+      "[[UI_01]]": "効果テスト",
+      "[[UI_02]]": "テスト"
+    },
+    "zh-CN": "7 [[UI_01]] ： [[UI_02]]在另一个样本中查看分类、提取和处理规则的结果。检查并保存任何偏差。",
+    "en": "7 [[UI_01]]: [[UI_02]] in another sample to see the results of the classification, extraction, and processing rules. Review and save any deviations."
+  },
+  {
+    "id": "manual-0130",
+    "source_ja": "実現効果：帳票タイプを設定すると、アップロード資料を正しい帳票種別へ分類し、帳票ごとに必要な OCR 項目・表格列を抽出できます。抽出値は後処理やマスタ照合で標準化され、同一帳票タイプ内の画像は分割・組合・整列の設定に沿って OCR しやすい単位へ整理されます。",
+    "ui_text": {},
+    "zh-CN": "实现效果：设置表单类型时，可以将上传的材料分类为正确的表单类型，并提取每个表单所需的OCR项目和表格列。提取值通过后期处理和主匹配进行标准化，同一文档类型中的图像根据划分、组合和对齐设置被组织成易于OCR的单元。",
+    "en": "Realization effect: When you set the form type, you can classify the uploaded materials into the correct form type and extract the required OCR items and table columns for each form. The extraction values are standardized by post-processing and master matching, and the images in the same document type are organized into units that are easy to OCR according to the division, combination, and alignment settings."
+  },
+  {
+    "id": "manual-0131",
+    "source_ja": "アップロード後の帳票分類で、分類説明とサンプル画像が参照されます。",
+    "ui_text": {},
+    "zh-CN": "上传后文档分类参考分类描述和示例图像。",
+    "en": "Post-upload document classification references the classification description and sample image."
+  },
+  {
+    "id": "manual-0132",
+    "source_ja": "画像分割・組合設定は、同一帳票タイプ内の画像をどの論理ファイルとして扱うかに使われます。帳票間を 1 件の案件としてまとめる条件は業務シーン Step1 で設定します。",
+    "ui_text": {},
+    "zh-CN": "图像拆分和联合设置用于确定应将哪些逻辑文件用于同一文档类型中的图像。在业务场景步骤1中设置将文档分组为单个问题的条件。",
+    "en": "Image splitting and union settings are used to determine which logical files should be used for images within the same document type. The conditions for grouping the documents into a single issue are set in Business Scene Step 1."
+  },
+  {
+    "id": "manual-0133",
+    "source_ja": "業務シーン Step2 の OCR 抽出ノードは、帳票タイプ内の抽出項目・表格列・読取モデル・処理ルールを参照します。",
+    "ui_text": {},
+    "zh-CN": "业务场景步骤2中的OCR提取节点是指文档类型中的提取项、表列、读取模型和处理规则。",
+    "en": "The OCR extraction node in Business Scene Step 2 refers to the extraction items, table columns, reading models, and processing rules in the document type."
+  },
+  {
+    "id": "manual-0134",
+    "source_ja": "業務シーンの案件集約条件、条件分岐、データマッピング、AI 検証、出力項目では、帳票タイプで定義した OCR 項目を候補として利用します。",
+    "ui_text": {},
+    "zh-CN": "在业务场景的聚合条件、条件分支、数据映射、AI验证和输出项的情况下，表单类型定义的OCR项作为候选项。",
+    "en": "In the case aggregation conditions, condition branches, data mapping, AI verification, and output items of the business scene, the OCR items defined by the form type are used as candidates."
+  },
+  {
+    "id": "manual-0135",
+    "source_ja": "低信頼度、マスタ照合未命中、モデル間不一致などの項目は OCR 確認タスクで確認対象になります。",
+    "ui_text": {},
+    "zh-CN": "在OCR确认任务中将检查可靠性低、主匹配丢失、模型之间不匹配等项目。",
+    "en": "Items such as low reliability, missed master matching, and mismatch between models will be checked in the OCR confirmation task."
+  },
+  {
+    "id": "manual-0136",
+    "source_ja": "業務シーン設定",
+    "ui_text": {},
+    "zh-CN": "业务场景设置",
+    "en": "Business Scene Settings"
+  },
+  {
+    "id": "manual-0137",
+    "source_ja": "業務シーン設定では、アップロード後の案件をどのように集約し、どのノード順で処理し、いつ通知し、何を出力するかをまとめて定義します。ここで公開した設定だけが新規案件に使われます。",
+    "ui_text": {},
+    "zh-CN": "业务场景设置定义了上传的案例的聚合方式、处理它们的节点顺序、通知它们的时间以及它们将输出的内容。只有您在此发布的设置才会用于新案例。",
+    "en": "The Business Scene settings define how the uploaded cases will be aggregated, in which node order they will be processed, when they will be notified, and what they will output. Only the settings you publish here will be used for new cases."
+  },
+  {
+    "id": "manual-0138",
+    "source_ja": "本マニュアルでは [[UI_01]] を例に、[[UI_02]]、[[UI_03]]、[[UI_04]]、[[UI_05]] の順で説明します。",
+    "ui_text": {
+      "[[UI_01]]": "保険金請求",
+      "[[UI_02]]": "Step1 案件集約",
+      "[[UI_03]]": "Step2 ワークフロー",
+      "[[UI_04]]": "Step3 通知",
+      "[[UI_05]]": "Step4 出力・公開"
+    },
+    "zh-CN": "在本手册中， [[UI_01]]用作示例，后跟[[UI_02]]、[[UI_03]]、[[UI_04]]和[[UI_05]]。",
+    "en": "In this manual, [[UI_01]] is used as an example, followed by [[UI_02]], [[UI_03]], [[UI_04]], and [[UI_05]]."
+  },
+  {
+    "id": "manual-0139",
+    "source_ja": "権限：[[UI_01]] と業務ルール設定権限を持つユーザーが編集します。操作員は公開済みの業務シーンだけを利用します。",
+    "ui_text": {
+      "[[UI_01]]": "admin"
+    },
+    "zh-CN": "权限：由具有[[UI_01]]和业务规则设置权限的用户编辑。操作员仅使用已发布的工作场景。",
+    "en": "Permissions: Edited by a user with [[UI_01]] and Business Rule Setting permissions. Operators only use published work scenarios."
+  },
+  {
+    "id": "manual-0140",
+    "source_ja": "設定の考え方：Step1 で案件集約条件を決め、Step2 で導入時に設定済みのワークフローを確認し、Step3 で通知ルールを決め、Step4 で出力項目と公開版を決めます。Step1 の [[UI_01]] に成功した場合のみ [[UI_02]] で Step2 へ進め、成功時は内容が自動保存されます。Step2 の [[UI_03]] は構成確認のみで、実案件は動かしません。チェックに通ると公開可能になり、[[UI_04]] 後は新規案件がその版を参照します。",
+    "ui_text": {
+      "[[UI_01]]": "関連チェック",
+      "[[UI_02]]": "次へ",
+      "[[UI_03]]": "設定チェック",
+      "[[UI_04]]": "公開"
+    },
+    "zh-CN": "如何设置：在步骤1中确定案例聚合条件，在步骤2中检查实施时设置的工作流，在步骤3中确定通知规则，在步骤4中确定输出和公共版本。仅当您在步骤1的[[UI_01]]中成功时，才进入[[UI_02]]中的步骤2 ，成功后内容将自动保存。步骤2中的[[UI_03]]仅确认配置，不移动实际项目。通过检查后，您将能够发布，并且在[[UI_04]]之后，新作业将参考该版本。",
+    "en": "How to set up: Determine the case aggregation conditions in Step 1, check the workflow set up at the time of implementation in Step 2, determine the notification rules in Step 3, and determine the output and public version in Step 4. Only if you succeed in [[UI_01]] in Step 1, proceed to Step 2 in [[UI_02]], and the contents will be automatically saved when you succeed. The [[UI_03]] in Step 2 only confirms the configuration and does not move the actual project. Once you pass the check, you will be able to publish, and after [[UI_04]], the new job will refer to that version."
+  },
+  {
+    "id": "manual-0141",
+    "source_ja": "下流への影響",
+    "ui_text": {},
+    "zh-CN": "下游影响",
+    "en": "Downstream Impact"
+  },
+  {
+    "id": "manual-0142",
+    "source_ja": "関連帳票、主帳票、業務キー、帳票間の関連項目。関連項目が一致すると帳票間に関連が生じます。グループ内は AND、グループ間は OR。[[UI_01]] 通過後に Step2 へ進行。",
+    "ui_text": {
+      "[[UI_01]]": "関連チェック"
+    },
+    "zh-CN": "相关文档、主文档、业务密钥和文档之间的相关项目。匹配相关项目将在文档之间关联。在组内，和组之间，或。[[UI_01]]通过后继续执行第2步。",
+    "en": "Related items between related documents, main documents, business keys, and documents. Matching related items will correlate between documents. Within the group, and, between groups, OR. [[UI_01]] Proceed to Step 2 after passing."
+  },
+  {
+    "id": "manual-0143",
+    "source_ja": "案件一覧の集約結果、新規アップロード時の集約判定。",
+    "ui_text": {},
+    "zh-CN": "交易列表聚合结果，新上传时的聚合判断。",
+    "en": "Deal list aggregation result, aggregation judgment at the time of new upload."
+  },
+  {
+    "id": "manual-0144",
+    "source_ja": "キャンバスでのノード編成・接続・設定チェック。各ノードの対象 ON/OFF と分岐条件。ルール本体は帳票タイプ／データマッピング／AI 検証と連携。",
+    "ui_text": {},
+    "zh-CN": "画布上的节点组织/连接/设置检查。每个节点的目标开/关和分支条件。规则正文与文档类型/数据映射/AI验证结合使用。",
+    "en": "Node organization/connection/setting check on canvas. Target ON/off and branching conditions for each node. The rule body works in conjunction with document type/data mapping/AI verification."
+  },
+  {
+    "id": "manual-0145",
+    "source_ja": "案件の処理順、マイタスクの起票、再処理・補件の経路。",
+    "ui_text": {},
+    "zh-CN": "处理案例的顺序、“我的任务”的发布以及再处理和补货的路线。",
+    "en": "The order in which cases are processed, the issuance of My Tasks, and the route for reprocessing and replenishment."
+  },
+  {
+    "id": "manual-0146",
+    "source_ja": "どのノードのどのイベントで、誰へ通知するか。件名・本文は変数プールから変数を選んで自由に作成します。",
+    "ui_text": {},
+    "zh-CN": "在哪个节点上，在哪个事件中，以及要通知谁。通过从变量池中选择一个变量，可以自由创建主题和正文。",
+    "en": "On which node, in which event, and to whom to notify. The subject and body are freely created by selecting a variable from the variable pool."
+  },
+  {
+    "id": "manual-0147",
+    "source_ja": "トリガーイベント発生時に、設定した宛先へサイト内メッセージが自動送信されます。",
+    "ui_text": {},
+    "zh-CN": "当触发事件发生时，系统会自动向设置的目的地发送现场消息。",
+    "en": "When a trigger event occurs, an on-site message is automatically sent to the set destination."
+  },
+  {
+    "id": "manual-0148",
+    "source_ja": "出力項目と公開対象の確定。",
+    "ui_text": {},
+    "zh-CN": "确认输出项目和发布内容。",
+    "en": "Confirmation of output items and what to publish."
+  },
+  {
+    "id": "manual-0149",
+    "source_ja": "マイタスクのエクスポート内容、新規案件が参照する公開版。",
+    "ui_text": {},
+    "zh-CN": "我的任务导出内容，新案例引用的公开版本。",
+    "en": "My Tasks export content, public version referenced by new cases."
+  },
+  {
+    "id": "manual-0150",
+    "source_ja": "本製品の導入時には、業務シーンごとに案件集約・ワークフロー・通知・出力項目などがあらかじめ設定された状態で提供されます。お客様は通常、内容を確認し、必要に応じて調整するだけで構いません。",
+    "ui_text": {},
+    "zh-CN": "本产品推出时，预先为每个业务场景设置项目汇总、工作流程、通知、输出项等。顾客通常只需查看内容并根据需要进行调整。",
+    "en": "When this product is introduced, it is provided with project aggregation, workflow, notification, output items, etc. set in advance for each business scene. Customers usually just need to review the content and make adjustments as needed."
+  },
+  {
+    "id": "manual-0151",
+    "source_ja": "Step2 キャンバスの操作",
+    "ui_text": {},
+    "zh-CN": "第2步操作画布",
+    "en": "Step 2 Manipulate the canvas"
+  },
+  {
+    "id": "manual-0152",
+    "source_ja": "Step2 では、案件集約後の処理順をノードで編成します。導入時にワークフローが設定済みのため、通常は確認・微調整が中心です。キャンバスでは次ができます。",
+    "ui_text": {},
+    "zh-CN": "在步骤2中，案例聚合后的处理顺序按节点组织。由于工作流程在实施时已经建立，因此通常以确认和微调为中心。在画布上，您可以：",
+    "en": "In Step 2, the processing order after case aggregation is organized by node. Since the workflow is already set up at the time of implementation, it is usually centered on confirmation and fine-tuning. On the canvas, you can:"
+  },
+  {
+    "id": "manual-0153",
+    "source_ja": "ノードの追加・配置：右下の [[UI_01]]、またはノード一覧から前処理・OCR・データマッピング・AI 検証などを追加し、ドラッグで配置します。",
+    "ui_text": {
+      "[[UI_01]]": "ノード追加"
+    },
+    "zh-CN": "添加/放置节点：在右下角添加[[UI_01]] ，或从节点列表中添加预处理、OCR、数据映射、AI验证等，并拖动放置。",
+    "en": "Add/place nodes: Add [[UI_01]] at the bottom right, or add preprocessing, OCR, data mapping, AI verification, etc. from the node list, and drag to place."
+  },
+  {
+    "id": "manual-0154",
+    "source_ja": "接続の編成：ノード間を線でつなぎ、処理順と分岐先を決めます。[[UI_01]] から [[UI_02]] まで到達できる必要があります。",
+    "ui_text": {
+      "[[UI_01]]": "開始",
+      "[[UI_02]]": "終了"
+    },
+    "zh-CN": "连接的组织：将节点与线路连接，以确定处理顺序和分支目的地。[[UI_01]]到[[UI_02]]。",
+    "en": "Organization of the connection: Connect the nodes with lines to determine the processing order and branch destination. [[UI_01]] to [[UI_02]]."
+  },
+  {
+    "id": "manual-0155",
+    "source_ja": "左下の編集ツールバー：左から [[UI_01]] / [[UI_02]] / [[UI_03]]（この画面を開いている間のみ保持）/ [[UI_04]]（開始ノード以外を一括削除。確認ダイアログあり）。",
+    "ui_text": {
+      "[[UI_01]]": "元に戻す",
+      "[[UI_02]]": "やり直し",
+      "[[UI_03]]": "変更履歴",
+      "[[UI_04]]": "削除"
+    },
+    "zh-CN": "左下编辑工具栏：从左侧[[UI_01]]/[[UI_02]]/[[UI_03]] （仅在此屏幕打开时保留）/[[UI_04]] （删除除起始节点外的所有节点）。有一个确认对话框）。",
+    "en": "Bottom left editing toolbar: From the left [[UI_01]]/[[UI_02]]/[[UI_03]] (keep only while this screen is open)/[[UI_04]] (delete all but the starting node). There is a confirmation dialog)."
+  },
+  {
+    "id": "manual-0156",
+    "source_ja": "右下のツールバー：左から [[UI_01]] / [[UI_02]] / [[UI_03]] / [[UI_04]]（ノード配置を整え、全ノードが画面に収まるよう表示を合わせる）。",
+    "ui_text": {
+      "[[UI_01]]": "ノード追加",
+      "[[UI_02]]": "拡大",
+      "[[UI_03]]": "縮小",
+      "[[UI_04]]": "整列・適応サイズ"
+    },
+    "zh-CN": "右下工具栏：左侧的[[UI_01]]/[[UI_02]]/[[UI_03]]/[[UI_04]] （对齐节点以适应屏幕上的所有节点）。",
+    "en": "Bottom right toolbar: [[UI_01]]/[[UI_02]]/[[UI_03]]/[[UI_04]] from the left (align nodes to fit all nodes on the screen)."
+  },
+  {
+    "id": "manual-0157",
+    "source_ja": "設定チェック：終了到達・分岐出口・必須 ON 項目などを静的検証し、通過すると [[UI_01]] になります（テスト案件は実行しません）。",
+    "ui_text": {
+      "[[UI_01]]": "公開可能"
+    },
+    "zh-CN": "配置检查：静态验证结束到达、分支退出、REQUIRED ON项目等，如果通过，则为[[UI_01]] （测试用例不会执行）。",
+    "en": "Configuration check: Statically verify the end arrival, branch exit, required ON item, etc., and if it passes, it will be [[UI_01]] (test case will not be executed)."
+  },
+  {
+    "id": "manual-0158",
+    "source_ja": "Step2 各ノードの用途と他モジュール連携",
+    "ui_text": {},
+    "zh-CN": "第2步每个节点的使用以及与其他模块的协作",
+    "en": "Step 2 Use of each node and cooperation with other modules"
+  },
+  {
+    "id": "manual-0159",
+    "source_ja": "各ノードはキャンバス上の「実行単位」です。ルール本体は他モジュールで管理し、ノード側では対象の ON/OFF や分岐条件を決めます。下表を参考にしてください。",
+    "ui_text": {},
+    "zh-CN": "每个节点是画布上的“运行单元”。规则体由其他模块管理，节点端确定目标ON/OFF和分支条件。请参阅下表。",
+    "en": "Each node is a \"run unit\" on the canvas. The rule body is managed by other modules, and on the node side, the target ON/off and branching conditions are determined. Please refer to the table below."
+  },
+  {
+    "id": "manual-0160",
+    "source_ja": "ノード",
+    "ui_text": {},
+    "zh-CN": "结点",
+    "en": "Node"
+  },
+  {
+    "id": "manual-0161",
+    "source_ja": "主な出力変数",
+    "ui_text": {},
+    "zh-CN": "主要输出变量",
+    "en": "Main output variables"
+  },
+  {
+    "id": "manual-0162",
+    "source_ja": "案件集約完了後にワークフローを起動する固定入口。",
+    "ui_text": {},
+    "zh-CN": "修复了在个案聚合完成后启动工作流的门户。",
+    "en": "Fixed portal to launch the workflow after the case aggregation is completed."
+  },
+  {
+    "id": "manual-0163",
+    "source_ja": "caseId、files[]（条件には不可）",
+    "ui_text": {},
+    "zh-CN": "caseId ，文件[] （不适用于条件）",
+    "en": "caseId, files [] (not available for condition)"
+  },
+  {
+    "id": "manual-0164",
+    "source_ja": "OCR 前に画像を回転・補正・整列。帳票タイプの画像処理設定と連携し、対象帳票をノードで ON にします。本期は前処理結果を人工確認タスク化しません。",
+    "ui_text": {},
+    "zh-CN": "在OCR之前旋转、校正和对齐图像。结合文档类型的图像处理设置，使用节点打开目标文档。在此问题中，预处理结果将不会转换为人工确认任务。",
+    "en": "Rotate, correct, and align images before OCR. In conjunction with the image processing settings of the document type, turn the target document on with the node. In this issue, the pretreatment results will not be converted into artificial confirmation tasks."
+  },
+  {
+    "id": "manual-0165",
+    "source_ja": "帳票ごとに OCR を実行。[[UI_01]] の AI 読取・処理ルール・読取モデルを参照し、対象帳票をノードで ON にします。",
+    "ui_text": {
+      "[[UI_01]]": "帳票タイプ設定"
+    },
+    "zh-CN": "对每个文档执行OCR。参考[[UI_01]]的AI读取/处理规则/读取模型，并使用节点打开目标文档。",
+    "en": "Perform OCR for each document. Refer to the AI reading/processing rules/reading model of [[UI_01]] and turn the target document on with the node."
+  },
+  {
+    "id": "manual-0166",
+    "source_ja": "OCR 項目を標準変数へ統一。[[UI_01]] のルールを実行し、後続の AI 検証・出力で使います。",
+    "ui_text": {
+      "[[UI_01]]": "データマッピング設定"
+    },
+    "zh-CN": "将OCR项目统一为标准变量。执行[[UI_01]]的规则，并将其用于后续的人工智能验证和输出。",
+    "en": "Unify OCR items into standard variables. Execute the rules of [[UI_01]] and use it in subsequent AI verification and output."
+  },
+  {
+    "id": "manual-0167",
+    "source_ja": "必須・必要書類・整合性などを検証。[[UI_01]] のルールを参照し、モジュールをノードで ON にします。結果は IF/ELSE・人工確認へ渡します。",
+    "ui_text": {
+      "[[UI_01]]": "AI検証設定"
+    },
+    "zh-CN": "验证所需文件、完整性等。请参阅[[UI_01]]中的规则以激活节点上的模块。结果将传递给IF/ELSE/手动确认。",
+    "en": "Verify required documents, integrity, etc. Refer to the rules in [[UI_01]] to activate the module on the node. The results will be passed to IF/else/manual confirmation."
+  },
+  {
+    "id": "manual-0168",
+    "source_ja": "上流の *Result などで分岐（例：verifyResult = passed）。主フローへ進むか人工確認へ回すかを編成します。",
+    "ui_text": {},
+    "zh-CN": "具有上游*结果等的分支（例如verifyResult = passed ）。组织是否进入主流程或转向人工确认。",
+    "en": "Branches with upstream * Result, etc. (e.g. verifyResult = passed). Organize whether to proceed to the main flow or turn to artificial confirmation."
+  },
+  {
+    "id": "manual-0169",
+    "source_ja": "なし",
+    "ui_text": {},
+    "zh-CN": "不存在",
+    "en": "None"
+  },
+  {
+    "id": "manual-0170",
+    "source_ja": "要確認を [[UI_01]] で目視確認（完了／補件／案件中止）。担当ロールは操作員・操作管理者のみ。最初の人工確認ノードのロールから案件担当者を自動指名し、同ロールは継続、ロール切替時は再指名。",
+    "ui_text": {
+      "[[UI_01]]": "マイタスク"
+    },
+    "zh-CN": "在[[UI_01]]中目视确认所需的确认（已完成/已补充/个案已终止）。该角色的负责人仅为操作员/运营经理。从第一个手动确认节点的角色自动任命个案经理，继续角色，并在角色切换时重新任命。",
+    "en": "Visually confirm the required confirmation in [[UI_01]] (completed/supplemented/case discontinued). The person in charge of the role is only the operator/operation manager. Automatically appoint the case manager from the role of the first manual confirmation node, continue the role, and reappoint when the role is switched."
+  },
+  {
+    "id": "manual-0171",
+    "source_ja": "ワークフローインスタンスの終点。",
+    "ui_text": {},
+    "zh-CN": "工作流实例的终结点。",
+    "en": "The end point of the workflow instance."
+  },
+  {
+    "id": "manual-0172",
+    "source_ja": "処理結果と分岐の読み方",
+    "ui_text": {},
+    "zh-CN": "如何读取处理结果和分支",
+    "en": "How to read processing results and branches"
+  },
+  {
+    "id": "manual-0173",
+    "source_ja": "各処理ノードは 処理状態（*Status：実行進捗・異常）と 処理結果（*Result：業務上通過か要確認か）を出力します。IF/ELSE では通常 *Result のみを参照します。Step3 通知では *Status と *Result の両方をトリガーに選べます。前処理の人工確認タスク化は本期対象外です。",
+    "ui_text": {},
+    "zh-CN": "每个处理节点输出处理状态（ *状态：执行进度/错误）和处理结果（ *结果：业务中是否需要确认）。IF/ELSE通常仅指*结果。第3步在通知中，您可以同时选择*状态和*结果作为触发器。预处理手动确认任务不符合此问题的条件。",
+    "en": "Each processing node outputs the processing status (* Status: execution progress/error) and the processing result (* Result: whether it needs to be confirmed in business). IF/else usually only refers to * Result. Step 3 In the notification, you can select both * Status and * Result as triggers. The pre-processing manual confirmation task is not eligible for this issue."
+  },
+  {
+    "id": "manual-0174",
+    "source_ja": "取り得る値",
+    "ui_text": {},
+    "zh-CN": "可能的值",
+    "en": "Possible values"
+  },
+  {
+    "id": "manual-0175",
+    "source_ja": "前処理問題なし",
+    "ui_text": {},
+    "zh-CN": "无预处理问题",
+    "en": "No preprocessing issues"
+  },
+  {
+    "id": "manual-0176",
+    "source_ja": "OCR 問題なし（低信頼なし）",
+    "ui_text": {},
+    "zh-CN": "无OCR问题（无低信任）",
+    "en": "No OCR issues (no low trust)"
+  },
+  {
+    "id": "manual-0177",
+    "source_ja": "低信頼・モデル不一致等",
+    "ui_text": {},
+    "zh-CN": "低信任度/模型不一致等",
+    "en": "Low trust/model inconsistency, etc."
+  },
+  {
+    "id": "manual-0178",
+    "source_ja": "欠件・不整合・要確認",
+    "ui_text": {},
+    "zh-CN": "缺失物品、不一致、需要确认",
+    "en": "Missing items, inconsistencies, confirmation required"
+  },
+  {
+    "id": "manual-0179",
+    "source_ja": "操作手順は 画面操作 を参照してください。",
+    "ui_text": {},
+    "zh-CN": "有关操作步骤，请参阅屏幕操作。",
+    "en": "Refer to the screen operation for the operation procedure."
+  },
+  {
+    "id": "manual-0180",
+    "source_ja": "状態：画面上の主状態は [[UI_01]]、[[UI_02]]、[[UI_03]] の 3 種類です。Step1 の [[UI_04]] 成功時は内容が自動保存され、[[UI_05]] で Step2 へ進みます。Step2～Step4 の [[UI_06]] 成功後は下書きに戻ります。Step2 [[UI_07]] 通過で [[UI_08]] になり、[[UI_09]] を押した時点で [[UI_10]] でなければ Step2 の設定チェックを再実行します。チェックに通れば公開確認後にバージョン番号が付与され [[UI_11]] になり、失敗した場合は Step2 に戻って修正します。新規案件は公開済みバージョンのみ参照します。",
+    "ui_text": {
+      "[[UI_01]]": "下書き",
+      "[[UI_02]]": "公開可能",
+      "[[UI_03]]": "公開済み",
+      "[[UI_04]]": "関連チェック",
+      "[[UI_05]]": "次へ",
+      "[[UI_06]]": "保存",
+      "[[UI_07]]": "設定チェック",
+      "[[UI_08]]": "公開可能",
+      "[[UI_09]]": "公開",
+      "[[UI_10]]": "公開可能",
+      "[[UI_11]]": "公開済み"
+    },
+    "zh-CN": "状态：屏幕上有三个主要状态： [[UI_01]]、[[UI_02]]和[[UI_03]]。当步骤1中的[[UI_04]]成功时，内容会自动保存，并转到[[UI_05]]中的步骤2。[[UI_06]]从第2步到第4步成功后返回草稿。第2步[[UI_07]]通过后变为[[UI_08]] ，按下[[UI_09]]后，如果不是[[UI_10]] ，则重新运行第2步中的设置检查。如果通过检查，则在公开确认后分配一个版本号，并变为[[UI_11]] ，如果失败，则返回步骤2进行更正。仅适用于新病例，请参阅已发布的版本。",
+    "en": "State: There are three main states on the screen: [[UI_01]], [[UI_02]], and [[UI_03]]. When [[UI_04]] in Step 1 succeeds, the contents are automatically saved, and go to Step 2 in [[UI_05]]. [[UI_06]] from Step 2 to Step 4 returns to the draft after success. Step 2 When [[UI_07]] passes, it becomes [[UI_08]], and when [[UI_09]] is pressed, if it is not [[UI_10]], rerun the setting check in Step 2. If it passes the check, it will be assigned a version number after public confirmation and will become [[UI_11]]. If it fails, it will return to Step 2 to correct it. Refer to the published version only for new cases."
+  },
+  {
+    "id": "manual-0181",
+    "source_ja": "1[[UI_01]]：[[UI_02]] → [[UI_03]] で [[UI_04]] をクリックし、[[UI_05]]・説明を入力します。",
+    "ui_text": {
+      "[[UI_01]]": "業務シーン追加",
+      "[[UI_02]]": "業務ルール設定",
+      "[[UI_03]]": "業務シーン設定",
+      "[[UI_04]]": "＋ 業務シーン追加",
+      "[[UI_05]]": "業務シーン名"
+    },
+    "zh-CN": "1 [[UI_01]] ：点击→[[UI_02]] [[UI_03]]中的[[UI_04]] ，输入[[UI_05]] ·描述。",
+    "en": "1 [[UI_01]]: Click → [[UI_04]] in [[UI_02]] [[UI_03]] and enter [[UI_05]] · description."
+  },
+  {
+    "id": "manual-0182",
+    "source_ja": "シーン追加と基本情報の入力。",
+    "ui_text": {},
+    "zh-CN": "添加场景并输入基本信息。",
+    "en": "Add scenes and enter basic information."
+  },
+  {
+    "id": "manual-0183",
+    "source_ja": "2[[UI_01]]：[[UI_02]] で帳票タイプを選びます。追加後、主帳票を指定し、業務キー（例：[[UI_03]]）を設定します。",
+    "ui_text": {
+      "[[UI_01]]": "関連帳票",
+      "[[UI_02]]": "+ 帳票追加",
+      "[[UI_03]]": "証券番号"
+    },
+    "zh-CN": "2 [[UI_01]] ：选择[[UI_02]]中的表单类型。添加后，指定主窗体并设置业务密钥（例如[[UI_03]] ）。",
+    "en": "2 [[UI_01]]: Select the form type in [[UI_02]]. After adding, specify the main form and set the business key (e.g. [[UI_03]])."
+  },
+  {
+    "id": "manual-0184",
+    "source_ja": "帳票選択 → 主帳票と業務キー。",
+    "ui_text": {},
+    "zh-CN": "表单选择→主表单和业务密钥。",
+    "en": "Form selection → Main form and business key."
+  },
+  {
+    "id": "manual-0185",
+    "source_ja": "3[[UI_01]]：帳票間の関連項目を設定します。関連項目の値が一致すると、その帳票どうしに関連が生じ、同一案件へまとめられます（例：[[UI_02]]、[[UI_03]]）。[[UI_04]] で候補を生成し、必要に応じて手修正します。",
+    "ui_text": {
+      "[[UI_01]]": "案件集約ルール",
+      "[[UI_02]]": "請求番号",
+      "[[UI_03]]": "氏名",
+      "[[UI_04]]": "AI自動関連付け"
+    },
+    "zh-CN": "3 [[UI_01]] ：在文档之间设置相关项目。如果相关项目的值匹配，文档将被关联并组合到相同的情况下（例如， [[UI_02]] ， [[UI_03]] ）。[[UI_04]]生成建议并在必要时手动更正它们。",
+    "en": "3 [[UI_01]]: Set related items between documents. If the values of the related items match, the documents will be related and combined into the same case (for example, [[UI_02]], [[UI_03]]). [[UI_04]] generates suggestions and manually corrects them if necessary."
+  },
+  {
+    "id": "manual-0186",
+    "source_ja": "AI自動関連付けとグループ設定（グループ間 OR／グループ内 AND）。",
+    "ui_text": {},
+    "zh-CN": "AI自动关联和组设置（组间OR/组内和）。",
+    "en": "AI auto association and group settings (inter-group OR/intra-group and)."
+  },
+  {
+    "id": "manual-0187",
+    "source_ja": "4右側の [[UI_01]] で関連図を確認し、[[UI_02]] を実行します。すべての帳票が関連でつながっていることを確認できたら [[UI_03]] で進めます（成功時は自動保存のため、ここでは [[UI_04]] 不要です）。",
+    "ui_text": {
+      "[[UI_01]]": "関連プレビュー",
+      "[[UI_02]]": "関連チェック",
+      "[[UI_03]]": "次へ",
+      "[[UI_04]]": "保存"
+    },
+    "zh-CN": "4检查右侧[[UI_01]]中的相关图并运行[[UI_02]]。确认所有文档相关后，您可以继续[[UI_03]] （此处不需要[[UI_04]] ，因为成功后会自动保存）。",
+    "en": "4 Check the related diagram in [[UI_01]] on the right and run [[UI_02]]. Once you have verified that all documents are related, you can proceed with [[UI_03]] ([[UI_04]] is not required here because it is automatically saved on success)."
+  },
+  {
+    "id": "manual-0188",
+    "source_ja": "関連プレビューと関連チェック成功。",
+    "ui_text": {},
+    "zh-CN": "相关预览和相关检查成功。",
+    "en": "Related preview and related check successful."
+  },
+  {
+    "id": "manual-0189",
+    "source_ja": "5[[UI_01]]：導入済みフローの全体（[[UI_02]] → 処理ノード → 分岐 → [[UI_03]] → [[UI_04]]）を確認します。通常は一から組み直す必要はありません。",
+    "ui_text": {
+      "[[UI_01]]": "ワークフロー・キャンバス",
+      "[[UI_02]]": "開始",
+      "[[UI_03]]": "人工確認",
+      "[[UI_04]]": "終了"
+    },
+    "zh-CN": "5 [[UI_01]] ：查看整个部署的流程（ [[UI_02]]→处理节点→分支→[[UI_03]] → [[UI_04]] ）。通常不需要从头开始重建。",
+    "en": "5 [[UI_01]]: Review the entire deployed flow ([[UI_02]] → processing node → branch → [[UI_03]] → [[UI_04]]). There is usually no need to rebuild from scratch."
+  },
+  {
+    "id": "manual-0190",
+    "source_ja": "キャンバス全体。ノードの役割は 機能説明 を参照。",
+    "ui_text": {},
+    "zh-CN": "整个画布。有关节点角色，请参阅函数说明。",
+    "en": "The entire canvas. See function description for node roles."
+  },
+  {
+    "id": "manual-0191",
+    "source_ja": "6[[UI_01]]：必要に応じてノードを追加し、ドラッグで配置、線で接続して処理順を組みます。[[UI_02]] から各処理・分岐を経て [[UI_03]] まで到達できる経路にします。ショートカット（元に戻す／ノード追加／整列・適応サイズなど）は 機能説明 を参照してください。",
+    "ui_text": {
+      "[[UI_01]]": "ノードの編成",
+      "[[UI_02]]": "開始",
+      "[[UI_03]]": "終了"
+    },
+    "zh-CN": "6 [[UI_01]] ：根据需要添加节点，拖动排列，直线连接，安排处理顺序。从[[UI_02]]到[[UI_03]]的路径可以通过每个流程和分支到达。有关快捷方式（撤消/添加节点/对齐/适合大小等） ，请参阅函数说明。",
+    "en": "6 [[UI_01]]: Add nodes as needed, arrange them by dragging, connect them by lines, and arrange the processing order. The path from [[UI_02]] to [[UI_03]] can be reached through each process and branch. Refer to the function description for shortcuts (undo/add node/align/fit size, etc.)."
+  },
+  {
+    "id": "manual-0192",
+    "source_ja": "7[[UI_01]]：編成後に実行し、終了到達・分岐出口・必須項目などを検証します。通過すると [[UI_02]] になります。問題なければ保存し、次へ進みます（公開は後続ステップ）。各ノードの用途・設定・他モジュール連携は 機能説明 を参照してください。",
+    "ui_text": {
+      "[[UI_01]]": "設定チェック",
+      "[[UI_02]]": "公開可能"
+    },
+    "zh-CN": "7 [[UI_01]] ：在组织后运行，以验证最终到达、分支机构出口、所需项目等。当它通过时，它变成[[UI_02]]。如果没有，请保存并继续（发布是下一步）。各节点的用途、设置等模块联动请参考功能说明。",
+    "en": "7 [[UI_01]]: Run after the organization to verify the end arrival, branch exit, required items, etc. When it passes, it becomes [[UI_02]]. If not, save and continue (publishing is the next step). Please refer to the function description for the purpose, setting, and other module linkage of each node."
+  },
+  {
+    "id": "manual-0193",
+    "source_ja": "[[UI_01]] 通過で公開可能。",
+    "ui_text": {
+      "[[UI_01]]": "設定チェック"
+    },
+    "zh-CN": "可以通过[[UI_01]]发布。",
+    "en": "Can be published through [[UI_01]]."
+  },
+  {
+    "id": "manual-0194",
+    "source_ja": "8[[UI_01]]：対象ノード・トリガー・通知先を設定し、件名・本文は変数プールから変数を選んで作成します。イベント発生時にサイト内メッセージが自動送信されます。",
+    "ui_text": {
+      "[[UI_01]]": "通知"
+    },
+    "zh-CN": "8 [[UI_01]] ：设置目标节点、触发器和通知目的地，并从变量池中选择一个变量来创建主题和正文。事件发生时会自动发送现场消息。",
+    "en": "8 [[UI_01]]: Set the target node, trigger, and notification destination, and select a variable from the variable pool to create the subject and body. On-site messages are automatically sent when an event occurs."
+  },
+  {
+    "id": "manual-0195",
+    "source_ja": "通知ルール追加フォームと一覧。",
+    "ui_text": {},
+    "zh-CN": "通知规则添加表单和列表。",
+    "en": "Notification rule addition form and list."
+  },
+  {
+    "id": "manual-0196",
+    "source_ja": "9[[UI_01]]：出力項目を選び、[[UI_02]] 後に [[UI_03]] します。",
+    "ui_text": {
+      "[[UI_01]]": "出力・公開",
+      "[[UI_02]]": "保存",
+      "[[UI_03]]": "公開"
+    },
+    "zh-CN": "9 [[UI_01]] ：选择输出项，并在[[UI_02]]后选择[[UI_03]]。",
+    "en": "9 [[UI_01]]: Select the output item and [[UI_03]] after [[UI_02]]."
+  },
+  {
+    "id": "manual-0197",
+    "source_ja": "出力項目の選択と [[UI_01]]。",
+    "ui_text": {
+      "[[UI_01]]": "公開"
+    },
+    "zh-CN": "选择输出项和[[UI_01]]。",
+    "en": "Select the output item and [[UI_01]]."
+  },
+  {
+    "id": "manual-0198",
+    "source_ja": "公開済みの業務シーンだけが選択できます。下書きは表示されません。",
+    "ui_text": {},
+    "zh-CN": "只能选择已发布的工作场景。草稿将不会显示。",
+    "en": "Only published work scenarios can be selected. The draft will not be displayed."
+  },
+  {
+    "id": "manual-0199",
+    "source_ja": "Step1 の関連帳票と業務キーが、案件の集約結果に反映されます。",
+    "ui_text": {},
+    "zh-CN": "第1步中的相关文档和业务密钥将反映在案例汇总结果中。",
+    "en": "The relevant documents and business keys in Step 1 will be reflected in the case aggregation results."
+  },
+  {
+    "id": "manual-0200",
+    "source_ja": "Step2 のノード構成で、OCR 確認、AI 検証確認、エクスポートの発生条件が決まります。",
+    "ui_text": {},
+    "zh-CN": "步骤2中的节点配置确定了OCR确认、AI验证确认和导出的条件。",
+    "en": "The node configuration in Step 2 determines the conditions for OCR confirmation, AI verification confirmation, and export."
+  },
+  {
+    "id": "manual-0201",
+    "source_ja": "Step1 の対象帳票と Step2 の OCR 対象帳票は、帳票タイプの設定を参照します。",
+    "ui_text": {},
+    "zh-CN": "请参阅步骤1中目标文档的文档类型设置和步骤2中的OCR目标文档。",
+    "en": "Refer to the setting of the document type for the target document in Step 1 and the OCR target document in Step 2."
+  },
+  {
+    "id": "manual-0202",
+    "source_ja": "Step2 のデータマッピングノードで、当該業務シーン向けに登録した標準変数ルールが使われます。",
+    "ui_text": {},
+    "zh-CN": "在步骤2的数据映射节点中，使用为业务场景注册的标准变量规则。",
+    "en": "In the data mapping node in Step 2, the standard variable rules registered for the business scene are used."
+  },
+  {
+    "id": "manual-0203",
+    "source_ja": "Step2 の AI 検証ノードで、ON にした検証ルールだけが実行されます。",
+    "ui_text": {},
+    "zh-CN": "在步骤2的AI验证节点上，将仅执行您设置为“开”的验证规则。",
+    "en": "On the AI Validation node in Step 2, only the validation rules you set to ON will be executed."
+  },
+  {
+    "id": "manual-0204",
+    "source_ja": "Step3 のトリガーイベント発生時に、設定した宛先へサイト内メッセージが自動送信されます。件名・本文は変数プールから選んだ変数で組み立てられます。対象ノードがないルールは実行されません。",
+    "ui_text": {},
+    "zh-CN": "当步骤3中的触发事件发生时，现场消息将自动发送到设置的目的地。主体和主体与从变量池中选择的变量组装在一起。没有目标节点的规则将不会被执行。",
+    "en": "When the trigger event in Step 3 occurs, the on-site message is automatically sent to the set destination. The subject and body are assembled with variables selected from the variable pool. Rules without a target node will not be executed."
+  },
+  {
+    "id": "manual-0205",
+    "source_ja": "公開版の切替位置と、Step3 通知実行後の操作端 [[UI_01]] 表示例です。",
+    "ui_text": {
+      "[[UI_01]]": "通知"
+    },
+    "zh-CN": "这是在步骤3通知执行后公共版本和操作结束[[UI_01]]显示的切换位置的示例。",
+    "en": "This is an example of the switching position of the public version and the operation end [[UI_01]] display after Step 3 notification execution."
+  },
+  {
+    "id": "manual-0206",
+    "source_ja": "データマッピング設定",
+    "ui_text": {},
+    "zh-CN": "数据映射设置",
+    "en": "Data Mapping Settings"
+  },
+  {
+    "id": "manual-0207",
+    "source_ja": "本章では、複数の帳票タイプから抽出された OCR 項目を、案件単位で利用する標準変数へ整理します。保険金請求では、被保険者名、医療機関名、請求金額、証券番号などが複数帳票にまたがるため、同じ意味の項目を 1 つの標準変数として扱えるようにします。",
+    "ui_text": {},
+    "zh-CN": "本章将从多个文档类型中提取的OCR项目组织成标准变量，以便根据具体情况使用。对于保险理赔，被保险人姓名、医疗机构名称、理赔金额、安全号码等跨越多个表格，使相同含义的项目可以作为一个标准变量对待。",
+    "en": "This chapter organizes OCR items extracted from multiple document types into standard variables to be used on a case-by-case basis. For insurance claims, the insured name, medical institution name, claim amount, security number, etc. span multiple forms, so that items with the same meaning can be treated as one standard variable."
+  },
+  {
+    "id": "manual-0208",
+    "source_ja": "権限：本機能は [[UI_01]] が設定します。操作員はマッピングルールを編集せず、公開済みの業務シーン内でマッピング後の値を確認・利用します。",
+    "ui_text": {
+      "[[UI_01]]": "admin"
+    },
+    "zh-CN": "权限：此功能由[[UI_01]]设置。操作员不编辑映射规则，而是检查并使用已发布工作场景中的映射值。",
+    "en": "Permissions: This function is set by [[UI_01]]. The operator does not edit the mapping rules, but checks and uses the mapped values in the published work scene."
+  },
+  {
+    "id": "manual-0209",
+    "source_ja": "用途：帳票タイプごとに異なる項目名や値の形式を、業務で使う共通項目へそろえるために使用します。例：保険金請求書の [[UI_01]] と診断書の [[UI_02]] を、標準変数 [[UI_03]] へまとめます。マッピングルールは、業務シーンの Step1～Step2 を設定した後、当該業務シーン向けに登録します。",
+    "ui_text": {
+      "[[UI_01]]": "被保険者氏名",
+      "[[UI_02]]": "患者氏名",
+      "[[UI_03]]": "被保険者名"
+    },
+    "zh-CN": "用法：对每种文档类型使用不同的项目名称和值格式，以对齐业务中使用的常见项目。示例：将保险索赔中的[[UI_01]]和医疗证明中的[[UI_02]]汇总为标准变量[[UI_03]]。在设置了业务场景的步骤1到2之后，为业务场景注册映射规则。",
+    "en": "Usage: Use different item names and value formats for each document type to align common items used in business. Example: Summarize [[UI_01]] in the insurance claim and [[UI_02]] in the medical certificate into the standard variable [[UI_03]]. After setting up Steps 1 to 2 of the business scene, the mapping rules are registered for the business scene."
+  },
+  {
+    "id": "manual-0210",
+    "source_ja": "実行ロジック：データマッピングは、[[UI_01]] のワークフロー内に配置された [[UI_02]] ノードで実行されます。OCR 抽出後の値、処理ルール適用後の値、マスタ照合後の標準値を参照し、設定された標準変数へ変換します。",
+    "ui_text": {
+      "[[UI_01]]": "業務シーン設定",
+      "[[UI_02]]": "データマッピング"
+    },
+    "zh-CN": "执行逻辑：在位于[[UI_01]]工作流程中的[[UI_02]]节点上执行数据映射。参考OCR提取后的值、应用处理规则后的值、主排序后的标准值，转换为设定的标准变量。",
+    "en": "Execution logic: Data mapping is performed on the [[UI_02]] node located within the [[UI_01]] workflow. Refer to the value after the OCR extraction, the value after the processing rule is applied, and the standard value after the master collation, and convert it to the set standard variable."
+  },
+  {
+    "id": "manual-0211",
+    "source_ja": "1[[UI_01]] → [[UI_02]] を開き、[[UI_03]] で [[UI_04]]、[[UI_05]]、参照元の [[UI_06]] と [[UI_07]] を選択します。必要に応じて [[UI_08]] を入力し、[[UI_09]] します。",
+    "ui_text": {
+      "[[UI_01]]": "業務ルール設定",
+      "[[UI_02]]": "データマッピング設定",
+      "[[UI_03]]": "マッピングルール生成",
+      "[[UI_04]]": "標準変数",
+      "[[UI_05]]": "表示名",
+      "[[UI_06]]": "帳票タイプ",
+      "[[UI_07]]": "フィールド",
+      "[[UI_08]]": "標準化ルール",
+      "[[UI_09]]": "追加"
+    },
+    "zh-CN": "打开1 [[UI_01]] → [[UI_02]] ，在[[UI_03]]中选择[[UI_04]]、[[UI_05]] ，以及引用的[[UI_06]]和[[UI_07]]。根据需要输入[[UI_08]]和[[UI_09]]。",
+    "en": "Open 1 [[UI_01]] → [[UI_02]], and in [[UI_03]], select [[UI_04]], [[UI_05]], and the referenced [[UI_06]] and [[UI_07]]. Enter [[UI_08]] and [[UI_09]] as needed."
+  },
+  {
+    "id": "manual-0212",
+    "source_ja": "2複数帳票から同じ意味の項目を集約する場合は、[[UI_01]] の [[UI_02]] から [[UI_03]] を追加します。値の表記や形式をそろえる必要がある場合は [[UI_04]] を確認・調整して [[UI_05]] します。",
+    "ui_text": {
+      "[[UI_01]]": "マッピング一覧",
+      "[[UI_02]]": "編集",
+      "[[UI_03]]": "ソースフィールド",
+      "[[UI_04]]": "標準化ルール",
+      "[[UI_05]]": "OK"
+    },
+    "zh-CN": "2如果您想从多个文档中聚合具有相同含义的项目，请在[[UI_01]]中添加来自[[UI_02]]的[[UI_03]]。如果您需要对齐或格式化值，请查看并调整[[UI_04]]和[[UI_05]]。",
+    "en": "2 If you want to aggregate items with the same meaning from multiple documents, add [[UI_03]] from [[UI_02]] in [[UI_01]]. If you need to align or format the values, review and adjust [[UI_04]] and [[UI_05]]."
+  },
+  {
+    "id": "manual-0213",
+    "source_ja": "3[[UI_01]] を使用すると、標準化ルールの候補を生成できます。生成結果はそのまま確定せず、保険金請求の業務表現や後続出力形式に合わせて確認・修正します。",
+    "ui_text": {
+      "[[UI_01]]": "AIルール最適化"
+    },
+    "zh-CN": "3 [[UI_01]]可用于生成标准化规则的建议。生成的结果未按原样确认，但会根据保险理赔的业务表达式和后续输出格式进行检查和纠正。",
+    "en": "3 [[UI_01]] can be used to generate suggestions for standardization rules. The generated result is not confirmed as it is, but is checked and corrected according to the business expression of the insurance claim and the subsequent output format."
+  },
+  {
+    "id": "manual-0214",
+    "source_ja": "マッピング元として選択できる項目は、帳票タイプ設定の [[UI_01]] で定義された項目です。項目名を変更・削除すると、マッピング設定に影響します。",
+    "ui_text": {
+      "[[UI_01]]": "AI読取設定"
+    },
+    "zh-CN": "可以选择作为映射源的项目是在表单类型设置的[[UI_01]]中定义的项目。更改或删除项目名称将影响映射设置。",
+    "en": "The items that can be selected as the mapping source are the items defined in [[UI_01]] of the form type setting. Changing or deleting the item name will affect the mapping settings."
+  },
+  {
+    "id": "manual-0215",
+    "source_ja": "データマッピングは、ワークフロー内の [[UI_01]] ノードで実行されます。ノードが配置されていない場合、マッピング設定は実行されません。",
+    "ui_text": {
+      "[[UI_01]]": "データマッピング"
+    },
+    "zh-CN": "数据映射在工作流程中的[[UI_01]]节点中执行。如果节点未部署，则不会执行映射配置。",
+    "en": "The data mapping is performed in the [[UI_01]] node in the workflow. If the node is not deployed, the mapping configuration will not be performed."
+  },
+  {
+    "id": "manual-0216",
+    "source_ja": "標準変数に複数の参照元がある場合、[[UI_01]] で一致確認の対象にできます。",
+    "ui_text": {
+      "[[UI_01]]": "標準データ整合性"
+    },
+    "zh-CN": "如果标准变量有多个引用，则可以在[[UI_01]]中进行匹配。",
+    "en": "If a standard variable has multiple references, it can be matched in [[UI_01]]."
+  },
+  {
+    "id": "manual-0217",
+    "source_ja": "マッピング後の標準変数は、業務シーン設定の出力候補として利用されます。",
+    "ui_text": {},
+    "zh-CN": "映射后的标准变量用作业务场景设置的输出候选。",
+    "en": "Standard variables after mapping are used as output candidates for business scene settings."
+  },
+  {
+    "id": "manual-0218",
+    "source_ja": "本章では、OCR 抽出結果や案件内の帳票構成を AI で検証するためのルールを設定します。保険金請求では、必須フィールド、必要書類、標準データ整合性、テキスト検証、データ検証、署名・印鑑検証の 6 モジュールで確認します。",
+    "ui_text": {},
+    "zh-CN": "在本章中，我们将设置案例中OCR提取结果和文档配置的人工智能验证规则。索赔分为六个模块：必填字段、必填文件、标准数据完整性、文本验证、数据验证以及签名和印章验证。",
+    "en": "In this chapter, we will set rules for AI validation of OCR extraction results and document configurations in the case. Claims are reviewed in six modules: Mandatory Fields, Required Documents, Standard Data Integrity, Text Validation, Data Validation, and Signature and Seal Validation."
+  },
+  {
+    "id": "manual-0219",
+    "source_ja": "権限：本機能は [[UI_01]] が設定します。操作員は AI 検証ルールを編集せず、[[UI_02]] で検証結果を確認・修正します。",
+    "ui_text": {
+      "[[UI_01]]": "admin",
+      "[[UI_02]]": "マイタスク"
+    },
+    "zh-CN": "权限：此功能由[[UI_01]]设置。操作员不编辑AI验证规则，而是确认并更正[[UI_02]]中的验证结果。",
+    "en": "Permissions: This function is set by [[UI_01]]. The operator does not edit the AI verification rules, but confirms and corrects the verification results in [[UI_02]]."
+  },
+  {
+    "id": "manual-0220",
+    "source_ja": "実行ロジック：AI 検証ルールは、[[UI_01]] のワークフロー内に配置された [[UI_02]] ノードで実行されます。業務シーンの Step1～Step2 を設定したうえで [[UI_03]] にルールを登録し、業務シーン側の AI 検証ノードで対象の検証種別を ON にすると実行対象になります。",
+    "ui_text": {
+      "[[UI_01]]": "業務シーン設定",
+      "[[UI_02]]": "AI検証",
+      "[[UI_03]]": "AI検証設定"
+    },
+    "zh-CN": "执行逻辑： AI验证规则在位于[[UI_01]]工作流程中的[[UI_02]]节点中执行。设置好业务场景的Steps 1 ~ 2后，在[[UI_03]]中注册规则，并在业务场景侧的AI验证节点上开启目标验证类型。",
+    "en": "Execution logic: The AI validation rules are executed in the [[UI_02]] node located within the [[UI_01]] workflow. After setting Steps 1 to 2 of the business scene, register the rule in [[UI_03]], and turn on the target verification type on the AI verification node on the business scene side."
+  },
+  {
+    "id": "manual-0221",
+    "source_ja": "検証モジュール",
+    "ui_text": {},
+    "zh-CN": "验证模块",
+    "en": "Validation Module"
+  },
+  {
+    "id": "manual-0222",
+    "source_ja": "確認する内容",
+    "ui_text": {},
+    "zh-CN": "需要检查的内容",
+    "en": "What to check"
+  },
+  {
+    "id": "manual-0223",
+    "source_ja": "ルール例",
+    "ui_text": {},
+    "zh-CN": "规则示例",
+    "en": "Rule example"
+  },
+  {
+    "id": "manual-0224",
+    "source_ja": "保険金請求での例",
+    "ui_text": {},
+    "zh-CN": "保险索赔示例",
+    "en": "Insurance Claims Example"
+  },
+  {
+    "id": "manual-0225",
+    "source_ja": "指定した項目が空欄ではないかを確認します。",
+    "ui_text": {},
+    "zh-CN": "检查您指定的字段是否为空。",
+    "en": "Check if the field you specified is empty."
+  },
+  {
+    "id": "manual-0226",
+    "source_ja": "対象項目が未入力の場合は要確認にする。",
+    "ui_text": {},
+    "zh-CN": "如果未输入目标项目，则进行确认。",
+    "en": "If the target item is not entered, confirm it."
+  },
+  {
+    "id": "manual-0227",
+    "source_ja": "請求番号、被保険者名、診断日、請求金額が入力されているか。",
+    "ui_text": {},
+    "zh-CN": "是否已输入索赔号、被保险人姓名、诊断日期和索赔金额？",
+    "en": "Is the claim number, insured name, diagnosis date, and claim amount entered?"
+  },
+  {
+    "id": "manual-0228",
+    "source_ja": "案件に必要な帳票タイプが提出されているかを確認します。",
+    "ui_text": {},
+    "zh-CN": "检查是否已提交个案所需的文件类型。",
+    "en": "Check if the document type required for the case has been submitted."
+  },
+  {
+    "id": "manual-0229",
+    "source_ja": "必須帳票が存在しない場合は不足書類として扱う。",
+    "ui_text": {},
+    "zh-CN": "如果所需文件不存在，将被视为缺失文件。",
+    "en": "If the required document does not exist, it will be treated as a missing document."
+  },
+  {
+    "id": "manual-0230",
+    "source_ja": "保険金請求書、診断書、診療明細書がそろっているか。",
+    "ui_text": {},
+    "zh-CN": "您是否有保险索赔、医疗证明和医疗声明？",
+    "en": "Do you have an insurance claim, medical certificate, and medical statement?"
+  },
+  {
+    "id": "manual-0231",
+    "source_ja": "マッピング済みの標準変数どうしの値が一致しているかを確認します。",
+    "ui_text": {},
+    "zh-CN": "验证映射的标准变量的值是否匹配。",
+    "en": "Verify that the values of the mapped standard variables match."
+  },
+  {
+    "id": "manual-0232",
+    "source_ja": "比較対象の標準変数が異なる場合は不整合にする。",
+    "ui_text": {},
+    "zh-CN": "如果要比较的标准变量不同，则不一致。",
+    "en": "Inconsistency if the standard variables to be compared are different."
+  },
+  {
+    "id": "manual-0233",
+    "source_ja": "請求書の被保険者氏名と診断書の患者氏名が一致しているか。",
+    "ui_text": {},
+    "zh-CN": "发票上的被保险人姓名是否与医疗证明上的患者姓名相匹配。",
+    "en": "Whether the name of the insured person on the invoice matches the name of the patient on the medical certificate."
+  },
+  {
+    "id": "manual-0234",
+    "source_ja": "自然文ルールに基づき、自由記述や長文項目の妥当性を確認します。",
+    "ui_text": {},
+    "zh-CN": "根据自然句子规则验证自由格式或长文本项目的有效性。",
+    "en": "Verify the validity of free-form or long-text items based on natural sentence rules."
+  },
+  {
+    "id": "manual-0235",
+    "source_ja": "{{診断書・医療機関名}} と {{診療明細書・診療機関名}} の名称が完全一致していること。",
+    "ui_text": {},
+    "zh-CN": "{{medical certificate/medical institution name}}的名称与{{medical statement/medical institution name}}的名称完全相同。",
+    "en": "The name of {{medical certificate/medical institution name}} and the name of {{medical statement/medical institution name}} are exactly the same."
+  },
+  {
+    "id": "manual-0236",
+    "source_ja": "帳票間の医療機関名が一致しているか。",
+    "ui_text": {},
+    "zh-CN": "表格之间的医疗机构名称是否一致？",
+    "en": "Is the name of the medical institution between the forms consistent?"
+  },
+  {
+    "id": "manual-0237",
+    "source_ja": "数値、日付、期間、合計などの構造化データを確認します。",
+    "ui_text": {},
+    "zh-CN": "查看数字、日期、时间段和总计等结构化数据。",
+    "en": "Review structured data such as numbers, dates, time periods, and totals."
+  },
+  {
+    "id": "manual-0238",
+    "source_ja": "{{入院・通院・手術状況報告書・今回のご請求の入院期間起期}} <= {{入院・通院・手術状況報告書・今回のご請求の入院期間止期}}",
+    "ui_text": {},
+    "zh-CN": "{{此申请的入院/就诊/手术状态报告/入院期}} < = {此申请的入院/就诊/手术状态报告/入院期}}",
+    "en": "{{Admission/Visit/Surgery Status Report/Period of Admission for this Request}} < = {{Admission/Visit/Surgery Status Report/Period of Admission for this Request}}"
+  },
+  {
+    "id": "manual-0239",
+    "source_ja": "入院期間の開始日が終了日以前であるか。",
+    "ui_text": {},
+    "zh-CN": "住院期的开始日期是否早于结束日期？",
+    "en": "Is the start date of the hospitalization period before the end date?"
+  },
+  {
+    "id": "manual-0240",
+    "source_ja": "対象帳票に署名または印影が存在するかを確認します。",
+    "ui_text": {},
+    "zh-CN": "检查目标文档上是否有签名或印记。",
+    "en": "Check if there is a signature or impression on the target document."
+  },
+  {
+    "id": "manual-0241",
+    "source_ja": "対象帳票の指定領域または全文から署名・印影の有無を検出する。",
+    "ui_text": {},
+    "zh-CN": "检测来自指定区域或目标文档全文的签名/印记是否存在。",
+    "en": "Detect the presence or absence of signature/imprint from the specified area or the full text of the target document."
+  },
+  {
+    "id": "manual-0242",
+    "source_ja": "請求書の署名欄、医師の押印欄、同意書の署名有無。",
+    "ui_text": {},
+    "zh-CN": "发票签字段、医嘱签字段、知情同意书是否签字。",
+    "en": "Whether the invoice signature field, doctor's seal field, and consent form are signed."
+  },
+  {
+    "id": "manual-0243",
+    "source_ja": "1[[UI_01]] — [[UI_02]] で [[UI_03]]、[[UI_04]]、[[UI_05]] を選び、[[UI_06]] で [[UI_07]] に追加して [[UI_08]] します。標準変数を対象にする場合は [[UI_09]] を [[UI_10]] に切り替えます。追加後は [[UI_11]] に反映され、行の [[UI_12]] で無効化できます。",
+    "ui_text": {
+      "[[UI_01]]": "必須フィールド",
+      "[[UI_02]]": "ルール一括追加",
+      "[[UI_03]]": "適用シーン",
+      "[[UI_04]]": "帳票タイプ",
+      "[[UI_05]]": "フィールド",
+      "[[UI_06]]": "挿入",
+      "[[UI_07]]": "選択フィールド",
+      "[[UI_08]]": "追加",
+      "[[UI_09]]": "標準フィールド",
+      "[[UI_10]]": "はい",
+      "[[UI_11]]": "ルール一覧",
+      "[[UI_12]]": "削除"
+    },
+    "zh-CN": "1 [[UI_01]] —选择[[UI_02]]中的[[UI_03]]、[[UI_04]]和[[UI_05]] ，将其添加到[[UI_06]]和[[UI_08]]中的[[UI_07]]。如果要定位标准变量，请将[[UI_09]]切换到[[UI_10]]。添加后，它将反映在[[UI_11]]中，并且可以在行中的[[UI_12]]中禁用。",
+    "en": "1 [[UI_01]] — Select [[UI_03]], [[UI_04]] and [[UI_05]] in [[UI_02]], add them to [[UI_07]] in [[UI_06]] and [[UI_08]]. Switch [[UI_09]] to [[UI_10]] if you want to target standard variables. Once added, it will be reflected in [[UI_11]] and can be disabled in [[UI_12]] in the row."
+  },
+  {
+    "id": "manual-0244",
+    "source_ja": "2[[UI_01]] — [[UI_02]] を選び、案件に必要な帳票タイプを [[UI_03]] または [[UI_04]] に設定します。保険金請求では、診断書・保険金請求書・診療明細書などの提出有無を案件単位で確認します。",
+    "ui_text": {
+      "[[UI_01]]": "必要書類",
+      "[[UI_02]]": "業務シーン",
+      "[[UI_03]]": "必須",
+      "[[UI_04]]": "任意"
+    },
+    "zh-CN": "2 [[UI_01]] —选择[[UI_02]]并将案例所需的文档类型设置为[[UI_03]]或[[UI_04]]。对于保险索赔，请根据具体情况检查您是否提交了医疗证明、保险索赔表、医疗报表等。",
+    "en": "2 [[UI_01]] — Select [[UI_02]] and set the document type required for the case to [[UI_03]] or [[UI_04]]. For insurance claims, check whether you have submitted a medical certificate, insurance claim form, medical statement, etc. on a case-by-case basis."
+  },
+  {
+    "id": "manual-0245",
+    "source_ja": "3[[UI_01]] — [[UI_02]] で参照元が 2 件以上ある標準変数が一覧表示されます。[[UI_03]] スイッチを ON にすると、同一標準変数に紐づく OCR 値の一致を検証します。マッピング自体はデータマッピング設定で編集します。",
+    "ui_text": {
+      "[[UI_01]]": "標準データ整合性",
+      "[[UI_02]]": "データマッピング設定",
+      "[[UI_03]]": "データ整合性検証"
+    },
+    "zh-CN": "3 [[UI_01]] — [[UI_02]]列出了至少有两个引用的标准变量。当[[UI_03]]开关打开时，将验证与相同标准变量关联的OCR值的匹配。映射本身在数据映射设置中进行编辑。",
+    "en": "3 [[UI_01]] — [[UI_02]] lists standard variables with at least two references. When the [[UI_03]] switch is turned on, the matching of OCR values associated with the same standard variable is verified. The mapping itself is edited in the data mapping settings."
+  },
+  {
+    "id": "manual-0246",
+    "source_ja": "4[[UI_01]] — [[UI_02]] で [[UI_03]]、[[UI_04]]、[[UI_05]] を設定します。フィールド参照は [[UI_06]] で {{帳票タイプ.フィールド名}} 形式のトークンを書き込み、少なくとも 1 件の有効なフィールド参照が必要です。必要に応じて [[UI_07]] を使い、[[UI_08]] の [[UI_09]] で内容を更新します。",
+    "ui_text": {
+      "[[UI_01]]": "テキスト検証",
+      "[[UI_02]]": "ルール追加",
+      "[[UI_03]]": "適用シーン",
+      "[[UI_04]]": "ルール名",
+      "[[UI_05]]": "ルール記述",
+      "[[UI_06]]": "挿入",
+      "[[UI_07]]": "AIルール最適化",
+      "[[UI_08]]": "ルール一覧",
+      "[[UI_09]]": "編集"
+    },
+    "zh-CN": "在4 [[UI_01]] — [[UI_02]]中设置[[UI_03]]、[[UI_04]]和[[UI_05]]。字段引用为[[UI_06]] {{报告类型。您必须以字段名称}}的形式写入令牌，并且必须至少有一个有效的字段引用。如有必要，使用[[UI_07]]更新[[UI_08]]中的[[UI_09]]内容。",
+    "en": "Set [[UI_03]], [[UI_04]] and [[UI_05]] in 4 [[UI_01]] — [[UI_02]]. The field reference is [[UI_06]] {{report type. You must write a token in the form of a field name}} and have at least one valid field reference. If necessary, use [[UI_07]] to update the content with [[UI_09]] in [[UI_08]]."
+  },
+  {
+    "id": "manual-0247",
+    "source_ja": "5[[UI_01]] — 数値・日付・期間・合計などの構造化データを、算術式または自然文 + フィールドトークンで検証します。入院期間、請求日、点数合計など、帳票間の整合性確認に使います。[[UI_02]] で式の整理も可能です。",
+    "ui_text": {
+      "[[UI_01]]": "データ検証",
+      "[[UI_02]]": "AIルール最適化"
+    },
+    "zh-CN": "5 [[UI_01]] —使用算术表达式或自然句子+字段令牌验证结构化数据，如数字、日期、期间和总计。它用于检查文件之间的一致性，例如住院时间、计费日期和总积分数。您也可以使用[[UI_02]]来组织您的表情。",
+    "en": "5 [[UI_01]] — Validate structured data such as numbers, dates, periods, and totals with arithmetic expressions or natural sentences + field tokens. It is used to check the consistency between documents, such as the length of hospitalization, the billing date, and the total number of points. You can also use [[UI_02]] to organize your expressions."
+  },
+  {
+    "id": "manual-0248",
+    "source_ja": "6[[UI_01]] — [[UI_02]]、[[UI_03]]、[[UI_04]]、[[UI_05]]（印影／署名／両方）、必要に応じて [[UI_06]] を設定して [[UI_07]] します。各ルールは [[UI_08]] スイッチで個別に ON/OFF できます。",
+    "ui_text": {
+      "[[UI_01]]": "署名・印鑑検証",
+      "[[UI_02]]": "適用シーン",
+      "[[UI_03]]": "ルール名",
+      "[[UI_04]]": "対象帳票",
+      "[[UI_05]]": "検出対象",
+      "[[UI_06]]": "照合先",
+      "[[UI_07]]": "追加",
+      "[[UI_08]]": "状態"
+    },
+    "zh-CN": "6 [[UI_01]] — [[UI_02]] ， [[UI_03]] ， [[UI_04]] ， [[UI_05]] （印记/签名/两者） ，根据需要设置[[UI_06]]和[[UI_07]]。每个规则都可以通过[[UI_08]]开关单独打开/关闭。",
+    "en": "6 [[UI_01]] — [[UI_02]], [[UI_03]], [[UI_04]], [[UI_05]] (imprint/signature/both), set [[UI_06]] and [[UI_07]] as needed. Each rule can be individually turned on/off with the [[UI_08]] switch."
+  },
+  {
+    "id": "manual-0249",
+    "source_ja": "AI 検証ルールは、ワークフロー内の [[UI_01]] ノードで実行されます。ノードがない場合、ルールを設定していても実行されません。",
+    "ui_text": {
+      "[[UI_01]]": "AI検証"
+    },
+    "zh-CN": "AI验证规则在工作流程中的[[UI_01]]节点中执行。如果没有节点，则即使设置了规则，也不会执行规则。",
+    "en": "The AI validation rules are executed in the [[UI_01]] node in the workflow. If there is no node, the rule will not be executed even if it is set."
+  },
+  {
+    "id": "manual-0250",
+    "source_ja": "ノード内の検証種別スイッチで、必須フィールド、必要書類、標準データ整合性、テキスト検証、データ検証、署名・印鑑検証のどれを実行するかを制御します。OFF の種別はルールが登録済みでも実行されません。",
+    "ui_text": {},
+    "zh-CN": "控制节点中的验证类型开关是否执行必填字段、必填文档、标准数据完整性、文本验证、数据验证和签名/印章验证。即使规则已注册，也不会执行OFF类型。",
+    "en": "Controls whether the validation type switch in the node performs required fields, required documents, standard data integrity, text validation, data validation, and signature/seal validation. The off type is not executed even if the rule is registered."
+  },
+  {
+    "id": "manual-0251",
+    "source_ja": "[[UI_01]] は、複数帳票から同じ標準変数へまとめた項目を参照します。",
+    "ui_text": {
+      "[[UI_01]]": "標準データ整合性"
+    },
+    "zh-CN": "[[UI_01]]是指从多个表单汇总到同一标准变量的项目。",
+    "en": "[[UI_01]] refers to items summarized from multiple forms to the same standard variable."
+  },
+  {
+    "id": "manual-0252",
+    "source_ja": "要確認の結果はワークフロー条件に従って [[UI_01]] タスクに起票されます。",
+    "ui_text": {
+      "[[UI_01]]": "AI検証確認"
+    },
+    "zh-CN": "待确认的结果将根据工作流程条件提交给[[UI_01]]任务。",
+    "en": "The results to be confirmed will be submitted to the [[UI_01]] task according to the workflow conditions."
+  },
+  {
+    "id": "manual-0253",
+    "source_ja": "公開済みの業務シーン（本マニュアルでは [[UI_01]]）を前提に、資料アップロードから案件確認、[[UI_02]] での人工確認・出力までを説明します。",
+    "ui_text": {
+      "[[UI_01]]": "保険金請求",
+      "[[UI_02]]": "マイタスク"
+    },
+    "zh-CN": "根据已发布的工作场景（本手册中的[[UI_01]] ） ，我们将从上传材料到确认案例，再到在[[UI_02]]中手动确认和输出。",
+    "en": "Based on the published work scenario ([[UI_01]] in this manual), we will explain from uploading materials to confirming the case, to manually confirming and outputting in [[UI_02]]."
+  },
+  {
+    "id": "manual-0254",
+    "source_ja": "新規アップロード",
+    "ui_text": {},
+    "zh-CN": "新上传",
+    "en": "Upload new"
+  },
+  {
+    "id": "manual-0255",
+    "source_ja": "本章では、公開済みの業務シーンを選択し、保険金請求に関する資料をアップロードして案件処理を開始します。新規アップロードは、帳票分類と案件集約を実行する入口です。",
+    "ui_text": {},
+    "zh-CN": "在本章中，您将选择已发布的工作场景，上传保险索赔材料，并开始处理您的个案。新上传是文档分类和案例聚合的网关。",
+    "en": "In this chapter, you'll select a published work scenario, upload insurance claims materials, and start working on your case. New uploads are the gateway to document classification and case aggregation."
+  },
+  {
+    "id": "manual-0256",
+    "source_ja": "権限：本機能は [[UI_01]]、[[UI_02]]、[[UI_03]]、または該当メニュー権限を持つユーザーが利用します。",
+    "ui_text": {
+      "[[UI_01]]": "admin",
+      "[[UI_02]]": "操作員",
+      "[[UI_03]]": "操作管理者"
+    },
+    "zh-CN": "权限：此功能由[[UI_01]]、[[UI_02]]、[[UI_03]]或具有相应菜单权限的用户使用。",
+    "en": "Permissions: This function is used by [[UI_01]], [[UI_02]], [[UI_03]], or a user with the appropriate menu permissions."
+  },
+  {
+    "id": "manual-0257",
+    "source_ja": "利用シーン：新しい保険金請求案件を開始する場合に使用します。請求書、診断書、診療明細書などをまとめてアップロードし、公開済みの [[UI_01]] に基づいて帳票分類と案件集約を行います。",
+    "ui_text": {
+      "[[UI_01]]": "業務シーン"
+    },
+    "zh-CN": "使用场景：用于发起新的保险索赔。一起上传发票、医疗证明、医疗报表等，并根据发布的[[UI_01]]对文件进行分类和汇总病例。",
+    "en": "Usage scenario: Used to start a new insurance claim. Upload invoices, medical certificates, medical statements, etc. together, and classify documents and aggregate cases based on the published [[UI_01]]."
+  },
+  {
+    "id": "manual-0258",
+    "source_ja": "処理ロジック：[[UI_01]] をクリックすると、アップロード済みの合格ファイルを対象に、帳票分類と案件集約が順に実行されます。帳票タイプ設定の分類説明と、業務シーン設定の案件集約条件が参照されます。",
+    "ui_text": {
+      "[[UI_01]]": "分類・案件集約を実行"
+    },
+    "zh-CN": "处理逻辑：单击[[UI_01]]时，将对上传的通行证文件执行文档分类和案例聚合。请参阅文档类型设置的分类说明和业务场景设置的案例汇总条件。",
+    "en": "Processing logic: When you click [[UI_01]], document classification and case aggregation will be executed in order for the uploaded pass file. Refer to the classification description of the document type setting and the case aggregation conditions of the business scene setting."
+  },
+  {
+    "id": "manual-0259",
+    "source_ja": "3 つの資料追加経路：新規案件の開始は [[UI_01]]（新規集約経路）。既存案件への補件は、[[UI_02]] からの直付けと、[[UI_03]] からの集約の 2 通りがあります。",
+    "ui_text": {
+      "[[UI_01]]": "新規アップロード",
+      "[[UI_02]]": "案件一覧",
+      "[[UI_03]]": "新規アップロード"
+    },
+    "zh-CN": "添加物料的三条路线： [[UI_01]] （新的聚合路线）以开始新作业。有两种方法可以附加到现有案例：直接从[[UI_02]]和从[[UI_03]]聚合。",
+    "en": "Three routes to add materials: [[UI_01]] (new aggregation route) to start a new job. There are two ways to attach to an existing case: directly from [[UI_02]] and aggregated from [[UI_03]]."
+  },
+  {
+    "id": "manual-0260",
+    "source_ja": "公開済み [[UI_01]] を選択",
+    "ui_text": {
+      "[[UI_01]]": "業務シーン"
+    },
+    "zh-CN": "选择已发布[[UI_01]]",
+    "en": "Select Published [[UI_01]]"
+  },
+  {
+    "id": "manual-0261",
+    "source_ja": "帳票分類 → 案件集約 → [[UI_01]] へ反映",
+    "ui_text": {
+      "[[UI_01]]": "案件一覧"
+    },
+    "zh-CN": "反映在文档分类→案例聚合中→[[UI_01]]",
+    "en": "Reflected in document classification → case aggregation → [[UI_01]]"
+  },
+  {
+    "id": "manual-0262",
+    "source_ja": "補件・直付け経路",
+    "ui_text": {},
+    "zh-CN": "配件/直接配件路线",
+    "en": "Accessories/Direct Attachment Route"
+  },
+  {
+    "id": "manual-0263",
+    "source_ja": "案件ステータスが [[UI_01]]（[[UI_02]] で審査員が補件を選択した後など）",
+    "ui_text": {
+      "[[UI_01]]": "補件",
+      "[[UI_02]]": "マイタスク"
+    },
+    "zh-CN": "个案状态为[[UI_01]] （例如，在法官在[[UI_02]]中选择补编后）",
+    "en": "Case status is [[UI_01]] (e.g. after the Judge selects a Supplement in [[UI_02]])"
+  },
+  {
+    "id": "manual-0264",
+    "source_ja": "対象案件に直接書き込み。分類・集約は経由しない",
+    "ui_text": {},
+    "zh-CN": "直接写信给相关个案。无分类/聚合",
+    "en": "Write directly to the case in question. No classification/aggregation"
+  },
+  {
+    "id": "manual-0265",
+    "source_ja": "補件・集約経路",
+    "ui_text": {},
+    "zh-CN": "补充路线和汇总路线",
+    "en": "Supplementary and aggregate routes"
+  },
+  {
+    "id": "manual-0266",
+    "source_ja": "公開済み [[UI_01]] を選択（案件番号は不要）",
+    "ui_text": {
+      "[[UI_01]]": "業務シーン"
+    },
+    "zh-CN": "选择已发布[[UI_01]] （无需个案编号）",
+    "en": "Select Published [[UI_01]] (no case number required)"
+  },
+  {
+    "id": "manual-0267",
+    "source_ja": "新規集約と同様に分類・案件集約を実行。関連キーが [[UI_01]] 状態の案件に一致すれば優先的に紐付け。未自動归属のファイルは [[UI_02]] に残る",
+    "ui_text": {
+      "[[UI_01]]": "補件",
+      "[[UI_02]]": "未集約ファイル"
+    },
+    "zh-CN": "以与新聚合相同的方式执行分类和案例聚合。如果相关键在[[UI_01]]状态下与大小写匹配，则将优先链接。未自动归因的文件将保留在[[UI_02]]中",
+    "en": "Perform classification and case aggregation in the same way as new aggregation. If the related key matches the case in the [[UI_01]] state, it will be preferentially linked. Files that are not automatically attributed will remain in [[UI_02]]"
+  },
+  {
+    "id": "manual-0268",
+    "source_ja": "1新規集約経路 — サイドバーの [[UI_01]] を開き、[[UI_02]] を選択したうえで、[[UI_03]]、[[UI_04]]、[[UI_05]]、またはドラッグ＆ドロップで資料を追加します（JPG / PNG / TIF / PDF、各 50MB まで）。[[UI_06]] 一覧で取込結果を確認し、選択した業務シーンに対して [[UI_07]] すると、一覧内のすべての合格ファイルを一括処理します（[[UI_08]] は選択行のみ、集約は一部選択では実行されません）。",
+    "ui_text": {
+      "[[UI_01]]": "新規アップロード",
+      "[[UI_02]]": "業務シーン",
+      "[[UI_03]]": "ファイル選択",
+      "[[UI_04]]": "フォルダ選択",
+      "[[UI_05]]": "ZIP 選択",
+      "[[UI_06]]": "アップロード済ファイル",
+      "[[UI_07]]": "分類・案件集約を実行",
+      "[[UI_08]]": "一括削除"
+    },
+    "zh-CN": "1条新的聚合路径—在侧边栏中打开[[UI_01]] ，选择[[UI_02]] ，然后通过[[UI_03]]、[[UI_04]]、[[UI_05]]或拖放（ JPG/PNG/TIF/PDF ，每个不超过50MB ）添加项目。如果您检查所选工作场景的[[UI_06]]列表和[[UI_07]]中的导入结果，则列表中的所有传递文件将被批处理（ [[UI_08]]仅选择行，并且不会对某些选择执行聚合）。",
+    "en": "1 New Aggregation Path — Open [[UI_01]] in the sidebar, select [[UI_02]], and add items by [[UI_03]], [[UI_04]], [[UI_05]], or drag and drop (JPG/PNG/TIF/PDF, up to 50MB each). If you check the import result in the [[UI_06]] list and [[UI_07]] for the selected work scene, all the pass files in the list will be batched ([[UI_08]] only selects rows, and aggregation will not be performed on some selections)."
+  },
+  {
+    "id": "manual-0269",
+    "source_ja": "2分類・案件集約が完了すると、[[UI_01]] の [[UI_02]] タブへ遷移します。自動で案件にまとまったファイルは [[UI_03]] タブで確認でき、自動集約できなかったファイルは [[UI_04]] に残ります。未集約ファイルは [[UI_05]] から再度集約を実行するか、[[UI_06]] で手動紐付けを行います。",
+    "ui_text": {
+      "[[UI_01]]": "案件一覧",
+      "[[UI_02]]": "未集約ファイル",
+      "[[UI_03]]": "集約済み案件",
+      "[[UI_04]]": "未集約ファイル",
+      "[[UI_05]]": "新規アップロード",
+      "[[UI_06]]": "案件一覧"
+    },
+    "zh-CN": "2完成分类和案例聚合后，您将被移至[[UI_01]]的[[UI_02]]选项卡。自动合并到案例中的文件可以在[[UI_03]]选项卡中找到，无法自动聚合的文件将保留在[[UI_04]]中。对于未聚合的文件，请从[[UI_05]]重新执行聚合或手动与[[UI_06]]关联。",
+    "en": "2 After the classification and case aggregation is completed, you will be moved to the [[UI_02]] tab of [[UI_01]]. Files that were automatically consolidated into a case can be found in the [[UI_03]] tab, and files that could not be automatically aggregated will remain in [[UI_04]]. For unaggregated files, re-execute the aggregation from [[UI_05]] or manually associate with [[UI_06]]."
+  },
+  {
+    "id": "manual-0270",
+    "source_ja": "集約完了後は [[UI_01]] タブが開きます。自動集約に成功したファイルは [[UI_02]] タブで確認してください。",
+    "ui_text": {
+      "[[UI_01]]": "未集約ファイル",
+      "[[UI_02]]": "集約済み案件"
+    },
+    "zh-CN": "聚合完成后， [[UI_01]]选项卡将打开。检查[[UI_02]]选项卡以查找已成功自动聚合的文件。",
+    "en": "After the aggregation is completed, the [[UI_01]] tab will open. Check the [[UI_02]] tab for files that have been successfully auto-aggregated."
+  },
+  {
+    "id": "manual-0271",
+    "source_ja": "3補件・直付け経路 — [[UI_01]] · [[UI_02]] で、案件ステータスが [[UI_03]] の行の [[UI_04]] をクリックします（補件アップロード API も同じ経路。案件番号は必須）。[[UI_05]] ダイアログは対象案件 ID に固定され、[[UI_06]] の選択欄は表示されません。ファイルを追加して [[UI_07]] すると当該案件へ直接書き込まれます（形式・50MB 上限は新規集約経路と同じ）。",
+    "ui_text": {
+      "[[UI_01]]": "案件一覧",
+      "[[UI_02]]": "集約済み案件",
+      "[[UI_03]]": "補件",
+      "[[UI_04]]": "補件",
+      "[[UI_05]]": "書類追加アップロード",
+      "[[UI_06]]": "業務シーン",
+      "[[UI_07]]": "アップロード確定"
+    },
+    "zh-CN": "3补充/直接路径—在[[UI_01]] · [[UI_02]]中，单击案例状态为[[UI_03]]的行上的[[UI_04]] （补充上传API也有相同的路径）。个案编号为必填项）。[[UI_05]]对话框已固定到目标问题ID ， [[UI_06]]选择字段未显示。添加文件和[[UI_07]]后，将直接写入案例（格式/50MB限制与新聚合路由相同）。",
+    "en": "3 Supplements/Direct Path — In [[UI_01]] · [[UI_02]], click [[UI_04]] on the line with the case status [[UI_03]] (the Supplemental Upload API also has the same path). Case number is required). The [[UI_05]] dialog is fixed to the target issue ID, and the [[UI_06]] selection field is not displayed. After adding the file and [[UI_07]], it will be written directly to the case (format/50MB limit is the same as the new aggregation route)."
+  },
+  {
+    "id": "manual-0272",
+    "source_ja": "左：[[UI_01]] で [[UI_02]] をクリック → 右：[[UI_03]] で対象案件へ直接追加。",
+    "ui_text": {
+      "[[UI_01]]": "集約済み案件",
+      "[[UI_02]]": "補件",
+      "[[UI_03]]": "書類追加アップロード"
+    },
+    "zh-CN": "左：点击[[UI_01]]中的[[UI_02]]→右：直接添加到[[UI_03]]中的案例。",
+    "en": "Left: Click [[UI_02]] in [[UI_01]] → Right: Add directly to the case in [[UI_03]]."
+  },
+  {
+    "id": "manual-0273",
+    "source_ja": "4補件・集約経路 — 案件番号が分からない場合は、[[UI_01]] と同じ手順で公開済み [[UI_02]] を選び、補件書類を追加して [[UI_03]] します。関連キーが [[UI_04]] 状態の既存案件に一致すれば優先的に紐付けられ、一致しなかったファイルは [[UI_05]] に残ります（Step 2 と同様に手動紐付けまたは再実行）。",
+    "ui_text": {
+      "[[UI_01]]": "新規アップロード",
+      "[[UI_02]]": "業務シーン",
+      "[[UI_03]]": "分類・案件集約を実行",
+      "[[UI_04]]": "補件",
+      "[[UI_05]]": "未集約ファイル"
+    },
+    "zh-CN": "4补充/聚合路线—如果您不知道病例编号，请在与[[UI_01]]相同的程序中选择已发布[[UI_02]] ，添加补充文档和[[UI_03]]。如果相关键与处于[[UI_04]]状态的现有案例匹配，则将优先链接，不匹配的文件将保留在[[UI_05]]中（手动链接或重新执行，如步骤2所示）。",
+    "en": "4 Supplements/aggregation routes — If you do not know the case number, select published [[UI_02]] in the same procedure as [[UI_01]], add the supplementary documents, and [[UI_03]]. If the related key matches an existing case in the [[UI_04]] state, it will be preferentially linked, and files that do not match will remain in [[UI_05]] (manually linked or re-executed as in Step 2)."
+  },
+  {
+    "id": "manual-0274",
+    "source_ja": "本モジュールでは、案件の集約状態、配下ファイル、詳細プレビュー、ワークフロー進捗、操作ダイアログを順に確認します。保険金請求では、[[UI_01]] で進行中案件を把握し、展開後のファイル、詳細画面、担当者割当、ファイルの案件変更、未集約ファイルの手動紐付けまでを確認します。",
+    "ui_text": {
+      "[[UI_01]]": "集約済み案件"
+    },
+    "zh-CN": "在本模块中，您将按顺序看到案例聚合状态、下属文件、详细信息预览、工作流程进度和操作对话框。对于保险理赔，使用[[UI_01]]了解正在进行的案例，并检查部署后的文件、详细信息屏幕、受让人分配、文件案例更改以及未聚合文件的手动链接。",
+    "en": "In this module, you will see the case aggregation status, subordinate files, detail preview, workflow progress, and action dialog in order. For insurance claims, use [[UI_01]] to understand the case in progress, and check the file after deployment, the details screen, the assignee assignment, the file case change, and the manual linking of the unaggregated file."
+  },
+  {
+    "id": "manual-0275",
+    "source_ja": "権限：[[UI_01]]、[[UI_02]]、[[UI_03]]、または該当メニュー権限を持つユーザーが利用。[[UI_04]] は [[UI_05]] も可。[[UI_06]]（案件担当者改派）は [[UI_07]]・[[UI_08]] のみ。案件担当者は最初の人工確認ノードの指派先ロールから自動指名されますが、[[UI_09]] がここで手動改派することも可能（改派後、未完了タスク担当者も同期更新）。",
+    "ui_text": {
+      "[[UI_01]]": "admin",
+      "[[UI_02]]": "操作員",
+      "[[UI_03]]": "操作管理者",
+      "[[UI_04]]": "処理中止",
+      "[[UI_05]]": "操作員",
+      "[[UI_06]]": "割当",
+      "[[UI_07]]": "操作管理者",
+      "[[UI_08]]": "admin",
+      "[[UI_09]]": "操作管理者"
+    },
+    "zh-CN": "权限： [[UI_01]]、[[UI_02]]、[[UI_03]]或具有相应菜单权限的用户。[[UI_04]]也可以是[[UI_05]]。[[UI_06]] （任务）仅为[[UI_07]]/[[UI_08]]。个案经理将从第一个人工检查节点的分配角色自动分配，但[[UI_09]]也可以在此处手动重新分配（重新分配后，未完成的任务经理也将同步更新）。",
+    "en": "Permissions: [[UI_01]], [[UI_02]], [[UI_03]], or by a user with the appropriate menu permissions. [[UI_04]] can also be [[UI_05]]. [[UI_06]] (Assignment) is only [[UI_07]]/[[UI_08]]. The case manager will be automatically assigned from the assigned role of the first Artificial Check node, but [[UI_09]] can also manually reassign here (after reassignment, the incomplete task manager will also be updated synchronously)."
+  },
+  {
+    "id": "manual-0276",
+    "source_ja": "利用シーン：アップロード後に案件へ集約された資料、または自動集約できなかった未集約ファイルを確認します。保険金請求では、案件単位で提出書類、配下ファイル、担当者、処理ステータス、ワークフロー進捗を確認します。",
+    "ui_text": {},
+    "zh-CN": "使用场景：查看上传后聚合到案例中的材料，或无法自动聚合的未聚合文件。索赔会逐案审查提交、下属文件、受理人、处理状态和工作流程进度。",
+    "en": "Usage scenario: Review the material that was aggregated into the case after uploading, or the unaggregated file that could not be automatically aggregated. Claims review the submission, subordinate files, assignee, processing status, and workflow progress on a case-by-case basis."
+  },
+  {
+    "id": "manual-0277",
+    "source_ja": "確認ロジック：[[UI_01]] では、案件単位にまとまったファイルと進捗を確認します。[[UI_02]] では、分類または案件集約に失敗したファイルを確認し、再集約または手動紐付けを行います。",
+    "ui_text": {
+      "[[UI_01]]": "集約済み案件",
+      "[[UI_02]]": "未集約ファイル"
+    },
+    "zh-CN": "验证逻辑：在[[UI_01]]中，检查案例单元的文件和进度。在[[UI_02]]中，查看未能分类或聚合的文件，并重新聚合或手动链接它们。",
+    "en": "Validation logic: In [[UI_01]], check the file and progress of the case unit. In [[UI_02]], review the files that failed to be classified or aggregated, and re-aggregate or manually link them."
+  },
+  {
+    "id": "manual-0278",
+    "source_ja": "1[[UI_01]] タブで、案件 ID、業務シーン、業務 key、作成日時、更新日時、ファイル数、入力済書類、案件ステータス、担当者を確認します。案件 ID または [[UI_02]] から詳細画面へ進めます。上部の検索条件で絞り込み、[[UI_03]] で配下ファイルを一括表示できます。",
+    "ui_text": {
+      "[[UI_01]]": "集約済み案件",
+      "[[UI_02]]": "詳細",
+      "[[UI_03]]": "すべて展開"
+    },
+    "zh-CN": "1在[[UI_01]]选项卡中，查看案例ID、工作场景、工作密钥、创建日期和时间、更新日期和时间、文件数量、输入的文档、案例状态和负责人。从个案ID或[[UI_02]]进入详细信息屏幕。您可以按顶部的搜索条件进行筛选，并使用[[UI_03]]批量显示下级文件。",
+    "en": "1 In the [[UI_01]] tab, check the case ID, work scene, work key, creation date and time, update date and time, number of files, entered documents, case status, and person in charge. Proceed to the details screen from the case ID or [[UI_02]]. You can filter by the search criteria at the top and use [[UI_03]] to display the subordinate files in bulk."
+  },
+  {
+    "id": "manual-0279",
+    "source_ja": "2案件行を展開すると、配下ファイルのファイル名、帳票タイプ、アップロード日時、更新日時、帳票枚数、ファイルサイズ、ファイルステータスを確認できます。各行の [[UI_01]]、[[UI_02]]、[[UI_03]] でファイル単位の操作が可能です。案件行では [[UI_04]]、[[UI_05]]、[[UI_06]]、[[UI_07]] が利用できます。",
+    "ui_text": {
+      "[[UI_01]]": "プレビュー",
+      "[[UI_02]]": "案件変更",
+      "[[UI_03]]": "削除",
+      "[[UI_04]]": "詳細",
+      "[[UI_05]]": "割当",
+      "[[UI_06]]": "処理中止",
+      "[[UI_07]]": "削除"
+    },
+    "zh-CN": "展开两个案例行时，可以查看下级文件的文件名、文档类型、上传日期和时间、更新日期和时间、文档数量、文件大小和文件状态。您可以在每行[[UI_01]]、[[UI_02]]和[[UI_03]]中逐个文件进行操作。[[UI_04]]、[[UI_05]]、[[UI_06]]和[[UI_07]]在案例行中可用。",
+    "en": "When you expand the two case lines, you can check the file name, document type, upload date and time, update date and time, number of documents, file size, and file status of the subordinate file. You can operate on a file-by-file basis in [[UI_01]], [[UI_02]], and [[UI_03]] on each line. [[UI_04]], [[UI_05]], [[UI_06]], and [[UI_07]] are available in the case row."
+  },
+  {
+    "id": "manual-0280",
+    "source_ja": "3案件 ID または [[UI_01]] から詳細画面を開き、[[UI_02]] タブで帳票タイプ別のツリーと画像プレビューを確認します。プレビュー上のツールバーで拡大・回転ができ、不要ファイルは [[UI_03]] で除去できます。",
+    "ui_text": {
+      "[[UI_01]]": "詳細",
+      "[[UI_02]]": "ファイル一覧",
+      "[[UI_03]]": "削除"
+    },
+    "zh-CN": "3打开病例ID或[[UI_01]]中的详细信息屏幕，并在[[UI_02]]选项卡上按文档类型检查树和图像预览。您可以在预览的工具栏中放大和旋转，并使用[[UI_03]]删除不必要的文件。",
+    "en": "3 Open the details screen from the case ID or [[UI_01]] and check the tree and image preview by document type on the [[UI_02]] tab. You can enlarge and rotate in the toolbar on the preview, and remove unnecessary files with [[UI_03]]."
+  },
+  {
+    "id": "manual-0281",
+    "source_ja": "4[[UI_01]] タブでは、[[UI_02]] で本案件の経路（実線）と未採用分岐（点線）を確認し、[[UI_03]] で各ノードの開始・完了日時と担当者、[[UI_04]] でファイル単位の OCR 進捗を確認します。",
+    "ui_text": {
+      "[[UI_01]]": "ワークフロー明細",
+      "[[UI_02]]": "処理フロー",
+      "[[UI_03]]": "経過ノード",
+      "[[UI_04]]": "ファイル処理明細"
+    },
+    "zh-CN": "4在[[UI_01]]选项卡中，查看[[UI_02]]中本项目的路由（实线）和未招募的分支（虚线） ，查看[[UI_03]]中每个节点和负责人的开始/完成日期和时间，并在[[UI_04]]中逐文件查看OCR进度。",
+    "en": "4 In the [[UI_01]] tab, check the route (solid line) and unrecruited branch (dotted line) of this project in [[UI_02]], check the start/completion date and time of each node and the person in charge in [[UI_03]], and check the OCR progress on a file-by-file basis in [[UI_04]]."
+  },
+  {
+    "id": "manual-0282",
+    "source_ja": "5[[UI_01]] で [[UI_02]] を改派（[[UI_03]] のみ）。[[UI_04]] でワークフローを終了し未完了タスクを無効化（[[UI_05]]・[[UI_06]]、確認ダイアログで [[UI_07]]）。",
+    "ui_text": {
+      "[[UI_01]]": "割当",
+      "[[UI_02]]": "案件担当者",
+      "[[UI_03]]": "操作管理者",
+      "[[UI_04]]": "処理中止",
+      "[[UI_05]]": "操作員",
+      "[[UI_06]]": "操作管理者",
+      "[[UI_07]]": "OK"
+    },
+    "zh-CN": "在5 [[UI_01]]中重新分发[[UI_02]] （仅[[UI_03]] ）。在[[UI_04]]中结束工作流并禁用未完成的任务（确认对话框中的[[UI_05]]/[[UI_06]]、[[UI_07]] ）。",
+    "en": "Redistribute [[UI_02]] in 5 [[UI_01]] ([[UI_03]] only). End the workflow in [[UI_04]] and disable the incomplete tasks ([[UI_05]]/[[UI_06]], [[UI_07]] in the confirmation dialog)."
+  },
+  {
+    "id": "manual-0283",
+    "source_ja": "6展開後のファイル行で [[UI_01]] をクリックし、帳票タイプ・関連 key・紐付け先案件を指定して別案件へ移動します。分類失敗などで誤った案件に紐付いたファイルの修正に使います。",
+    "ui_text": {
+      "[[UI_01]]": "案件変更"
+    },
+    "zh-CN": "6展开后在文件行点击[[UI_01]] ，指定文档类型、相关密钥、链接问题，移至另一个问题。它用于修复与分类失败等错误情况相关的文件。",
+    "en": "6 Click [[UI_01]] in the file line after expansion, specify the document type, related key, and linked issue, and move to another issue. It is used to fix files associated with incorrect cases such as classification failures."
+  },
+  {
+    "id": "manual-0284",
+    "source_ja": "7[[UI_01]] タブでは、自動集約に失敗したファイル（集約ステータス [[UI_02]]、失敗理由など）を確認します。[[UI_03]] で再処理するか、[[UI_04]] で [[UI_05]] ダイアログを開き、帳票タイプと紐付け先案件を指定します。",
+    "ui_text": {
+      "[[UI_01]]": "未集約ファイル",
+      "[[UI_02]]": "紐づけ失敗",
+      "[[UI_03]]": "案件集約を実行",
+      "[[UI_04]]": "手動紐付け",
+      "[[UI_05]]": "手動校正"
+    },
+    "zh-CN": "7在[[UI_01]]选项卡中，检查未能自动聚合的文件（聚合状态[[UI_02]]、失败原因等）。在[[UI_03]]中重新处理或在[[UI_04]]中打开[[UI_05]]对话框，并指定文档类型和链接的问题。",
+    "en": "7 In the [[UI_01]] tab, check the files that failed to be automatically aggregated (aggregation status [[UI_02]], failure reason, etc.). Reprocess in [[UI_03]] or open the [[UI_05]] dialog in [[UI_04]] and specify the document type and the linked issue."
+  },
+  {
+    "id": "manual-0285",
+    "source_ja": "マイタスク",
+    "ui_text": {},
+    "zh-CN": "我的任务",
+    "en": "My tasks"
+  },
+  {
+    "id": "manual-0286",
+    "source_ja": "本章では、ワークフローから起票された作業を確認し、割当先のロールまたは担当者が必要な確認・修正・出力を行います。マイタスクは、人工確認とエクスポートの実行入口です。[[UI_01]] は全体権限として本章の機能も利用できます。",
+    "ui_text": {
+      "[[UI_01]]": "admin"
+    },
+    "zh-CN": "在本章中，我们将回顾工作流程中提出的工作，并根据需要由分配的角色或负责人进行确认、修改和输出。“我的任务”是执行手动检查和导出的入口点。[[UI_01]]还可以将本章中的功能用作完全权限。",
+    "en": "In this chapter, we will review the work raised from the workflow, and confirm, modify, and output as necessary by the assigned role or person in charge. My Tasks is the entry point for performing manual checks and exports. [[UI_01]] can also use the features in this chapter as full permissions."
+  },
+  {
+    "id": "manual-0287",
+    "source_ja": "権限：該当ロールまたは担当者に表示。操作員は [[UI_01]] のみ、[[UI_02]] は操作管理者・[[UI_03]] のみ（[[UI_04]] の改派とは独立）。人工確認ノードの指派先は操作員・操作管理者のみ選択可能で、最初の人工確認ノードで選択したロールから案件担当者が自動指名されます。以降同じロールの人工確認ノードは同一担当者が継続処理し、ロール切替時に新ロールから再指名されます。",
+    "ui_text": {
+      "[[UI_01]]": "対応",
+      "[[UI_02]]": "割当",
+      "[[UI_03]]": "admin",
+      "[[UI_04]]": "案件一覧"
+    },
+    "zh-CN": "权限：适用的角色或受理人可见。操作员仅为[[UI_01]] ， [[UI_02]]仅为操作管理员， [[UI_03]] （独立于[[UI_04]]的重新分配）。只能选择操作员/操作经理分配手动确认节点，个案经理将从第一个手动确认节点中选择的角色自动分配。之后，同一角色的手动确认节点将继续由同一负责人处理，并在角色切换时从新角色重新任命。",
+    "en": "Permissions: visible to the applicable role or assignee. The operator is only [[UI_01]], and [[UI_02]] is only the operation administrator, [[UI_03]] (independent of the reassignment of [[UI_04]]). Only the operator/operation manager can be selected to assign the manual confirmation node, and the case manager will be automatically assigned from the role selected in the first manual confirmation node. After that, the manual confirmation node of the same role will continue to be processed by the same person in charge, and will be reappointed from the new role when the role is switched."
+  },
+  {
+    "id": "manual-0288",
+    "source_ja": "処理対象：本画面では [[UI_01]]、[[UI_02]]、[[UI_03]] の 3 種類のタスクを扱います。前処理確認タスクは本期対象外です。",
+    "ui_text": {
+      "[[UI_01]]": "OCR 抽出確認",
+      "[[UI_02]]": "AI 検証確認",
+      "[[UI_03]]": "エクスポート"
+    },
+    "zh-CN": "处理目标：此屏幕处理三种类型的任务： [[UI_01]]、[[UI_02]]和[[UI_03]]。预处理确认任务不符合此问题的条件。",
+    "en": "Processing target: This screen handles three types of tasks: [[UI_01]], [[UI_02]], and [[UI_03]]. Preprocessing confirmation tasks are not eligible for this issue."
+  },
+  {
+    "id": "manual-0289",
+    "source_ja": "タスク種別",
+    "ui_text": {},
+    "zh-CN": "任务类型",
+    "en": "Task Type"
+  },
+  {
+    "id": "manual-0290",
+    "source_ja": "発生する場面",
+    "ui_text": {},
+    "zh-CN": "发生次数",
+    "en": "Occurrence"
+  },
+  {
+    "id": "manual-0291",
+    "source_ja": "担当者が行うこと",
+    "ui_text": {},
+    "zh-CN": "负责人将做什么",
+    "en": "What the person in charge will do"
+  },
+  {
+    "id": "manual-0292",
+    "source_ja": "完了後の動き",
+    "ui_text": {},
+    "zh-CN": "完成后的移动",
+    "en": "Movement after completion"
+  },
+  {
+    "id": "manual-0293",
+    "source_ja": "OCR 値の信頼度が低い、モデル間で結果が一致しない、マスタ照合の候補が確定できない場合。",
+    "ui_text": {},
+    "zh-CN": "OCR值可靠性较低时，模型间结果不匹配，无法确认主验证候选。",
+    "en": "When the reliability of the OCR value is low, the results do not match between models, and the candidate for master verification cannot be confirmed."
+  },
+  {
+    "id": "manual-0294",
+    "source_ja": "帳票画像と抽出値を照合し、テキスト・テーブル・マスタ候補を確認、必要に応じて修正します。",
+    "ui_text": {},
+    "zh-CN": "将表单图像与提取值进行匹配，检查文本表主候选，必要时进行修改。",
+    "en": "Match the form image with the extraction value, check the text table master candidate, and modify it if necessary."
+  },
+  {
+    "id": "manual-0295",
+    "source_ja": "[[UI_01]] で後続ノードへ進みます。補件または案件中止を選択することもできます。",
+    "ui_text": {
+      "[[UI_01]]": "OCR 抽出完了"
+    },
+    "zh-CN": "按[[UI_01]]进入下一个节点。您也可以选择附加或中止个案。",
+    "en": "Press [[UI_01]] to proceed to the next node. You can also choose to attach or discontinue the case."
+  },
+  {
+    "id": "manual-0296",
+    "source_ja": "AI 検証ノード実行後、1 件以上の検証ルールが [[UI_01]] となった場合（必須フィールド不足、必要書類不足、標準データ不整合、テキスト検証 NG、データ検証 NG、署名・印影不足など）。",
+    "ui_text": {
+      "[[UI_01]]": "確認待ち"
+    },
+    "zh-CN": "当一个或多个验证规则在AI验证节点执行后变为[[UI_01]]时（缺少必填字段、缺少必填文档、标准数据不一致、文本验证NG、数据验证NG、缺少签名/印记等）。",
+    "en": "When one or more validation rules become [[UI_01]] after the AI validation node is executed (missing required fields, missing required documents, inconsistent standard data, text validation NG, data validation NG, lack of signature/imprint, etc.)."
+  },
+  {
+    "id": "manual-0297",
+    "source_ja": "[[UI_01]] で当該案件の実行済み検証ルールをすべて確認します。緑の [[UI_02]] は確認済みのルール、青の [[UI_03]] は人工確認対象です。要確認ルールについて判定理由・対象帳票・フィールドを確認し、[[UI_04]]・補件・案件中止を選択します。",
+    "ui_text": {
+      "[[UI_01]]": "AI 検証要約結果",
+      "[[UI_02]]": "確認済み",
+      "[[UI_03]]": "確認待ち",
+      "[[UI_04]]": "確認済み"
+    },
+    "zh-CN": "查看[[UI_01]]中案例的所有已执行验证规则。绿色的[[UI_02]]是一个已确认的规则，蓝色的[[UI_03]]是经过人工验证的。对于确认规则，请检查判断原因、目标文档和字段，并选择[[UI_04]]、补充和案例取消。",
+    "en": "Review all executed validation rules for the case in [[UI_01]]. The green [[UI_02]] is a confirmed rule, and the blue [[UI_03]] is subject to artificial verification. For the confirmation rule, check the reason for the judgment, the target document, and the field, and select [[UI_04]], Supplement, and Case Cancellation."
+  },
+  {
+    "id": "manual-0298",
+    "source_ja": "[[UI_01]] で後続ノードへ進みます。補件時は案件一覧から追加書類を受け付けます。",
+    "ui_text": {
+      "[[UI_01]]": "AI 検証完了"
+    },
+    "zh-CN": "按[[UI_01]]进入下一个节点。其他文件将在提交时从案例列表中接受。",
+    "en": "Press [[UI_01]] to proceed to the next node. Additional documents will be accepted from the case list at the time of filing."
+  },
+  {
+    "id": "manual-0299",
+    "source_ja": "ワークフローの確認処理が完了し、出力可能になった場合。",
+    "ui_text": {},
+    "zh-CN": "当工作流程的确认过程完成并可以输出时。",
+    "en": "When the confirmation process of the workflow is completed and can be output."
+  },
+  {
+    "id": "manual-0300",
+    "source_ja": "業務シーン設定の出力項目に沿って内容を確認し、結果を提出します。",
+    "ui_text": {},
+    "zh-CN": "根据业务场景设置输出项对内容进行审核并提交结果。",
+    "en": "Review the contents according to the output items of the business scene settings and submit the results."
+  },
+  {
+    "id": "manual-0301",
+    "source_ja": "提出後、案件は [[UI_01]] として扱われます。",
+    "ui_text": {
+      "[[UI_01]]": "エクスポート済"
+    },
+    "zh-CN": "提交后，个案将被视为[[UI_01]]。",
+    "en": "Once submitted, the case will be treated as [[UI_01]]."
+  },
+  {
+    "id": "manual-0302",
+    "source_ja": "1[[UI_01]] / [[UI_02]] でタスクを切り替え、タスク種別・案件キー・業務シーン・業務 key で絞り込みます。未対応行の [[UI_03]] で実行ページへ進みます。",
+    "ui_text": {
+      "[[UI_01]]": "未対応",
+      "[[UI_02]]": "対応済",
+      "[[UI_03]]": "対応"
+    },
+    "zh-CN": "在1 [[UI_01]]/[[UI_02]]中切换任务，并按任务类型、项目密钥、业务场景和业务密钥进行筛选。在不支持的行上使用[[UI_03]]进入执行页面。",
+    "en": "Switch tasks in 1 [[UI_01]]/[[UI_02]], and filter by task type, project key, business scene, and business key. Proceed to the execution page with [[UI_03]] on the unsupported line."
+  },
+  {
+    "id": "manual-0303",
+    "source_ja": "2[[UI_01]]：一覧の [[UI_02]] から実行画面を開き、左の帳票プレビューと右の [[UI_03]] / [[UI_04]] で抽出値を確認・修正します。[[UI_05]] を ON にすると切り出し画像と帳票上の対応領域が連動します。マスタ照合フィールドでは [[UI_06]] 候補から正規値を選べます。確認後、フッターの [[UI_07]] で後続ノードへ進みます。",
+    "ui_text": {
+      "[[UI_01]]": "OCR 抽出確認",
+      "[[UI_02]]": "対応",
+      "[[UI_03]]": "テキスト読取",
+      "[[UI_04]]": "テーブル情報読取",
+      "[[UI_05]]": "項目位置を非表示",
+      "[[UI_06]]": "類似度検索",
+      "[[UI_07]]": "OCR 抽出完了"
+    },
+    "zh-CN": "2 [[UI_01]] ：从列表中的[[UI_02]]打开执行屏幕，并在左侧的表单预览和右侧的[[UI_03]]/[[UI_04]]中检查和修改提取的值。当[[UI_05]]打开时，剪切图像与表单上的相应区域链接。在主排序规则字段中，您可以从[[UI_06]]候选中选择一个正常值。确认后，按下页脚中的[[UI_07]]进入下一个节点。",
+    "en": "2 [[UI_01]]: Open the execution screen from [[UI_02]] in the list, and check and modify the extracted values in the form preview on the left and in [[UI_03]]/[[UI_04]] on the right. When [[UI_05]] is turned on, the cutout image and the corresponding area on the form are linked. In the master collation field, you can select a normal value from [[UI_06]] candidates. After confirming, press [[UI_07]] in the footer to proceed to the next node."
+  },
+  {
+    "id": "manual-0304",
+    "source_ja": "Step2：一覧から OCR 抽出確認画面への遷移。",
+    "ui_text": {},
+    "zh-CN": "第2步：从列表过渡到OCR提取确认屏幕。",
+    "en": "Step 2: Transition from the list to the OCR extraction confirmation screen."
+  },
+  {
+    "id": "manual-0305",
+    "source_ja": "Step2：[[UI_01]] と [[UI_02]]、マスタ照合候補の確認。",
+    "ui_text": {
+      "[[UI_01]]": "テキスト読取",
+      "[[UI_02]]": "テーブル情報読取"
+    },
+    "zh-CN": "第2步：检查[[UI_01]]和[[UI_02]]是否有可能的主匹配。",
+    "en": "Step 2: Check [[UI_01]] and [[UI_02]] for possible master matching."
+  },
+  {
+    "id": "manual-0306",
+    "source_ja": "3[[UI_01]]：[[UI_02]] タブで実行済み検証ルールを確認します。緑の [[UI_03]] は確認済みのルール、青の [[UI_04]] は人工確認対象です。[[UI_05]]・[[UI_06]]・[[UI_07]]・[[UI_08]]・[[UI_09]]・[[UI_10]] ごとに判定理由と対象帳票を確認し、問題なければ [[UI_11]] に更新します。すべて処理したら [[UI_12]] で後続ノードへ進みます。",
+    "ui_text": {
+      "[[UI_01]]": "AI 検証確認",
+      "[[UI_02]]": "AI 検証要約結果",
+      "[[UI_03]]": "確認済み",
+      "[[UI_04]]": "確認待ち",
+      "[[UI_05]]": "必須フィールド",
+      "[[UI_06]]": "必要書類",
+      "[[UI_07]]": "標準データ整合性",
+      "[[UI_08]]": "テキスト検証",
+      "[[UI_09]]": "データ検証",
+      "[[UI_10]]": "署名・印鑑検証",
+      "[[UI_11]]": "確認済み",
+      "[[UI_12]]": "AI 検証完了"
+    },
+    "zh-CN": "3 [[UI_01]] ：在[[UI_02]]选项卡上查看已执行的验证规则。绿色的[[UI_03]]是已确认的规则，蓝色的[[UI_04]]需要进行人工验证。[[UI_05]] · [[UI_06]] · [[UI_07]] · [[UI_08]] · [[UI_09]] · [[UI_10]]检查判断原因和目标表单，如果没有问题，将其更新为[[UI_11]]。处理完所有内容后，转到[[UI_12]]中的下一个节点。",
+    "en": "3 [[UI_01]]: Review the executed validation rules on the [[UI_02]] tab. The green [[UI_03]] is a confirmed rule, and the blue [[UI_04]] is subject to artificial verification. [[UI_05]] · [[UI_06]] · [[UI_07]] · [[UI_08]] · [[UI_09]] · [[UI_10]] Check the judgment reason and the target form, and update it to [[UI_11]] if there is no problem. Once everything is processed, go to the next node in [[UI_12]]."
+  },
+  {
+    "id": "manual-0307",
+    "source_ja": "Step3：[[UI_01]] と各モジュールの確認待ちルール。",
+    "ui_text": {
+      "[[UI_01]]": "AI 検証要約結果"
+    },
+    "zh-CN": "第3步： [[UI_01]]和每个模块的等待规则。",
+    "en": "Step 3: [[UI_01]] and waiting rules for each module."
+  },
+  {
+    "id": "manual-0308",
+    "source_ja": "4[[UI_01]]：[[UI_02]]（CSV / JSON / EXCEL）を選び、左の [[UI_03]] ツリーと右のプレビューで出力内容を確認します。[[UI_04]] で結果ファイルを出力し、必要に応じて [[UI_05]] を取得したうえで [[UI_06]] をクリックします。",
+    "ui_text": {
+      "[[UI_01]]": "エクスポート",
+      "[[UI_02]]": "出力形式",
+      "[[UI_03]]": "エクスポート対象",
+      "[[UI_04]]": "処理結果をエクスポート",
+      "[[UI_05]]": "前処理済み ZIP",
+      "[[UI_06]]": "エクスポート完了"
+    },
+    "zh-CN": "4 [[UI_01]] ：选择[[UI_02]] （ CSV/JSON/Excel ）并在左侧的[[UI_03]]树和右侧的预览中检查输出。在[[UI_04]]中输出结果文件，必要时获取[[UI_05]] ，然后点击[[UI_06]]。",
+    "en": "4 [[UI_01]]: Select [[UI_02]] (CSV/JSON/Excel) and check the output in the [[UI_03]] tree on the left and the preview on the right. Output the result file in [[UI_04]], obtain [[UI_05]] if necessary, and then click [[UI_06]]."
+  },
+  {
+    "id": "manual-0309",
+    "source_ja": "Step4：出力形式・対象ファイル・フィールド値の確認とエクスポート。",
+    "ui_text": {},
+    "zh-CN": "第4步：确认并导出输出格式、目标文件和字段值。",
+    "en": "Step 4: Confirm and export the output format, target file, and field value."
+  },
+  {
+    "id": "manual-0310",
+    "source_ja": "5[[UI_01]] でタスク担当者を変更（操作管理者のみ）。",
+    "ui_text": {
+      "[[UI_01]]": "割当"
+    },
+    "zh-CN": "在5 [[UI_01]]中更改任务指派对象（仅限运营管理员）。",
+    "en": "Change the task assignee in 5 [[UI_01]] (Operations Administrator only)."
+  },
+  {
+    "id": "manual-0311",
+    "source_ja": "[[UI_01]]、[[UI_02]]、[[UI_03]] で、アカウント・メニュー権限・データ保存期限を管理します。",
+    "ui_text": {
+      "[[UI_01]]": "ユーザー管理",
+      "[[UI_02]]": "権限管理",
+      "[[UI_03]]": "セキュリティ設定"
+    },
+    "zh-CN": "使用[[UI_01]]、[[UI_02]]和[[UI_03]]来管理您的帐户、菜单权限和数据保留期。",
+    "en": "Use [[UI_01]], [[UI_02]], and [[UI_03]] to manage your account, menu permissions, and data retention periods."
+  },
+  {
+    "id": "manual-0312",
+    "source_ja": "ユーザー管理",
+    "ui_text": {},
+    "zh-CN": "用户管理",
+    "en": "User management"
+  },
+  {
+    "id": "manual-0313",
+    "source_ja": "ユーザーの作成、権限割当、状態管理を行います。",
+    "ui_text": {},
+    "zh-CN": "创建用户、分配权限和管理状态。",
+    "en": "Create users, assign permissions, and manage state."
+  },
+  {
+    "id": "manual-0314",
+    "source_ja": "操作ポイント",
+    "ui_text": {},
+    "zh-CN": "操作点",
+    "en": "Operation points"
+  },
+  {
+    "id": "manual-0315",
+    "source_ja": "1[[UI_01]] → [[UI_02]] を開き、[[UI_03]] でユーザーを作成します。画面上部の [[UI_04]] で上限（例：1/50）を確認できます。",
+    "ui_text": {
+      "[[UI_01]]": "システム設定",
+      "[[UI_02]]": "ユーザー管理",
+      "[[UI_03]]": "+ ユーザー追加",
+      "[[UI_04]]": "有効なユーザー"
+    },
+    "zh-CN": "打开1 [[UI_01]] → [[UI_02]]并在[[UI_03]]中创建用户。您可以在屏幕顶部的[[UI_04]]中查看上限（例如1/50 ）。",
+    "en": "Open 1 [[UI_01]] → [[UI_02]] and create a user in [[UI_03]]. You can check the upper limit (e.g. 1/50) in [[UI_04]] at the top of the screen."
+  },
+  {
+    "id": "manual-0316",
+    "source_ja": "2既存ユーザーは [[UI_01]]、[[UI_02]]、[[UI_03]]、[[UI_04]] で管理します。",
+    "ui_text": {
+      "[[UI_01]]": "無効",
+      "[[UI_02]]": "編集",
+      "[[UI_03]]": "パスワードリセット",
+      "[[UI_04]]": "削除"
+    },
+    "zh-CN": "2现有用户由[[UI_01]]、[[UI_02]]、[[UI_03]]和[[UI_04]]管理。",
+    "en": "2 Existing users are managed by [[UI_01]], [[UI_02]], [[UI_03]], and [[UI_04]]."
+  },
+  {
+    "id": "manual-0317",
+    "source_ja": "権限テンプレートを作成し、各ロールがアクセスできるメニュー範囲を設定します。",
+    "ui_text": {},
+    "zh-CN": "创建权限模板并设置每个角色可以访问的菜单范围。",
+    "en": "Create a permission template and set the menu range that each role can access."
+  },
+  {
+    "id": "manual-0318",
+    "source_ja": "1[[UI_01]] → [[UI_02]] を開き、[[UI_03]] で権限テンプレートを作成します。",
+    "ui_text": {
+      "[[UI_01]]": "システム設定",
+      "[[UI_02]]": "権限管理",
+      "[[UI_03]]": "+ 権限追加"
+    },
+    "zh-CN": "打开1 [[UI_01]] → [[UI_02]]并在[[UI_03]]中创建权限模板。",
+    "en": "Open 1 [[UI_01]] → [[UI_02]] and create a permission template in [[UI_03]]."
+  },
+  {
+    "id": "manual-0319",
+    "source_ja": "2一覧の [[UI_01]] を開き、付与する機能モジュールを選択して [[UI_02]] で保存します。",
+    "ui_text": {
+      "[[UI_01]]": "メニュー権限",
+      "[[UI_02]]": "OK"
+    },
+    "zh-CN": "2在列表中打开[[UI_01]] ，选择要授予的功能模块，并将其保存在[[UI_02]]中。",
+    "en": "2 Open [[UI_01]] in the list, select the function module to be granted, and save it in [[UI_02]]."
+  },
+  {
+    "id": "manual-0320",
+    "source_ja": "セキュリティ設定",
+    "ui_text": {},
+    "zh-CN": "安全设置",
+    "en": "Security Settings"
+  },
+  {
+    "id": "manual-0321",
+    "source_ja": "データ保存期限とアイドルセッション（自動ログアウト）を設定します。",
+    "ui_text": {},
+    "zh-CN": "设置数据保留期和空闲会话（自动注销）。",
+    "en": "Set the data retention period and idle session (automatic logout)."
+  },
+  {
+    "id": "manual-0322",
+    "source_ja": "1[[UI_01]] → [[UI_02]] を開きます。",
+    "ui_text": {
+      "[[UI_01]]": "システム設定",
+      "[[UI_02]]": "セキュリティ設定"
+    },
+    "zh-CN": "打开1个[[UI_01]] → [[UI_02]]。",
+    "en": "Open 1 [[UI_01]] → [[UI_02]]."
+  },
+  {
+    "id": "manual-0323",
+    "source_ja": "2[[UI_01]] で読取データの自動削除サイクルを選びます（7 日～12 ヶ月）。期限超過後のデータは復元できません。",
+    "ui_text": {
+      "[[UI_01]]": "データ保存期限設定"
+    },
+    "zh-CN": "在2 [[UI_01]]中，选择自动数据删除周期（ 7天至12个月）。逾期数据无法恢复。",
+    "en": "In 2 [[UI_01]], select the automatic data deletion cycle (7 days to 12 months). Overdue data cannot be restored."
+  },
+  {
+    "id": "manual-0324",
+    "source_ja": "3[[UI_01]] で [[UI_02]] を選び（15 分～2 時間、または制限なし）、[[UI_03]] します。",
+    "ui_text": {
+      "[[UI_01]]": "アイドルセッション設定",
+      "[[UI_02]]": "自動ログアウト時間",
+      "[[UI_03]]": "保存"
+    },
+    "zh-CN": "在3 [[UI_01]]中，选择[[UI_02]] （ 15分钟至2小时，或无限制）和[[UI_03]]。",
+    "en": "In 3 [[UI_01]], select [[UI_02]] (15 minutes to 2 hours, or no limit) and [[UI_03]]."
+  },
+  {
+    "id": "manual-0325",
+    "source_ja": "モデル設定 API 接続と接続追加を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开模型设置API连接和连接添加",
+    "en": "Expand Model Settings API Connections and Connection Additions"
+  },
+  {
+    "id": "manual-0326",
+    "source_ja": "モデル設定 API 接続と接続追加",
+    "ui_text": {},
+    "zh-CN": "模型设置API连接和添加连接",
+    "en": "Model Settings API Connection and Add Connection"
+  },
+  {
+    "id": "manual-0327",
+    "source_ja": "接続追加 プロバイダ選択を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开连接添加提供程序选择",
+    "en": "Expand connection add provider selection"
+  },
+  {
+    "id": "manual-0328",
+    "source_ja": "接続追加 プロバイダ選択",
+    "ui_text": {},
+    "zh-CN": "选择其他连接提供商",
+    "en": "Select Additional Connection Providers"
+  },
+  {
+    "id": "manual-0329",
+    "source_ja": "モデル設定 用途割当を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开模型配置使用分配",
+    "en": "Expand Model Configuration Usage Assignment"
+  },
+  {
+    "id": "manual-0330",
+    "source_ja": "モデル設定 用途割当",
+    "ui_text": {},
+    "zh-CN": "模型配置使用分配",
+    "en": "Model Configuration Usage Assignment"
+  },
+  {
+    "id": "manual-0331",
+    "source_ja": "API設定 APIキー管理を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开API设置API密钥管理",
+    "en": "Expand API Settings API Key Management"
+  },
+  {
+    "id": "manual-0332",
+    "source_ja": "API設定 APIキー管理",
+    "ui_text": {},
+    "zh-CN": "API设置API密钥管理",
+    "en": "API Settings API Key Management"
+  },
+  {
+    "id": "manual-0333",
+    "source_ja": "API設定 APIキー発行ダイアログを拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开API设置API密钥发布对话框",
+    "en": "Expand API Settings API Key Publishing Dialog"
+  },
+  {
+    "id": "manual-0334",
+    "source_ja": "API設定 APIキー発行ダイアログ",
+    "ui_text": {},
+    "zh-CN": "API设置API密钥发布对话框",
+    "en": "API Settings API Key Publishing Dialog"
+  },
+  {
+    "id": "manual-0335",
+    "source_ja": "API設定 通知先URLを拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开API设置通知目标URL",
+    "en": "Expand API settings notification destination URL"
+  },
+  {
+    "id": "manual-0336",
+    "source_ja": "API設定 通知先URLの編集を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开编辑API设置通知目标URL",
+    "en": "Expand edit API settings notification destination URL"
+  },
+  {
+    "id": "manual-0337",
+    "source_ja": "API設定 通知先URLの編集",
+    "ui_text": {},
+    "zh-CN": "编辑API设置通知目标URL",
+    "en": "Edit API Settings Notification Destination URL"
+  },
+  {
+    "id": "manual-0338",
+    "source_ja": "API設定 API URLを拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开API设置API URL",
+    "en": "Expand API Settings API URL"
+  },
+  {
+    "id": "manual-0339",
+    "source_ja": "マスターデータ設定 マスター追加を拡大表示",
+    "ui_text": {},
+    "zh-CN": "放大主数据设置主添加",
+    "en": "Enlarge master data setting master addition"
+  },
+  {
+    "id": "manual-0340",
+    "source_ja": "マスターデータ設定 マスター追加",
+    "ui_text": {},
+    "zh-CN": "主数据配置主已添加",
+    "en": "Master Data Configuration Master Added"
+  },
+  {
+    "id": "manual-0341",
+    "source_ja": "マスターデータ設定 列設定を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开主数据设置列设置",
+    "en": "Expand master data settings column settings"
+  },
+  {
+    "id": "manual-0342",
+    "source_ja": "マスターデータ設定 列設定",
+    "ui_text": {},
+    "zh-CN": "主数据设置列设置",
+    "en": "Master Data Settings Column Settings"
+  },
+  {
+    "id": "manual-0343",
+    "source_ja": "マスターデータ設定 一括インポートを拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开主数据设置批量导入",
+    "en": "Expand Master Data Settings Batch Import"
+  },
+  {
+    "id": "manual-0344",
+    "source_ja": "マスターデータ設定 一括インポート",
+    "ui_text": {},
+    "zh-CN": "批量导入主数据设置",
+    "en": "Batch Import Master Data Settings"
+  },
+  {
+    "id": "manual-0345",
+    "source_ja": "マスターデータ設定 データ一覧とベクトル化状態を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开主数据配置数据列表和矢量化状态",
+    "en": "Expand master data configuration data list and vectorization status"
+  },
+  {
+    "id": "manual-0346",
+    "source_ja": "マスターデータ設定 データ一覧とベクトル化状態",
+    "ui_text": {},
+    "zh-CN": "主数据配置数据列表和矢量化状态",
+    "en": "Master data configuration data list and vectorization state"
+  },
+  {
+    "id": "manual-0347",
+    "source_ja": "帳票タイプ設定の5ステップを拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开文档类型设置的5个步骤",
+    "en": "Expand the 5 steps of document type setting"
+  },
+  {
+    "id": "manual-0348",
+    "source_ja": "帳票タイプ設定 5ステップ",
+    "ui_text": {},
+    "zh-CN": "文档类型设置5个步骤",
+    "en": "Document Type Setup 5 Steps"
+  },
+  {
+    "id": "manual-0349",
+    "source_ja": "帳票タイプ設定 タイプ追加を拡大表示",
+    "ui_text": {},
+    "zh-CN": "文档类型设置类型添加的放大视图",
+    "en": "Enlarged view of document type setting type addition"
+  },
+  {
+    "id": "manual-0350",
+    "source_ja": "帳票タイプ設定 タイプ追加",
+    "ui_text": {},
+    "zh-CN": "添加了文档类型设置类型",
+    "en": "Added document type setting type"
+  },
+  {
+    "id": "manual-0351",
+    "source_ja": "帳票タイプ設定 テンプレートダウンロードと一括インポートを拡大表示",
+    "ui_text": {},
+    "zh-CN": "文档类型配置模板下载和批量导入的展开视图",
+    "en": "Expanded view of document type configuration template download and bulk import"
+  },
+  {
+    "id": "manual-0352",
+    "source_ja": "帳票タイプ設定 テンプレートダウンロードと一括インポート",
+    "ui_text": {},
+    "zh-CN": "文档类型配置模板下载和批量导入",
+    "en": "Document type configuration template download and bulk import"
+  },
+  {
+    "id": "manual-0353",
+    "source_ja": "AI読取設定 ダウンロード用テンプレートを拡大表示",
+    "ui_text": {},
+    "zh-CN": "用于下载AI阅读设置的扩展模板",
+    "en": "Expanded template for downloading AI reading settings"
+  },
+  {
+    "id": "manual-0354",
+    "source_ja": "AI読取設定 ダウンロード用テンプレート（全体プロンプトと項目表）",
+    "ui_text": {},
+    "zh-CN": "AI阅读设置下载模板（整体提示和项目表）",
+    "en": "AI reading settings download template (overall prompt and item table)"
+  },
+  {
+    "id": "manual-0355",
+    "source_ja": "帳票タイプ設定 AI読取設定を拡大表示",
+    "ui_text": {},
+    "zh-CN": "文档类型设置的展开视图AI读取设置",
+    "en": "Expanded view of document type settings AI read settings"
+  },
+  {
+    "id": "manual-0356",
+    "source_ja": "帳票タイプ設定 AI読取設定（診療明細書）",
+    "ui_text": {},
+    "zh-CN": "表单类型设置AI读取设置（医疗声明）",
+    "en": "Form type setting AI read setting (medical statement)"
+  },
+  {
+    "id": "manual-0357",
+    "source_ja": "帳票タイプ設定 設定メニューと各設定画面を拡大表示",
+    "ui_text": {},
+    "zh-CN": "放大文档类型设置菜单和每个设置屏幕",
+    "en": "Enlarge the document type setting menu and each setting screen"
+  },
+  {
+    "id": "manual-0358",
+    "source_ja": "帳票タイプ設定 設定メニューからエクスポート設定・読取モデル設定へ",
+    "ui_text": {},
+    "zh-CN": "从文档类型设置菜单到导出设置/读取模型设置",
+    "en": "From the document type settings menu to the export settings/read model settings"
+  },
+  {
+    "id": "manual-0359",
+    "source_ja": "帳票タイプ設定 処理ルール設定を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开文档类型设置处理规则设置",
+    "en": "Expand document type setting processing rule settings"
+  },
+  {
+    "id": "manual-0360",
+    "source_ja": "帳票タイプ設定 処理ルール設定",
+    "ui_text": {},
+    "zh-CN": "文档类型设置处理规则设置",
+    "en": "Document type setting processing rule setting"
+  },
+  {
+    "id": "manual-0361",
+    "source_ja": "帳票タイプ設定 画像分割と組合キーを拡大表示",
+    "ui_text": {},
+    "zh-CN": "文档类型设置图像划分和联合键的扩展显示",
+    "en": "Expanded display of document type setting image division and union key"
+  },
+  {
+    "id": "manual-0362",
+    "source_ja": "帳票タイプ設定 画像分割と組合キー",
+    "ui_text": {},
+    "zh-CN": "文档类型设置图像拆分和联合键",
+    "en": "Document Type Setting Image Splitting and Union Key"
+  },
+  {
+    "id": "manual-0363",
+    "source_ja": "画像分割の前後比較を拡大表示",
+    "ui_text": {},
+    "zh-CN": "分割图像前后放大",
+    "en": "Zoom in before and after image splitting"
+  },
+  {
+    "id": "manual-0364",
+    "source_ja": "画像分割 分割前と分割後",
+    "ui_text": {},
+    "zh-CN": "图像拆分之前和之后",
+    "en": "Before and After Image Splitting"
+  },
+  {
+    "id": "manual-0365",
+    "source_ja": "画像組合の前後比較を拡大表示",
+    "ui_text": {},
+    "zh-CN": "放大图像合并前后的比较",
+    "en": "Enlarge Before and After Comparison of Image Unions"
+  },
+  {
+    "id": "manual-0366",
+    "source_ja": "画像組合 組合前と組合後",
+    "ui_text": {},
+    "zh-CN": "映像联合之前和之后",
+    "en": "Before and after the image union"
+  },
+  {
+    "id": "manual-0367",
+    "source_ja": "画像整列の前後比較を拡大表示",
+    "ui_text": {},
+    "zh-CN": "图像对齐前后放大",
+    "en": "Zoom in before and after image alignment"
+  },
+  {
+    "id": "manual-0368",
+    "source_ja": "画像整列 整列前と整列後",
+    "ui_text": {},
+    "zh-CN": "对齐前后的图像对齐",
+    "en": "Image alignment Before and after alignment"
+  },
+  {
+    "id": "manual-0369",
+    "source_ja": "帳票タイプ設定 効果テスト結果を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开文档类型设置效果测试结果",
+    "en": "Expand document type setting effect test results"
+  },
+  {
+    "id": "manual-0370",
+    "source_ja": "帳票タイプ設定 効果テスト結果",
+    "ui_text": {},
+    "zh-CN": "文档类型设置效果测试结果",
+    "en": "Document type setting effect test results"
+  },
+  {
+    "id": "manual-0371",
+    "source_ja": "業務シーン追加と基本情報を拡大表示",
+    "ui_text": {},
+    "zh-CN": "添加业务场景，放大基础信息",
+    "en": "Add business scenes and enlarge basic information"
+  },
+  {
+    "id": "manual-0372",
+    "source_ja": "業務シーン追加と基本情報",
+    "ui_text": {},
+    "zh-CN": "业务场景添加和基本信息",
+    "en": "Business Scene Addition and Basic Information"
+  },
+  {
+    "id": "manual-0373",
+    "source_ja": "帳票選択と主帳票・業務キーを拡大表示",
+    "ui_text": {},
+    "zh-CN": "文档选择和主文档/业务密钥的放大视图",
+    "en": "Enlarged view of document selection and main document/business key"
+  },
+  {
+    "id": "manual-0374",
+    "source_ja": "帳票タイプ選択と主帳票・業務キー",
+    "ui_text": {},
+    "zh-CN": "文档类型和主文档/业务密钥的选择",
+    "en": "Selection of document type and main document/business key"
+  },
+  {
+    "id": "manual-0375",
+    "source_ja": "AI自動関連付けと集約ルールを拡大表示",
+    "ui_text": {},
+    "zh-CN": "放大AI自动关联和聚合规则",
+    "en": "Zoom in on AI auto-association and aggregation rules"
+  },
+  {
+    "id": "manual-0376",
+    "source_ja": "AI自動関連付けとグループ設定",
+    "ui_text": {},
+    "zh-CN": "AI自动关联和组设置",
+    "en": "AI auto-association and group settings"
+  },
+  {
+    "id": "manual-0377",
+    "source_ja": "関連プレビューと関連チェックを拡大表示",
+    "ui_text": {},
+    "zh-CN": "放大相关预览和相关检查",
+    "en": "Zoom in on related previews and related checks"
+  },
+  {
+    "id": "manual-0378",
+    "source_ja": "関連プレビューと関連チェック成功",
+    "ui_text": {},
+    "zh-CN": "相关预览和相关检查成功",
+    "en": "Related preview and related check success"
+  },
+  {
+    "id": "manual-0379",
+    "source_ja": "ワークフローキャンバスを拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开工作流程画布",
+    "en": "Expand workflow canvas"
+  },
+  {
+    "id": "manual-0380",
+    "source_ja": "保険金請求ワークフロー キャンバス",
+    "ui_text": {},
+    "zh-CN": "保险理赔工作流程画布",
+    "en": "Insurance Claims Workflow Canvas"
+  },
+  {
+    "id": "manual-0381",
+    "source_ja": "設定チェック完了を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开配置检查完成",
+    "en": "Expand configuration check completion"
+  },
+  {
+    "id": "manual-0382",
+    "source_ja": "設定チェック完了・公開可能",
+    "ui_text": {},
+    "zh-CN": "配置检查完成/可发布",
+    "en": "Configuration check complete/publishable"
+  },
+  {
+    "id": "manual-0383",
+    "source_ja": "通知設定を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开通知设置",
+    "en": "Expand notification settings"
+  },
+  {
+    "id": "manual-0384",
+    "source_ja": "出力項目と公開を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开输出项并发布",
+    "en": "Expand Output Items and Publishing"
+  },
+  {
+    "id": "manual-0385",
+    "source_ja": "保険金請求 出力項目と公開",
+    "ui_text": {},
+    "zh-CN": "保险理赔输出和公布",
+    "en": "Insurance Claims Output and Publication"
+  },
+  {
+    "id": "manual-0386",
+    "source_ja": "業務シーン公開版切替と通知表示例を拡大表示",
+    "ui_text": {},
+    "zh-CN": "扩展业务场景公开版本切换和通知显示示例",
+    "en": "Expanded business scene public version switching and notification display example"
+  },
+  {
+    "id": "manual-0387",
+    "source_ja": "公開版切替と Step3 通知の表示例",
+    "ui_text": {},
+    "zh-CN": "切换到公共版本并显示步骤3通知的示例",
+    "en": "Example of switching to the public version and displaying Step 3 notifications"
+  },
+  {
+    "id": "manual-0388",
+    "source_ja": "データマッピング設定 マッピングルール生成を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开数据映射配置映射规则生成",
+    "en": "Expand data mapping configuration mapping rule generation"
+  },
+  {
+    "id": "manual-0389",
+    "source_ja": "データマッピング設定 マッピングルール生成",
+    "ui_text": {},
+    "zh-CN": "数据映射配置映射规则生成",
+    "en": "Data Mapping Configuration Mapping Rule Generation"
+  },
+  {
+    "id": "manual-0390",
+    "source_ja": "データマッピング設定 マッピング編集を拡大表示",
+    "ui_text": {},
+    "zh-CN": "放大数据映射配置映射编辑",
+    "en": "Zoom in on data mapping configuration mapping edits"
+  },
+  {
+    "id": "manual-0391",
+    "source_ja": "データマッピング設定 マッピング編集",
+    "ui_text": {},
+    "zh-CN": "编辑数据映射设置映射",
+    "en": "Edit Data Mapping Settings Mapping"
+  },
+  {
+    "id": "manual-0392",
+    "source_ja": "AI検証設定 必須フィールドを拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开AI验证设置必填字段",
+    "en": "Expand AI Validation Settings Required Fields"
+  },
+  {
+    "id": "manual-0393",
+    "source_ja": "AI検証設定 必須フィールド",
+    "ui_text": {},
+    "zh-CN": "AI验证配置必填字段",
+    "en": "AI Validation Configuration Required Fields"
+  },
+  {
+    "id": "manual-0394",
+    "source_ja": "AI検証設定 必要書類を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开AI验证设置所需文档",
+    "en": "Expand AI Validation Settings Required Documents"
+  },
+  {
+    "id": "manual-0395",
+    "source_ja": "AI検証設定 標準データ整合性を拡大表示",
+    "ui_text": {},
+    "zh-CN": "扩展AI验证设置标准数据完整性",
+    "en": "Expand AI Validation Settings Standards Data Integrity"
+  },
+  {
+    "id": "manual-0396",
+    "source_ja": "AI検証設定 標準データ整合性",
+    "ui_text": {},
+    "zh-CN": "AI验证设置标准数据完整性",
+    "en": "AI Validation Settings Standard Data Integrity"
+  },
+  {
+    "id": "manual-0397",
+    "source_ja": "AI検証設定 テキスト検証を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开AI验证设置文本验证",
+    "en": "Expand AI Validation Settings Text Validation"
+  },
+  {
+    "id": "manual-0398",
+    "source_ja": "AI検証設定 テキスト検証",
+    "ui_text": {},
+    "zh-CN": "AI验证设置文本验证",
+    "en": "AI Validation Settings Text Validation"
+  },
+  {
+    "id": "manual-0399",
+    "source_ja": "AI検証設定 データ検証を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开AI验证配置数据验证",
+    "en": "Expand AI Validation Configuration Data Validation"
+  },
+  {
+    "id": "manual-0400",
+    "source_ja": "AI検証設定 データ検証",
+    "ui_text": {},
+    "zh-CN": "AI验证配置数据验证",
+    "en": "AI Validation Configuration Data Validation"
+  },
+  {
+    "id": "manual-0401",
+    "source_ja": "AI検証設定 署名・印鑑検証を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开AI验证设置签名/印章验证",
+    "en": "Expand AI Validation Settings Signature/Seal Validation"
+  },
+  {
+    "id": "manual-0402",
+    "source_ja": "AI検証設定 署名・印鑑検証",
+    "ui_text": {},
+    "zh-CN": "AI验证设置签名/印章验证",
+    "en": "AI Verification Settings Signature/Seal Verification"
+  },
+  {
+    "id": "manual-0403",
+    "source_ja": "新規アップロード画面を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开新的上传屏幕",
+    "en": "Expand new upload screen"
+  },
+  {
+    "id": "manual-0404",
+    "source_ja": "新規アップロード画面",
+    "ui_text": {},
+    "zh-CN": "新上传屏幕",
+    "en": "New Upload Screen"
+  },
+  {
+    "id": "manual-0405",
+    "source_ja": "集約完了後の未集約ファイルタブを拡大表示",
+    "ui_text": {},
+    "zh-CN": "完成聚合后展开非聚合文件选项卡",
+    "en": "Expand non-aggregated file tab after completion of aggregation"
+  },
+  {
+    "id": "manual-0406",
+    "source_ja": "案件一覧 未集約ファイルタブ",
+    "ui_text": {},
+    "zh-CN": "问题列表未聚合文件选项卡",
+    "en": "Issue List Unaggregated Files Tab"
+  },
+  {
+    "id": "manual-0407",
+    "source_ja": "案件一覧から補件アップロードを拡大表示",
+    "ui_text": {},
+    "zh-CN": "放大作业列表中的补充上传内容",
+    "en": "Zoom in on supplemental uploads from the job list"
+  },
+  {
+    "id": "manual-0408",
+    "source_ja": "案件一覧の補件操作と書類追加アップロード",
+    "ui_text": {},
+    "zh-CN": "案例列表的补充操作和添加文档上传",
+    "en": "Supplemental operation of the case list and addition of documents Upload"
+  },
+  {
+    "id": "manual-0409",
+    "source_ja": "案件一覧の集約済み案件を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开案例列表聚合案例",
+    "en": "Expand Case List Aggregated Case"
+  },
+  {
+    "id": "manual-0410",
+    "source_ja": "案件一覧の集約済み案件",
+    "ui_text": {},
+    "zh-CN": "交易列表汇总交易",
+    "en": "Deal List Aggregated Deals"
+  },
+  {
+    "id": "manual-0411",
+    "source_ja": "展開後の案件とファイル一覧を拡大表示",
+    "ui_text": {},
+    "zh-CN": "扩展部署后的案例和文件列表",
+    "en": "Expanded list of cases and files after deployment"
+  },
+  {
+    "id": "manual-0412",
+    "source_ja": "展開後の案件とファイル一覧",
+    "ui_text": {},
+    "zh-CN": "已部署案例和文件列表",
+    "en": "List of Deployed Cases and Files"
+  },
+  {
+    "id": "manual-0413",
+    "source_ja": "案件詳細のファイル一覧タブを拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开文件列表选项卡以查看个案详情",
+    "en": "Expand file list tab for case details"
+  },
+  {
+    "id": "manual-0414",
+    "source_ja": "案件詳細のファイル一覧タブ",
+    "ui_text": {},
+    "zh-CN": "案例详情文件列表选项卡",
+    "en": "Case Details File List Tab"
+  },
+  {
+    "id": "manual-0415",
+    "source_ja": "ワークフロー明細タブの処理フロー・経過ノード・ファイル処理明細を拡大表示",
+    "ui_text": {},
+    "zh-CN": "在工作流详细信息选项卡中展开处理流程、进度节点和文件处理详细信息",
+    "en": "Expand the processing flow, progress node, and file processing details in the Workflow Details tab"
+  },
+  {
+    "id": "manual-0416",
+    "source_ja": "ワークフロー明細タブの処理フロー・経過ノード・ファイル処理明細",
+    "ui_text": {},
+    "zh-CN": "工作流详细信息选项卡处理流程/进度节点/文件处理详细信息",
+    "en": "Workflow Details Tab Processing Flow/Progress Node/File Processing Details"
+  },
+  {
+    "id": "manual-0417",
+    "source_ja": "担当者割当と処理中止ダイアログを拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开受理人和中止对话框",
+    "en": "Expand assignee and abort dialogs"
+  },
+  {
+    "id": "manual-0418",
+    "source_ja": "担当者割当と処理中止ダイアログ",
+    "ui_text": {},
+    "zh-CN": "“受理人”和“停止处理”对话框",
+    "en": "Assignee and Stop Processing Dialog"
+  },
+  {
+    "id": "manual-0419",
+    "source_ja": "ファイルの案件変更操作とダイアログを拡大表示",
+    "ui_text": {},
+    "zh-CN": "放大档案大小写更改操作和对话框",
+    "en": "Zoom in on file case change operations and dialogs"
+  },
+  {
+    "id": "manual-0420",
+    "source_ja": "ファイルの案件変更操作とダイアログ",
+    "ui_text": {},
+    "zh-CN": "文件案例更改操作和对话框",
+    "en": "File case change operations and dialogs"
+  },
+  {
+    "id": "manual-0421",
+    "source_ja": "未集約ファイル一覧と手動校正ダイアログを拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开未聚合文件列表和手动校准对话框",
+    "en": "Expand unaggregated file list and manual calibration dialog"
+  },
+  {
+    "id": "manual-0422",
+    "source_ja": "未集約ファイル一覧と手動校正ダイアログ",
+    "ui_text": {},
+    "zh-CN": "未聚合的文件列表和手动校准对话框",
+    "en": "Unaggregated File List and Manual Calibration Dialog"
+  },
+  {
+    "id": "manual-0423",
+    "source_ja": "マイタスク一覧を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开“我的任务”列表",
+    "en": "Expand My Tasks list"
+  },
+  {
+    "id": "manual-0424",
+    "source_ja": "マイタスク一覧",
+    "ui_text": {},
+    "zh-CN": "我的任务列表",
+    "en": "My Tasks List"
+  },
+  {
+    "id": "manual-0425",
+    "source_ja": "マイタスク一覧から OCR 抽出確認画面への遷移を拡大表示",
+    "ui_text": {},
+    "zh-CN": "扩展从“我的任务”列表到OCR提取确认屏幕的过渡",
+    "en": "Expand the transition from the My Tasks list to the OCR extraction confirmation screen"
+  },
+  {
+    "id": "manual-0426",
+    "source_ja": "マイタスク一覧から OCR 抽出確認画面",
+    "ui_text": {},
+    "zh-CN": "“我的任务”列表中的OCR提取确认屏幕",
+    "en": "OCR extraction confirmation screen from My Tasks list"
+  },
+  {
+    "id": "manual-0427",
+    "source_ja": "項目位置を非表示にした OCR 抽出確認画面を拡大表示",
+    "ui_text": {},
+    "zh-CN": "在隐藏项目位置的情况下展开OCR提取确认屏幕",
+    "en": "Expand the OCR extraction confirmation screen with the item position hidden"
+  },
+  {
+    "id": "manual-0428",
+    "source_ja": "項目位置を非表示にした OCR 抽出確認画面",
+    "ui_text": {},
+    "zh-CN": "隐藏项目位置的OCR提取确认屏幕",
+    "en": "OCR extraction confirmation screen with item position hidden"
+  },
+  {
+    "id": "manual-0429",
+    "source_ja": "AI 検証確認画面を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开AI验证确认屏幕",
+    "en": "Expand AI verification confirmation screen"
+  },
+  {
+    "id": "manual-0430",
+    "source_ja": "AI 検証確認の完備性・データ検証・印鑑署名検証",
+    "ui_text": {},
+    "zh-CN": "AI验证验证完整性、数据验证、盖章签名验证",
+    "en": "AI Verification Verification Completeness, Data Verification, Seal Signature Verification"
+  },
+  {
+    "id": "manual-0431",
+    "source_ja": "マイタスク エクスポート確認画面を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开“我的任务”导出确认屏幕",
+    "en": "Expand My Tasks export confirmation screen"
+  },
+  {
+    "id": "manual-0432",
+    "source_ja": "マイタスク エクスポート確認画面",
+    "ui_text": {},
+    "zh-CN": "我的任务导出确认屏幕",
+    "en": "My Tasks Export Confirmation Screen"
+  },
+  {
+    "id": "manual-0433",
+    "source_ja": "タスク割当ダイアログを拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开任务分配对话框",
+    "en": "Expand task assignment dialog"
+  },
+  {
+    "id": "manual-0434",
+    "source_ja": "マイタスク一覧とタスク割当ダイアログ",
+    "ui_text": {},
+    "zh-CN": "我的任务列表和任务分配对话框",
+    "en": "My Tasks list and task assignment dialog"
+  },
+  {
+    "id": "manual-0435",
+    "source_ja": "ユーザー管理 ユーザー追加を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开用户管理用户添加",
+    "en": "Expand user management user additions"
+  },
+  {
+    "id": "manual-0436",
+    "source_ja": "ユーザー管理 ユーザー追加",
+    "ui_text": {},
+    "zh-CN": "用户管理员添加用户",
+    "en": "User Admin Add User"
+  },
+  {
+    "id": "manual-0437",
+    "source_ja": "ユーザー管理 有効ユーザー数を拡大表示",
+    "ui_text": {},
+    "zh-CN": "用户管理扩大活跃用户数量",
+    "en": "User management Enlarge the number of active users"
+  },
+  {
+    "id": "manual-0438",
+    "source_ja": "ユーザー管理 有効ユーザー数",
+    "ui_text": {},
+    "zh-CN": "启用用户管理的用户数",
+    "en": "Number of User Management Enabled Users"
+  },
+  {
+    "id": "manual-0439",
+    "source_ja": "権限管理 権限追加を拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开权限管理权限添加",
+    "en": "Expand permission management permission additions"
+  },
+  {
+    "id": "manual-0440",
+    "source_ja": "権限管理 メニュー権限を拡大表示",
+    "ui_text": {},
+    "zh-CN": "管理权限菜单展开权限",
+    "en": "Manage Permissions Menu Expand Permissions"
+  },
+  {
+    "id": "manual-0441",
+    "source_ja": "権限管理 メニュー権限",
+    "ui_text": {},
+    "zh-CN": "权限管理菜单权限",
+    "en": "Permission management menu permissions"
+  },
+  {
+    "id": "manual-0442",
+    "source_ja": "セキュリティ設定 画面全体を拡大表示",
+    "ui_text": {},
+    "zh-CN": "放大整个安全设置屏幕",
+    "en": "Zoom in on the entire security settings screen"
+  },
+  {
+    "id": "manual-0443",
+    "source_ja": "セキュリティ設定 画面全体",
+    "ui_text": {},
+    "zh-CN": "整个安全设置屏幕",
+    "en": "Entire security settings screen"
+  },
+  {
+    "id": "manual-0444",
+    "source_ja": "セキュリティ設定 保存期限を拡大表示",
+    "ui_text": {},
+    "zh-CN": "扩展安全设置保留期",
+    "en": "Expand security settings retention period"
+  },
+  {
+    "id": "manual-0445",
+    "source_ja": "セキュリティ設定 保存期限",
+    "ui_text": {},
+    "zh-CN": "安全设置保留期",
+    "en": "Security Settings Retention Period"
+  },
+  {
+    "id": "manual-0446",
+    "source_ja": "セキュリティ設定 自動ログアウトを拡大表示",
+    "ui_text": {},
+    "zh-CN": "展开安全设置自动注销",
+    "en": "Expand security settings auto-logout"
+  },
+  {
+    "id": "manual-0447",
+    "source_ja": "セキュリティ設定 自動ログアウト",
+    "ui_text": {},
+    "zh-CN": "自动注销安全设置",
+    "en": "Automatic logout of security settings"
+  },
+  {
+    "id": "manual-0448",
+    "source_ja": "閉じる",
+    "ui_text": {},
+    "zh-CN": "。单击",
+    "en": "Close"
+  },
+  {
+    "id": "manual-0449",
+    "source_ja": "前へ",
+    "ui_text": {},
+    "zh-CN": "上一页",
+    "en": "Previous"
+  },
+  {
+    "id": "manual-0450",
+    "source_ja": "次へ",
+    "ui_text": {},
+    "zh-CN": "下一步",
+    "en": "Click Here to Continue"
+  },
+  {
+    "id": "manual-0451",
+    "source_ja": "リセット",
+    "ui_text": {},
+    "zh-CN": "重置",
+    "en": "Resetting"
+  },
+  {
+    "id": "manual-0452",
+    "source_ja": "ページ先頭へ戻る",
+    "ui_text": {},
+    "zh-CN": "返回页面顶部",
+    "en": "Back to top of page"
+  }
+]

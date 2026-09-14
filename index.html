@@ -4,9 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NeosAI IDP マニュアル</title>
-<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="common.css?v=local-i18n-2">
 </head>
 <body>
+<div class="language-switcher" id="languageSwitcher">
+  <button type="button" class="language-button" id="languageButton" aria-haspopup="true" aria-expanded="false">
+    <span class="language-label">Language</span>
+    <span class="language-current" id="languageCurrent">日本語</span>
+    <span class="language-caret" aria-hidden="true">▾</span>
+  </button>
+  <div class="language-menu" id="languageMenu" role="menu" aria-label="Language selector">
+    <button type="button" class="language-option" data-language-option="ja" role="menuitem">日本語</button>
+    <button type="button" class="language-option" data-language-option="zh-CN" role="menuitem">中文</button>
+    <button type="button" class="language-option" data-language-option="en" role="menuitem">English</button>
+  </div>
+</div>
 <div class="manual-shell">
 
     <aside class="toc-panel" aria-label="目次">
@@ -292,7 +304,7 @@
                 <tr><td><span class="ui-text">帳票タイプ設定</span></td><td><span class="ui-text">AI読取設定</span> の <span class="ui-text">読取モデル設定</span> で選択できるモデル候補に影響します。</td></tr>
                 <tr><td><span class="ui-text">業務シーン設定</span></td><td>Step2 の <span class="ui-text">OCR 抽出</span> や <span class="ui-text">AI検証</span> ノードで参照されるモデル候補に影響します。</td></tr>
                 <tr><td><span class="ui-text">OCR 確認</span></td><td>メインモデルと検証モデルの結果が一致しない場合は、OCR 確認タスクで人工確認の対象になります。</td></tr>
-                <tr><td><span class="ui-text">マイタスク</span></td><td>モデル接続エラー、低信頼度、モデル間不一致が発生した場合、OCR 確認や AI 検証確認タスクで確認対象になります。</td></tr>
+                <tr><td><span class="ui-text">マイタスク</span></td><td>低信頼度、モデル間不一致が発生した場合、OCR 確認や AI 検証確認タスクで確認対象になります。</td></tr>
               </tbody>
             </table>
             <div class="notice info">
@@ -1429,6 +1441,737 @@
 
 <script>
 (function () {
+  const languageSwitcher = document.getElementById('languageSwitcher');
+  const languageButton = document.getElementById('languageButton');
+  const languageMenu = document.getElementById('languageMenu');
+  const languageCurrent = document.getElementById('languageCurrent');
+  const languageOptions = Array.from(document.querySelectorAll('[data-language-option]'));
+  const languageNames = {
+    ja: '日本語',
+    'zh-CN': '中文',
+    en: 'English'
+  };
+  const languageText = {
+    ja: {
+      '目次': '目次',
+      '総覧': '総覧',
+      '処理全体の流れ': '処理全体の流れ',
+      'ロール設定': 'ロール設定',
+      '機能モジュール': '機能モジュール',
+      'ルール設定モジュール': 'ルール設定モジュール',
+      '業務操作モジュール': '業務操作モジュール',
+      'システム設定モジュール': 'システム設定モジュール',
+      'モデル設定': 'モデル設定',
+      'API設定': 'API設定',
+      'マスターデータ設定': 'マスターデータ設定',
+      '帳票タイプ設定': '帳票タイプ設定',
+      '業務シーン設定': '業務シーン設定',
+      'データマッピング設定': 'データマッピング設定',
+      'AI検証設定': 'AI検証設定',
+      '新規アップロード': '新規アップロード',
+      '案件一覧': '案件一覧',
+      'マイタスク': 'マイタスク',
+      'ユーザー管理': 'ユーザー管理',
+      '権限管理': '権限管理',
+      'セキュリティ設定': 'セキュリティ設定',
+      '機能説明': '機能説明',
+      '画面操作': '画面操作',
+      '関連影響': '関連影響',
+      '操作ポイント': '操作ポイント',
+      'NeosAI IDP マニュアル': 'NeosAI IDP マニュアル',
+      '本章では、外部システムから NeosAI IDP を呼び出すための Open API を管理します。設定画面は ': 'This chapter manages the Open APIs used to call NeosAI IDP from external systems. The settings page has ',
+      ' の 3 タブです。パス、フィールド英語名、エラーコードは専用の API 接続文書を参照してください。': ' three tabs. See the dedicated API connection document for paths, English field names, and error codes.',
+      ' が設定します。操作員は API 設定を編集せず、画面操作または公開済み業務シーンに基づく処理結果を利用します。': ' configures it. Operators do not edit API settings; they use results from screen operations or published business scenarios.',
+      ' では外部システムが使う API キーを発行・管理します。': ' is used to issue and manage API keys used by external systems.',
+      ' では、プラットフォームが外部へ送るコールバック先と ': ' is used to configure the callback destination sent by the platform and its ',
+      ' では、ファイルアップロード、案件一覧照会、バッチ別案件照会、追加資料アップロード、一括エクスポート、エクスポートタスク照会のエンドポイントを確認し、コピーできます。': ' is used to review and copy endpoints for file upload, case list queries, batch case queries, additional document upload, bulk export, and export task queries.',
+      '画面から手動アップロードする代わりに、社内システムや RPA から案件投入、進捗照会、補件、一括出力を行う場合に利用します。リクエストは API キーで認証します。': 'Use this when internal systems or RPA submit cases, query progress, add documents, or perform bulk output instead of uploading manually from the screen. Requests are authenticated with an API key.',
+      'Language': 'Language'
+    },
+    en: {
+      '目次': 'Contents',
+      '総覧': 'Overview',
+      '処理全体の流れ': 'Overall Process',
+      'ロール設定': 'Roles',
+      '機能モジュール': 'Feature Modules',
+      'ルール設定モジュール': 'Rule Configuration',
+      '業務操作モジュール': 'Business Operations',
+      'システム設定モジュール': 'System Settings',
+      'モデル設定': 'Model Settings',
+      'API設定': 'API Settings',
+      'マスターデータ設定': 'Master Data Settings',
+      '帳票タイプ設定': 'Document Type Settings',
+      '業務シーン設定': 'Business Scenario Settings',
+      'データマッピング設定': 'Data Mapping Settings',
+      'AI検証設定': 'AI Verification Settings',
+      '新規アップロード': 'New Upload',
+      '案件一覧': 'Case List',
+      'マイタスク': 'My Tasks',
+      'ユーザー管理': 'User Management',
+      '権限管理': 'Permission Management',
+      'セキュリティ設定': 'Security Settings',
+      '機能説明': 'Function',
+      '画面操作': 'Screen Operation',
+      '関連影響': 'Related Impact',
+      '操作ポイント': 'Operation Points',
+      'NeosAI IDP マニュアル': 'NeosAI IDP Manual',
+      'NeosAI IDP は、保険金請求などの業務書類を対象に、アップロードされた資料を案件単位で集約し、AI-OCR、業務ルール、AI検証、人工確認を組み合わせて処理する Intelligent Document Processing システムです。': 'NeosAI IDP is an Intelligent Document Processing system for insurance claims and other business documents. It aggregates uploaded documents by case and combines AI-OCR, business rules, AI verification, and manual review.',
+      '管理者が事前に設定したルールに基づき、複数種類の帳票を自動分類・読取・検証し、業務担当者は': 'Based on rules configured by administrators, the system automatically classifies, reads, and verifies multiple document types. Business users use',
+      'と': 'and',
+      'で確認・修正・出力処理を行います。': 'to review, correct, and output results.',
+      'admin 側で処理ルールを定義し、業務操作側では公開済みの設定に基づいて案件処理を進めます。エクスポート結果の確認や出力操作は': 'Admins define processing rules, and operations proceed based on published settings. Export result review and output operations are performed in',
+      '内で実施します。': '.',
+      '案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初の人工確認ノードで選択したロール（操作員または操作管理者）の中から自動で指名され、以降の人工確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。': 'The user assigned to a case owner role, not a login role. The system automatically assigns a user from the role selected in the first manual review node (Operator or Operation Manager). If later manual review nodes use the same role, the same user continues to handle them. If the role changes, the system assigns a user again from the new role.',
+      'で操作管理者が手動改派も可能。': 'also allows operation managers to manually reassign cases.',
+      'Language': 'Language'
+    },
+    zh: {
+      '目次': '目录',
+      '総覧': '总览',
+      '処理全体の流れ': '整体处理流程',
+      'ロール設定': '角色设定',
+      '機能モジュール': '功能模块',
+      'ルール設定モジュール': '规则配置模块',
+      '業務操作モジュール': '业务操作模块',
+      'システム設定モジュール': '系统设定模块',
+      'モデル設定': '模型设定',
+      'API設定': 'API设定',
+      'マスターデータ設定': '主数据设定',
+      '帳票タイプ設定': '账票类型设定',
+      '業務シーン設定': '业务场景设定',
+      'データマッピング設定': '数据映射设定',
+      'AI検証設定': 'AI检证设定',
+      '新規アップロード': '新规上传',
+      '案件一覧': '案件一览',
+      'マイタスク': '我的任务',
+      'ユーザー管理': '用户管理',
+      '権限管理': '权限管理',
+      'セキュリティ設定': '安全设定',
+      '機能説明': '功能说明',
+      '画面操作': '画面操作',
+      '関連影響': '关联影响',
+      '操作ポイント': '操作要点',
+      'NeosAI IDP マニュアル': 'NeosAI IDP 手册',
+      'NeosAI IDP は、保険金請求などの業務書類を対象に、アップロードされた資料を案件単位で集約し、AI-OCR、業務ルール、AI検証、人工確認を組み合わせて処理する Intelligent Document Processing システムです。': 'NeosAI IDP 是面向保险金理赔等业务单据的智能文档处理系统。系统会按案件汇总上传资料，并结合 AI-OCR、业务规则、AI 校验和人工确认完成处理。',
+      '管理者が事前に設定したルールに基づき、複数種類の帳票を自動分類・読取・検証し、業務担当者は': '管理员基于预先配置的规则，对多种账票进行自动分类、读取和校验；业务负责人通过',
+      'と': '和',
+      'で確認・修正・出力処理を行います。': '进行确认、修正和输出处理。',
+      'admin 側で処理ルールを定義し、業務操作側では公開済みの設定に基づいて案件処理を進めます。エクスポート結果の確認や出力操作は': '管理员侧定义处理规则，业务操作侧基于已发布的设定推进案件处理。导出结果的确认和输出操作在',
+      '内で実施します。': '内执行。',
+      '案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初の人工確認ノードで選択したロール（操作員または操作管理者）の中から自動で指名され、以降の人工確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。': '分配到案件的负责人用户（不是登录角色）。系统会从工作流第一个人工确认节点所选择的角色（操作员或操作管理员）中自动指派负责人；后续人工确认节点如果选择相同角色，则继续由同一负责人处理。如果角色发生切换，则会从新的角色中重新指派负责人。',
+      'で操作管理者が手動改派も可能。': '界面中，操作管理员也可以手动改派。',
+      'システム設定、ルール設定、ユーザー・権限管理を行う管理者。': '负责系统设定、规则设定、用户与权限管理的管理员。',
+      '資料アップロード、案件確認、': '资料上传、案件确认、',
+      '対応': '处理',
+      '処理中止': '处理中止',
+      '操作員に加え、': '除操作员权限外，还可以进行',
+      '（案件担当者・タスク改派）が可能。': '（案件负责人/任务改派）。',
+      'は人工確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3 通知設定は割当とは無関係です。通知先は操作員・操作管理者のみ選択可能です。': '由人工确认节点或导出节点生成，并根据 Step2 的分配设定显示给对应用户。Step3 通知设定与任务分配无关，通知对象仅可选择操作员或操作管理员。',
+      '業務処理を自動化するためのモデル、帳票、業務ルールを設定します。': '配置用于实现业务处理自动化的模型、账票与业务规则。',
+      '公開済みの業務シーンに基づいて、資料アップロードから案件確認、人工確認までを行います。': '基于已发布的业务场景，执行从资料上传、案件确认到人工确认的流程。',
+      'ユーザー、権限、安全設定など、システム利用の前提となる管理項目を設定します。': '配置用户、权限、安全设定等作为系统使用前提的管理项目。',
+      '保険金請求のケースに沿って、推奨順序は ': '以保险金理赔场景为例，推荐顺序为 ',
+      'モデル → API → マスターデータ → 帳票タイプ → 業務シーン → データマッピング → AI検証': '模型 → API → 主数据 → 账票类型 → 业务场景 → 数据映射 → AI 校验',
+      ' です。': '。',
+      '各画面への到達順：': '各画面的访问顺序：',
+      'モデル設定 → API設定 → マスターデータ設定 → 帳票タイプ設定 → 業務シーン設定 → データマッピング設定 → AI検証設定': '模型设定 → API 设定 → 主数据设定 → 账票类型设定 → 业务场景设定 → 数据映射设定 → AI 校验设定',
+      '。各機能モジュールの操作手順と、画面だけでは分かりにくい適用タイミングを説明します。ロール詳細は ': '。本章说明各功能模块的操作步骤，以及仅看画面难以理解的适用时机。角色详情请参考 ',
+      ' を参照してください。': '。',
+      'admin 設定': 'admin 设定',
+      '業務操作': '业务操作',
+      '資料アップロード': '资料上传',
+      '案件確認': '案件确认',
+      '本モジュールでは、NeosAI IDP で利用するモデルリソースを一元管理します。OCR抽出、AI検証、データマッピングで使うモデルを、用途ごとに割り当てて管理します。': '本模块统一管理 NeosAI IDP 使用的模型资源，按用途分配并管理 OCR 抽取、AI 校验、数据映射所用的模型。',
+      '権限：': '权限：',
+      '本機能は ': '本功能由 ',
+      ' が設定します。操作員はモデル接続や用途割当を編集せず、公開済みの業務シーンを通じて割当済みモデルの処理結果を利用します。': ' 进行设定。操作员不编辑模型连接和用途分配，而是通过已发布的业务场景使用已分配模型的处理结果。',
+      '設定ロジック：': '配置逻辑：',
+      ' では外部モデルプロバイダへの接続情報を登録し、': ' 中登记外部模型提供方的连接信息，',
+      ' では OCR 抽出、AI 検証、データマッピングごとに使用するモデルを指定します。': ' 中分别指定 OCR 抽取、AI 校验、数据映射各自使用的模型。',
+      '利用タイミング：': '使用时机：',
+      'OCR 抽出、AI 検証、データマッピングで使うモデルを、用途ごとに先に登録・割当しておきます。保険金請求では、診断書や診療明細書の読取、請求内容の整合性確認、出力データの変換処理で参照されます。': '请提前按用途登记并分配 OCR 抽取、AI 校验、数据映射所用的模型。在保险金理赔中，这些模型用于诊断书和诊疗明细书的读取、理赔内容的整合性确认以及输出数据的转换处理。',
+      ' を開き、': '：打开后，在 ',
+      ' タブで登録済みの接続を確認します。新規登録する場合は ': ' 页签中确认已登记的连接。如需新登记，请点击 ',
+      ' をクリックします。': '。',
+      '保存後、': '保存后，',
+      'を実施して初めてステータスが有効となり、当該モデルを利用可能になります。': '成功执行后，状态才会变为有效，该模型才可使用。',
+      ' 画面で ': ' 画面中设置 ',
+      '、API ベース URL、API キー、モデル名、': '、API Base URL、API Key、模型名、',
+      ' を設定し、': '，然后点击 ',
+      ' します。プロバイダに独自エンドポイントを使用する場合は ': '。如果提供方使用自定义端点，请选择 ',
+      ' を選択します。': '。',
+      ' タブで OCR 抽出・AI 検証などの用途ごとにモデルを割り当てます。': ' 页签中，按 OCR 抽取、AI 校验等用途分配模型。',
+      ' の ': ' 的 ',
+      ' で選択できるモデル候補に影響します。': ' 中可选的模型候选项会受影响。',
+      'Step2 の ': 'Step2 的 ',
+      ' や ': '、',
+      ' ノードで参照されるモデル候補に影響します。': ' 节点所引用的模型候选项会受影响。',
+      'メインモデルと検証モデルの結果が一致しない場合は、OCR 確認タスクで人工確認の対象になります。': '当主模型与校验模型的结果不一致时，将进入 OCR 确认任务进行人工确认。',
+      '低信頼度、モデル間不一致が発生した場合、OCR 確認や AI 検証確認タスクで確認対象になります。': '发生低置信度或模型间不一致时，将成为 OCR 确认或 AI 检证确认任务的确认对象。',
+      '接続テストに成功していないモデル、または無効状態のモデルは、後続設定で利用できません。用途割当を変更すると、同じ業務シーンでも読取結果や検証結果が変わる可能性があるため、変更後は対象帳票タイプの効果テストを実行してください。': '未通过连接测试或处于无效状态的模型，无法在后续设定中使用。变更用途分配后，即使业务场景相同，读取结果和校验结果也可能发生变化，因此变更后请对相关账票类型执行效果测试。',
+      'モデル設定 API 接続と接続追加を拡大表示': '模型设定 API 连接与添加连接（放大显示）',
+      'モデル設定 API 接続と接続追加': '模型设定 API 连接与添加连接',
+      '接続追加 プロバイダ選択を拡大表示': '添加连接 提供方选择（放大显示）',
+      '接続追加 プロバイダ選択': '添加连接 提供方选择',
+      'モデル設定 用途割当を拡大表示': '模型设定 用途分配（放大显示）',
+      'モデル設定 用途割当': '模型设定 用途分配',
+      '本章では、外部システムから NeosAI IDP を呼び出すための Open API を管理します。設定画面は ': '本章管理用于从外部系统调用 NeosAI IDP 的 Open API。设置页面包括 ',
+      ' の 3 タブです。パス、フィールド英語名、エラーコードは専用の API 接続文書を参照してください。': ' 三个页签。路径、字段英文名和错误码请参考专用的 API 连接文档。',
+      ' が設定します。操作員は API 設定を編集せず、画面操作または公開済み業務シーンに基づく処理結果を利用します。': ' 进行设定。操作员不编辑 API 设定，而是通过页面操作或已发布的业务场景使用处理结果。',
+      ' では外部システムが使う API キーを発行・管理します。': ' 中发行并管理外部系统使用的 API Key。',
+      ' では、プラットフォームが外部へ送るコールバック先と ': ' 中设置平台向外部发送的回调地址和 ',
+      ' では、ファイルアップロード、案件一覧照会、バッチ別案件照会、追加資料アップロード、一括エクスポート、エクスポートタスク照会のエンドポイントを確認し、コピーできます。': ' 中确认并复制文件上传、案件列表查询、按批次案件查询、追加资料上传、批量导出和导出任务查询的端点。',
+      '画面から手動アップロードする代わりに、社内システムや RPA から案件投入、進捗照会、補件、一括出力を行う場合に利用します。リクエストは API キーで認証します。': '当需要通过内部系统或 RPA 投入案件、查询进度、补件或批量输出，而不是从页面手动上传时使用。请求通过 API Key 进行认证。',
+      'Language': '语言'
+    }
+  };
+
+  const localPhraseText = {
+    zh: {
+      'NeosAI IDP マニュアル': 'NeosAI IDP 手册',
+      '保険金請求': '保险金理赔',
+      '業務書類': '业务单据',
+      'アップロード': '上传',
+      '資料': '资料',
+      '案件': '案件',
+      '案件単位': '按案件单位',
+      '自動分類': '自动分类',
+      '読取': '读取',
+      '検証': '校验',
+      '人工確認': '人工确认',
+      '処理': '处理',
+      '管理者': '管理员',
+      '操作員': '操作员',
+      '操作管理者': '操作管理员',
+      '事前に設定したルール': '预先配置的规则',
+      '公開済み': '已发布',
+      '確認': '确认',
+      '修正': '修正',
+      '出力': '输出',
+      '設定': '设定',
+      '編集': '编辑',
+      '削除': '删除',
+      '保存': '保存',
+      '追加': '添加',
+      '新規': '新建',
+      '有効': '有效',
+      '無効': '无效',
+      '一覧': '列表',
+      '詳細': '详情',
+      '画面': '页面',
+      'モジュール': '模块',
+      'モデル': '模型',
+      'マスターデータ': '主数据',
+      '帳票タイプ': '账票类型',
+      '業務シーン': '业务场景',
+      'データマッピング': '数据映射',
+      'AI検証': 'AI 校验',
+      'OCR 抽出': 'OCR 抽取',
+      'OCR 確認': 'OCR 确认',
+      'マイタスク': '我的任务',
+      'ユーザー管理': '用户管理',
+      '権限管理': '权限管理',
+      'セキュリティ設定': '安全设定',
+      '機能説明': '功能说明',
+      '画面操作': '页面操作',
+      '関連影響': '关联影响',
+      '注意事項': '注意事项',
+      '権限': '权限',
+      '用途': '用途',
+      '利用タイミング': '使用时机',
+      '設定ロジック': '配置逻辑',
+      '実行ロジック': '执行逻辑',
+      '影響先': '影响对象',
+      '影響内容': '影响内容',
+      'ロール': '角色',
+      '主な役割': '主要职责',
+      '区分': '分类',
+      '説明': '说明',
+      '子モジュール': '子模块',
+      'メインモデル': '主模型',
+      '検証モデル': '校验模型',
+      'モデル間不一致': '模型间不一致',
+      '低信頼度': '低置信度',
+      '確認対象': '确认对象',
+      'タスク': '任务',
+      'ワークフロー': '工作流',
+      'ノード': '节点',
+      'フィールド': '字段',
+      '標準変数': '标准变量',
+      'ルール': '规则',
+      'ステータス': '状态',
+      'プロバイダ': '提供方',
+      '接続': '连接',
+      '通知先URL': '通知目标 URL',
+      'APIキー管理': 'API Key 管理',
+      '必須フィールド': '必填字段',
+      '必要書類': '必要资料',
+      '標準データ整合性': '标准数据一致性',
+      'テキスト検証': '文本校验',
+      'データ検証': '数据校验',
+      '署名・印鑑検証': '签名/印章校验',
+      '帳票構成': '账票构成',
+      '帳票': '账票',
+      '読取モデル設定': '读取模型设定',
+      '業務担当者': '业务负责人',
+      '案件担当者': '案件负责人',
+      '手動改派': '手动改派',
+      '到達順': '访问顺序',
+      '操作手順': '操作步骤',
+      '適用タイミング': '适用时机',
+      '接続情報': '连接信息',
+      '登録': '登记',
+      '指定': '指定',
+      '割当': '分配',
+      '割り当て': '分配',
+      '選択': '选择',
+      '選': '选择',
+      '挿入': '插入',
+      '参照': '引用',
+      '記述': '描述',
+      '形式': '形式',
+      '一括': '批量',
+      '切替': '切换',
+      '書込': '写入',
+      '正解': '正确答案',
+      '分類': '分类',
+      '抽出': '抽取',
+      '照合': '核对',
+      '整合性': '一致性',
+      '必須': '必需',
+      '任意': '任意',
+      '対象帳票': '对象账票',
+      '全文': '全文',
+      '検出': '检测',
+      '印影': '印章影像',
+      '署名': '签名',
+      '医療機関': '医疗机构',
+      '診断書': '诊断书',
+      '診療明細書': '诊疗明细书',
+      '請求書': '理赔申请书',
+      '被保険者': '被保险人',
+      '氏名': '姓名'
+      , 'システム概要': '系统概要'
+      , 'ケース例': '案例'
+      , '業務シーン': '业务场景'
+      , '帳票': '账票'
+      , '処理ルール': '处理规则'
+      , '画像処理': '图像处理'
+      , '効果テスト': '效果测试'
+      , '公開': '发布'
+      , '未公開': '未发布'
+      , '発行': '发行'
+      , '有効期限': '有效期'
+      , '完了': '完成'
+      , '失敗': '失败'
+      , '編集画面': '编辑页面'
+      , '通知設定': '通知设定'
+      , '外部通知設定': '外部通知设定'
+      , '処理完了': '处理完成'
+      , 'エクスポート済': '已导出'
+      , '集約済み案件': '已汇总案件'
+      , '未集約ファイル': '未汇总文件'
+      , '追加資料アップロード': '追加资料上传'
+      , '一括エクスポート': '批量导出'
+      , '補件': '补件'
+      , 'マスタ照合': '主数据核对'
+      , '一括インポート': '批量导入'
+      , 'ベクトル化': '向量化'
+      , '代表サンプル': '代表样本'
+      , '説明文': '说明文字'
+      , 'ファイル分割ルール': '文件拆分规则'
+      , '画像分割': '图像拆分'
+      , '画像整列': '图像对齐'
+      , '帳票名': '账票名称'
+      , 'のダイアログで': '对话框中'
+      , 'を入力し、': '中输入，'
+      , 'から選択して発行します。': '中选择并发行。'
+      , 'を入力します。': '中输入。'
+      , 'で発行し、': '中发行，'
+      , '影響します。': '会受到影响。'
+      , '対象になります。': '将成为确认对象。'
+      , '利用できません。': '无法使用。'
+      , 'を設定します。': '中进行设定。'
+      , 'で登録済みの API キーと有効状態を確認します。': '中确认已登记的 API Key 及有效状态。'
+      , '新規発行する場合は': '如需新发行，'
+      , 'タブで、ファイルアップロード、案件一覧照会、バッチ別案件照会、追加資料アップロード、一括エクスポート、エクスポートタスク照会のエンドポイントを確認します。コピーアイコンで URL を取得できます。リクエスト形式などの詳細は専用の API 接続文書を参照してください。': '页签中确认文件上传、案件列表查询、按批次案件查询、追加资料上传、批量导出和导出任务查询的端点。可通过复制图标获取 URL。请求格式等详情请参考专用的 API 连接文档。'
+      , 'タブで': '页签中'
+      , 'を確認します。': '中确认。'
+      , 'をクリックします。': '，请点击。'
+      , 'します。': '。'
+      , 'する場合は': '如需操作，'
+    },
+    en: {
+      'NeosAI IDP マニュアル': 'NeosAI IDP Manual',
+      '保険金請求': 'insurance claim',
+      '業務書類': 'business documents',
+      'アップロード': 'upload',
+      '資料': 'documents',
+      '案件': 'case',
+      '案件単位': 'per case',
+      '自動分類': 'automatic classification',
+      '読取': 'reading',
+      '検証': 'verification',
+      '人工確認': 'manual review',
+      '処理': 'processing',
+      '管理者': 'administrator',
+      '操作員': 'operator',
+      '操作管理者': 'operation manager',
+      '事前に設定したルール': 'preconfigured rules',
+      '公開済み': 'published',
+      '確認': 'review',
+      '修正': 'correction',
+      '出力': 'output',
+      '設定': 'settings',
+      '編集': 'edit',
+      '削除': 'delete',
+      '保存': 'save',
+      '追加': 'add',
+      '新規': 'new',
+      '有効': 'enabled',
+      '無効': 'disabled',
+      '一覧': 'list',
+      '詳細': 'details',
+      '画面': 'screen',
+      'モジュール': 'module',
+      'モデル': 'model',
+      'マスターデータ': 'master data',
+      '帳票タイプ': 'document type',
+      '業務シーン': 'business scenario',
+      'データマッピング': 'data mapping',
+      'AI検証': 'AI verification',
+      'OCR 抽出': 'OCR extraction',
+      'OCR 確認': 'OCR review',
+      'マイタスク': 'My Tasks',
+      'ユーザー管理': 'User Management',
+      '権限管理': 'Permission Management',
+      'セキュリティ設定': 'Security Settings',
+      '機能説明': 'Function',
+      '画面操作': 'Screen Operation',
+      '関連影響': 'Related Impact',
+      '注意事項': 'Notes',
+      '権限': 'Permission',
+      '用途': 'Purpose',
+      '利用タイミング': 'When to Use',
+      '設定ロジック': 'Configuration Logic',
+      '実行ロジック': 'Execution Logic',
+      '影響先': 'Affected Area',
+      '影響内容': 'Impact',
+      'ロール': 'Role',
+      '主な役割': 'Main Responsibilities',
+      '区分': 'Category',
+      '説明': 'Description',
+      '子モジュール': 'Submodules',
+      'メインモデル': 'main model',
+      '検証モデル': 'verification model',
+      'モデル間不一致': 'model mismatch',
+      '低信頼度': 'low confidence',
+      '確認対象': 'review target',
+      'タスク': 'task',
+      'ワークフロー': 'workflow',
+      'ノード': 'node',
+      'フィールド': 'field',
+      '標準変数': 'standard variable',
+      'ルール': 'rule',
+      'ステータス': 'status',
+      'プロバイダ': 'provider',
+      '接続': 'connection',
+      '通知先URL': 'notification URL',
+      'APIキー管理': 'API key management',
+      '必須フィールド': 'required fields',
+      '必要書類': 'required documents',
+      '標準データ整合性': 'standard data consistency',
+      'テキスト検証': 'text verification',
+      'データ検証': 'data verification',
+      '署名・印鑑検証': 'signature/seal verification',
+      '帳票構成': 'document composition',
+      '帳票': 'document',
+      '読取モデル設定': 'reading model settings',
+      '業務担当者': 'business user',
+      '案件担当者': 'case owner',
+      '手動改派': 'manual reassignment',
+      '到達順': 'navigation order',
+      '操作手順': 'operation steps',
+      '適用タイミング': 'application timing',
+      '接続情報': 'connection information',
+      '登録': 'register',
+      '指定': 'specify',
+      '割当': 'assignment',
+      '割り当て': 'assign',
+      '選択': 'select',
+      '選': 'select',
+      '挿入': 'insert',
+      '参照': 'reference',
+      '記述': 'description',
+      '形式': 'format',
+      '一括': 'bulk',
+      '切替': 'switch',
+      '書込': 'write',
+      '正解': 'ground truth',
+      '分類': 'classification',
+      '抽出': 'extraction',
+      '照合': 'matching',
+      '整合性': 'consistency',
+      '必須': 'required',
+      '任意': 'optional',
+      '対象帳票': 'target document',
+      '全文': 'full text',
+      '検出': 'detection',
+      '印影': 'seal impression',
+      '署名': 'signature',
+      '医療機関': 'medical institution',
+      '診断書': 'medical certificate',
+      '診療明細書': 'medical fee statement',
+      '請求書': 'claim form',
+      '被保険者': 'insured person',
+      '氏名': 'name'
+      , 'システム概要': 'System Overview'
+      , 'ケース例': 'Case Example'
+      , '業務シーン': 'Business Scenario'
+      , '帳票': 'document'
+      , '処理ルール': 'processing rules'
+      , '画像処理': 'image processing'
+      , '効果テスト': 'effect test'
+      , '公開': 'publish'
+      , '未公開': 'unpublished'
+      , '発行': 'issue'
+      , '有効期限': 'expiration date'
+      , '完了': 'completed'
+      , '失敗': 'failed'
+      , '編集画面': 'edit screen'
+      , '通知設定': 'notification settings'
+      , '外部通知設定': 'external notification settings'
+      , '処理完了': 'processing completed'
+      , 'エクスポート済': 'exported'
+      , '集約済み案件': 'aggregated cases'
+      , '未集約ファイル': 'unaggregated files'
+      , '追加資料アップロード': 'additional document upload'
+      , '一括エクスポート': 'bulk export'
+      , '補件': 'supplementary documents'
+      , 'マスタ照合': 'master data matching'
+      , '一括インポート': 'bulk import'
+      , 'ベクトル化': 'vectorization'
+      , '代表サンプル': 'representative samples'
+      , '説明文': 'description text'
+      , 'ファイル分割ルール': 'file splitting rules'
+      , '画像分割': 'image splitting'
+      , '画像整列': 'image alignment'
+      , '帳票名': 'document name'
+      , 'のダイアログで': ' in the dialog, '
+      , 'を入力し、': ', enter '
+      , 'から選択して発行します。': ', select one, and issue it.'
+      , 'を入力します。': ', then enter it.'
+      , 'で発行し、': ' to issue it, then '
+      , '影響します。': ' is affected.'
+      , '対象になります。': ' becomes a review target.'
+      , '利用できません。': ' cannot be used.'
+      , 'を設定します。': ' is configured.'
+      , 'で登録済みの API キーと有効状態を確認します。': ' to confirm registered API keys and their active status.'
+      , '新規発行する場合は': 'To issue a new one, '
+      , 'タブで、ファイルアップロード、案件一覧照会、バッチ別案件照会、追加資料アップロード、一括エクスポート、エクスポートタスク照会のエンドポイントを確認します。コピーアイコンで URL を取得できます。リクエスト形式などの詳細は専用の API 接続文書を参照してください。': ' tab to review endpoints for file upload, case list queries, batch case queries, additional document upload, bulk export, and export task queries. Use the copy icon to get the URL. See the dedicated API connection document for request formats and other details.'
+      , 'タブで': ' in the tab'
+      , 'を確認します。': ', then confirm.'
+      , 'をクリックします。': ', then click.'
+      , 'します。': '.'
+      , 'する場合は': ' when needed, '
+    }
+  };
+  const originalText = new WeakMap();
+  const textNodes = [];
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const parent = node.parentElement;
+      if (!node.nodeValue.trim() || !parent) return NodeFilter.FILTER_REJECT;
+      if (parent.closest('script, style, noscript, .language-menu, .language-current, .lightbox-toolbar, .ui-text')) {
+        return NodeFilter.FILTER_REJECT;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  let textNode = walker.nextNode();
+  while (textNode) {
+    originalText.set(textNode, textNode.nodeValue);
+    textNodes.push(textNode);
+    textNode = walker.nextNode();
+  }
+  const translatableAttributes = ['alt', 'aria-label', 'title', 'placeholder'];
+  const attributeNodes = [];
+  document.querySelectorAll('[alt], [aria-label], [title], [placeholder]').forEach((element) => {
+    translatableAttributes.forEach((attributeName) => {
+      const value = element.getAttribute(attributeName);
+      if (value && value.trim() && !element.closest('.language-switcher')) {
+        attributeNodes.push({ element, attributeName, value });
+      }
+    });
+  });
+
+  let completeTranslations = null;
+  const completeTranslationBlocks = ['p', 'li', 'td', 'th', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'figcaption', 'div.notice'];
+  const completeOriginalSources = new WeakMap();
+
+  function normalizeCopy(value) {
+    return value.replace(/\s+/g, ' ').trim();
+  }
+
+  function blockSource(element) {
+    let uiIndex = 0;
+    function read(node) {
+      if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
+      if (node.nodeType !== Node.ELEMENT_NODE) return '';
+      if (node.classList.contains('ui-text')) {
+        uiIndex += 1;
+        return `[[UI_${String(uiIndex).padStart(2, '0')}]]`;
+      }
+      return Array.from(node.childNodes).map(read).join('');
+    }
+    return normalizeCopy(read(element));
+  }
+
+  function renderTranslatedBlock(element, translated) {
+    const uiLabels = Array.from(element.querySelectorAll('.ui-text')).map((node) => node.textContent);
+    const stepCode = element.querySelector('.step-code')?.textContent.trim() || '';
+    const escaped = translated.replace(/[&<>"']/g, (character) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[character]));
+    const html = escaped.replace(/\[\[UI_(\d+)\]\]/g, (_, index) => {
+      const label = uiLabels[Number(index) - 1] || '';
+      return `<span class="ui-text" style="display:inline !important;">${label}</span>`;
+    });
+    const cleanedHtml = stepCode ? html.replace(stepCode, '') : html;
+    element.innerHTML = stepCode
+      ? `<span class="step-code">${stepCode}</span><span class="step-text">${cleanedHtml}</span>`
+      : html;
+    if (stepCode) {
+      element.style.display = 'grid';
+      element.style.gridTemplateColumns = '28px minmax(0, 1fr)';
+    }
+  }
+
+  function applyCompleteTranslations(targetLanguage) {
+    if (!completeTranslations) return;
+    const map = completeTranslations[targetLanguage] || {};
+    const fallback = targetLanguage === 'zh-CN'
+      ? '主数据匹配设置\n数据源是通过 [[UI_01]] 登记的主数据表。选择 [[UI_02]] 后会显示 [[UI_03]] 的选择栏，可指定表名和匹配目标列。列结构和 [[UI_04]] 沿用主数据表侧 [[UI_05]] 中定义的内容。未登记主数据表时，候选项为空，无法保存。\n\n匹配单位（单元格匹配 / 分组匹配）\n[[UI_06]] 留空的项目仅使用该项目的 OCR 值查询主数据表。在多个项目中输入相同的 [[UI_06]] 编号时，会将 OCR 值组合成一次匹配查询。例如，将转账目的金融机构名和转账目的网点名都设为 [[UI_06]] 1，同时匹配银行和网点主数据。\n\n匹配策略与返回\n通过 [[UI_07]] 获取容许写法差异的相似候选；在 [[UI_08]] 中也会尝试根据 [[UI_09]] 列进行完全匹配。匹配成功后，将命中的主数据行标准值写回该项目。当相似度低于 [[UI_10]] 阈值、存在多个候选或未命中时，不写回结果，并转为待确认，进入 OCR 确认任务。'
+      : 'Master Data Matching Settings\nThe data source is the master table registered in [[UI_01]]. When [[UI_02]] is selected, the [[UI_03]] selector appears so you can specify the table name and target matching columns. The column structure and [[UI_04]] use the definitions in [[UI_05]] on the master-table side. If no master table is registered, the candidate list is empty and saving is unavailable.\n\nMatching Units (Cell / Group Matching)\nItems with an empty [[UI_06]] are matched using only the item\'s OCR value. Multiple items with the same [[UI_06]] number are treated as one combined matching query. For example, set the transfer destination institution name and branch name to [[UI_06]] 1 to match the bank and branch master data together.\n\nMatching Strategy and Return Values\n[[UI_07]] retrieves similar candidates while allowing notation variations; [[UI_08]] also attempts exact matching against the [[UI_09]] column. When matching succeeds, the normalized value from the matched master row is written back to the item. If similarity is below the [[UI_10]] threshold, multiple candidates exist, or no match is found, the value is not written back and becomes a review target in the OCR confirmation task.';
+    document.querySelectorAll(completeTranslationBlocks.join(',')).forEach((element) => {
+      if (element.closest('script, style, noscript, .language-switcher')) return;
+      if (!completeOriginalSources.has(element)) completeOriginalSources.set(element, blockSource(element));
+      const source = completeOriginalSources.get(element);
+      const translated = source.startsWith('マスタ照合の設定') ? fallback : map[source];
+      if (translated) renderTranslatedBlock(element, translated);
+    });
+    document.querySelectorAll('[alt], [aria-label], [title], [placeholder]').forEach((element) => {
+      if (element.closest('.language-switcher')) return;
+      const source = element.getAttribute('alt') || element.getAttribute('aria-label') || element.getAttribute('title') || element.getAttribute('placeholder');
+      const translated = map[normalizeCopy(source || '')];
+      if (!translated) return;
+      ['alt', 'aria-label', 'title', 'placeholder'].forEach((attributeName) => {
+        if (element.hasAttribute(attributeName) && map[normalizeCopy(element.getAttribute(attributeName))]) {
+          element.setAttribute(attributeName, map[normalizeCopy(element.getAttribute(attributeName))]);
+        }
+      });
+    });
+  }
+
+  function normalizeLanguage(language) {
+    if (language === 'zh') return 'zh-CN';
+    return languageNames[language] ? language : 'ja';
+  }
+
+  function setLanguageMenuOpen(isOpen) {
+    if (!languageSwitcher || !languageButton) return;
+    languageSwitcher.classList.toggle('open', isOpen);
+    languageButton.setAttribute('aria-expanded', String(isOpen));
+  }
+
+  function updateLanguageControl(targetLanguage) {
+    if (languageCurrent) languageCurrent.textContent = languageNames[targetLanguage] || languageNames.ja;
+    languageOptions.forEach((option) => {
+      const isActive = option.dataset.languageOption === targetLanguage;
+      option.classList.toggle('active', isActive);
+      if (isActive) {
+        option.setAttribute('aria-current', 'true');
+      } else {
+        option.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function translateStaticText(originalValue, targetLanguage, dictionary) {
+    if (targetLanguage === 'ja') return originalValue;
+    const phraseDictionary = localPhraseText[targetLanguage === 'zh-CN' ? 'zh' : targetLanguage] || {};
+    const trimmed = originalValue.trim();
+    if (!trimmed) return originalValue;
+    // 整句/整段语义映射优先
+    const dictionaryKey = Object.keys(dictionary).find((key) => key.trim() === trimmed);
+    if (dictionaryKey) {
+      return originalValue.replace(trimmed, dictionary[dictionaryKey]);
+    }
+    // 仅完整词条级短语（UI 短标签）允许替换，不做逐词拼接
+    const phraseKey = Object.keys(phraseDictionary).find((key) => key.trim() === trimmed);
+    if (phraseKey) {
+      return originalValue.replace(trimmed, phraseDictionary[phraseKey]);
+    }
+    return originalValue;
+  }
+
+  function applyLanguage(language) {
+    const targetLanguage = normalizeLanguage(language);
+    const dictionary = languageText[targetLanguage === 'zh-CN' ? 'zh' : targetLanguage] || languageText.ja;
+    document.documentElement.lang = targetLanguage === 'ja' ? 'ja' : targetLanguage;
+    document.body.dataset.language = targetLanguage;
+    updateLanguageControl(targetLanguage);
+    document.title = dictionary['NeosAI IDP マニュアル'];
+    localStorage.setItem('neosai-manual-language', targetLanguage);
+    textNodes.forEach((node) => {
+      const source = originalText.get(node);
+      if (source) node.nodeValue = translateStaticText(source, targetLanguage, dictionary);
+    });
+    attributeNodes.forEach(({ element, attributeName, value }) => {
+      element.setAttribute(attributeName, translateStaticText(value, targetLanguage, dictionary));
+    });
+    applyCompleteTranslations(targetLanguage === 'zh-CN' ? 'zh-CN' : targetLanguage);
+  }
+
+  const savedLanguage = normalizeLanguage(localStorage.getItem('neosai-manual-language') || 'ja');
+  document.querySelectorAll(completeTranslationBlocks.join(',')).forEach((element) => {
+    if (!element.closest('script, style, noscript, .language-switcher')) {
+      completeOriginalSources.set(element, blockSource(element));
+    }
+  });
+  if (languageButton) {
+    languageButton.addEventListener('click', () => {
+      const isOpen = languageSwitcher?.classList.contains('open');
+      setLanguageMenuOpen(!isOpen);
+    });
+  }
+  languageOptions.forEach((option) => {
+    option.addEventListener('click', () => {
+      applyLanguage(option.dataset.languageOption);
+      setLanguageMenuOpen(false);
+    });
+  });
+  document.addEventListener('click', (event) => {
+    if (languageSwitcher && !languageSwitcher.contains(event.target)) setLanguageMenuOpen(false);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setLanguageMenuOpen(false);
+  });
+  applyLanguage(savedLanguage);
+  Promise.all([fetch('manual-copy-to-translate.json'), fetch('manual-notices.generated.json')])
+    .then((responses) => Promise.all(responses.map((response) => response.json())))
+    .then(([entries, noticeEntries]) => {
+      completeTranslations = { 'zh-CN': {}, en: {} };
+      [...entries, ...noticeEntries].forEach((entry) => {
+        completeTranslations['zh-CN'][normalizeCopy(entry.source_ja)] = entry['zh-CN'];
+        completeTranslations.en[normalizeCopy(entry.source_ja)] = entry.en;
+      });
+      window.manualCompleteTranslations = completeTranslations;
+      applyCompleteTranslations(savedLanguage === 'zh-CN' ? 'zh-CN' : savedLanguage);
+      requestAnimationFrame(() => applyCompleteTranslations(savedLanguage === 'zh-CN' ? 'zh-CN' : savedLanguage));
+    })
+    .catch((error) => console.error('[i18n] failed to load translations', error));
+
   document.querySelectorAll('.toc-panel summary a').forEach((link) => {
     link.addEventListener('click', (event) => {
       event.stopPropagation();
