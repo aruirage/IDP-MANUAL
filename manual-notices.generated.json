@@ -2,7 +2,7 @@
   {
     "source_ja": "注意事項 接続テストに成功していないモデル、または無効状態のモデルは、後続設定で利用できません。用途割当を変更すると、同じ業務シーンでも読取結果や検証結果が変わる可能性があるため、変更後は対象帳票タイプの効果テストを実行してください。",
     "ui_text": {},
-    "zh-CN": "注意事项 未通过连接测试或处于停用状态的模型，无法在后续配置中使用。更改用途分配后，即使是同一业务场景，识别结果与校验结果也可能发生变化，因此更改后请对目标单据类型执行效果测试。",
+    "zh-CN": "**注意事项** 未通过连接测试或处于停用状态的模型，无法在后续配置中使用。更改用途分配后，即使是同一业务场景，识别结果与校验结果也可能发生变化，因此更改后请对目标单据类型执行效果测试。",
     "en": "Note Models that have not been successfully tested for connectivity, or that are in an invalid state, are not available in subsequent configurations. If you change the application assignment, the reading results and verification results may change even in the same business scenario, so please perform the effect test of the target document type after the change."
   },
   {
@@ -11,7 +11,7 @@
       "[[UI_01]]": "通知先URL",
       "[[UI_02]]": "署名鍵"
     },
-    "zh-CN": "注意事项 已停用、过期或停止使用的 API 密钥无法从外部系统调用。保存 [[UI_01]] 时必须填写 [[UI_02]]。重新生成签名密钥会导致现有外部接收端的校验失败，请与对接方同步更新。案件不可补件、不可导出时，API 同样会拒绝。请求格式、认证方式、错误码请参阅专门的 API 对接文档。",
+    "zh-CN": "**注意事项** 已停用、过期或停止使用的 API 密钥无法从外部系统调用。保存 [[UI_01]] 时必须填写 [[UI_02]]。重新生成签名密钥会导致现有外部接收端的校验失败，请与对接方同步更新。案件不可补件、不可导出时，API 同样会拒绝。请求格式、认证方式、错误码请参阅专门的 API 对接文档。",
     "en": "Note API keys that are invalid, expired, or inactive cannot be called from an external system. [[UI_02]] is required when saving [[UI_01]]. Renewing the signing key will fail to validate the existing external recipient, so please update it at the same time as the integration destination. If the case is non-replenishable or non-exportable, the API will also be rejected. Refer to the dedicated API connection documentation for request formats, authentication methods, and error codes."
   },
   {
@@ -19,7 +19,7 @@
     "ui_text": {
       "[[UI_01]]": "失敗"
     },
-    "zh-CN": "注意事项 1 万行以上的大量数据，向量化可能需要 30 分钟以上。导入后立即进入业务配置时，请等待向量化完成后再在单据类型设置侧执行效果测试。状态为 [[UI_01]] 的行可通过重新向量化手动重试。",
+    "zh-CN": "**注意事项** 1 万行以上的大量数据，向量化可能需要 30 分钟以上。导入后立即进入业务配置时，请等待向量化完成后再在单据类型设置侧执行效果测试。状态为 [[UI_01]] 的行可通过重新向量化手动重试。",
     "en": "Note For large volumes of data larger than 10,000 rows, vectorization may take more than 30 minutes. If you want to proceed to the business settings immediately after importing, please wait for the vectorization to be completed before performing the effect test on the document type setting side. Rows with a state of [[UI_01]] can be retried manually by re-vectorization."
   },
   {
@@ -38,7 +38,7 @@
       "[[UI_11]]": "照会コード",
       "[[UI_12]]": "自信度"
     },
-    "zh-CN": "主数据匹配设置 引用来源是在 [[UI_01]] 中登记的主数据表。选择 [[UI_02]] 后会显示 [[UI_03]] 选择栏，可指定表名与匹配目标列。列结构与 [[UI_04]] 沿用主数据表侧 [[UI_05]] 中定义的内容。未登记主数据表时，候选项为空，无法保存。 匹配单位（单元格匹配 / 分组匹配） [[UI_06]] 留空的字段仅使用该字段的 OCR 值查询主数据表。多个字段在 [[UI_07]] 中输入相同编号时，会将 OCR 值组合成一次匹配查询。例如，将转账目标金融机构名和转账目标网点名都设为 [[UI_08]] 1，可同时匹配银行和网点主数据。 匹配策略与返回 通过 [[UI_09]] 在容许写法差异的前提下获取相似候选；[[UI_10]] 中还会尝试按 [[UI_11]] 列进行完全匹配。匹配成功后，将命中的主数据行标准值写回该字段。相似度低于 [[UI_12]] 阈值、存在多个候选或未命中时，不写回结果，转为待确认，进入 OCR 确认任务。",
+    "zh-CN": "**主数据匹配设置** 引用来源是在 [[UI_01]] 中登记的主数据表。选择 [[UI_02]] 后会显示 [[UI_03]] 选择栏，可指定表名与匹配目标列。列结构与 [[UI_04]] 沿用主数据表侧 [[UI_05]] 中定义的内容。未登记主数据表时，候选项为空，无法保存。 **匹配单位（单元格匹配 / 分组匹配）** [[UI_06]] 留空的字段仅使用该字段的 OCR 值查询主数据表。多个字段在 [[UI_07]] 中输入相同编号时，会将 OCR 值组合成一次匹配查询。例如，将转账目标金融机构名和转账目标网点名都设为 [[UI_08]] 1，可同时匹配银行和网点主数据。 **匹配策略与返回** 通过 [[UI_09]] 在容许写法差异的前提下获取相似候选；[[UI_10]] 中还会尝试按 [[UI_11]] 列进行完全匹配。匹配成功后，将命中的主数据行标准值写回该字段。相似度低于 [[UI_12]] 阈值、存在多个候选或未命中时，不写回结果，转为待确认，进入 OCR 确认任务。",
     "en": "The setting reference for master matching is the master table registered in [[UI_01]]. If you select [[UI_02]], the selection field of [[UI_03]] will be displayed, and the table name and the matching column will be specified. The column structure and [[UI_04]] are used as defined in [[UI_05]] on the side of the master table. If the table is not registered, the selection suggestion is empty and cannot be saved. Items with an empty collation unit (cell collation/group collation) [[UI_06]] query the master table only for the OCR value of the item. Multiple items with the same number entered in [[UI_07]] are treated as a single collation query by combining OCR values. Example: Set both the bank name and the branch name to [[UI_08]] 1, and check with the bank/branch master at the same time. The matching strategy and return [[UI_09]] will get similar suggestions while allowing notation variation, and [[UI_10]] will also try to match exactly with the [[UI_11]] column. When the matching is successful, the normal value of the hit master line is written back to the item. If the similarity is below the [[UI_12]] threshold, multiple candidates, or missed, it will not be rewritten and will be subject to OCR confirmation task."
   },
   {
@@ -47,19 +47,19 @@
       "[[UI_01]]": "組合必須キー",
       "[[UI_02]]": "組合任意キー"
     },
-    "zh-CN": "合并键判定 [[UI_01]] 在所选字段的 OCR 值全部一致时进行合并。[[UI_02]] 在满足必需键的基础上，只要任意 1 个字段一致即进行合并。",
+    "zh-CN": "**合并键判定** [[UI_01]] 在所选字段的 OCR 值全部一致时进行合并。[[UI_02]] 在满足必需键的基础上，只要任意 1 个字段一致即进行合并。",
     "en": "The judgment [[UI_01]] of the union key is summarized when all the OCR values of the selected items match. [[UI_02]] meets the required key, and summarizes if one of the items matches."
   },
   {
     "source_ja": "注意事項 帳票タイプを作成しただけでは業務操作には表示されません。業務シーンに追加し、公開されたバージョンで利用されます。OCR 抽出項目を変更すると、その項目を参照している業務シーン、データマッピング、AI 検証、出力項目に影響する場合があります。マスタ照合を使う場合は、対象マスターデータのベクトル化状態が完了していることを確認してください。",
     "ui_text": {},
-    "zh-CN": "注意事项 仅创建单据类型不会显示在业务操作中，需添加到业务场景并以发布的版本使用。修改 OCR 提取字段时，可能影响引用该字段的业务场景、数据映射、AI 校验与输出字段。使用主数据匹配时，请确认目标主数据的向量化状态已完成。",
+    "zh-CN": "**注意事项** 仅创建单据类型不会显示在业务操作中，需添加到业务场景并以发布的版本使用。修改 OCR 提取字段时，可能影响引用该字段的业务场景、数据映射、AI 校验与输出字段。使用主数据匹配时，请确认目标主数据的向量化状态已完成。",
     "en": "Precautions It is not displayed in business operations just by creating a form type. It will be added to the business scene and used in the published version. Changing an OCR extraction item may affect the job scenario, data mapping, AI validation, and output items referencing that item. When using master matching, make sure that the vectorization state of the target master data is completed."
   },
   {
     "source_ja": "設定チェックで確認される主な項目 終了ノード到達、分岐出口の接続、前処理・OCR・AI 検証の最低 1 項目 ON、人工確認の補件回流、無効な条件変数参照。設定チェックは静的検証のみで、テスト案件の実行は行いません。公開時も同じ設定チェックを使います。",
     "ui_text": {},
-    "zh-CN": "配置检查主要确认的项目：结束节点可达、分支出口已连接、前处理·OCR·AI 校验至少开启 1 项、人工确认的补件回流、无效的条件变量引用。配置检查仅做静态校验，不会执行测试案件。发布时使用相同的配置检查。",
+    "zh-CN": "**配置检查主要确认的项目** 结束节点可达、分支出口已连接、前处理·OCR·AI 校验至少开启 1 项、人工确认的补件回流、无效的条件变量引用。配置检查仅做静态校验，不会执行测试案件。发布时使用相同的配置检查。",
     "en": "Arrival of the main item end node confirmed by the setting check, connection of the branch outlet, at least one item of pre-processing/OCR/AI verification ON, artificial confirmation supplementary reflow, invalid condition variable reference. Configuration checks are only static validations and do not execute test cases. Use the same settings check when publishing."
   },
   {
@@ -67,25 +67,25 @@
     "ui_text": {
       "[[UI_01]]": "グループ"
     },
-    "zh-CN": "分组与 AND / OR 每对单据以 [[UI_01]] 为单位定义关联。 • 组内为 AND：在同一分组内添加多个关联字段时，只有这些字段的值全部一致才视为关联成立。 • 组间为 OR：存在多个分组时，只要满足其中 1 个分组的条件即视为关联成立。 示例：分组 A 设为“理赔申请编号＝理赔申请编号”、分组 B 设为“姓名＝姓名”时，只要理赔申请编号或姓名任意一项一致，单据之间即建立关联。",
+    "zh-CN": "**分组与 AND / OR** 每对单据以 [[UI_01]] 为单位定义关联。 • **组内为 AND**：在同一分组内添加多个关联字段时，只有这些字段的值全部一致才视为关联成立。 • **组间为 OR**：存在多个分组时，只要满足其中 1 个分组的条件即视为关联成立。 示例：分组 A 设为“理赔申请编号＝理赔申请编号”、分组 B 设为“姓名＝姓名”时，只要理赔申请编号或姓名任意一项一致，单据之间即建立关联。",
     "en": "Define associations in units of [[UI_01]] for each group and/or document pair. • within the group and: if you add more than one related item within the same group, it will only be considered relevant if all of those values match. • OR between groups: If there are multiple groups, one of the group conditions is met and the association is deemed to be successful. Example: If Group A says “Invoice Number = Invoice Number” or Group B says “Name = Name,” then either the invoice number matches or the name matches."
   },
   {
     "source_ja": "注意事項 Step1 で設定した案件集約条件は、アップロード後の集約結果に反映されます。公開済みの設定は新規案件にのみ使われ、進行中の既存案件は開始時点の版をそのまま使います。",
     "ui_text": {},
-    "zh-CN": "注意事项 Step1 配置的案件归集条件会反映到上传后的归集结果。已发布的设置仅用于新案件，进行中的现有案件沿用开始时的版本。",
+    "zh-CN": "**注意事项** Step1 配置的案件归集条件会反映到上传后的归集结果。已发布的设置仅用于新案件，进行中的现有案件沿用开始时的版本。",
     "en": "Note The case aggregation conditions set in Step 1 will be reflected in the aggregation results after upload. Published settings will only be used for new cases, and existing cases in progress will still use the original version."
   },
   {
     "source_ja": "注意事項 データマッピングは値を標準変数へ整理する機能です。項目の競合や業務上の整合性判定は、AI 検証設定で扱います。",
     "ui_text": {},
-    "zh-CN": "注意事项 数据映射是将取值整理为标准变量的功能。字段冲突与业务上的一致性判定由 AI 校验设置处理。",
+    "zh-CN": "**注意事项** 数据映射是将取值整理为标准变量的功能。字段冲突与业务上的一致性判定由 AI 校验设置处理。",
     "en": "Note Data mapping is the ability to organize values into standard variables. Item conflicts and business integrity judgments are handled in the AI validation settings."
   },
   {
     "source_ja": "注意事項 適用シーンを先に選んでから帳票タイプ・フィールドを指定します。業務シーンや帳票タイプ、データマッピングを変更した場合は、AI 検証ルールの参照先が変わる可能性があるため、対象ルールを確認してください。",
     "ui_text": {},
-    "zh-CN": "注意事项 先选择适用场景，再指定单据类型与字段。修改业务场景、单据类型或数据映射后，AI 校验规则的引用对象可能发生变化，请确认相关规则。",
+    "zh-CN": "**注意事项** 先选择适用场景，再指定单据类型与字段。修改业务场景、单据类型或数据映射后，AI 校验规则的引用对象可能发生变化，请确认相关规则。",
     "en": "Precautions Select the applicable scene first, and then specify the form type field. If you change the business scenario, document type, or data mapping, please check the applicable rules as the reference destination for AI verification rules may change."
   },
   {
@@ -102,7 +102,7 @@
       "[[UI_09]]": "案件中止",
       "[[UI_10]]": "保存"
     },
-    "zh-CN": "与人工确认节点的联动（OCR / AI 校验通用） 执行界面底部的 [[UI_01]] / [[UI_02]] 对应工作流画布上 [[UI_03]] 节点的 [[UI_04]] 出口，进入后续节点。前处理的人工确认任务不在本期范围内。[[UI_05]] 路由到 [[UI_06]] 出口，返回画布中配置的前置节点（例如：OCR 提取）。案件变为 [[UI_07]] 状态，通过 [[UI_08]] 上传追加材料。[[UI_09]] 不在画布上连线，选择时会结束当前工作流实例（案件本身可重新执行）。[[UI_10]] 仅保存进度，不确定出口。",
+    "zh-CN": "**与人工确认节点的联动（OCR / AI 校验通用）** 执行界面底部的 [[UI_01]] / [[UI_02]] 对应工作流画布上 [[UI_03]] 节点的 [[UI_04]] 出口，进入后续节点。前处理的人工确认任务不在本期范围内。[[UI_05]] 路由到 [[UI_06]] 出口，返回画布中配置的前置节点（例如：OCR 提取）。案件变为 [[UI_07]] 状态，通过 [[UI_08]] 上传追加材料。[[UI_09]] 不在画布上连线，选择时会结束当前工作流实例（案件本身可重新执行）。[[UI_10]] 仅保存进度，不确定出口。",
     "en": "[[UI_01]]/[[UI_02]] in the execution screen footer corresponds to the [[UI_04]] exit of the [[UI_03]] node on the workflow canvas and proceeds to the subsequent node. Pre-processed manual confirmation tasks are not eligible for this issue. [[UI_05]] is routed to the [[UI_06]] exit and returns to the front node set on the canvas (e.g. OCR extraction). The case will be in [[UI_07]] state and additional documents will be uploaded from [[UI_08]]. [[UI_09]] does not connect on the canvas, but terminates the current workflow instance upon selection (the case itself is re-executable). [[UI_10]] only saves the progress and does not confirm the exit."
   }
 ]

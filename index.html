@@ -2022,7 +2022,9 @@
         uiIndex += 1;
         return `[[UI_${String(uiIndex).padStart(2, '0')}]]`;
       }
-      return Array.from(node.childNodes).map(read).join('');
+      const inner = Array.from(node.childNodes).map(read).join('');
+      if (node.tagName === 'STRONG' || node.tagName === 'B') return `**${inner}**`;
+      return inner;
     }
     return normalizeCopy(read(element));
   }
@@ -2036,7 +2038,7 @@
     const html = escaped.replace(/\[\[UI_(\d+)\]\]/g, (_, index) => {
       const label = uiLabels[Number(index) - 1] || '';
       return `<span class="ui-text" style="display:inline !important;">${label}</span>`;
-    });
+    }).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     const cleanedHtml = stepCode ? html.replace(stepCode, '') : html;
     element.innerHTML = stepCode
       ? `<span class="step-code">${stepCode}</span><span class="step-text">${cleanedHtml}</span>`
@@ -2056,7 +2058,7 @@
     document.querySelectorAll(completeTranslationBlocks.join(',')).forEach((element) => {
       if (element.closest('script, style, noscript, .language-switcher')) return;
       if (!completeOriginalSources.has(element)) completeOriginalSources.set(element, blockSource(element));
-      const source = completeOriginalSources.get(element);
+      const source = completeOriginalSources.get(element).replace(/\*\*/g, '');
       const translated = source.startsWith('マスタ照合の設定') ? fallback : map[source];
       if (translated) renderTranslatedBlock(element, translated);
     });
