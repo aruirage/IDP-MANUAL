@@ -137,8 +137,8 @@
     "id": "manual-0018",
     "source_ja": "モデル設定 API設定 マスターデータ設定 帳票タイプ設定 業務シーン設定 データマッピング設定 AI検証設定",
     "ui_text": {},
-    "zh-CN": "模型设置 API设置 主数据设置 单据类型设置 业务场景设置 数据映射设置 AI校验设置",
-    "en": "Model Setting API Setting Master Data Setting Document Type Setting Business Scene Setting Data Mapping Setting AI Verification Setting"
+    "zh-CN": "[[LINK_01:模型设置]] [[LINK_02:API设置]] [[LINK_03:主数据设置]] [[LINK_04:单据类型设置]] [[LINK_05:业务场景设置]] [[LINK_06:数据映射设置]] [[LINK_07:AI校验设置]]",
+    "en": "[[LINK_01:Model Setting]] [[LINK_02:API Setting]] [[LINK_03:Master Data Setting]] [[LINK_04:Document Type Setting]] [[LINK_05:Business Scene Setting]] [[LINK_06:Data Mapping Setting]] [[LINK_07:AI Verification Setting]]"
   },
   {
     "id": "manual-0019",
@@ -158,8 +158,8 @@
     "id": "manual-0021",
     "source_ja": "資料アップロード 案件一覧 マイタスク",
     "ui_text": {},
-    "zh-CN": "资料上传 案件列表 我的任务",
-    "en": "Documents Upload Job List My Tasks"
+    "zh-CN": "[[LINK_01:资料上传]] [[LINK_02:案件列表]] [[LINK_03:我的任务]]",
+    "en": "[[LINK_01:Documents Upload]] [[LINK_02:Job List]] [[LINK_03:My Tasks]]"
   },
   {
     "id": "manual-0022",
@@ -179,8 +179,8 @@
     "id": "manual-0024",
     "source_ja": "ユーザー管理 権限管理 セキュリティ設定",
     "ui_text": {},
-    "zh-CN": "用户管理 权限管理 安全设置",
-    "en": "User Management Permissions Management Security Settings"
+    "zh-CN": "[[LINK_01:用户管理]] [[LINK_02:权限管理]] [[LINK_03:安全设置]]",
+    "en": "[[LINK_01:User Management]] [[LINK_02:Permissions Management]] [[LINK_03:Security Settings]]"
   },
   {
     "id": "manual-0025",
@@ -193,8 +193,8 @@
     "id": "manual-0026",
     "source_ja": "各画面への到達順：モデル設定 → API設定 → マスターデータ設定 → 帳票タイプ設定 → 業務シーン設定 → データマッピング設定 → AI検証設定。各機能モジュールの操作手順と、画面だけでは分かりにくい適用タイミングを説明します。ロール詳細は ロール設定 を参照してください。",
     "ui_text": {},
-    "zh-CN": "各界面的访问顺序：**模型设置 → API设置 → 主数据设置 → 单据类型设置 → 业务场景设置 → 数据映射设置 → AI校验设置**。本章说明各功能模块的操作步骤，以及仅从界面难以理解的生效时机。角色详情请参阅 角色设置。",
-    "en": "Reach order to each screen: Model setting → API setting → Master data setting → Form type setting → Business scene setting → Data mapping setting → AI verification setting. Describe the operation procedure of each function module and the application timing that is difficult to understand with the screen alone. For more information on roles, see Role settings."
+    "zh-CN": "各界面的访问顺序：**模型设置 → API设置 → 主数据设置 → 单据类型设置 → 业务场景设置 → 数据映射设置 → AI校验设置**。本章说明各功能模块的操作步骤，以及仅从界面难以理解的生效时机。角色详情请参阅 [[LINK_01:角色设置]]。",
+    "en": "Reach order to each screen: **Model setting → API setting → Master data setting → Form type setting → Business scene setting → Data mapping setting → AI verification setting**. Describe the operation procedure of each function module and the application timing that is difficult to understand with the screen alone. For more information on roles, see [[LINK_01:Role settings]]."
   },
   {
     "id": "manual-0027",
@@ -1454,8 +1454,8 @@
     "id": "manual-0179",
     "source_ja": "操作手順は 画面操作 を参照してください。",
     "ui_text": {},
-    "zh-CN": "操作步骤请参阅 界面操作。",
-    "en": "Refer to the screen operation for the operation procedure."
+    "zh-CN": "操作步骤请参阅 [[LINK_01:界面操作]]。",
+    "en": "Refer to [[LINK_01:the screen operation]] for the operation procedure."
   },
   {
     "id": "manual-0180",
@@ -1568,8 +1568,8 @@
     "id": "manual-0190",
     "source_ja": "キャンバス全体。ノードの役割は 機能説明 を参照。",
     "ui_text": {},
-    "zh-CN": "画布全貌。各节点的作用请参阅 功能说明。",
-    "en": "The entire canvas. See function description for node roles."
+    "zh-CN": "画布全貌。各节点的作用请参阅 [[LINK_01:功能说明]]。",
+    "en": "The entire canvas. See [[LINK_01:the function description]] for node roles."
   },
   {
     "id": "manual-0191",
@@ -1579,8 +1579,8 @@
       "[[UI_02]]": "開始",
       "[[UI_03]]": "終了"
     },
-    "zh-CN": "6[[UI_01]]：按需添加节点，拖拽布置，用线连接以组织处理顺序。确保路径能从 [[UI_02]] 出发，经过各处理与分支到达 [[UI_03]]。快捷操作（撤销／添加节点／排列与适应尺寸等）请参阅 功能说明。",
-    "en": "6 [[UI_01]]: Add nodes as needed, arrange them by dragging, connect them by lines, and arrange the processing order. The path from [[UI_02]] to [[UI_03]] can be reached through each process and branch. Refer to the function description for shortcuts (undo/add node/align/fit size, etc.)."
+    "zh-CN": "6[[UI_01]]：按需添加节点，拖拽布置，用线连接以组织处理顺序。确保路径能从 [[UI_02]] 出发，经过各处理与分支到达 [[UI_03]]。快捷操作（撤销／添加节点／排列与适应尺寸等）请参阅 [[LINK_01:功能说明]]。",
+    "en": "6 [[UI_01]]: Add nodes as needed, arrange them by dragging, connect them by lines, and arrange the processing order. The path from [[UI_02]] to [[UI_03]] can be reached through each process and branch. Refer to [[LINK_01:the function description]] for shortcuts (undo/add node/align/fit size, etc.)."
   },
   {
     "id": "manual-0192",
@@ -1589,8 +1589,8 @@
       "[[UI_01]]": "設定チェック",
       "[[UI_02]]": "公開可能"
     },
-    "zh-CN": "7[[UI_01]]：编排完成后运行，校验结束节点可达性、分支出口、必填字段等。通过后变为 [[UI_02]]。没有问题时保存并继续下一步（发布在后续步骤进行）。各节点的用途、配置与跨模块联动请参阅 功能说明。",
-    "en": "7 [[UI_01]]: Run after the organization to verify the end arrival, branch exit, required items, etc. When it passes, it becomes [[UI_02]]. If not, save and continue (publishing is the next step). Please refer to the function description for the purpose, setting, and other module linkage of each node."
+    "zh-CN": "7[[UI_01]]：编排完成后运行，校验结束节点可达性、分支出口、必填字段等。通过后变为 [[UI_02]]。没有问题时保存并继续下一步（发布在后续步骤进行）。各节点的用途、配置与跨模块联动请参阅 [[LINK_01:功能说明]]。",
+    "en": "7 [[UI_01]]: Run after the organization to verify the end arrival, branch exit, required items, etc. When it passes, it becomes [[UI_02]]. If not, save and continue (publishing is the next step). Please refer to [[LINK_01:the function description]] for the purpose, setting, and other module linkage of each node."
   },
   {
     "id": "manual-0193",

@@ -1489,6 +1489,66 @@
       'Language': 'Language'
     },
     en: {
+      'システム設定、ルール設定、ユーザー・権限管理を行う管理者。': 'Administrator who manages system settings, rule settings, and users and permissions.',
+      '資料アップロード、案件確認、': 'document upload, case review, ',
+      '操作員に加え、': 'In addition to operators, ',
+      '（案件担当者・タスク改派）が可能。': ' (case owner and task reassignment) are available.',
+      'は人工確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3 通知設定は割当とは無関係です。通知先は操作員・操作管理者のみ選択可能です。': ' tasks are created from human review or export nodes and shown to the relevant users based on the Step2 assignment settings. Step3 notification settings are unrelated to assignment. Only operators and operation managers can be selected as notification targets.',
+      '業務処理を自動化するためのモデル、帳票、業務ルールを設定します。': 'Configure the models, document types, and business rules used to automate business processing.',
+      '公開済みの業務シーンに基づいて、資料アップロードから案件確認、人工確認までを行います。': 'Perform the flow from document upload through case review to human review, based on published business scenarios.',
+      'ユーザー、権限、安全設定など、システム利用の前提となる管理項目を設定します。': 'Configure the administrative items required to use the system, such as users, permissions, and security settings.',
+      '保険金請求のケースに沿って、推奨順序は ': 'Following the insurance claim case, the recommended order is ',
+      'モデル → API → マスターデータ → 帳票タイプ → 業務シーン → データマッピング → AI検証': 'Model → API → Master data → Document type → Business scenario → Data mapping → AI verification',
+      ' です。': '.',
+      '各画面への到達順：': 'How to reach each screen:',
+      'モデル設定 → API設定 → マスターデータ設定 → 帳票タイプ設定 → 業務シーン設定 → データマッピング設定 → AI検証設定': 'Model settings → API settings → Master data settings → Document type settings → Business scenario settings → Data mapping settings → AI verification settings',
+      '。各機能モジュールの操作手順と、画面だけでは分かりにくい適用タイミングを説明します。ロール詳細は ': '. This chapter explains the operating steps of each functional module and the timing of use that is hard to grasp from the screens alone. For role details, refer to ',
+      ' を参照してください。': '.',
+      'admin 設定': 'admin settings',
+      '業務操作': 'Business operations',
+      '本モジュールでは、NeosAI IDP で利用するモデルリソースを一元管理します。OCR抽出、AI検証、データマッピングで使うモデルを、用途ごとに割り当てて管理します。': 'This module centrally manages the model resources used by NeosAI IDP. Models used for OCR extraction, AI verification, and data mapping are assigned and managed per purpose.',
+      '権限：': 'Permissions: ',
+      '本機能は ': 'This feature is configured by ',
+      ' が設定します。操作員はモデル接続や用途割当を編集せず、公開済みの業務シーンを通じて割当済みモデルの処理結果を利用します。': '. Operators do not edit model connections or purpose assignments; they use the processing results of the assigned models through published business scenarios.',
+      '設定ロジック：': 'Configuration logic: ',
+      ' では外部モデルプロバイダへの接続情報を登録し、': ' registers the connection information for external model providers, and ',
+      ' では OCR 抽出、AI 検証、データマッピングごとに使用するモデルを指定します。': ' specifies the models used for OCR extraction, AI verification, and data mapping.',
+      '利用タイミング：': 'When to use: ',
+      'OCR 抽出、AI 検証、データマッピングで使うモデルを、用途ごとに先に登録・割当しておきます。保険金請求では、診断書や診療明細書の読取、請求内容の整合性確認、出力データの変換処理で参照されます。': 'Register and assign in advance the models used for OCR extraction, AI verification, and data mapping, per purpose. In insurance claims, they are referenced when reading medical certificates and itemized statements, checking claim consistency, and converting output data.',
+      ' を開き、': ': open it and ',
+      ' タブで登録済みの接続を確認します。新規登録する場合は ': ' On the tab, check the registered connections. To register a new one, click ',
+      ' をクリックします。': '.',
+      '保存後、': 'After saving, ',
+      'を実施して初めてステータスが有効となり、当該モデルを利用可能になります。': ' must be executed; the status becomes active only after it succeeds, and the model then becomes available.',
+      ' 画面で ': ' screen, set ',
+      '、API ベース URL、API キー、モデル名、': ', API base URL, API key, model name, ',
+      ' を設定し、': ', then click ',
+      ' します。プロバイダに独自エンドポイントを使用する場合は ': '. If the provider uses a custom endpoint, select ',
+      ' を選択します。': '.',
+      ' タブで OCR 抽出・AI 検証などの用途ごとにモデルを割り当てます。': ' tab, assign models per purpose, such as OCR extraction and AI verification.',
+      ' の ': ' of ',
+      ' で選択できるモデル候補に影響します。': ' affects the model candidates that can be selected.',
+      'Step2 の ': 'Step2 ',
+      ' や ': ' and ',
+      ' ノードで参照されるモデル候補に影響します。': ' node affects the model candidates that are referenced.',
+      'メインモデルと検証モデルの結果が一致しない場合は、OCR 確認タスクで人工確認の対象になります。': 'If the main model and the verification model return different results, the case becomes a human review target in the OCR review task.',
+      '低信頼度、モデル間不一致が発生した場合、OCR 確認や AI 検証確認タスクで確認対象になります。': 'When confidence is low or models disagree, the case becomes a review target in the OCR review or AI verification review task.',
+      '接続テストに成功していないモデル、または無効状態のモデルは、後続設定で利用できません。用途割当を変更すると、同じ業務シーンでも読取結果や検証結果が変わる可能性があるため、変更後は対象帳票タイプの効果テストを実行してください。': 'Models that have not passed the connection test or that are disabled cannot be used in downstream settings. Changing the purpose assignment may change reading or verification results even for the same business scenario, so after changing it, run an effect test on the affected document types.',
+      'モデル設定 API 接続と接続追加を拡大表示': 'Model settings: API connections and add connection (enlarged view)',
+      'モデル設定 API 接続と接続追加': 'Model settings: API connections and add connection',
+      '接続追加 プロバイダ選択を拡大表示': 'Add connection: provider selection (enlarged view)',
+      '接続追加 プロバイダ選択': 'Add connection: provider selection',
+      'モデル設定 用途割当を拡大表示': 'Model settings: purpose assignment (enlarged view)',
+      'モデル設定 用途割当': 'Model settings: purpose assignment',
+      '本章では、外部システムから NeosAI IDP を呼び出すための Open API を管理します。設定画面は ': 'This chapter covers the Open API for calling NeosAI IDP from external systems. The settings screen has ',
+      ' の 3 タブです。パス、フィールド英語名、エラーコードは専用の API 接続文書を参照してください。': ' three tabs. For paths, English field names, and error codes, refer to the dedicated API connection document.',
+      ' が設定します。操作員は API 設定を編集せず、画面操作または公開済み業務シーンに基づく処理結果を利用します。': ' configures this. Operators do not edit API settings; they use processing results obtained through screen operations or published business scenarios.',
+      ' では外部システムが使う API キーを発行・管理します。': ' issues and manages the API keys used by external systems.',
+      ' では、プラットフォームが外部へ送るコールバック先と ': ' configures the callback destination the platform sends to external systems and ',
+      ' では、ファイルアップロード、案件一覧照会、バッチ別案件照会、追加資料アップロード、一括エクスポート、エクスポートタスク照会のエンドポイントを確認し、コピーできます。': ' lets you check and copy the endpoints for file upload, case list inquiry, case inquiry by batch, additional document upload, bulk export, and export task inquiry.',
+      '画面から手動アップロードする代わりに、社内システムや RPA から案件投入、進捗照会、補件、一括出力を行う場合に利用します。リクエストは API キーで認証します。': 'Use this when submitting cases, checking progress, adding documents, or performing bulk output from an internal system or RPA instead of uploading manually from the screen. Requests are authenticated with an API key.',
+
+
       '目次': 'Contents',
       '総覧': 'Overview',
       '処理全体の流れ': 'Overall Process',
@@ -1628,6 +1688,192 @@
 
   const localPhraseText = {
     zh: {
+      '次へ': '下一页',
+      '反映先': '写入目标',
+      '規則名称': '规则名称',
+      '処理機能説明': '处理功能说明',
+      '処理前例': '处理前示例',
+      '日付': '日期',
+      '金額（JPY）': '金额（JPY）',
+      '金額（USD）': '金额（USD）',
+      '全角変換': '全角转换',
+      '半角変換': '半角转换',
+      '半角変換（数字）': '半角转换（数字）',
+      '腫瘍': '肿瘤',
+      '悪性腫瘍': '恶性肿瘤',
+      '指定値置換': '指定值替换',
+      'QR 画像': 'QR 图像',
+      'QR 文字列': 'QR 字符串',
+      '変数': '变量',
+      '意味': '含义',
+      '経路': '路径',
+      '入口': '入口',
+      '前提': '前提',
+      '新規集約経路': '新建归集路径',
+      '画像品質等要確認': '图像质量等需确认',
+      'AI 検証通過': 'AI 校验通过',
+
+      '+ タイプ追加': '+ 添加类型',
+      '+ マスター追加': '+ 添加主数据',
+      '+ ユーザー追加': '+ 添加用户',
+      '+ 帳票追加': '+ 添加单据',
+      '+ 接続を追加': '+ 添加连接',
+      '+ 権限追加': '+ 添加权限',
+      '+ 項目追加': '+ 添加项目',
+      '+API キー': '+API 密钥',
+      '1年': '1 年',
+      '3年': '3 年',
+      '7日間': '7 天',
+      'AI 検証': 'AI 校验',
+      'AI 検証完了': 'AI 校验完成',
+      'AI 検証確認': 'AI 校验确认',
+      'AI 検証要約結果': 'AI 校验汇总结果',
+      'AIマッチング': 'AI 匹配',
+      'AIルール最適化': 'AI 规则优化',
+      'AI分類設定': 'AI 分类设置',
+      'AI検証ノード': 'AI 校验节点',
+      'AI検証確認': 'AI 校验确认',
+      'AI自動生成': 'AI 自动生成',
+      'AI自動関連付け': 'AI 自动关联',
+      'AI読取設定': 'AI 读取设置',
+      'API 接続': 'API 连接',
+      'OCR 抽出完了': 'OCR 抽取完成',
+      'OCR 抽出確認': 'OCR 抽取确认',
+      'Step1 案件集約': 'Step1 案件归集',
+      'Step2 ワークフロー': 'Step2 工作流',
+      'Step3 通知': 'Step3 通知',
+      'Step4 出力・公開': 'Step4 输出与发布',
+      'ZIP 選択': '选择 ZIP',
+      'すべて展開': '全部展开',
+      'はい': '是',
+      'やり直し': '重做',
+      'アイドルセッション設定': '空闲会话设置',
+      'アップロード済ファイル': '已上传文件',
+      'アップロード確定': '确认上传',
+      'エクスポート': '导出',
+      'エクスポートタスク照会': '导出任务查询',
+      'エクスポート完了': '导出完成',
+      'エクスポート対象': '导出对象',
+      'エクスポート設定': '导出设置',
+      'カスタム (OpenAI 互換)': '自定义（OpenAI 兼容）',
+      'グループ': '分组',
+      'コード照会': '代码查询',
+      'システム設定': '系统设置',
+      'ソースフィールド': '源字段',
+      'タイプ追加': '添加类型',
+      'テキスト読取': '文本读取',
+      'テスト': '测试',
+      'テンプレートをダウンロード': '下载模板',
+      'テーブル情報読取': '表格信息读取',
+      'データ保存期限設定': '数据保存期限设置',
+      'データ整合性検証': '数据一致性校验',
+      'ノードの編成': '节点编排',
+      'ノード追加': '添加节点',
+      'ハイブリッド検索': '混合搜索',
+      'バッチ別案件照会': '按批次查询案件',
+      'パスワードリセット': '重置密码',
+      'ファイルアップロード': '文件上传',
+      'ファイル一覧': '文件列表',
+      'ファイル処理明細': '文件处理明细',
+      'ファイル選択': '选择文件',
+      'フォルダ選択': '选择文件夹',
+      'プレビュー': '预览',
+      'ベクトル化状態': '向量化状态',
+      'マッピングルール生成': '映射规则生成',
+      'マッピング一覧': '映射列表',
+      'メニュー権限': '菜单权限',
+      'ルール一括追加': '批量添加规则',
+      'ルール一覧': '规则列表',
+      'ルール名': '规则名称',
+      'ルール記述': '规则描述',
+      'ルール追加': '添加规则',
+      'ワークフロー・キャンバス': '工作流画布',
+      'ワークフロー明細': '工作流明细',
+      '一括削除': '批量删除',
+      '上書更新': '覆盖更新',
+      '下書き': '草稿',
+      '傷病名': '伤病名',
+      '元に戻す': '撤销',
+      '公開可能': '可发布',
+      '処理フロー': '处理流程',
+      '処理ルール設定': '处理规则设置',
+      '処理中止': '中止处理',
+      '処理後例': '处理后示例',
+      '処理結果をエクスポート': '导出处理结果',
+      '出力・公開': '输出与发布',
+      '出力形式': '输出格式',
+      '出力項目': '输出项目',
+      '分類・案件集約を実行': '执行分类与案件归集',
+      '列設定': '列设置',
+      '前処理': '前处理',
+      '前処理済み ZIP': '前处理完成 ZIP',
+      '名称': '名称',
+      '変更履歴': '变更历史',
+      '対応': '处理',
+      '対応済': '已处理',
+      '後続設定': '后续设置',
+      '患者氏名': '患者姓名',
+      '手動校正': '手动校正',
+      '手動紐付け': '手动关联',
+      '拡大': '放大',
+      '接続を追加': '添加连接',
+      '接続テスト': '连接测试',
+      '支店名': '支行名',
+      '整列・適応サイズ': '对齐与适应大小',
+      '書類追加アップロード': '追加单据上传',
+      '有効なユーザー': '有效用户',
+      '未対応': '未处理',
+      '案件一覧照会': '案件列表查询',
+      '案件中止': '中止案件',
+      '案件変更': '变更案件',
+      '案件確認': '案件确认',
+      '案件集約': '案件归集',
+      '案件集約を実行': '执行案件归集',
+      '案件集約ルール': '案件归集规则',
+      '検出対象': '检测对象',
+      '業務シーン名': '业务场景名称',
+      '業務シーン追加': '添加业务场景',
+      '業務ルール設定': '业务规则设置',
+      '標準フィールド': '标准字段',
+      '標準化ルール': '标准化规则',
+      '照会コード': '查询代码',
+      '照合先': '匹配目标',
+      '状態': '状态',
+      '生成': '生成',
+      '用途割当': '用途分配',
+      '画像処理設定': '图像处理设置',
+      '確認待ち': '待确认',
+      '確認済み': '已确认',
+      '紐づけ失敗': '关联失败',
+      '終了': '结束',
+      '組合任意キー': '组合可选键',
+      '組合必須キー': '组合必填键',
+      '経過ノード': '经过节点',
+      '縮小': '缩小',
+      '署名鍵': '签名密钥',
+      '自信度': '置信度',
+      '自動ログアウト時間': '自动登出时间',
+      '表示名': '显示名称',
+      '被保険者名': '被保险人姓名',
+      '被保険者氏名': '被保险人姓名',
+      '設定チェック': '设置检查',
+      '証券番号': '保单号',
+      '請求番号': '理赔编号',
+      '資料アップロード': '资料上传',
+      '追加更新': '追加更新',
+      '通知': '通知',
+      '適用シーン': '适用场景',
+      '選択フィールド': '选择字段',
+      '銀行名': '银行名',
+      '開始': '开始',
+      '関連チェック': '关联检查',
+      '関連プレビュー': '关联预览',
+      '関連帳票': '关联单据',
+      '項目位置を非表示': '隐藏项目位置',
+      '類似度検索': '相似度搜索',
+      '＋ 業務シーン追加': '＋ 添加业务场景',
+      '後処理ルール一覧': '后处理规则列表',
+
       'NeosAI IDP マニュアル': 'NeosAI IDP 手册',
       '保険金請求': '保险金理赔',
       '業務書類': '业务单据',
@@ -1802,6 +2048,195 @@
       , 'する場合は': '如需操作，'
     },
     en: {
+      '次へ': 'Next',
+      '反映先': 'Target field',
+      '規則名称': 'Rule name',
+      '処理機能説明': 'Processing function',
+      '処理前例': 'Example before processing',
+      '日付': 'Date',
+      '金額（JPY）': 'Amount (JPY)',
+      '金額（USD）': 'Amount (USD)',
+      '全角変換': 'Full-width conversion',
+      '半角変換': 'Half-width conversion',
+      '半角変換（数字）': 'Half-width conversion (numeric)',
+      '腫瘍': 'Tumor',
+      '悪性腫瘍': 'Malignant tumor',
+      '指定値置換': 'Fixed value replacement',
+      'QR 画像': 'QR image',
+      'QR 文字列': 'QR string',
+      '変数': 'Variable',
+      '意味': 'Meaning',
+      '経路': 'Route',
+      '入口': 'Entry',
+      '前提': 'Prerequisite',
+      '新規集約経路': 'New aggregation route',
+      '画像品質等要確認': 'Image quality requires review',
+      'AI 検証通過': 'Passed AI verification',
+      '（通知）、': ' (notification), ',
+      '（通知）': ' (notification)',
+      '（条件）': ' (condition)',
+
+      '+ タイプ追加': '+ Add type',
+      '+ マスター追加': '+ Add master data',
+      '+ ユーザー追加': '+ Add user',
+      '+ 帳票追加': '+ Add document type',
+      '+ 接続を追加': '+ Add connection',
+      '+ 権限追加': '+ Add permission',
+      '+ 項目追加': '+ Add item',
+      '+API キー': '+API key',
+      '1年': '1 year',
+      '3年': '3 years',
+      '7日間': '7 days',
+      'AI 検証': 'AI verification',
+      'AI 検証完了': 'AI verification completed',
+      'AI 検証確認': 'AI verification review',
+      'AI 検証要約結果': 'AI verification summary',
+      'AIマッチング': 'AI matching',
+      'AIルール最適化': 'AI rule optimization',
+      'AI分類設定': 'AI classification settings',
+      'AI検証ノード': 'AI verification node',
+      'AI検証確認': 'AI verification review',
+      'AI自動生成': 'AI auto-generation',
+      'AI自動関連付け': 'AI auto-linking',
+      'AI読取設定': 'AI reading settings',
+      'API 接続': 'API connection',
+      'OCR 抽出完了': 'OCR extraction completed',
+      'OCR 抽出確認': 'OCR extraction review',
+      'Step1 案件集約': 'Step1 Case aggregation',
+      'Step2 ワークフロー': 'Step2 Workflow',
+      'Step3 通知': 'Step3 Notifications',
+      'Step4 出力・公開': 'Step4 Output & publishing',
+      'ZIP 選択': 'Select ZIP',
+      'すべて展開': 'Expand all',
+      'はい': 'Yes',
+      'やり直し': 'Redo',
+      'アイドルセッション設定': 'Idle session settings',
+      'アップロード済ファイル': 'Uploaded files',
+      'アップロード確定': 'Confirm upload',
+      'エクスポート': 'Export',
+      'エクスポートタスク照会': 'Export task inquiry',
+      'エクスポート完了': 'Export completed',
+      'エクスポート対象': 'Export targets',
+      'エクスポート設定': 'Export settings',
+      'カスタム (OpenAI 互換)': 'Custom (OpenAI compatible)',
+      'グループ': 'Group',
+      'コード照会': 'Code lookup',
+      'システム設定': 'System settings',
+      'ソースフィールド': 'Source field',
+      'タイプ追加': 'Add type',
+      'テキスト読取': 'Text reading',
+      'テスト': 'Test',
+      'テンプレートをダウンロード': 'Download template',
+      'テーブル情報読取': 'Table data reading',
+      'データ保存期限設定': 'Data retention settings',
+      'データ整合性検証': 'Data consistency check',
+      'ノードの編成': 'Node layout',
+      'ノード追加': 'Add node',
+      'ハイブリッド検索': 'Hybrid search',
+      'バッチ別案件照会': 'Case inquiry by batch',
+      'パスワードリセット': 'Reset password',
+      'ファイルアップロード': 'File upload',
+      'ファイル一覧': 'File list',
+      'ファイル処理明細': 'File processing details',
+      'ファイル選択': 'Select file',
+      'フォルダ選択': 'Select folder',
+      'プレビュー': 'Preview',
+      'ベクトル化状態': 'Vectorization status',
+      'マッピングルール生成': 'Generate mapping rules',
+      'マッピング一覧': 'Mapping list',
+      'メニュー権限': 'Menu permissions',
+      'ルール一括追加': 'Bulk add rules',
+      'ルール一覧': 'Rule list',
+      'ルール名': 'Rule name',
+      'ルール記述': 'Rule description',
+      'ルール追加': 'Add rule',
+      'ワークフロー・キャンバス': 'Workflow canvas',
+      'ワークフロー明細': 'Workflow details',
+      '一括削除': 'Delete selected',
+      '上書更新': 'Overwrite update',
+      '下書き': 'Draft',
+      '傷病名': 'Injury/illness name',
+      '元に戻す': 'Undo',
+      '公開可能': 'Ready to publish',
+      '処理フロー': 'Processing flow',
+      '処理ルール設定': 'Processing rule settings',
+      '処理中止': 'Cancel processing',
+      '処理後例': 'Example after processing',
+      '処理結果をエクスポート': 'Export processing results',
+      '出力・公開': 'Output & publishing',
+      '出力形式': 'Output format',
+      '出力項目': 'Output items',
+      '分類・案件集約を実行': 'Run classification & case aggregation',
+      '列設定': 'Column settings',
+      '前処理': 'Preprocessing',
+      '前処理済み ZIP': 'Preprocessed ZIP',
+      '名称': 'Name',
+      '変更履歴': 'Change history',
+      '対応': 'Handled',
+      '対応済': 'Handled',
+      '後続設定': 'Downstream settings',
+      '患者氏名': 'Patient name',
+      '手動校正': 'Manual correction',
+      '手動紐付け': 'Manual linking',
+      '拡大': 'Zoom in',
+      '接続を追加': 'Add connection',
+      '接続テスト': 'Connection test',
+      '支店名': 'Branch name',
+      '整列・適応サイズ': 'Align & fit size',
+      '書類追加アップロード': 'Upload additional documents',
+      '有効なユーザー': 'Active users',
+      '未対応': 'Unhandled',
+      '案件一覧照会': 'Case list inquiry',
+      '案件中止': 'Cancel case',
+      '案件変更': 'Change case',
+      '案件確認': 'Case review',
+      '案件集約': 'Case aggregation',
+      '案件集約を実行': 'Run case aggregation',
+      '案件集約ルール': 'Case aggregation rules',
+      '検出対象': 'Detection target',
+      '業務シーン名': 'Business scenario name',
+      '業務シーン追加': 'Add business scenario',
+      '業務ルール設定': 'Business rule settings',
+      '標準フィールド': 'Standard field',
+      '標準化ルール': 'Normalization rules',
+      '照会コード': 'Inquiry code',
+      '照合先': 'Match target',
+      '状態': 'Status',
+      '生成': 'Generate',
+      '用途割当': 'Purpose assignment',
+      '画像処理設定': 'Image processing settings',
+      '確認待ち': 'Pending review',
+      '確認済み': 'Confirmed',
+      '紐づけ失敗': 'Linking failed',
+      '終了': 'End',
+      '組合任意キー': 'Optional combination key',
+      '組合必須キー': 'Required combination key',
+      '経過ノード': 'Processed nodes',
+      '縮小': 'Zoom out',
+      '署名鍵': 'Signing key',
+      '自信度': 'Confidence',
+      '自動ログアウト時間': 'Auto logout time',
+      '表示名': 'Display name',
+      '被保険者名': 'Insured name',
+      '被保険者氏名': 'Insured name',
+      '設定チェック': 'Settings check',
+      '証券番号': 'Policy number',
+      '請求番号': 'Claim number',
+      '資料アップロード': 'Document upload',
+      '追加更新': 'Insert',
+      '通知': 'Notifications',
+      '適用シーン': 'Applicable scenarios',
+      '選択フィールド': 'Selected field',
+      '銀行名': 'Bank name',
+      '開始': 'Start',
+      '関連チェック': 'Relation check',
+      '関連プレビュー': 'Relation preview',
+      '関連帳票': 'Related document types',
+      '項目位置を非表示': 'Hide item positions',
+      '類似度検索': 'Similarity search',
+      '＋ 業務シーン追加': '＋ Add business scenario',
+      '後処理ルール一覧': 'Post-processing rule list',
+
       'NeosAI IDP マニュアル': 'NeosAI IDP Manual',
       '保険金請求': 'insurance claim',
       '業務書類': 'business documents',
@@ -1982,7 +2417,7 @@
     acceptNode(node) {
       const parent = node.parentElement;
       if (!node.nodeValue.trim() || !parent) return NodeFilter.FILTER_REJECT;
-      if (parent.closest('script, style, noscript, .language-menu, .language-current, .lightbox-toolbar, .ui-text')) {
+      if (parent.closest('script, style, noscript, .language-menu, .language-current, .lightbox-toolbar')) {
         return NodeFilter.FILTER_REJECT;
       }
       return NodeFilter.FILTER_ACCEPT;
@@ -2006,8 +2441,11 @@
   });
 
   let completeTranslations = null;
+  let completeOriginalsCaptured = false;
   const completeTranslationBlocks = ['p', 'li', 'td', 'th', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'figcaption', 'div.notice'];
   const completeOriginalSources = new WeakMap();
+  const completeOriginalMarkup = new WeakMap();
+  const completeRenderedBlocks = new Set();
 
   function normalizeCopy(value) {
     return value.replace(/\s+/g, ' ').trim();
@@ -2029,38 +2467,99 @@
     return normalizeCopy(read(element));
   }
 
-  function renderTranslatedBlock(element, translated) {
-    const uiLabels = Array.from(element.querySelectorAll('.ui-text')).map((node) => node.textContent);
+  // [[LINK_nn]] / [[LINK_nn:label]] は翻訳文側でリンク位置を示すトークン。
+  // 元の <a> 要素をそのまま差し込むため、翻訳後もリンク（子モジュールのジャンプ等）が残る。
+  function renderTranslatedBlock(element, translated, targetLanguage, dictionary) {
+    // ラベルは翻訳済み DOM ではなく初期マークアップから読む（言語切替の順序に依存しない）
+    const labelSnapshot = completeOriginalMarkup.get(element);
+    const labelRoot = document.createElement('div');
+    labelRoot.innerHTML = labelSnapshot ? labelSnapshot.html : element.innerHTML;
+    const uiLabels = Array.from(labelRoot.querySelectorAll('.ui-text')).map((node) => node.textContent);
+    const links = Array.from(element.querySelectorAll('a'));
+    const linkSlots = [];
     const stepCode = element.querySelector('.step-code')?.textContent.trim() || '';
     const escaped = translated.replace(/[&<>"']/g, (character) => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     }[character]));
     const html = escaped.replace(/\[\[UI_(\d+)\]\]/g, (_, index) => {
       const label = uiLabels[Number(index) - 1] || '';
-      return `<span class="ui-text" style="display:inline !important;">${label}</span>`;
+      const localized = translateStaticText(label, targetLanguage, dictionary || {})
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return `<span class="ui-text" style="display:inline !important;">${localized}</span>`;
+    }).replace(/\[\[LINK_(\d+)(?::([^\]]*))?\]\]/g, (_, index, label) => {
+      const position = Number(index) - 1;
+      if (!links[position] || linkSlots.some((slot) => slot.position === position)) return label || '';
+      linkSlots.push({ position, label: label || '' });
+      return `<span data-i18n-link="${position}"></span>`;
     }).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    // リンクを落とすくらいなら翻訳を適用しない（原文のままリンクを保持する）
+    if (linkSlots.length !== links.length) return false;
     const cleanedHtml = stepCode ? html.replace(stepCode, '') : html;
-    element.innerHTML = stepCode
+    const wrapperHtml = stepCode
       ? `<span class="step-code">${stepCode}</span><span class="step-text">${cleanedHtml}</span>`
-      : html;
+      : cleanedHtml;
+    const staging = document.createElement('div');
+    staging.innerHTML = wrapperHtml;
+    staging.querySelectorAll('[data-i18n-link]').forEach((slot) => {
+      const position = Number(slot.dataset.i18nLink);
+      const anchor = links[position];
+      if (!anchor) {
+        slot.remove();
+        return;
+      }
+      const slotLabel = (linkSlots.find((item) => item.position === position) || {}).label;
+      if (slotLabel) anchor.innerHTML = slotLabel;
+      slot.replaceWith(anchor);
+    });
+    element.innerHTML = '';
+    element.append(...staging.childNodes);
     if (stepCode) {
       element.style.display = 'grid';
       element.style.gridTemplateColumns = '28px minmax(0, 1fr)';
     }
+    return true;
+  }
+
+  // 翻訳適用前に原文スナップショットを取得しておく（言語切替後に原文が混ざらないように）
+  function captureCompleteOriginals() {
+    document.querySelectorAll(completeTranslationBlocks.join(',')).forEach((element) => {
+      if (element.closest('script, style, noscript, .language-switcher')) return;
+      if (!completeOriginalSources.has(element)) completeOriginalSources.set(element, blockSource(element));
+      if (!completeOriginalMarkup.has(element)) completeOriginalMarkup.set(element, { html: element.innerHTML, style: element.getAttribute('style') });
+    });
+  }
+
+  function restoreOriginalBlock(element) {
+    const original = completeOriginalMarkup.get(element);
+    if (!original) return;
+    element.innerHTML = original.html;
+    if (original.style === null) element.removeAttribute('style');
+    else element.setAttribute('style', original.style);
   }
 
   function applyCompleteTranslations(targetLanguage) {
     if (!completeTranslations) return;
     const map = completeTranslations[targetLanguage] || {};
+    const languageKey = targetLanguage === 'zh-CN' ? 'zh' : targetLanguage;
+    const labelDictionary = languageText[languageKey] || languageText.ja;
     const fallback = targetLanguage === 'zh-CN'
       ? '主数据匹配设置\n数据源是通过 [[UI_01]] 登记的主数据表。选择 [[UI_02]] 后会显示 [[UI_03]] 的选择栏，可指定表名和匹配目标列。列结构和 [[UI_04]] 沿用主数据表侧 [[UI_05]] 中定义的内容。未登记主数据表时，候选项为空，无法保存。\n\n匹配单位（单元格匹配 / 分组匹配）\n[[UI_06]] 留空的项目仅使用该项目的 OCR 值查询主数据表。在多个项目中输入相同的 [[UI_06]] 编号时，会将 OCR 值组合成一次匹配查询。例如，将转账目的金融机构名和转账目的网点名都设为 [[UI_06]] 1，同时匹配银行和网点主数据。\n\n匹配策略与返回\n通过 [[UI_07]] 获取容许写法差异的相似候选；在 [[UI_08]] 中也会尝试根据 [[UI_09]] 列进行完全匹配。匹配成功后，将命中的主数据行标准值写回该项目。当相似度低于 [[UI_10]] 阈值、存在多个候选或未命中时，不写回结果，并转为待确认，进入 OCR 确认任务。'
       : 'Master Data Matching Settings\nThe data source is the master table registered in [[UI_01]]. When [[UI_02]] is selected, the [[UI_03]] selector appears so you can specify the table name and target matching columns. The column structure and [[UI_04]] use the definitions in [[UI_05]] on the master-table side. If no master table is registered, the candidate list is empty and saving is unavailable.\n\nMatching Units (Cell / Group Matching)\nItems with an empty [[UI_06]] are matched using only the item\'s OCR value. Multiple items with the same [[UI_06]] number are treated as one combined matching query. For example, set the transfer destination institution name and branch name to [[UI_06]] 1 to match the bank and branch master data together.\n\nMatching Strategy and Return Values\n[[UI_07]] retrieves similar candidates while allowing notation variations; [[UI_08]] also attempts exact matching against the [[UI_09]] column. When matching succeeds, the normalized value from the matched master row is written back to the item. If similarity is below the [[UI_10]] threshold, multiple candidates exist, or no match is found, the value is not written back and becomes a review target in the OCR confirmation task.';
     document.querySelectorAll(completeTranslationBlocks.join(',')).forEach((element) => {
       if (element.closest('script, style, noscript, .language-switcher')) return;
       if (!completeOriginalSources.has(element)) completeOriginalSources.set(element, blockSource(element));
+      if (!completeOriginalMarkup.has(element)) completeOriginalMarkup.set(element, { html: element.innerHTML, style: element.getAttribute('style') });
       const source = completeOriginalSources.get(element).replace(/\*\*/g, '');
       const translated = source.startsWith('マスタ照合の設定') ? fallback : map[source];
-      if (translated) renderTranslatedBlock(element, translated);
+      if (translated && renderTranslatedBlock(element, translated, targetLanguage, labelDictionary)) {
+        completeRenderedBlocks.add(element);
+        return;
+      }
+      // 翻訳が無い言語（日本語など）へ戻すときは元のマークアップへ復元する
+      if (completeRenderedBlocks.has(element)) {
+        restoreOriginalBlock(element);
+        completeRenderedBlocks.delete(element);
+      }
     });
     document.querySelectorAll('[alt], [aria-label], [title], [placeholder]').forEach((element) => {
       if (element.closest('.language-switcher')) return;
@@ -2119,6 +2618,10 @@
 
   function applyLanguage(language) {
     const targetLanguage = normalizeLanguage(language);
+    if (!completeOriginalsCaptured) {
+      completeOriginalsCaptured = true;
+      captureCompleteOriginals();
+    }
     const dictionary = languageText[targetLanguage === 'zh-CN' ? 'zh' : targetLanguage] || languageText.ja;
     document.documentElement.lang = targetLanguage === 'ja' ? 'ja' : targetLanguage;
     document.body.dataset.language = targetLanguage;
@@ -2139,6 +2642,7 @@
   document.querySelectorAll(completeTranslationBlocks.join(',')).forEach((element) => {
     if (!element.closest('script, style, noscript, .language-switcher')) {
       completeOriginalSources.set(element, blockSource(element));
+      completeOriginalMarkup.set(element, { html: element.innerHTML, style: element.getAttribute('style') });
     }
   });
   if (languageButton) {
