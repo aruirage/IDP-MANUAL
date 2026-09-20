@@ -544,14 +544,14 @@
   },
   {
     "id": "manual-0062",
-    "source_ja": "3大量データは [[UI_01]] からテンプレートをダウンロードし、Excel / CSV ファイルでまとめて登録します。更新方式は [[UI_02]] または [[UI_03]] を選択します。1 回のインポートは最大 50,000 行です。",
+    "source_ja": "3大量データは [[UI_01]] からテンプレートをダウンロードし、Excel / CSV ファイルでまとめて登録します。1 つのマスターデータは最大 10 列まで対応します。11 列以上のファイルをアップロードした場合、データのベクトル化に失敗します。更新方式は [[UI_02]] または [[UI_03]] を選択します。1 回のインポートは最大 50,000 行です。",
     "ui_text": {
       "[[UI_01]]": "一括インポート",
       "[[UI_02]]": "追加更新",
       "[[UI_03]]": "上書更新"
     },
-    "zh-CN": "3大量数据通过 [[UI_01]] 下载模板，使用 Excel / CSV 文件批量登记。更新方式可选择 [[UI_02]] 或 [[UI_03]]。单次导入最多 50,000 行。",
-    "en": "3 Download the template from [[UI_01]] and register the bulk data in an Excel/CSV file. Select the update method [[UI_02]] or [[UI_03]]. Maximum 50,000 rows per import."
+    "zh-CN": "3大量数据通过 [[UI_01]] 下载模板，使用 Excel / CSV 文件批量登记。每个主数据最多支持 10 列。上传 11 列以上的文件时，数据向量化会失败。更新方式可选择 [[UI_02]] 或 [[UI_03]]。单次导入最多 50,000 行。",
+    "en": "3 Download the template from [[UI_01]] and register the bulk data in an Excel/CSV file. Each master data table supports up to 10 columns. If a file with more than 10 columns is uploaded, vectorization of the data will fail. Select the update method [[UI_02]] or [[UI_03]]. Maximum 50,000 rows per import."
   },
   {
     "id": "manual-0063",
