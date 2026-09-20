@@ -1,0 +1,28 @@
+        <section class="section-card" id="operator-upload-module">
+          <p class="section-label">業務操作モジュール</p>
+          <h2>新規アップロード</h2>
+          <p>資料アップロードには、案件集約を伴う<strong>集約経路</strong>（本画面）と、既存案件へ直接追加する<strong>直付け経路</strong>（補件）があります。</p>
+          <h3>操作ポイント</h3>
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><strong>集約経路</strong> — サイドバー <span class="ui-text">新規アップロード</span> で <span class="ui-text">業務シーン</span> を選び、<span class="ui-text">ファイル選択</span>／<span class="ui-text">フォルダ選択</span>／<span class="ui-text">ZIP 選択</span> またはドラッグ＆ドロップで追加します（JPG / PNG / TIF / PDF、各 50MB まで）。</span></p>
+            <p class="operation-substep"><span class="step-code">1.1</span><span class="step-text"><span class="ui-text">アップロード済ファイル</span> 一覧は行単位でチェックできます。<span class="ui-text">一括削除</span> は<strong>チェックした行のみ</strong>削除します。<span class="ui-text">分類・案件集約を実行</span> は一覧内の<strong>すべての合格ファイル</strong>を対象に、分類 API と案件集約 API を順に実行します（チェックした行だけではありません）。</span></p>
+            <p class="operation-substep"><span class="step-code">1.2</span><span class="step-text">2 つの API 完了後、<span class="ui-text">案件一覧</span> の <span class="ui-text">未集約ファイル</span> タブへ遷移します。自動帰属できなかったファイルは同タブに残り、再度 <span class="ui-text">分類・案件集約を実行</span> するか、手動で調整できます。</span></p>
+            <figure class="screenshot-figure" data-shot="operator-upload-module">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/operator-upload-main.png?v=3" data-lightbox="manual-shots" aria-label="新規アップロード画面を拡大表示">
+                  <img src="assets/operator-upload-main.png?v=3" alt="新規アップロード画面">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><strong>直付け経路（補件）</strong> — <span class="ui-text">案件一覧</span> · <span class="ui-text">集約済み案件</span> で案件ステータスが「補件」の行から <span class="ui-text">補件</span> を開きます（補件アップロード API も利用可。案件番号は必須）。</span></p>
+            <p class="operation-substep"><span class="step-code">2.1</span><span class="step-text">ダイアログは対象案件番号に紐付けられ、<span class="ui-text">業務シーン</span> は表示されません。<span class="ui-text">確認アップロード</span> で当該案件に直接書き込み、未集約リストや案件関連処理は経由しません。</span></p>
+            <p class="operation-substep"><span class="step-code">2.2</span><span class="step-text">形式・50MB 上限・解像度チェックとエラーメッセージは集約経路と同じです。集約経路との違い：直付けは案件番号が必要で、集約経路は <span class="ui-text">業務シーン</span> 選択と分類・案件集約の一連処理が必要です。</span></p>
+            <figure class="screenshot-placeholder" data-shot="operator-upload-supplement">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：<span class="ui-text">案件一覧</span> · <span class="ui-text">集約済み案件</span> から開く <span class="ui-text">補件</span> アップロードダイアログ（<span class="ui-text">確認アップロード</span>／<span class="ui-text">閉じる</span>）。</figcaption>
+            </figure>
+          </div>
+        </section>

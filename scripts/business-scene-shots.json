@@ -1,0 +1,61 @@
+{
+  "recipes": [
+    {
+      "output": "business-scene-step1-1-flow.png",
+      "layout": "side_by_side",
+      "left": {
+        "id": "sidebar",
+        "source": "business-scene-step1-add-scene.png",
+        "crop": [0, 0, 0.30, 1]
+      },
+      "right": {
+        "id": "basic",
+        "source": "business-scene-step1-basic-info.png"
+      }
+    },
+    {
+      "output": "business-scene-step1-2-flow.png",
+      "layout": "single",
+      "source": "business-scene-step1-related-docs.png"
+    },
+    {
+      "output": "business-scene-step1-3-4-flow.png",
+      "layout": "side_by_side",
+      "left": {
+        "id": "rules",
+        "source": "business-scene-step1-aggregation-rules.png"
+      },
+      "right": {
+        "id": "check",
+        "source": "business-scene-step1-related-check-ok.png"
+      }
+    },
+    {
+      "output": "business-scene-step2-canvas-flow.png",
+      "layout": "single",
+      "source": "business-scene-step2-workflow.png"
+    },
+    {
+      "output": "business-scene-step3-notify-flow.png",
+      "layout": "single",
+      "source": "business-scene-step3-notify.png"
+    },
+    {
+      "output": "business-scene-step4-export-flow.png",
+      "layout": "single",
+      "source": "business-scene-step4-export.png"
+    },
+    {
+      "output": "business-scene-impact-flow.png",
+      "layout": "side_by_side",
+      "left": {
+        "id": "version",
+        "source": "business-scene-version-switch.png"
+      },
+      "right": {
+        "id": "news",
+        "source": "business-scene-notifications-list.png"
+      }
+    }
+  ]
+}

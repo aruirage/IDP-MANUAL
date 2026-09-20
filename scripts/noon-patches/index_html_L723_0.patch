@@ -1,0 +1,5 @@
+{
+  "new_string": "          <p>表記ゆれをマスター表で管理し、後続の <span class=\"ui-text\">帳票タイプ設定</span> の <span class=\"ui-text\">マスタ照合</span> 等から参照します。データ登録後は <span class=\"ui-text\">ベクトル化状態</span> が <span class=\"ui-text\">完了</span> になるまで照合に利用できません。</p>",
+  "old_string": "          <p>表記ゆれをマスター表で管理し、後続の <span class=\"ui-text\">帳票タイプ設定</span> の <span class=\"ui-text\">マスタ照合</span> 等から参照します。</p>",
+  "path": "/Users/mac/Desktop/AIPM/Projects/NeosAI/prototypes/kisoku-nintei/manual/index.html"
+}

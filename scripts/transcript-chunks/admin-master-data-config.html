@@ -1,0 +1,108 @@
+        <section class="section-card" id="admin-doctype-config" data-shot="admin-doctype-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>帳票タイプ設定</h2>
+          <p>帳票タイプごとに、分類・OCR 抽出・後処理・画像処理・効果テストを 5 ステップで設定します。</p>
+          <h3>操作ポイント</h3>
+
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">AI分類設定</span> — <span class="ui-text">業務ルール設定</span> → <span class="ui-text">帳票タイプ設定</span> → <span class="ui-text">+ タイプ追加</span> でタイプを作成し、サンプルをアップロードして <span class="ui-text">説明文</span> を入力します。同一アップロード内に同類帳票が複数ある場合は、<span class="ui-text">ファイル分割ルール</span>（任意）で切り分け条件を記述します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-1-marked.png?v=7" data-lightbox="manual-shots" aria-label="帳票タイプ設定 AI分類設定を拡大表示">
+                  <img src="assets/doctype-step-1-marked.png?v=7" alt="帳票タイプ設定 AI分類設定">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">AI読取設定</span> — <span class="ui-text">+ 項目追加</span> または <span class="ui-text">AI自動生成</span> で抽出項目を定義し、<span class="ui-text">プロンプト</span>・<span class="ui-text">正解サンプル</span> を設定します。表形式データは <span class="ui-text">テーブル情報読取</span> タブで列を定義します。設定アイコン → <span class="ui-text">読取モデル設定</span> で <span class="ui-text">メインモデル</span>（必須）と <span class="ui-text">検証モデル</span>（任意）を選びます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-2-read-flow.png?v=7" data-lightbox="manual-shots" aria-label="帳票タイプ設定 AI読取設定を拡大表示">
+                  <img src="assets/doctype-step-2-read-flow.png?v=7" alt="帳票タイプ設定 AI読取設定">
+                </a>
+              </div>
+            </figure>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap shot-wrap-narrow">
+                <a class="shot-link" href="assets/doctype-step-2-model-flow.png?v=7" data-lightbox="manual-shots" aria-label="帳票タイプ設定 読取モデル設定を拡大表示">
+                  <img src="assets/doctype-step-2-model-flow.png?v=7" alt="帳票タイプ設定 読取モデル設定">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">処理ルール設定</span> — 各項目の <span class="ui-text">処理ルール</span> を選びます（<span class="ui-text">マスタ照合</span>、<span class="ui-text">日付</span> 等）。<span class="ui-text">マスタ照合</span> では <span class="ui-text">マスターデータ</span> 表を指定し、<span class="ui-text">自信度</span> 閾値（初期 95%）を設定します。<span class="ui-text">AIマッチング</span> で一括設定もできます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-3-marked.png?v=7" data-lightbox="manual-shots" aria-label="帳票タイプ設定 処理ルール設定を拡大表示">
+                  <img src="assets/doctype-step-3-marked.png?v=7" alt="帳票タイプ設定 処理ルール設定">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">画像処理設定</span> — <span class="ui-text">画像分割対象</span>、<span class="ui-text">組合必須キー</span>／<span class="ui-text">組合任意キー</span>、<span class="ui-text">画像整列対象</span> を ON/OFF し、キーと閾値を設定します。整列後は <span class="ui-text">個別 OCR</span> または <span class="ui-text">結合 OCR</span> を選択します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-4-overview.png?v=7" data-lightbox="manual-shots" aria-label="帳票タイプ設定 画像分割と組合キーを拡大表示">
+                  <img src="assets/doctype-step-4-overview.png?v=7" alt="帳票タイプ設定 画像分割と組合キー">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">効果テスト</span> — 別版式のサンプルで <span class="ui-text">テスト</span> を実行し、結果を確認します。不足があれば Step 2 の <span class="ui-text">プロンプト</span> を具体化して再調整し、<span class="ui-text">保存</span> して公開します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-5-flow.png?v=7" data-lightbox="manual-shots" aria-label="帳票タイプ設定 効果テスト結果を拡大表示">
+                  <img src="assets/doctype-step-5-flow.png?v=7" alt="帳票タイプ設定 効果テスト結果">
+                </a>
+              </div>
+            </figure>
+          </div>
+    </section>
+
+        <section class="section-card" id="admin-master-data-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>マスターデータ設定</h2>
+          <p>表記ゆれをマスター表で管理し、<span class="ui-text">帳票タイプ設定</span> の <span class="ui-text">マスタ照合</span> 等から参照します。</p>
+          <h3>操作ポイント</h3>
+
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">+ マスター追加</span> — <span class="ui-text">業務ルール設定</span> → <span class="ui-text">マスターデータ設定</span> でマスター表を作成します（例：医薬品情報、銀行情報）。</span></p>
+            <figure class="screenshot-figure" data-shot="admin-master-data-config">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/master-data-list-empty.png?v=7" data-lightbox="manual-shots" aria-label="マスターデータ設定 マスター追加を拡大表示">
+                  <img src="assets/master-data-list-empty.png?v=7" alt="マスターデータ設定 マスター追加">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">列設定</span> — 列名を定義し、照合・検索に使う列は <span class="ui-text">照会コード</span> を付けます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap shot-wrap-narrow">
+                <a class="shot-link" href="assets/master-data-column-marked.png?v=7" data-lightbox="manual-shots" aria-label="マスターデータ設定 列設定を拡大表示">
+                  <img src="assets/master-data-column-marked.png?v=7" alt="マスターデータ設定 列設定">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text">データ登録 — <span class="ui-text">+ 項目追加</span> で 1 行ずつ入力するか、<span class="ui-text">一括インポート</span> でファイル登録します（1 回最大 50,000 行）。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/master-data-import-flow.png?v=7" data-lightbox="manual-shots" aria-label="マスターデータ設定 一括インポートを拡大表示">
+                  <img src="assets/master-data-import-flow.png?v=7" alt="マスターデータ設定 一括インポート">
+                </a>
+              </div>
+            </figure>
+          </div>
+        </section>

@@ -1,0 +1,22 @@
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">AI読取設定</span> — 推奨手順は次のとおりです。（1）<span class="ui-text">一括インポート</span> でテンプレートをダウンロードし、<span class="ui-text">テキスト読取</span> と <span class="ui-text">テーブル情報読取</span> タブそれぞれに、認識対象のフィールド名・テーブル列を表形式で一括登録します。（2）<span class="ui-text">AI自動生成</span> をクリックし、各項目の <span class="ui-text">プロンプト</span> と <span class="ui-text">正解サンプル</span> を自動生成します。（3）生成結果を確認し、必要に応じて手動で微調整します。項目を少数だけ追加する場合は <span class="ui-text">+ 項目追加</span> も利用できます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-2-guide-marked.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 AI読取設定の推奨手順を拡大表示">
+                  <img src="assets/doctype-step-2-guide-marked.png?v=8" alt="帳票タイプ設定 AI読取設定の推奨手順">
+                </a>
+              </div>
+            </figure>
+            <p><span class="step-text">続いて、設定アイコン → <span class="ui-text">読取モデル設定</span> で <span class="ui-text">メインモデル</span>（必須）と <span class="ui-text">検証モデル</span>（任意）を指定します。<span class="ui-text">メインモデル</span> が一次読取を担当し、<span class="ui-text">検証モデル</span> を設定すると別モデルで同一項目を再読取し、結果を照合します。候補は <span class="ui-text">モデル設定</span> の <span class="ui-text">用途割当</span> で OCR 抽出用途に <span class="ui-text">有効</span> 化した接続のみ表示されます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap shot-wrap-narrow">
+                <a class="shot-link" href="assets/doctype-step-2-model-flow.png?v=8" data-lightbox="manual-shots" aria-label="帳票タイプ設定 読取モデル設定を拡大表示">
+                  <img src="assets/doctype-step-2-model-flow.png?v=8" alt="帳票タイプ設定 読取モデル設定">
+                </a>
+              </div>
+            </figure>
+            <div class="notice info">
+              <strong>人工確認ルール（読取モデル設定）</strong>
+              ダイアログ内の <span class="ui-text">人工確認ルール</span> は固定表示です。<strong>自信度がボーダーラインを下回り、複数モデルの読取結果が不一致</strong> の場合、該当フィールドは要確認となり、案件の <span class="code-text">ocrResult</span> が <span class="code-text">reviewRequired</span> になります。業務シーンのワークフローで OCR 抽出直後の条件分岐（<span class="code-text">ocrResult = reviewRequired</span>）により <span class="ui-text">OCR 人工確認</span> タスクが生成され、操作員は <span class="ui-text">マイタスク</span> で確認します。<span class="ui-text">検証モデル</span> を未設定の場合は単一モデル読取となり、不一致照合は行われません。
+            </div>
+          </div>

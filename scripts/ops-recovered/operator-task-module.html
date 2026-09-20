@@ -1,0 +1,109 @@
+<div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">未対応</span> / <span class="ui-text">対応済</span> で待办を切り替え、種別・案件キー・業務シーンで絞り込みます。未対応行の <span class="ui-text">対応</span> で実行ページへ進みます。操作管理者は <span class="ui-text">指派</span> で经办人を変更できます（案件一覧の担当者改派とは独立）。</span></p>
+            <figure class="screenshot-placeholder" data-shot="operator-task-list">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：<span class="ui-text">マイタスク</span> 一覧（<span class="ui-text">未対応</span> / <span class="ui-text">対応済</span>、検索、<span class="ui-text">対応</span>）。</figcaption>
+            </figure>
+          </div>
+
+          
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">OCR 抽出確認</span> — 帳票画像と抽出結果を対照しながら修正します。</span></p>
+            <div class="operation-substep">
+              <span class="step-code">2.1</span>
+              <span class="step-text">一覧の <span class="ui-text">対応</span> から実行画面を開きます。左に帳票プレビュー、右に <span class="ui-text">テキスト読取</span> / <span class="ui-text">テーブル情報読取</span> タブがあります。要確認フィールド数は帳票タブのバッジと右上の <span class="ui-text">要確認</span> 件数で確認できます。</span>
+            </div>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/operator-task-ocr-entry-flow.png?v=1" data-lightbox="manual-shots" aria-label="マイタスク一覧から OCR 抽出確認画面への遷移を拡大表示">
+                  <img src="assets/operator-task-ocr-entry-flow.png?v=1" alt="マイタスク一覧から OCR 抽出確認画面">
+                </a>
+              </div>
+            </figure>
+            <div class="operation-substep">
+              <span class="step-code">2.2</span>
+              <span class="step-text"><span class="ui-text">テキスト読取</span> タブで各フィールドの切图と入力値を確認します。<span class="ui-text">項目位置を非表示</span> を ON にすると、右側にフィールド切图が表示され、入力框をクリックすると左の帳票上で対応領域がハイライトされます（左右連動）。<span class="ui-text">エラー箇所のみ表示</span>・<span class="ui-text">一括確認</span> で要確認項目を絞り込めます。</span>
+            </div>
+            <figure class="screenshot-figure" data-shot="operator-task-ocr">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/operator-task-ocr-position-marked.png?v=1" data-lightbox="manual-shots" aria-label="項目位置を非表示にした OCR 抽出確認画面を拡大表示">
+                  <img src="assets/operator-task-ocr-position-marked.png?v=1" alt="項目位置を非表示にした OCR 抽出確認画面">
+                </a>
+              </div>
+            </figure>
+            <div class="operation-substep">
+              <span class="step-code">2.3</span>
+              <span class="step-text"><span class="ui-text">テーブル情報読取</span> タブで明細行（例：振込先指定口座）を確認・修正します。行単位で <span class="ui-text">確認待ち</span> 状態を解消します。</span>
+            </div>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/operator-task-ocr-table-marked.png?v=1" data-lightbox="manual-shots" aria-label="テーブル情報読取タブを拡大表示">
+                  <img src="assets/operator-task-ocr-table-marked.png?v=1" alt="OCR 抽出確認のテーブル情報読取タブ">
+                </a>
+              </div>
+            </figure>
+            <div class="operation-substep">
+              <span class="step-code">2.4</span>
+              <span class="step-text">Master 照合フィールドでは、完全一致しない場合に <span class="ui-text">類似度検索</span> 候補が表示されます。候補を選んで正規値に置き換えます。</span>
+            </div>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/operator-task-ocr-master-marked.png?v=1" data-lightbox="manual-shots" aria-label="Master 照合の類似度検索結果を拡大表示">
+                  <img src="assets/operator-task-ocr-master-marked.png?v=1" alt="Master 照合の類似度検索結果">
+                </a>
+              </div>
+            </figure>
+            <div class="notice info">
+              <strong>人工確認ノードとの連動（OCR / AI 検証共通）</strong>
+              実行画面フッターの <span class="ui-text">OCR 抽出完了</span> / <span class="ui-text">AI 検証完了</span> は、ワークフロー画布上の <span class="ui-text">人工確認</span> ノードの <span class="ui-text">完了</span> 出口に対応し、後続ノードへ進みます。<span class="ui-text">補件</span> は <span class="ui-text">補件</span> 出口へルーティングされ、画布で設定した前序ノード（例：前処理・OCR 抽出）へ回流します；案件は <span class="ui-text">補件</span> 状態となり、<span class="ui-text">案件一覧</span> から追加書類をアップロードします。<span class="ui-text">案件中止</span> は <span class="ui-text">案件中止</span> 出口に対応し、現在のワークフローインスタンスを終了します（案件自体は再実行可能）。<span class="ui-text">保存</span> は進捗のみ保存し、出口は確定しません。
+            </div>
+          </div>
+
+          
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text">操作管理者は一覧の <span class="ui-text">割当</span> で <span class="ui-text">タスク割当</span> ダイアログを開き、担当者を変更できます（<span class="ui-text">案件一覧</span> の案件担当者改派とは独立）。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/operator-task-assign-flow.png?v=1" data-lightbox="manual-shots" aria-label="タスク割当ダイアログを拡大表示">
+                  <img src="assets/operator-task-assign-flow.png?v=1" alt="マイタスク一覧とタスク割当ダイアログ">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">AI 検証確認</span> — 帳票タブまたは <span class="ui-text">AI 検証要約結果</span> タブで検証結果を確認します。</span></p>
+            <div class="operation-substep">
+              <span class="step-code">4.1</span>
+              <span class="step-text"><span class="ui-text">完備性</span> モジュールで <span class="ui-text">欠損帳票</span>（必要書類の不足）と <span class="ui-text">欠損フィールド</span>（必須項目の未抽出）を確認します。帳票名・フィールド名をクリックすると該当帳票タブへ移動できます。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">4.2</span>
+              <span class="step-text"><span class="ui-text">データ検証</span> でルール式の判定結果と検証フィールドの値を確認します。<span class="ui-text">確認済み</span> / <span class="ui-text">確認待ち</span> で状態を更新します。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">4.3</span>
+              <span class="step-text"><span class="ui-text">印鑑・署名検証</span> で対象帳票・検出対象・照合先フィールドを確認します。帳票名リンクから該当帳票のプレビューへ遷移できます。</span>
+            </div>
+            <figure class="screenshot-figure" data-shot="operator-task-ai-verify">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/operator-task-ai-verify-flow.png?v=1" data-lightbox="manual-shots" aria-label="AI 検証確認画面を拡大表示">
+                  <img src="assets/operator-task-ai-verify-flow.png?v=1" alt="AI 検証確認の完備性・データ検証・印鑑署名検証">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          
+
+          <div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">エクスポート</span> — ワークフロー完了後の出力タスクです。<span class="ui-text">エクスポート設定</span> で定義した項目・条件に沿って内容を確認し、提出して案件を <span class="ui-text">エクスポート済</span> にします。</span></p>
+            <figure class="screenshot-placeholder" data-shot="operator-task-export">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：<span class="ui-text">エクスポート</span> 実行画面。</figcaption>
+            </figure>
+          </div>

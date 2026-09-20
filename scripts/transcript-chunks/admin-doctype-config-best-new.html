@@ -1,0 +1,112 @@
+        <section class="section-card" id="admin-doctype-config" data-shot="admin-doctype-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>帳票タイプ設定</h2>
+          <p>本モジュールは、既存 AI OCR 製品の帳票タイプ設定（<span class="ui-text">AI分類設定</span>、<span class="ui-text">AI読取設定</span>、<span class="ui-text">処理ルール設定</span>、<span class="ui-text">効果テスト</span> 等）を拡張します。本章では NeosAI IDP 向けの<strong>新規・変更点のみ</strong>を記載します。未記載の操作・画面項目は既存 AI OCR 製品の仕様に従い、ここでは繰り返しません。</p>
+          <div class="notice info">
+            <strong>記載範囲</strong>
+            保険金請求の設定例として、保険金請求書、診断書、診療明細書、領収書、調剤明細書などの帳票タイプを順に設定します。項目追加、テンプレート一括操作、効果テストの基本操作など、変更のない機能は AI OCR 既存マニュアルを参照してください。
+          </div>
+          <h3>操作ポイント（新規・変更点）</h3>
+
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">AI分類設定</span> — 説明文とファイル分割ルール</span></p>
+            <p class="operation-substep"><span class="step-code">1.1</span><span class="step-text"><span class="ui-text">業務ルール設定</span> → <span class="ui-text">帳票タイプ設定</span> → <span class="ui-text">+ タイプ追加</span>（または編集）→ 第 1 步 <span class="ui-text">AI分類設定</span> を開きます。</span></p>
+            <p class="operation-substep"><span class="step-code">1.2</span><span class="step-text"><span class="ui-text">説明文</span>（必須）：帳票の業務上の特徴を記述します。AI 分類および画像処理精度の補助に利用されます。サンプルアップロード後の AI 自動生成・手動編集は既存製品と同様です。</span></p>
+            <p class="operation-substep"><span class="step-code">1.3</span><span class="step-text"><span class="ui-text">ファイル分割ルール</span>（任意）：旧「自動グループ基準」から名称変更された項目です。1 回のアップロードに同一帳票タイプが複数含まれる場合、案件集約段階（S4）でどのように独立した論理ファイルへ切り分けるかを自然言語で宣言します。未入力時は当該タイプの同類型内分割を行いません。入力時は帳票分類結果とあわせて案件集約が本ルールを参照します。AI による表述最適化は既存製品と同様に利用できます。</span></p>
+            <div class="notice inline-note">
+              <strong>入力例</strong>
+              1 回のアップロードに同類帳票が複数ある場合の切り分け方を記述します。例：発注日が異なるページごとに分割、ページ番号が不連続な位置で分割、など。
+            </div>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-1-marked.png?v=4" data-lightbox="manual-shots" aria-label="帳票タイプ設定 AI分類設定を拡大表示">
+                  <img src="assets/doctype-step-1-marked.png?v=4" alt="帳票タイプ設定 AI分類設定">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">AI読取設定</span> — 読取モデルと人工確認ルール</span></p>
+            <p class="operation-substep"><span class="step-code">2.1</span><span class="step-text">テキスト項目・テーブル列の定義（<span class="ui-text">+ 項目追加</span>、<span class="ui-text">AI自動生成</span>、テンプレート一括操作等）は既存 AI OCR 製品と同様です。本章では読取モデルまわりの変更点のみ記載します。</span></p>
+            <p class="operation-substep"><span class="step-code">2.2</span><span class="step-text">設定アイコン → <span class="ui-text">読取モデル設定</span> を開き、<span class="ui-text">メインモデル</span>（必須）と <span class="ui-text">検証モデル</span>（任意）を選択します。候補は <span class="ui-text">モデル設定</span> · <span class="ui-text">用途割当</span> で <span class="ui-text">OCR抽出</span> に割り当て済みかつ利用可能なモデルのみです。候補がない場合は保存できず、「先にモデル設定で利用可能なモデルをメンテナンスしてください」と表示されます。</span></p>
+            <p class="operation-substep"><span class="step-code">2.3</span><span class="step-text"><span class="ui-text">人工確認ルール</span> は弹窗内で<strong>只読</strong>表示されます。次の 5 項目は常に有効表示され、個別の ON/OFF はできません。（1）自信度が閾値未満（2）複数モデルの読取結果不一致（3）Master 照合の類似度が低い（4）Master 照合結果が空（5）Master 照合の自信度が低い。いずれかに該当すると OCR 抽出確認タスクが生成されます。</span></p>
+            <p class="operation-substep"><span class="step-code">2.4</span><span class="step-text">保存後、OCR 抽出実行時に選択したメインモデル・検証モデルを呼び出します。画面表示および下流ルールで参照する自信度は<strong>メインモデルの結果のみ</strong>を用います。「複数モデル不一致」はメインと検証の読取値比較で判定します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-2-read-flow.png?v=4" data-lightbox="manual-shots" aria-label="帳票タイプ設定 AI読取設定を拡大表示">
+                  <img src="assets/doctype-step-2-read-flow.png?v=4" alt="帳票タイプ設定 AI読取設定">
+                </a>
+              </div>
+            </figure>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap shot-wrap-narrow">
+                <a class="shot-link" href="assets/doctype-step-2-model-flow.png?v=4" data-lightbox="manual-shots" aria-label="帳票タイプ設定 読取モデル設定を拡大表示">
+                  <img src="assets/doctype-step-2-model-flow.png?v=4" alt="帳票タイプ設定 読取モデル設定">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">処理ルール設定</span> — Master 照合</span></p>
+            <p class="operation-substep"><span class="step-code">3.1</span><span class="step-text">処理ルール種別の下拉では、旧「辞書置換」に代わり <span class="ui-text">マスタ照合</span> が先頭に表示されます。その他のルール種別（日付、金額等）は既存製品と同様です。</span></p>
+            <p class="operation-substep"><span class="step-code">3.2</span><span class="step-text"><span class="ui-text">マスタ照合</span> 選択時：<span class="ui-text">マスターデータ</span>（必須）と <span class="ui-text">グループ</span>（任意）の入力・校验は旧辞書置換と同様です。マスターデータ設定で登録済みの辞書から選択します。</span></p>
+            <p class="operation-substep"><span class="step-code">3.3</span><span class="step-text"><span class="ui-text">マッチング戦略</span> は 2 行目に只読表示されます。「ハイブリッド検索」「code による照会」が固定有効で、編集できません。Master 照合に関する人工確認ルールは 2 步の読取モデル設定弹窗で只読表示され、実行時はシステム既定で判定されます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-3-marked.png?v=4" data-lightbox="manual-shots" aria-label="帳票タイプ設定 処理ルール設定を拡大表示">
+                  <img src="assets/doctype-step-3-marked.png?v=4" alt="帳票タイプ設定 処理ルール設定">
+                </a>
+              </div>
+            </figure>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap shot-wrap-narrow">
+                <a class="shot-link" href="assets/doctype-step-3-rule-options.png?v=4" data-lightbox="manual-shots" aria-label="帳票タイプ設定 処理ルール種別を拡大表示">
+                  <img src="assets/doctype-step-3-rule-options.png?v=4" alt="帳票タイプ設定 処理ルール種別">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">画像処理設定</span> — 分割・分割後組合・整列</span></p>
+            <p class="operation-substep"><span class="step-code">4.1</span><span class="step-text"><span class="ui-text">画像分割対象</span>：ON にすると、当該帳票タイプは AI 前処理の画像分割対象になります。OFF の場合、ワークフロー側で分割が ON でも本タイプのファイルは分割しません。<span class="ui-text">分割判定閾値</span>（既定 80%）を設定します。自動分割後の自信度が閾値未満の場合、ファイルは前処理確認中状態になります（本期は前処理確認タスクは生成しません）。</span></p>
+            <p class="operation-substep"><span class="step-code">4.2</span><span class="step-text"><span class="ui-text">組合必須キー</span> / <span class="ui-text">組合任意キー</span>：分割後の論理ファイルをさらに組み合わせるためのキーです。常時表示され、<span class="ui-text">画像分割対象</span> が ON のときのみ編集できます。候補は 2 步で設定した<strong>テキスト項目のみ</strong>（テーブル列は不可）。同一項目を両方に指定できません。必須キーは AND（すべて一致）、任意キーは OR（少なくとも 1 項目一致）。いずれも未設定時は各分割結果が独立した論理ファイルとして後続処理へ進みます。組合内のページ順はシステム既定（页码・文脈）で決定し、顧客設定は不要です。</span></p>
+            <p class="operation-substep"><span class="step-code">4.3</span><span class="step-text"><span class="ui-text">画像整列対象</span>：ON にすると、当該帳票タイプの画像整列が有効になります。OFF の場合、前処理ノードで整列が ON でも本タイプは整列しません。<span class="ui-text">整列キー</span>（2 步の項目から 1 つ選択）、<span class="ui-text">整列キータイプ</span>（日付／数値）、整列方向（昇順／降順）、<span class="ui-text">整列判定閾値</span>（既定 80%）を設定します。</span></p>
+            <p class="operation-substep"><span class="step-code">4.4</span><span class="step-text"><span class="ui-text">整列後 OCR 抽出方式</span>：整列後の同类ファイルを<strong>個別 OCR</strong>（ファイルごとに OCR 抽出）するか、<strong>結合 OCR</strong>（整列後の页序で 1 回の OCR 入力に連結）するかを選択します。2 步で項目未設定のまま整列を ON にして保存しようとすると、「先に項目設定で利用可能な項目をメンテナンスしてください」と阻断されます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-4-overview.png?v=4" data-lightbox="manual-shots" aria-label="帳票タイプ設定 画像分割と組合キーを拡大表示">
+                  <img src="assets/doctype-step-4-overview.png?v=4" alt="帳票タイプ設定 画像分割と組合キー">
+                </a>
+              </div>
+            </figure>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-4-align.png?v=4" data-lightbox="manual-shots" aria-label="帳票タイプ設定 画像整列を拡大表示">
+                  <img src="assets/doctype-step-4-align.png?v=4" alt="帳票タイプ設定 画像整列">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">効果テスト</span> — 既存製品と同様</span></p>
+            <p class="operation-substep"><span class="step-code">5.1</span><span class="step-text">版式の異なるサンプルをアップロードし <span class="ui-text">テスト</span> を実行します。操作手順・結果確認方法は AI OCR 既存製品の効果テストに従います。</span></p>
+            <p class="operation-substep"><span class="step-code">5.2</span><span class="step-text">テキスト読取・テーブル情報読取の結果を確認し、不足があれば 2 步の <span class="ui-text">プロンプト</span> を具体化して再調整します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-5-flow.png?v=4" data-lightbox="manual-shots" aria-label="帳票タイプ設定 効果テスト結果を拡大表示">
+                  <img src="assets/doctype-step-5-flow.png?v=4" alt="帳票タイプ設定 効果テスト結果">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <p>以上の設定後、<span class="ui-text">保存</span> すると帳票タイプ定義が有効になります。<span class="ui-text">帳票読取</span> または案件アップロード経路から、当該タイプの設定（分類、画像処理、OCR 抽出、Master 照合、人工確認）が適用されます。</p>
+          <div class="notice warning">
+            <strong>適用ルール</strong>
+            <span class="ui-text">ファイル分割ルール</span> は案件集約の同類型内分割（S4）に、<span class="ui-text">画像処理設定</span> は AI 前処理ノード実行時に、読取モデル・処理ルールは OCR 抽出・Master 照合実行時に適用されます。項目がデータマッピング、AI検証、出力設定から参照されている場合、削除や名称変更は下流設定に影響します。
+          </div>
+    </section>

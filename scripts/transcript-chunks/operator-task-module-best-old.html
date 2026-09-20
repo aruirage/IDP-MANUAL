@@ -1,0 +1,37 @@
+        <section class="section-card" id="operator-task-module">
+          <p class="section-label">業務操作モジュール</p>
+          <h2>マイタスク</h2>
+          <p>ワークフローで生成されたタスクの一覧・実行入口です。<span class="ui-text">OCR 抽出確認</span>、<span class="ui-text">AI 検証確認</span>、<span class="ui-text">エクスポート</span> の 3 種類を扱います（前処理確認タスクは本期対象外）。</p>
+          <h3>操作ポイント</h3>
+
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">未対応</span> / <span class="ui-text">対応済</span> でタスクを切り替え、種別・案件キー・業務シーンで絞り込みます。未対応行の <span class="ui-text">対応</span> で実行ページへ進みます。操作管理者は <span class="ui-text">割当</span> で担当者を変更できます（案件一覧の担当者改派とは独立）。</span></p>
+            <figure class="screenshot-placeholder" data-shot="operator-task-list">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：<span class="ui-text">マイタスク</span> 一覧（<span class="ui-text">未対応</span> / <span class="ui-text">対応済</span>、検索、<span class="ui-text">対応</span>）。</figcaption>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">OCR 抽出確認</span> — 影像を参照しながら OCR 項目・明細・マスター候補を修正します。<span class="ui-text">保存</span> は進捗のみ保存、<span class="ui-text">OCR 抽出完了</span> でタスクを完了します。<span class="ui-text">補件</span>・<span class="ui-text">案件中止</span> もここから実行できます。</span></p>
+            <figure class="screenshot-placeholder" data-shot="operator-task-ocr">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：<span class="ui-text">OCR 抽出確認</span> 実行画面。</figcaption>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">AI 検証確認</span> — 必要書類・必須フィールドと各検証ルールを確認し、要修正・<span class="ui-text">補件</span>・案件中止を判断します。<span class="ui-text">AI 検証完了</span> でタスクを完了します。</span></p>
+            <figure class="screenshot-placeholder" data-shot="operator-task-ai-verify">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：<span class="ui-text">AI 検証確認</span> 実行画面。</figcaption>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">エクスポート</span> — ワークフロー完了後の出力タスクです。<span class="ui-text">エクスポート設定</span> で定義した項目・条件に沿って内容を確認し、提出して案件を <span class="ui-text">エクスポート済</span> にします。</span></p>
+            <figure class="screenshot-placeholder" data-shot="operator-task-export">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：<span class="ui-text">エクスポート</span> 実行画面。</figcaption>
+            </figure>
+          </div>

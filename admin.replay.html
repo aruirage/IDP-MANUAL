@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>配置指引 — NeosAI IDP 操作手册</title>
+<link rel="stylesheet" href="common.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1>NeosAI IDP 操作手册</h1>
+  <div class="subtitle">配置侧 · 管理员 / 业务规则配置人员</div>
+  <nav class="nav-links">
+    <a href="index.html">首页</a>
+    <a href="admin.html" class="active">配置指引</a>
+    <a href="operator.html">业务操作</a>
+  </nav>
+</header>
+
+<div class="main-container">
+
+<aside class="sidebar" id="sidebar">
+  <a href="index.html" class="back-top">← 返回首页</a>
+  <h4>配置流程</h4>
+  <div class="toc-group">
+    <a href="#admin-overview">推荐配置顺序</a>
+    <ul class="toc-sub">
+      <li><a href="#admin-model">1. 模型设置</a></li>
+      <li><a href="#admin-doctype">2. 账票类型设置</a></li>
+      <li><a href="#admin-master">3. 主数据设置</a></li>
+      <li><a href="#admin-mapping">4. 数据映射设置</a></li>
+      <li><a href="#admin-verify">5. AI 检证设置</a></li>
+      <li><a href="#admin-scene">6. 业务场景设置</a></li>
+      <li><a href="#scene-step1">　6-1 Step1 案件集约</a></li>
+      <li><a href="#scene-step2">　6-2 Step2 工作流</a></li>
+      <li><a href="#scene-step3">　6-3 Step3 通知</a></li>
+      <li><a href="#scene-step4">　6-4 Step4 输出与发布</a></li>
+      <li><a href="#admin-api">7. API 管理</a></li>
+      <li><a href="#admin-rules">配置规则应用节点</a></li>
+      <li><a href="#admin-summary">上线前确认</a></li>
+    </ul>
+  </div>
+</aside>
+
+<main class="content">
+
+<div class="chapter-title">ADMINISTRATOR GUIDE</div>
+<h2 class="part-title" id="admin">配置侧操作指引</h2>
+<div class="part-desc">
+  对象角色：系统管理员、业务规则配置人员<br>
+  示例场景：<strong>保险金请求</strong>（主账票：保险金请求书；关联账票：诊断书、收据与诊疗明细、本人确认文件等）<br>
+  说明：界面上的必填项、字段类型等以产品界面为准；本手册侧重操作顺序与页面上不易察觉的规则。
+</div>
+
+<section class="step-section" id="admin-overview">
+  <h3 class="step-title">推荐配置顺序</h3>
+  <div class="flow-chart">
+    <div class="flow-node start">① 模型</div><div class="flow-arrow">→</div>
+    <div class="flow-node">② 账票类型</div><div class="flow-arrow">→</div>
+    <div class="flow-node">③ 主数据</div><div class="flow-arrow">→</div>
+    <div class="flow-node">④ 数据映射</div><div class="flow-arrow">→</div>
+    <div class="flow-node">⑤ AI 检证</div><div class="flow-arrow">→</div>
+    <div class="flow-node">⑥ 业务场景</div><div class="flow-arrow">→</div>
+    <div class="flow-node end">发布</div>
+  </div>
+  <div class="callout note">
+    <strong>依赖关系</strong>
+    账票类型引用模型；数据映射与 AI 检证引用账票 OCR 字段；业务场景 Step1 引用已发布账票，Step2 画布引用 Step1 账票集合，Step4 输出候选来自 Step2 已开启 OCR 的账票。请按上序完成，避免下游缺少候选项。
+  </div>
+</section>
+
+<section class="step-section" id="admin-model">
+  <h3 class="step-title">1. 模型设置</h3>
+  <p>注册平台使用的 OCR、文档分类、AI 检证、通用 LLM 等模型，执行测试确认连通后再被账票类型引用。</p>
+  <div class="procedure">
+    <ol>
+      <li>打开菜单 <span class="btn-inline">モデル設定</span>（模型设置）。</li>
+      <li>点击 <span class="btn-inline primary">＋ モデル追加</span>，填写模型名称、种类、提供商、模型 ID、API 密钥等（界面有标注）。</li>
+      <li>保存后执行 <span class="btn-inline">テスト</span>，确认返回正常。</li>
+      <li>为保险金请求场景至少准备：OCR 模型、文档分类模型（若账票分类用 AI）。</li>
+    </ol>
+  </div>
+  <div class="callout warn">
+    <strong>页面上看不出的规则</strong>
+    修改已被业务场景引用的模型 ID 可能影响在途案件。变更后请在业务场景 Step2 重新执行 <span class="btn-inline warn">設定チェック</span>。
+  </div>
+</section>
+
+<section class="step-section" id="admin-doctype">
+  <h3 class="step-title">2. 账票类型设置</h3>
+  <p>为每种账票定义分类方式、OCR 抽出字段、表格列、AI 前处理策略。保险金请求典型账票：保险金请求书、诊断书、收据、诊疗明细、本人确认文件。</p>
+  <div class="procedure">
+    <ol>
+      <li>打开 <span class="btn-inline">帳票タイプ設定</span>，点击 <span class="btn-inline primary">＋ 帳票タイプ追加</span>。</li>
+      <li>按向导步骤完成：基本信息 → 文档分类（关键词 + AI 模型）→ OCR 字段与表格定义 → AI 前处理选项。</li>
+      <li>各账票选择对应的 OCR / 分类模型（来自第 1 步）。</li>
+      <li>全部完成后点击 <span class="btn-inline primary">公開</span>；仅<strong>已发布</strong>账票可被业务场景 Step1 选用。</li>
+    </ol>
+  </div>
+  <div class="callout tip">
+    <strong>保险金请求示例</strong>
+    保险金请求书建议抽出：证券番号、请求番号、请求金额、契约者名；诊断书抽出：诊断名、入院期间；收据抽出明细表格（诊疗行为、点数、金额）。
+  </div>
+  <div class="callout danger">
+    <strong>页面上看不出的规则</strong>
+    删除或改名 OCR 字段时，若已被业务场景、数据映射、AI 检证或 Step4 输出引用，系统会阻断保存并提示先解除引用。编辑已发布账票会生成新草稿版本，在途场景继续用旧发布版直到再次发布。
+  </div>
+</section>
+
+<section class="step-section" id="admin-master">
+  <h3 class="step-title">3. 主数据设置</h3>
+  <p>维护 AI 检证「标准数据整合性检查」用的主数据表，如保险契约主数据（证券番号 → 契约者信息）、医疗机构主数据。</p>
+  <div class="procedure">
+    <ol>
+      <li>打开 <span class="btn-inline">マスタデータ設定</span>。</li>
+      <li>新建主数据，指定键字段（如证券番号），通过 CSV 批量导入或 API 连携更新。</li>
+      <li>保存后在 AI 检证设置中引用该主数据。</li>
+    </ol>
+  </div>
+  <div class="callout note">
+    <strong>应用节点</strong>
+    主数据本身不在工作流节点执行；在画布<strong>AI 检证节点</strong>运行时，由检证规则中的「标准数据整合性」模块按键字段 lookup 并比对 OCR / 映射结果。
+  </div>
+</section>
+
+<section class="step-section" id="admin-mapping">
+  <h3 class="step-title">4. 数据映射设置</h3>
+  <p>定义跨账票统一的<strong>标准字段</strong>（如 standardFields.policyNo、claimAmount、patientName），并配置各账票 OCR 字段到标准字段的映射与优先级。</p>
+  <div class="procedure">
+    <ol>
+      <li>打开 <span class="btn-inline">データマッピング設定</span>。</li>
+      <li>新增标准字段，再为每个标准字段绑定来源账票 OCR 字段及优先级（例：证券番号优先取保险金请求书，其次诊断书）。</li>
+      <li>按需配置转换规则（全半角、去逗号、trim 等）。</li>
+      <li>完成后 <span class="btn-inline primary">公開</span>。</li>
+    </ol>
+  </div>
+  <div class="callout warn">
+    <strong>页面上看不出的规则</strong>
+    多账票映射到同一标准字段且值冲突时，默认采用<strong>优先级最高</strong>账票的值；若需将冲突本身标为要确认，须在 AI 检证中另建规则。映射在<strong>工作流「数据映射」节点</strong>执行，节点引用全局已发布映射配置，Step2 不校验输入数据内容。
+  </div>
+</section>
+
+<section class="step-section" id="admin-verify">
+  <h3 class="step-title">5. AI 检证设置</h3>
+  <p>从六大模块（必填字段、必要账票、文本检证、数据检证、标准数据整合性、署名印章）组合规则，设置警告 / 错误及后续动作。</p>
+  <div class="procedure">
+    <ol>
+      <li>打开 <span class="btn-inline">AI検証設定</span>，启用需要的模块。</li>
+      <li>逐条添加规则（例：保险金请求书与诊断书的患者名一致；明细合计与收据金额一致；证券番号存在于契约主数据）。</li>
+      <li>设置重要度：警告 → 通常进入人工确认；错误 → 按运营策略补件或异常。</li>
+      <li><span class="btn-inline primary">公開</span>后在业务场景 Step2 的 AI 检证节点中选择该配置。</li>
+    </ol>
+  </div>
+  <div class="callout note">
+    <strong>应用节点</strong>
+    规则在<strong>工作流 AI 检证节点</strong>执行，输入为 OCR 结果 + 映射后的标准字段。输出 verifyResult=reviewRequired 时，若画布连接了条件分支或人工确认，会生成对应待办。
+  </div>
+</section>
+
+<section class="step-section" id="admin-scene">
+  <h3 class="step-title">6. 业务场景设置</h3>
+  <p>将集约规则、工作流、通知、导出字段打包为一个可发布版本。新建场景名示例：「保险金请求 · 医疗险 A 型」。</p>
+
+  <div class="flow-chart">
+    <div class="flow-node start">Step1<br>案件集约</div><div class="flow-arrow">→</div>
+    <div class="flow-node">Step2<br>工作流</div><div class="flow-arrow">→</div>
+    <div class="flow-node">Step3<br>通知</div><div class="flow-arrow">→</div>
+    <div class="flow-node end">Step4<br>输出·公开</div>
+  </div>
+
+  <div class="sub-section" id="scene-step1">
+    <h4 class="sub-title"><span class="sub-num">6-1</span>Step1 案件集约规则</h4>
+    <div class="procedure">
+      <ol>
+        <li>业务规则配置 → <span class="btn-inline">業務シーン設定</span> → <span class="btn-inline primary">＋ 業務シーン追加</span>。</li>
+        <li>填写场景名称与说明，添加本场景账票（1～20 种）：保险金请求书（主账票）、诊断书、收据等。</li>
+        <li>指定<strong>主账票</strong>与<strong>主字段</strong>（业务键，如证券番号 + 请求番号）。</li>
+        <li>配置账票间字段关联：如「保险金请求书.证券番号 ↔ 诊断书.证券番号」。可用 <span class="btn-inline warn">AI 自動関連付け</span> 生成初稿。</li>
+        <li>执行 <span class="btn-inline">関連チェック</span>，确认所有关联账票能到达主账票后 <span class="btn-inline primary">次へ</span> 进入 Step2。</li>
+      </ol>
+    </div>
+    <div class="rule-box">
+      <div class="rule-title">页面上看不出的集约规则</div>
+      <ul>
+        <li>同一账票对内：组内字段关系固定 <strong>AND</strong>，组间固定 <strong>OR</strong>；完全相同的字段对不能重复配置。</li>
+        <li>关联检查<strong>只验证</strong>关联账票能否通过关系图到达主账票，不校验字段值是否相等（相等性在集约执行时判断）。</li>
+        <li>左右字段同时为空不算匹配；任一侧为空则该条关系不成立。</li>
+        <li>Step1 保存不跑业务校验；<span class="btn-inline primary">次へ</span> 才校验连通性。集约规则在<strong>上传后案件集约阶段</strong>应用，不在工作流画布内。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub-section" id="scene-step2">
+    <h4 class="sub-title"><span class="sub-num">6-2</span>Step2 工作流画布</h4>
+    <div class="procedure">
+      <ol>
+        <li>打开 <span class="btn-inline">ワークフロー設定</span>，从固定「开始」节点拖拽处理节点并连线。</li>
+        <li>保险金请求推荐主干：AI 前处理 → OCR 抽出 →（条件：ocrResult=reviewRequired → 人工确认）→ 数据映射 → AI 检证 →（条件：verifyResult=reviewRequired → 人工确认）→ 结束。</li>
+        <li>各节点在右侧面板配置：OCR 开启哪些账票、AI 检证引用哪套规则、人工确认的担当角色等。</li>
+        <li>人工确认的<strong>补件</strong>出口必须连回前序节点形成回路；<strong>案件中止</strong>不连下游。</li>
+        <li>完成后点击 <span class="btn-inline warn">設定チェック</span>；通过则场景变为「可发布」，失败则定位首条错误节点。</li>
+        <li><span class="btn-inline primary">次へ</span> 进入 Step3（不自动跑设置检查）。</li>
+      </ol>
+    </div>
+    <div class="callout danger">
+      <strong>页面上看不出的规则</strong>
+      <ul style="margin-top:8px;padding-left:18px;">
+        <li>设置检查是<strong>静态校验</strong>（结构、连线、必填、变量引用），不读取样例、不真实调用节点。</li>
+        <li>保存、下一步、步骤条跳转<strong>均不触发</strong>设置检查；仅「设置检查」按钮与 Step4「公开」时（非可发布状态）会触发。</li>
+        <li>Step2 清空（リセット）删除除开始节点外全部节点，场景回草稿，Step4 需重新保存。</li>
+        <li>案件启动时绑定<strong>当时已发布</strong>的工作流版本；发布后新案件用新版本，在途案件不追溯。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub-section" id="scene-step3">
+    <h4 class="sub-title"><span class="sub-num">6-3</span>Step3 通知设置</h4>
+    <div class="procedure">
+      <ol>
+        <li>按「对象节点 + 触发事件 + 通知对象 + 件名/正文」追加规则（可在正文插入 {caseId}、{ocrStatus} 等变量）。</li>
+        <li>处理节点示例：ocrStatus=failed、ocrResult=reviewRequired；人工确认：完了 / 补件 / 案件中止。</li>
+        <li><span class="btn-inline primary">保存</span> 后 <span class="btn-inline primary">次へ</span>；通知为空也可继续。</li>
+      </ol>
+    </div>
+    <div class="callout note">
+      <strong>页面上看不出的规则</strong>
+      Step3 是<strong>全局通知模板</strong>，不读取 Step2 当前画布实例。运行时仅当 Step2 存在对应类型节点且事件匹配时才发送；配置了但画布无该节点 → 规则静默不触发、不报错。Step3 不参与发布门禁。
+    </div>
+  </div>
+
+  <div class="sub-section" id="scene-step4">
+    <h4 class="sub-title"><span class="sub-num">6-4</span>Step4 输出字段与发布</h4>
+    <div class="procedure">
+      <ol>
+        <li>侧栏选择 Step2 中已开启 OCR 的账票，勾选需导出的 OCR 字段与表格列（允许 0 项）。</li>
+        <li><span class="btn-inline primary">保存</span> 固化勾选。</li>
+        <li>点击 <span class="btn-inline primary">公開</span>：若非「可发布」状态，系统自动跑 Step2 设置检查；失败 Toast 提示并跳转 Step2，成功则弹出公开确认。</li>
+        <li>确认后生成版本号，场景变为「已发布」；新上传案件读取此版本。</li>
+      </ol>
+    </div>
+    <div class="callout tip">
+      <strong>版本与草稿</strong>
+      已发布场景再次编辑会基于「现在的草稿」；正式案件继续使用「适用中」的发布版直到再次公开。四步各保存只写草稿，不单独升版本；只有公开才生成正式版本号。
+    </div>
+  </div>
+</section>
+
+<section class="step-section" id="admin-api">
+  <h3 class="step-title">7. API 管理</h3>
+  <div class="procedure">
+    <ol>
+      <li>打开 <span class="btn-inline">API管理</span>，发行 API 密钥（只读 / 读写、有效期）。</li>
+      <li>可选配置 Webhook：案件完结等事件向外部 URL POST。</li>
+      <li>密钥仅创建时完整显示一次，请安全保管。</li>
+    </ol>
+  </div>
+</section>
+
+<section class="step-section" id="admin-rules">
+  <h3 class="step-title">配置规则应用节点一览</h3>
+  <p>汇总页面上不易一眼看出的「配置在何时生效」。</p>
+  <table class="info-table">
+    <thead>
+      <tr><th>配置项</th><th>应用阶段 / 节点</th><th>说明</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>账票分类规则</td><td>案件集约</td><td>上传后对每个文件判定账票类型，再按 Step1 关联规则归案。</td></tr>
+      <tr><td>Step1 集约关联</td><td>案件集约</td><td>主账票 + 字段关系（组内 AND / 组间 OR）决定哪些文件合成一案。</td></tr>
+      <tr><td>上传画质（200dpi）</td><td>上传即时</td><td>低于 200dpi 直接拒绝，<strong>不属于</strong> AI 前处理节点。</td></tr>
+      <tr><td>账票 AI 前处理策略</td><td>工作流 · AI 前处理节点</td><td>画像分割（单页多票据裁切）在此执行；与集约阶段的文件分割不同。</td></tr>
+      <tr><td>账票 OCR 字段模板</td><td>工作流 · OCR 抽出节点</td><td>按节点上开启的账票执行抽出。</td></tr>
+      <tr><td>数据映射（全局）</td><td>工作流 · 数据映射节点</td><td>将 OCR 字段汇总为标准字段。</td></tr>
+      <tr><td>AI 检证（全局）</td><td>工作流 · AI 检证节点</td><td>执行已选检证规则集。</td></tr>
+      <tr><td>条件 / 人工确认</td><td>工作流画布</td><td>ocrResult / verifyResult 等变量驱动分支与待办；首条人工确认待办写入案件担当者。</td></tr>
+      <tr><td>Step3 通知模板</td><td>各节点运行时</td><td>事件匹配则发站内信 / 邮件；无匹配节点则不发送。</td></tr>
+      <tr><td>Step4 输出勾选</td><td>导出待办</td><td>工作流完结后，导出任务仅包含已勾选字段。</td></tr>
+      <tr><td>已发布场景版本</td><td>上传时选定场景</td><td>新案件绑定发布版工作流；草稿未公开不影响在途案件。</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="step-section" id="admin-summary">
+  <h3 class="step-title">上线前确认</h3>
+  <div class="callout note">
+    <ul style="padding-left:18px;margin-top:6px;">
+      <li>账票类型、数据映射、AI 检证均为「已发布」；业务场景为「已发布」且 Step2 设置检查已通过。</li>
+      <li>操作员账号在上传画面能选到「保险金请求」场景。</li>
+      <li>用一套样本件跑通：上传 → 集约 → 工作流 →（如有）我的任务确认 → 导出。</li>
+      <li>补件、OCR 要确认、检证要确认场景下待办与 Step3 通知符合预期。</li>
+    </ul>
+  </div>
+  <div class="next-link"><a href="operator.html">继续阅读业务操作指引 →</a></div>
+</section>
+
+</main>
+</div>
+
+<footer class="site-footer">NeosAI IDP 操作手册 © 2026</footer>
+<button id="backTop" title="返回顶部">↑</button>
+
+<script>
+(function(){
+  var btn = document.getElementById('backTop');
+  window.addEventListener('scroll', function() {
+    btn.style.display = window.scrollY > 400 ? 'block' : 'none';
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      if (href.length > 1) {
+        var target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.replaceState(null, '', href);
+        }
+      }
+    });
+  });
+  var tocLinks = document.querySelectorAll('.toc-sub a, .toc-group > a');
+  var sections = [];
+  tocLinks.forEach(function(a) {
+    var id = a.getAttribute('href').slice(1);
+    var sec = document.getElementById(id);
+    if (sec) sections.push({ link: a, section: sec });
+  });
+  function updateActive() {
+    var current = null, pos = window.scrollY + 100;
+    sections.forEach(function(s) {
+      if (s.section.offsetTop <= pos) current = s;
+    });
+    tocLinks.forEach(function(a) { a.classList.remove('active'); });
+    if (current) current.link.classList.add('active');
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">必須フィールド</span> — <span class="ui-text">ルール一括追加</span> で <span class="ui-text">適用シーン</span>、<span class="ui-text">帳票タイプ</span>、<span class="ui-text">フィールド</span> を選び、<span class="ui-text">挿入</span> で <span class="ui-text">選択フィールド</span> に追加して <span class="ui-text">追加</span> します。標準変数を対象にする場合は <span class="ui-text">標準フィールド</span> を <span class="ui-text">はい</span> に切り替えます。追加後は <span class="ui-text">ルール一覧</span> に反映され、行の <span class="ui-text">削除</span> で無効化できます。</span></p>
+            <figure class="screenshot-figure" data-shot="admin-ai-verification-config">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-required-fields.png?v=3" data-lightbox="manual-shots" aria-label="AI検証設定 必須フィールドを拡大表示">
+                  <img src="assets/ai-verification-required-fields.png?v=3" alt="AI検証設定 必須フィールド">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">必要書類</span> — <span class="ui-text">業務シーン</span> を選び、案件に必要な帳票タイプを <span class="ui-text">必須</span> または <span class="ui-text">任意</span> に設定します。保険金請求では、診断書・保険金請求書・診療明細書などの提出有無を案件単位で確認します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-required-documents.png?v=3" data-lightbox="manual-shots" aria-label="AI検証設定 必要書類を拡大表示">
+                  <img src="assets/ai-verification-required-documents.png?v=3" alt="AI検証設定 必要書類">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">標準データ整合性</span> — <span class="ui-text">データマッピング設定</span> で参照元が 2 件以上ある標準変数が一覧表示されます。<span class="ui-text">データ整合性検証</span> スイッチを ON にすると、同一標準変数に紐づく OCR 値の一致を検証します。マッピング自体はデータマッピング設定で編集します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-standard-consistency.png?v=3" data-lightbox="manual-shots" aria-label="AI検証設定 標準データ整合性を拡大表示">
+                  <img src="assets/ai-verification-standard-consistency.png?v=3" alt="AI検証設定 標準データ整合性">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">テキスト検証</span> — <span class="ui-text">ルール追加</span> で <span class="ui-text">適用シーン</span>、<span class="ui-text">ルール名</span>、<span class="ui-text">ルール記述</span> を設定します。フィールド参照は <span class="ui-text">挿入</span> で <code>{{帳票タイプ.フィールド名}}</code> 形式のトークンを書き込み、少なくとも 1 件の有効なフィールド参照が必要です。必要に応じて <span class="ui-text">AIルール最適化</span> を使い、<span class="ui-text">ルール一覧</span> の <span class="ui-text">編集</span> で内容を更新します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-text-rules.png?v=3" data-lightbox="manual-shots" aria-label="AI検証設定 テキスト検証を拡大表示">
+                  <img src="assets/ai-verification-text-rules.png?v=3" alt="AI検証設定 テキスト検証">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">データ検証</span> — 数値・日付・期間・合計などの構造化データを、算術式または自然文 + フィールドトークンで検証します。入院期間、請求日、点数合計など、帳票間の整合性確認に使います。<span class="ui-text">AIルール最適化</span> で式の整理も可能です。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-data-rules.png?v=3" data-lightbox="manual-shots" aria-label="AI検証設定 データ検証を拡大表示">
+                  <img src="assets/ai-verification-data-rules.png?v=3" alt="AI検証設定 データ検証">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">6</span><span class="step-text"><span class="ui-text">署名・印鑑検証</span> — <span class="ui-text">適用シーン</span>、<span class="ui-text">ルール名</span>、<span class="ui-text">対象帳票</span>、<span class="ui-text">検出対象</span>（印影／署名／両方）、必要に応じて <span class="ui-text">照合先</span> を設定して <span class="ui-text">追加</span> します。各ルールは <span class="ui-text">状態</span> スイッチで個別に ON/OFF できます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-signature-seal.png?v=3" data-lightbox="manual-shots" aria-label="AI検証設定 署名・印鑑検証を拡大表示">
+                  <img src="assets/ai-verification-signature-seal.png?v=3" alt="AI検証設定 署名・印鑑検証">
+                </a>
+              </div>
+            </figure>
+          </div>
+          <div class="notice info">
+            <strong>適用ルール</strong>
+            AI検証ルールは、<span class="ui-text">業務シーン設定</span> の <span class="ui-text">ワークフロー設定</span> 内にある <span class="ui-text">AI検証</span> ノードで適用されます。ノードで有効な検証種別のみ実行され、実行時は <span class="code-text">verifyStatus</span>、<span class="code-text">verifyResult</span>、逐条ルール結果を出力します。要確認の結果はワークフロー条件に従って <span class="ui-text">マイタスク</span> の AI検証確認待办に起票されます。
+          </div>

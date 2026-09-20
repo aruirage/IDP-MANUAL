@@ -1,0 +1,5 @@
+{
+  "new_string": ".operation-step > p:not(:has(> .step-code)) {\n  grid-template-columns: 1fr;\n}\n\n.operation-step > p:not(:has(> .step-code)) .step-text {\n  grid-column: 1;\n}\n\n.operation-step > p {",
+  "old_string": ".operation-step > p:has(> .step-text:only-child) {\n  grid-template-columns: 1fr;\n}\n\n.operation-step > p {",
+  "path": "/Users/mac/Desktop/AIPM/Projects/NeosAI/prototypes/kisoku-nintei/manual/common.css"
+}

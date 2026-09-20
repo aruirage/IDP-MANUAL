@@ -1,0 +1,75 @@
+        <section class="section-card" id="admin-ai-verification-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>AI検証設定</h2>
+          <p>本モジュールでは、AI検証ルールを設定します。保険金請求のケースでは、資料の不足、項目の未入力、契約マスターとの一致、金額・日付の妥当性、署名・印鑑の有無などを判定できます。</p>
+          <h3>操作ポイント</h3>
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">必須フィールド</span> では、適用シーン、帳票タイプ、対象フィールドを選択して追加します。標準項目を対象にする場合は <span class="ui-text">標準フィールド</span> を <span class="ui-text">はい</span> に切り替え、複数帳票にまたがる標準項目を指定します。</span></p>
+            <figure class="screenshot-figure" data-shot="admin-ai-verification-config">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-required-fields-marked.png?v=2" data-lightbox="manual-shots" aria-label="AI検証設定 必須フィールドを拡大表示">
+                  <img src="assets/ai-verification-required-fields-marked.png?v=2" alt="AI検証設定 必須フィールド">
+                </a>
+      </div>
+            </figure>
+      </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">必要書類</span> では、業務シーンを選択し、案件に必要な帳票タイプを <span class="ui-text">必須</span> または <span class="ui-text">任意</span> として設定します。保険金請求では、診断書、請求書、診療明細書などの提出有無を案件単位で確認します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-required-documents-marked.png?v=2" data-lightbox="manual-shots" aria-label="AI検証設定 必要書類を拡大表示">
+                  <img src="assets/ai-verification-required-documents-marked.png?v=2" alt="AI検証設定 必要書類">
+                </a>
+        </div>
+            </figure>
+      </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">標準データ整合性</span> では、データマッピング後の標準変数と OCR フィールドの対応関係を確認し、同じ意味を持つ項目間の値差異を検証対象にします。値の競合や確認要否は、ここで AI検証ルールとして扱います。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-standard-consistency-marked.png?v=2" data-lightbox="manual-shots" aria-label="AI検証設定 標準データ整合性を拡大表示">
+                  <img src="assets/ai-verification-standard-consistency-marked.png?v=2" alt="AI検証設定 標準データ整合性">
+                </a>
+        </div>
+            </figure>
+      </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">テキスト検証</span> では、業務シーン、帳票タイプ、フィールドを選択し、自然文のルール記述を追加します。事故状況、診断内容、備考欄など、単純な数値比較では表せない判断には <span class="ui-text">AIルール最適化</span> を利用して記述を整えます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-text-rules-marked.png?v=2" data-lightbox="manual-shots" aria-label="AI検証設定 テキスト検証を拡大表示">
+                  <img src="assets/ai-verification-text-rules-marked.png?v=2" alt="AI検証設定 テキスト検証">
+                </a>
+      </div>
+            </figure>
+      </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">データ検証</span> では、金額、日付、期間、数量などの構造化データを対象に、比較式や計算式を使ったルールを設定します。入院期間、請求日、診療費合計など、帳票間で整合性を確認したい項目を選択します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-data-rules-marked.png?v=2" data-lightbox="manual-shots" aria-label="AI検証設定 データ検証を拡大表示">
+                  <img src="assets/ai-verification-data-rules-marked.png?v=2" alt="AI検証設定 データ検証">
+                </a>
+        </div>
+            </figure>
+      </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">6</span><span class="step-text"><span class="ui-text">署名・印鑑検証</span> では、対象帳票、検出対象、照合先を指定し、署名または印鑑の有無を確認します。検出結果が NG の場合は、業務シーンの条件分岐に従って人工確認へ回します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/ai-verification-signature-seal-marked.png?v=2" data-lightbox="manual-shots" aria-label="AI検証設定 署名・印鑑検証を拡大表示">
+                  <img src="assets/ai-verification-signature-seal-marked.png?v=2" alt="AI検証設定 署名・印鑑検証">
+                </a>
+        </div>
+            </figure>
+          </div>
+          <div class="notice info">
+            <strong>適用ルール</strong>
+            AI検証ルールは、業務シーンのワークフロー内にある <span class="ui-text">AI検証</span> ノードで適用されます。実行時は <span class="code-text">verifyStatus</span>、<span class="code-text">verifyResult</span>、逐条ルール結果を出力し、確認が必要な結果はワークフロー条件に従って <span class="ui-text">マイタスク</span> に起票されます。
+      </div>
+        </section>

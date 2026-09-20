@@ -1,0 +1,27 @@
+  it('documents document-type setup as the actual five UI steps without field-level required notes', async () => {
+    const html = await readManual('index.html');
+    const doctype = sectionHtml(html, 'admin-doctype-config');
+
+    [
+      '帳票タイプ設定',
+      'AI分類設定',
+      'AI読取設定',
+      '処理ルール設定',
+      '画像処理設定',
+      '効果テスト',
+      '+ タイプ追加',
+      'ファイル分割ルール',
+      '読取モデル設定',
+      'マスタ照合',
+      'AIマッチング',
+    ].forEach((label) => assert.match(doctype, new RegExp(label)));
+
+    assert.match(doctype, /data-shot="admin-doctype-config"/);
+    assert.match(doctype, /assets\/doctype-step-1-marked\.png/);
+    assert.match(doctype, /assets\/doctype-step-2-read-flow\.png/);
+    assert.match(doctype, /assets\/doctype-step-3-marked\.png/);
+    assert.match(doctype, /assets\/doctype-step-4-overview\.png/);
+    assert.match(doctype, /assets\/doctype-step-5-flow\.png/);
+    assert.equal([...doctype.matchAll(/class="operation-step"/g)].length, 5);
+    assert.doesNotMatch(doctype, /既存 AI OCR|新規・変更点のみ|operation-substep/);
+  });

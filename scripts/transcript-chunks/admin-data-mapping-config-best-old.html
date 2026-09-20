@@ -1,0 +1,22 @@
+        <section class="section-card" id="admin-data-mapping-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>データマッピング設定</h2>
+          <p>本モジュールでは、複数の帳票タイプから抽出された OCR 項目を案件単位の標準項目へ整理します。保険金請求のケースでは、証券番号、被保険者名、医療機関名、請求金額などが複数帳票にまたがるため、先に項目の扱いを統一します。</p>
+          <figure class="screenshot-figure" data-shot="admin-data-mapping-config">
+            <div class="shot-wrap">
+              <a class="shot-link" href="assets/data-mapping-marked.png?v=2" data-lightbox="manual-shots" aria-label="データマッピング設定を拡大表示">
+                <img src="assets/data-mapping-marked.png?v=2" alt="データマッピング設定">
+              </a>
+      </div>
+          </figure>
+          <h3>操作ポイント</h3>
+          <ol>
+            <li>案件単位で利用する標準項目を定義します。</li>
+            <li>各標準項目に対して、参照元の帳票タイプと OCR 項目を紐付けます。</li>
+            <li>複数の帳票項目を参照元にできる場合は、優先度と必要な軽量変換を設定します。</li>
+        </ol>
+          <div class="notice warning">
+            <strong>適用ルール</strong>
+            データマッピングは、<span class="ui-text">業務シーン設定</span> の <span class="ui-text">ワークフロー設定</span> 内にある <span class="ui-text">データマッピング</span> ノードで実行されます。項目の競合や業務上の整合性判定は、AI検証ルールで扱います。
+      </div>
+    </section>

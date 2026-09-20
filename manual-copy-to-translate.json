@@ -3722,5 +3722,261 @@
     "ui_text": {},
     "zh-CN": "返回页面顶部",
     "en": "Back to top of page"
+  },
+  {
+    "id": "manual-0453",
+    "source_ja": "主な利用機能",
+    "ui_text": {},
+    "zh-CN": "主要使用功能",
+    "en": "Main functions"
+  },
+  {
+    "id": "manual-0454",
+    "source_ja": "モデル選択",
+    "ui_text": {},
+    "zh-CN": "模型选择",
+    "en": "Model selection"
+  },
+  {
+    "id": "manual-0455",
+    "source_ja": "できること",
+    "ui_text": {},
+    "zh-CN": "可实现的功能",
+    "en": "What it does"
+  },
+  {
+    "id": "manual-0456",
+    "source_ja": "AIアシスト",
+    "ui_text": {},
+    "zh-CN": "AI辅助",
+    "en": "AI assistance"
+  },
+  {
+    "id": "manual-0457",
+    "source_ja": "OCR抽出",
+    "ui_text": {},
+    "zh-CN": "OCR抽取",
+    "en": "OCR extraction"
+  },
+  {
+    "id": "manual-0458",
+    "source_ja": "AI検証",
+    "ui_text": {},
+    "zh-CN": "AI校验",
+    "en": "AI verification"
+  },
+  {
+    "id": "manual-0459",
+    "source_ja": "マスターデータ照合",
+    "ui_text": {},
+    "zh-CN": "主数据匹配",
+    "en": "Master data matching"
+  },
+  {
+    "id": "manual-0460",
+    "source_ja": "案件集約",
+    "ui_text": {},
+    "zh-CN": "案件归集",
+    "en": "Case aggregation"
+  },
+  {
+    "id": "manual-0461",
+    "source_ja": "データマッピング",
+    "ui_text": {},
+    "zh-CN": "数据映射",
+    "en": "Data mapping"
+  },
+  {
+    "id": "manual-0462",
+    "source_ja": "1 モデル",
+    "ui_text": {},
+    "zh-CN": "1 个模型",
+    "en": "1 model"
+  },
+  {
+    "id": "manual-0463",
+    "source_ja": "複数モデル",
+    "ui_text": {},
+    "zh-CN": "多个模型",
+    "en": "Multiple models"
+  },
+  {
+    "id": "manual-0464",
+    "source_ja": "帳票タイプ設定、業務シーン設定",
+    "ui_text": {},
+    "zh-CN": "账票类型设定、业务场景设定",
+    "en": "Document Type Settings, Business Scenario Settings"
+  },
+  {
+    "id": "manual-0465",
+    "source_ja": "帳票タイプ設定、OCR確認",
+    "ui_text": {},
+    "zh-CN": "账票类型设定、OCR确认",
+    "en": "Document Type Settings, OCR Review"
+  },
+  {
+    "id": "manual-0466",
+    "source_ja": "AI検証設定",
+    "ui_text": {},
+    "zh-CN": "AI校验设定",
+    "en": "AI Verification Settings"
+  },
+  {
+    "id": "manual-0467",
+    "source_ja": "データマッピング設定",
+    "ui_text": {},
+    "zh-CN": "数据映射设定",
+    "en": "Data Mapping Settings"
+  },
+  {
+    "id": "manual-0468",
+    "source_ja": "帳票の説明、抽出項目、プロンプト、ルール設定の作成を支援します。",
+    "ui_text": {},
+    "zh-CN": "辅助创建账票说明、抽取项目、提示词和规则设定。",
+    "en": "Helps create document descriptions, extraction fields, prompts, and processing rules."
+  },
+  {
+    "id": "manual-0469",
+    "source_ja": "帳票画像から項目や表の内容を読み取り、認識結果を作成します。モデル間の結果比較にも使用します。",
+    "ui_text": {},
+    "zh-CN": "从账票图像中读取字段和表格内容，生成识别结果，也用于比较不同模型的识别结果。",
+    "en": "Reads fields and table contents from document images, creates recognition results, and compares results between models."
+  },
+  {
+    "id": "manual-0470",
+    "source_ja": "必須項目、必要書類、整合性、テキスト、データ、署名・印鑑を確認します。",
+    "ui_text": {},
+    "zh-CN": "确认必填字段、必要资料、整合性、文本、数据以及签名和印章。",
+    "en": "Checks required fields, required documents, consistency, text, data, signatures, and seals."
+  },
+  {
+    "id": "manual-0471",
+    "source_ja": "マスターデータを参照し、コード一致または名称の類似度から候補を提示します。",
+    "ui_text": {},
+    "zh-CN": "参考主数据，通过代码匹配或名称相似度推荐候选项。",
+    "en": "References master data and suggests candidates by code match or name similarity."
+  },
+  {
+    "id": "manual-0472",
+    "source_ja": "複数の帳票を業務キーに基づいて同じ案件へまとめます。",
+    "ui_text": {},
+    "zh-CN": "根据业务键将多个账票归集到同一案件。",
+    "en": "Groups multiple documents into the same case based on business keys."
+  },
+  {
+    "id": "manual-0473",
+    "source_ja": "マッピングルールに基づき、複数の OCR 値が意味的に同一かを LLM で判定し、優先順位に従って標準項目へ書き込みます。",
+    "ui_text": {},
+    "zh-CN": "根据映射规则，由 LLM 判断多个 OCR 值在语义上是否相同，并按优先级写入标准字段。",
+    "en": "Based on mapping rules, the LLM determines whether multiple OCR values have the same meaning and writes the result to the standard field according to priority."
+  },
+  {
+    "id": "manual-0474",
+    "source_ja": "OCR抽出のみ複数モデルを選択でき、主モデルの認識結果を検証するために使用します。その他の用途は 1 用途につき 1 モデルを選択します。",
+    "ui_text": {},
+    "zh-CN": "仅 OCR 抽取可以选择多个模型，用于验证主模型的识别结果。其他用途每项只能选择 1 个模型。",
+    "en": "Only OCR extraction supports multiple models to verify the primary model result. All other purposes allow one model each."
+  },
+  {
+    "id": "manual-0475",
+    "source_ja": "用途割当 タブで用途ごとにモデルを割り当てます。OCR抽出 は複数モデル、その他の用途は 1 モデルを選択します。",
+    "ui_text": {},
+    "zh-CN": "在用途分配页签中按用途分配模型。OCR 抽取选择多个模型，其他用途选择 1 个模型。",
+    "en": "In the Purpose Assignment tab, assign models by purpose. Select multiple models for OCR extraction and one model for all other purposes."
+  },
+  {
+    "id": "manual-0476",
+    "source_ja": "帳票画像から項目や表の内容を読み取り、認識結果を作成します。モデル間の結果比較にも使用します。",
+    "ui_text": {},
+    "zh-CN": "从账票图像中读取字段和表格内容，生成识别结果，也用于比较不同模型的识别结果。",
+    "en": "Reads fields and table contents from document images, creates recognition results, and compares results between models."
+  },
+  {
+    "id": "manual-0477",
+    "source_ja": "帳票タイプ設定、業務シーン設定",
+    "ui_text": {},
+    "zh-CN": "账票类型设定、业务场景设定",
+    "en": "Document Type Settings, Business Scenario Settings"
+  },
+  {
+    "id": "manual-0478",
+    "source_ja": "帳票タイプ設定、OCR確認",
+    "ui_text": {},
+    "zh-CN": "账票类型设定、OCR确认",
+    "en": "Document Type Settings, OCR Review"
+  },
+  {
+    "id": "manual-0479",
+    "source_ja": "AI検証設定",
+    "ui_text": {},
+    "zh-CN": "AI校验设定",
+    "en": "AI Verification Settings"
+  },
+  {
+    "id": "manual-0480",
+    "source_ja": "データマッピング設定",
+    "ui_text": {},
+    "zh-CN": "数据映射设定",
+    "en": "Data Mapping Settings"
+  },
+  {
+    "id": "manual-0481",
+    "source_ja": "必須項目、必要書類、整合性、テキスト、データ、署名・印鑑を確認します。",
+    "ui_text": {},
+    "zh-CN": "确认必填字段、必要资料、整合性、文本、数据以及签名和印章。",
+    "en": "Checks required fields, required documents, consistency, text, data, signatures, and seals."
+  },
+  {
+    "id": "manual-0482",
+    "source_ja": "設定ロジック：[[UI_01]] では外部モデルプロバイダへの接続情報を登録し、[[UI_02]] では機能ごとに使用するモデルを指定します。[[UI_03]] のみ複数モデルを選択でき、主モデルの認識結果を検証するために使用します。その他の用途は 1 用途につき 1 モデルを選択します。",
+    "ui_text": {
+      "[[UI_01]]": "API 接続",
+      "[[UI_02]]": "用途割当",
+      "[[UI_03]]": "OCR抽出"
+    },
+    "zh-CN": "配置逻辑：在 [[UI_01]] 中登记外部模型提供方的连接信息，在 [[UI_02]] 中按功能指定使用的模型。只有 [[UI_03]] 可以选择多个模型，用于验证主模型的识别结果；其他用途每项只能选择 1 个模型。",
+    "en": "Configuration logic: Register external model provider connection information in [[UI_01]], and specify the model used for each function in [[UI_02]]. Only [[UI_03]] supports multiple models to verify the primary model result; all other purposes allow one model each."
+  },
+  {
+    "id": "manual-0483",
+    "source_ja": "[[UI_01]]帳票タイプ設定、業務シーン設定1 モデル帳票の説明、抽出項目、プロンプト、ルール設定の作成を支援します。",
+    "ui_text": {"[[UI_01]]": "AIアシスト"},
+    "zh-CN": "[[UI_01]]账票类型设定、业务场景设定1 个模型辅助创建账票说明、抽取项目、提示词和规则设定。",
+    "en": "[[UI_01]]Document Type Settings, Business Scenario Settings1 modelHelps create document descriptions, extraction fields, prompts, and processing rules."
+  },
+  {
+    "id": "manual-0484",
+    "source_ja": "[[UI_01]]帳票タイプ設定、OCR確認複数モデル帳票画像から項目や表の内容を読み取り、認識結果を作成します。モデル間の結果比較にも使用します。",
+    "ui_text": {"[[UI_01]]": "OCR抽出"},
+    "zh-CN": "[[UI_01]]账票类型设定、OCR确认多个模型从账票图像中读取字段和表格内容，生成识别结果，也用于比较不同模型的识别结果。",
+    "en": "[[UI_01]]Document Type Settings, OCR ReviewMultiple modelsReads fields and table contents from document images, creates recognition results, and compares results between models."
+  },
+  {
+    "id": "manual-0485",
+    "source_ja": "[[UI_01]]AI検証設定1 モデル必須項目、必要書類、整合性、テキスト、データ、署名・印鑑を確認します。",
+    "ui_text": {"[[UI_01]]": "AI検証"},
+    "zh-CN": "[[UI_01]]AI校验设定1 个模型确认必填字段、必要资料、整合性、文本、数据以及签名和印章。",
+    "en": "[[UI_01]]AI Verification Settings1 modelChecks required fields, required documents, consistency, text, data, signatures, and seals."
+  },
+  {
+    "id": "manual-0486",
+    "source_ja": "[[UI_01]]帳票タイプ設定1 モデルマスターデータを参照し、コード一致または名称の類似度から候補を提示します。",
+    "ui_text": {"[[UI_01]]": "マスターデータ照合"},
+    "zh-CN": "[[UI_01]]账票类型设定1 个模型参考主数据，通过代码匹配或名称相似度推荐候选项。",
+    "en": "[[UI_01]]Document Type Settings1 modelReferences master data and suggests candidates by code match or name similarity."
+  },
+  {
+    "id": "manual-0487",
+    "source_ja": "[[UI_01]]業務シーン設定1 モデル複数の帳票を業務キーに基づいて同じ案件へまとめます。",
+    "ui_text": {"[[UI_01]]": "案件集約"},
+    "zh-CN": "[[UI_01]]业务场景设定1 个模型根据业务键将多个账票归集到同一案件。",
+    "en": "[[UI_01]]Business Scenario Settings1 modelGroups multiple documents into the same case based on business keys."
+  },
+  {
+    "id": "manual-0488",
+    "source_ja": "[[UI_01]]データマッピング設定1 モデルマッピングルールに基づき、複数の OCR 値が意味的に同一かを LLM で判定し、優先順位に従って標準項目へ書き込みます。",
+    "ui_text": {"[[UI_01]]": "データマッピング"},
+    "zh-CN": "[[UI_01]]数据映射设定1 个模型根据映射规则，由 LLM 判断多个 OCR 值在语义上是否相同，并按优先级写入标准字段。",
+    "en": "[[UI_01]]Data Mapping Settings1 modelBased on mapping rules, the LLM determines whether multiple OCR values have the same meaning and writes the result to the standard field according to priority."
   }
 ]

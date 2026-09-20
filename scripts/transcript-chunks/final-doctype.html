@@ -1,0 +1,92 @@
+        <section class="section-card" id="admin-doctype-config" data-shot="admin-doctype-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>帳票タイプ設定</h2>
+          <p>本モジュールでは、帳票タイプごとに分類条件、抽出項目、後処理、画像処理、効果テストを定義します。非定型帳票では座標指定ではなく、自然言語の <span class="ui-text">プロンプト</span> で AI にデータを探させます。保険金請求では、保険金請求書、診断書、診療明細書、領収書、調剤明細書を順に設定します。</p>
+          <h3>操作ポイント</h3>
+
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text">帳票タイプを作成 — まず帳票タイプを定義し、AI に当該帳票の業務上の特徴を伝えます。</span></p>
+            <p class="operation-substep"><span class="step-code">1.1</span><span class="step-text"><span class="ui-text">業務ルール設定</span> → <span class="ui-text">帳票タイプ設定</span> を開き、左側の <span class="ui-text">+ タイプ追加</span> で帳票タイプを追加します（例：<span class="ui-text">診断書</span>）。</span></p>
+            <p class="operation-substep"><span class="step-code">1.2</span><span class="step-text"><span class="ui-text">AI分類設定</span> で代表サンプルをアップロードします（複数ページ PDF 可）。</span></p>
+            <p class="operation-substep"><span class="step-code">1.3</span><span class="step-text">アップロード成功後、AI が帳票の特徴を読み取り、<span class="ui-text">説明文</span> を自動生成します。生成結果は編集可能で、混在スキャン時の自動分類に利用されます。必要に応じて <span class="ui-text">説明文</span> 横の AI ボタンから再生成もできます。<span class="ui-text">ファイル分割ルール</span> も同様に AI 生成に対応します。</span></p>
+            <p class="operation-substep"><span class="step-code">1.4</span><span class="step-text"><span class="ui-text">次へ</span> をクリックして次のステップへ進みます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-1-marked.png?v=2" data-lightbox="manual-shots" aria-label="帳票タイプ設定 AI分類設定と説明文自動生成を拡大表示">
+                  <img src="assets/doctype-step-1-marked.png?v=2" alt="帳票タイプ設定 AI分類設定と説明文自動生成">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text">抽出項目を定義 — 核心ステップ。<span class="ui-text">AI読取設定</span> で、AI への「質問」形式により読取対象を指定します。</span></p>
+            <p class="operation-substep"><span class="step-code">2.1</span><span class="step-text"><span class="ui-text">+ 項目追加</span> で項目・列名を追加します。<span class="ui-text">AI自動生成</span> を使うと、サンプル画像から抽出可能な項目とテーブル列を自動生成できます。抽出対象が明確な場合は、保存アイコン（テンプレート）から <span class="ui-text">テンプレートをダウンロード</span>、<span class="ui-text">一括ダウンロード</span>、<span class="ui-text">一括インポート</span> も利用できます。</span></p>
+            <p class="operation-substep"><span class="step-code">2.2</span><span class="step-text">項目設定：<span class="ui-text">項目名</span>（必須）、<span class="ui-text">プロンプト</span>（任意。例：「総行名のみ抽出し、支店名は不要」）、<span class="ui-text">正解サンプル</span>（期待出力例。例：1980年1月1日）を入力します。操作列の移動アイコンで、CSV 出力や API JSON の項目・テーブル表示順を調整します。</span></p>
+            <p class="operation-substep"><span class="step-code">2.3</span><span class="step-text">リストデータを抽出する場合は <span class="ui-text">テーブル情報読取</span> タブに切り替え、列キー名とプロンプトを定義します。</span></p>
+            <p class="operation-substep"><span class="step-code">2.4</span><span class="step-text">設定アイコンから <span class="ui-text">読取モデル設定</span> を開き、<span class="ui-text">メインモデル</span>（1 つのみ）と <span class="ui-text">検証モデル</span>（複数可）を指定します。複数モデルの読取結果が不一致の項目は、<span class="ui-text">帳票読取</span> の読取確認画面で赤色表示されます。</span></p>
+            <p class="operation-substep"><span class="step-code">2.5</span><span class="step-text">抽出対象の項目・テーブル列がすべて定義されたことを確認し、<span class="ui-text">次へ</span> をクリックします。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-2-read-flow.png?v=2" data-lightbox="manual-shots" aria-label="帳票タイプ設定 AI読取設定のテキスト読取とテーブル情報読取を拡大表示">
+                  <img src="assets/doctype-step-2-read-flow.png?v=2" alt="帳票タイプ設定 AI読取設定のテキスト読取とテーブル情報読取">
+                </a>
+              </div>
+            </figure>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-2-model-flow.png?v=2" data-lightbox="manual-shots" aria-label="帳票タイプ設定 読取モデル設定を拡大表示">
+                  <img src="assets/doctype-step-2-model-flow.png?v=2" alt="帳票タイプ設定 読取モデル設定">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text">データ処理ルールを設定 — <span class="ui-text">処理ルール設定</span> で、AI が抽出した非構造テキストを業務システム向けに整形します。</span></p>
+            <p class="operation-substep"><span class="step-code">3.1</span><span class="step-text">2 で定義した各項目に、データ標準化ルールを選択します。<span class="ui-text">AIマッチング</span> をクリックすると、項目名に応じた処理ルールを AI が自動提案します。必要に応じて修正します。</span></p>
+            <p class="operation-substep"><span class="step-code">3.2</span><span class="step-text">自信度の初期値は 95.00% です。閾値未満の読取結果は、<span class="ui-text">帳票読取</span> の読取確認画面で赤色表示されます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-3-marked.png?v=2" data-lightbox="manual-shots" aria-label="帳票タイプ設定 処理ルール設定を拡大表示">
+                  <img src="assets/doctype-step-3-marked.png?v=2" alt="帳票タイプ設定 処理ルール設定">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text">画像処理を設定 — <span class="ui-text">画像処理設定</span> で、OCR 前の画像分割・組合・整列を定義します。</span></p>
+            <p class="operation-substep"><span class="step-code">4.1</span><span class="step-text"><span class="ui-text">画像分割</span> を有効にし、1 枚の画像に複数帳票が含まれる場合の分割判定閾値を調整します。</span></p>
+            <p class="operation-substep"><span class="step-code">4.2</span><span class="step-text"><span class="ui-text">画像組合</span> を有効にし、複数画像を同一帳票として組み合わせます。<span class="ui-text">組合必須キー</span> と <span class="ui-text">組合任意キー</span> で、どの項目値が一致した画像を同一帳票とみなすかを指定します。</span></p>
+            <p class="operation-substep"><span class="step-code">4.3</span><span class="step-text"><span class="ui-text">画像整列</span> を有効にし、同一帳票タイプ内の複数画像の表示順を整えます。<span class="ui-text">整列キー</span>、<span class="ui-text">整列キータイプ</span>（日付／数値）、整列方向、整列判定閾値を設定します。</span></p>
+            <p class="operation-substep"><span class="step-code">4.4</span><span class="step-text">設定後、<span class="ui-text">次へ</span> をクリックして効果テストへ進みます。画像処理が不要な帳票タイプでは、各機能を OFF のまま進めても構いません。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-4-flow.png?v=3" data-lightbox="manual-shots" aria-label="帳票タイプ設定 画像処理設定を拡大表示">
+                  <img src="assets/doctype-step-4-flow.png?v=3" alt="帳票タイプ設定 画像処理設定">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text">効果テスト — セマンティック理解モデルの精度を検証します。</span></p>
+            <p class="operation-substep"><span class="step-code">5.1</span><span class="step-text"><span class="ui-text">ファイル選択</span> から、1 と版式が異なる同一タイプのサンプルをアップロードします。初期サンプルでも構いません。</span></p>
+            <p class="operation-substep"><span class="step-code">5.2</span><span class="step-text"><span class="ui-text">テスト</span> をクリックします。通常 20 秒程度かかります。</span></p>
+            <p class="operation-substep"><span class="step-code">5.3</span><span class="step-text"><span class="ui-text">テキスト読取</span> と <span class="ui-text">テーブル情報読取</span> の結果を確認します。項目意味の理解（例：発注日と納品日の混同がないか）、データ形式の整形結果を検証します。精度が不足する場合は 2 の <span class="ui-text">プロンプト</span> を具体化して再調整します（例：「日付を読取」→「ページ右上の発行日を読取」）。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-5-flow.png?v=2" data-lightbox="manual-shots" aria-label="帳票タイプ設定 効果テスト結果を拡大表示">
+                  <img src="assets/doctype-step-5-flow.png?v=2" alt="帳票タイプ設定 効果テスト結果">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <p>以上の設定後、<span class="ui-text">保存</span> すると非定型テンプレートが有効になります。以降、<span class="ui-text">帳票読取</span> 画面で <span class="ui-text">非定型帳票</span> と対応する <span class="ui-text">読取文書タイプ</span> を選択してアップロードすると、当該帳票タイプの設定に基づいて AI が高精度に抽出します。</p>
+          <div class="notice warning">
+            <strong>適用ルール</strong>
+            帳票タイプ設定は、ファイルアップロード後の分類、画像処理、OCR 抽出、人工確認前の処理段階で適用されます。項目がデータマッピング、AI検証、出力設定から参照されている場合、削除や名称変更は下流設定に影響します。
+          </div>
+    </section

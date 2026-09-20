@@ -1,0 +1,146 @@
+        <section class="section-card" id="admin-scene-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>業務シーン設定</h2>
+          <p>本モジュールでは、帳票タイプ・マスターデータ・データマッピング・AI検証設定を組み合わせ、<span class="ui-text">保険金請求</span> の実行フローを <span class="ui-text">Step1 案件集約</span> → <span class="ui-text">Step2 ワークフロー</span> → <span class="ui-text">Step3 通知</span> → <span class="ui-text">Step4 出力・公開</span> の 4 ステップで構成します。本マニュアル全体と同一のケースとして、業務シーン名 <span class="ui-text">保険金請求</span> を公開対象とします。新規・編集・コピーは同一フローです。各ステップの <span class="ui-text">保存</span> は下書きのみ更新し、バージョン番号は生成しません。<span class="ui-text">Step2</span> の <span class="ui-text">設定チェック</span> 通過後に <span class="ui-text">公開可能</span> となり、<span class="ui-text">公開</span> 確認後に正式バージョンが確定します。</p>
+
+          <h3>保険金請求ケース構成</h3>
+          <p>前章までに設定した帳票タイプ・マスターデータ・データマッピング・AI検証ルールを、次の業務シーン設定に束ねます。操作員側の <span class="ui-text">新規アップロード</span>・<span class="ui-text">案件一覧</span>・<span class="ui-text">マイタスク</span> は、公開済みのこのシーンを前提に説明します。</p>
+          <table>
+            <thead>
+              <tr><th>設定ブロック</th><th>保険金請求での設定例</th><th>参照モジュール</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Step1 案件集約</td>
+                <td>関連帳票：<span class="ui-text">保険金請求書</span>（必須）、<span class="ui-text">診断書</span>（必須）、<span class="ui-text">診療明細書</span>（任意）。主帳票 <span class="ui-text">保険金請求書</span>、業務キー <span class="ui-text">請求番号</span>。帳票間関連：<span class="ui-text">被保険者氏名</span>、<span class="ui-text">医療機関名</span>、<span class="ui-text">請求金額</span> ↔ <span class="ui-text">合計金額</span> など。</td>
+                <td><span class="ui-text">帳票タイプ設定</span></td>
+              </tr>
+              <tr>
+                <td>Step2 ワークフロー</td>
+                <td>開始 → 前処理 → 条件判断 → OCR 抽出 → 条件判断 → データマッピング → AI 検証 → 条件判断 → 終了。OCR は 3 帳票すべて ON。要確認時は前処理 / OCR / AI 検証それぞれの人工確認へ分岐。</td>
+                <td><span class="ui-text">データマッピング設定</span>、<span class="ui-text">AI検証設定</span></td>
+              </tr>
+              <tr>
+                <td>Step3 通知</td>
+                <td>例：<span class="ui-text">OCR 抽出</span> · <span class="code-text">ocrResult = reviewRequired</span> → 操作員、<span class="ui-text">AI 検証</span> · <span class="code-text">verifyResult = reviewRequired</span> → 操作管理者、人工確認 · <span class="ui-text">補件</span> → 案件担当者。</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>Step4 出力</td>
+                <td>例：<span class="ui-text">保険金請求書</span> の被保険者氏名・請求金額・証券番号、<span class="ui-text">診断書</span> の傷病名・医療機関名、案件 ID・検証結果。</td>
+                <td><span class="ui-text">マイタスク</span> エクスポート</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>操作ポイント</h3>
+
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text">Step1 — <span class="ui-text">案件集約ルール</span>：<span class="ui-text">保険金請求</span> の帳票集合と案件キーを定義します。</span></p>
+            <div class="operation-substep">
+              <span class="step-code">1.1</span>
+              <span class="step-text"><span class="ui-text">業務ルール設定</span> → <span class="ui-text">業務シーン設定</span> で一覧を開き、<span class="ui-text">＋ 業務シーン追加</span> で <span class="ui-text">保険金請求</span> を作成します（既存シーンは <span class="ui-text">コピー</span>・<span class="ui-text">名称変更</span>・<span class="ui-text">削除</span>、<span class="ui-text">業務シーン名で検索</span> も利用可）。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">1.2</span>
+              <span class="step-text">説明に「請求書・診断書・診療明細書を同一案件に集約する標準フロー」などを記載し、<span class="ui-text">+ 帳票追加</span> で <span class="ui-text">保険金請求書</span>・<span class="ui-text">診断書</span>・<span class="ui-text">診療明細書</span> を追加します。主帳票は <span class="ui-text">保険金請求書</span>、業務キーは <span class="ui-text">請求番号</span> を選びます。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">1.3</span>
+              <span class="step-text">帳票間フィールド関係を設定します。例：Group A で <span class="ui-text">保険金請求書</span>↔<span class="ui-text">診断書</span> の <span class="ui-text">被保険者氏名</span>、Group B で <span class="ui-text">保険金請求書</span>↔<span class="ui-text">診療明細書</span> の <span class="ui-text">請求金額</span>↔<span class="ui-text">合計金額</span>。グループ内 AND・グループ間 OR です。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">1.4</span>
+              <span class="step-text"><span class="ui-text">関連チェック</span> で 3 帳票すべてが主帳票に到達できることを確認します。未設定が多い場合は <span class="ui-text">AI 自動関連付け</span> で同名フィールドを一括生成し、必要に応じて手修正します。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">1.5</span>
+              <span class="step-text"><span class="ui-text">保存</span> は下書きのみ保存し Step1 に留まります。<span class="ui-text">次へ</span> で Step2 へ進みます。</span>
+            </div>
+            <figure class="screenshot-placeholder" data-shot="business-scene-basic-related">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：Step1 <span class="ui-text">保険金請求</span> の案件集約（帳票 3 種・主帳票・関連プレビュー）。</figcaption>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text">Step2 — <span class="ui-text">ワークフロー設定</span>：保険金請求の処理チェーンと人工確認分岐を編成します。</span></p>
+            <div class="operation-substep">
+              <span class="step-code">2.1</span>
+              <span class="step-text"><span class="ui-text">ワークフロー設定</span> でキャンバスを開き、固定 <span class="ui-text">開始</span> から <span class="ui-text">前処理</span>（画像回転・補正・整列）→ <span class="ui-text">OCR 抽出</span> → <span class="ui-text">データマッピング</span> → <span class="ui-text">AI 検証</span> → <span class="ui-text">終了</span> の主チェーンを配置します。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">2.2</span>
+              <span class="step-text">OCR 抽出では <span class="ui-text">保険金請求書</span>・<span class="ui-text">診断書</span>・<span class="ui-text">診療明細書</span> をすべて ON にします。データマッピング・AI 検証ノードは前章の設定を参照し、モジュール本体は各設定画面で編集します。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">2.3</span>
+              <span class="step-text">前処理・OCR・AI 検証の各直後に <span class="ui-text">IF/ELSE</span> を置き、<span class="code-text">*Result = reviewRequired</span> の ELSE 側へ <span class="ui-text">人工確認</span>（前処理 / OCR / AI 検証）を接続します。<span class="ui-text">補件</span> 出口は上流ノードへループバックします。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">2.4</span>
+              <span class="step-text"><span class="ui-text">保存</span> で画布下書きを保存します。<span class="ui-text">設定チェック</span> を実行し、終了ノード到達・分岐接続・OCR/AI モジュール有効化を確認して <span class="ui-text">公開可能</span> にします。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">2.5</span>
+              <span class="step-text"><span class="ui-text">次へ</span> で Step3 へ進みます（設定チェックは自動実行されません）。</span>
+            </div>
+            <figure class="screenshot-placeholder" data-shot="business-scene-workflow">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：Step2 <span class="ui-text">保険金請求</span> ワークフロー（主チェーン + 人工確認分岐）。</figcaption>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text">Step3 — <span class="ui-text">通知設定</span>：保険金請求向けの通知テンプレートを登録します。</span></p>
+            <div class="operation-substep">
+              <span class="step-code">3.1</span>
+              <span class="step-text"><span class="ui-text">通知ルール追加</span> で例：<span class="ui-text">OCR 抽出</span> · <span class="code-text">ocrResult = reviewRequired</span> · 操作員、<span class="ui-text">AI 検証</span> · <span class="code-text">verifyResult = reviewRequired</span> · 操作管理者 を登録します。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">3.2</span>
+              <span class="step-text">件名・内容に <span class="code-text">{caseId}</span>、<span class="code-text">{ocrStatus}</span>、<span class="code-text">{verifyResult}</span> などを挿入します。トリガー条件は画面に表示されず、対象ノードの Status / Result または人工確認の <span class="ui-text">完了</span>・<span class="ui-text">補件</span>・<span class="ui-text">案件中止</span> で判定されます。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">3.3</span>
+              <span class="step-text"><span class="ui-text">通知ルール一覧</span> で有効 / 無効を管理します。実行時は Step2 に対応ノードが存在し、イベントに一致した有効ルールのみ送信されます（ノード未配置のルールは保存のみ、実行時は送信されません）。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">3.4</span>
+              <span class="step-text"><span class="ui-text">保存</span> 後 <span class="ui-text">次へ</span> で Step4 へ進みます。</span>
+            </div>
+            <figure class="screenshot-placeholder" data-shot="business-scene-notify">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：Step3 <span class="ui-text">保険金請求</span> 通知ルール。</figcaption>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text">Step4 — <span class="ui-text">出力項目</span> と <span class="ui-text">公開</span>：エクスポート項目を確定し、操作員向けに公開します。</span></p>
+            <div class="operation-substep">
+              <span class="step-code">4.1</span>
+              <span class="step-text"><span class="ui-text">出力項目を設定</span> で <span class="ui-text">保険金請求書</span> から被保険者氏名・請求金額・証券番号、<span class="ui-text">診断書</span> から傷病名・医療機関名などを選択します。診療明細書の明細列は任意です。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">4.2</span>
+              <span class="step-text"><span class="ui-text">保存</span> で出力選択を下書きに固化します。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">4.3</span>
+              <span class="step-text"><span class="ui-text">公開</span> をクリックします。公開可能でない場合は Step2 <span class="ui-text">設定チェック</span> を自動実行し、成功後 <span class="ui-text">業務シーンを公開しますか？</span> を確認して正式バージョンを生成します。公開後、<span class="ui-text">新規アップロード</span> の業務シーン候補に <span class="ui-text">保険金請求</span> が表示されます。</span>
+            </div>
+            <figure class="screenshot-placeholder" data-shot="business-scene-export">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：Step4 <span class="ui-text">保険金請求</span> 出力項目と <span class="ui-text">公開</span>。</figcaption>
+            </figure>
+          </div>
+
+          <div class="notice info">
+            <strong>ケース連動</strong>
+            本シーンは <span class="ui-text">帳票タイプ設定</span> の 3 帳票、<span class="ui-text">データマッピング設定</span> の標準変数（被保険者名・請求金額など）、<span class="ui-text">AI検証設定</span> の必要書類・整合性ルールとセットで機能します。Step1 で帳票や業務キーを変更すると Step2 画布と Step4 出力候補が連動し、後続参照がある場合は保存がブロックされます。
+          </div>
+          <div class="notice warning">
+            <strong>適用ルール</strong>
+            各ステップの <span class="ui-text">保存</span> は下書きのみ更新し、バージョン番号は生成しません。Step2 <span class="ui-text">設定チェック</span> 通過で <span class="ui-text">公開可能</span> になります。Step3・Step4 の保存は公開ゲートに含まれません。Step4 <span class="ui-text">公開</span> 時、公開可能でなければ Step2 設定チェックを自動実行します。公開済みシーンは <span class="ui-text">現在の下書き</span> と <span class="ui-text">適用中</span> バージョンを切り替えて閲覧できます。
+          </div>
+        </section>

@@ -1,0 +1,18 @@
+            <div class="module-guide-item" id="admin-master-data-config-scenario">
+              <h4>適用タイミング</h4>
+              <p>表記ゆれの正規化、金融機関・医薬品などの参照表を整備するとき、または帳票タイプで <span class="ui-text">マスタ照合</span> を使う前に登録します。<span class="ui-text">一括インポート</span> 後は必ず <span class="ui-text">ベクトル化状態</span> が <span class="ui-text">完了</span> になるまで待機してください。</p>
+            </div>
+            <div class="module-guide-item" id="admin-master-data-config-effect">
+              <h4>実現効果</h4>
+              <p>マスター表・列設定・照会コード・データ行を管理し、ベクトル化が <span class="ui-text">完了</span> した行のみ、OCR 値の照合・正規値書き戻し（<span class="ui-text">ハイブリッド検索</span> 等）の参照元として利用できます。</p>
+            </div>
+            <div class="module-guide-item" id="admin-master-data-config-impact">
+              <h4>関連影響</h4>
+              <p><span class="ui-text">帳票タイプ設定</span> の <span class="ui-text">マスタ照合</span> は、ベクトル化 <span class="ui-text">完了</span> 行にのみ有効です。<span class="ui-text">待機中</span>・<span class="ui-text">処理中</span>・<span class="ui-text">失敗</span> 行は照合対象外となり、<span class="ui-text">失敗</span> は手動で <span class="ui-text">再実行</span> が必要です。</p>
+            </div>
+          </div>
+          <div class="notice warning" id="admin-master-data-vectorization">
+            <strong>インポート後のベクトル化（必須確認）</strong>
+            データ登録・<span class="ui-text">一括インポート</span> 直後から、一覧の <span class="ui-text">ベクトル化状態</span> を継続的に確認してください。<strong>状態が <span class="ui-text">完了</span> になって初めて</strong>、当該行は <span class="ui-text">帳票タイプ設定</span> の <span class="ui-text">マスタ照合</span> で利用可能です。1 万行規模以上ではベクトル化に <strong>30 分以上</strong> かかる場合があります。 <span class="ui-text">失敗</span> 行は操作列 <span class="ui-text">再実行</span>、または一覧上部の <span class="ui-text">ベクトル化再実行</span> で手動リトライしてください。
+          </div>
+<h3 class="module-ops-heading" id="admin-master-data-config-ops">操作手順</h3>

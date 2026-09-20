@@ -342,6 +342,16 @@ a:hover { text-decoration: underline; }
 .info-table th { background: var(--blue-soft); color: var(--toc-fold); padding: 11px 14px; text-align: left; font-weight: 700; }
 .info-table td { padding: 11px 14px; border-bottom: 1px solid #d9e6ec; vertical-align: top; }
 .info-table tr:nth-child(even) td { background: #fbfdfe; }
+.model-usage-table { table-layout: fixed; }
+.model-usage-table th:nth-child(1), .model-usage-table td:nth-child(1) { width: 15%; }
+.model-usage-table th:nth-child(2), .model-usage-table td:nth-child(2) { width: 24%; }
+.model-usage-table th:nth-child(3), .model-usage-table td:nth-child(3) {
+  width: 18%;
+  min-width: 180px;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+.model-usage-table th:nth-child(4), .model-usage-table td:nth-child(4) { width: 43%; }
 
 .rule-box {
   background: #fbfdfe; border: 1px solid #d9e6ec; border-radius: 8px;

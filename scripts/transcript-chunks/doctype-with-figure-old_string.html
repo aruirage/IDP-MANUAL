@@ -1,0 +1,77 @@
+          <h3>操作ポイント</h3>
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">+タイプ追加</span> で帳票タイプを選択し、<span class="ui-text">AI分類設定</span> で分類条件と説明文を整えます。図では、タイプ追加と分類設定の位置を確認します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-1-flow.png" data-lightbox="manual-shots" aria-label="帳票タイプ設定 タイプ追加とAI分類設定を拡大表示">
+                  <img src="assets/doctype-step-1-flow.png" alt="帳票タイプ設定 タイプ追加とAI分類設定">
+                </a>
+              </div>
+            </figure>
+    </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">AI読取設定</span> で項目とテーブルを定義します。項目は単票の抽出対象、テーブルは明細行の抽出対象です。必要な対象だけを追加します。</span></p>
+            <div class="figure-row">
+              <figure class="screenshot-figure">
+                <div class="shot-wrap">
+                  <a class="shot-link" href="assets/doctype-step-2-field.png" data-lightbox="manual-shots" aria-label="帳票タイプ設定 AI読取設定の項目設定を拡大表示">
+                    <img src="assets/doctype-step-2-field.png" alt="帳票タイプ設定 AI読取設定の項目設定">
+                  </a>
+  </div>
+              </figure>
+              <figure class="screenshot-figure">
+                <div class="shot-wrap">
+                  <a class="shot-link" href="assets/doctype-step-2-table.png" data-lightbox="manual-shots" aria-label="帳票タイプ設定 AI読取設定のテーブル設定を拡大表示">
+                    <img src="assets/doctype-step-2-table.png" alt="帳票タイプ設定 AI読取設定のテーブル設定">
+                  </a>
+  </div>
+              </figure>
+  </div>
+    </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">処理ルール設定</span> で、表記ゆれ補正、日付変換、数値処理、<span class="ui-text">マスタ照合</span> などの後処理を指定します。図では、処理ルールがどの入力に対して設定されるかを確認します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-3.png" data-lightbox="manual-shots" aria-label="帳票タイプ設定 処理ルール設定を拡大表示">
+                  <img src="assets/doctype-step-3.png" alt="帳票タイプ設定 処理ルール設定">
+                </a>
+    </div>
+            </figure>
+    </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">画像処理設定</span> では、<span class="ui-text">画像組合</span> と <span class="ui-text">画像整列</span> を設定します。<span class="emphasis">組合必須キー</span> は選択した全項目の OCR 値が一致したときにまとめ、<span class="emphasis">組合任意キー</span> は必須キーの条件を満たしたうえで、いずれか 1 項目の OCR 値が一致すればまとめます。図では、組合条件の位置を確認します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/doctype-step-4-flow.png" data-lightbox="manual-shots" aria-label="帳票タイプ設定 画像組合の有効化と設定を拡大表示">
+                  <img src="assets/doctype-step-4-flow.png" alt="帳票タイプ設定 画像組合の有効化と設定">
+                </a>
+              </div>
+            </figure>
+    </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">効果テスト</span> で、テキスト読取とテーブル情報読取の結果を確認します。帳票タイプの判定、項目抽出、後処理、画像組合の結果が想定通りかをまとめて確認します。図では、テキスト読取とテーブル情報読取を確認します。</span></p>
+            <div class="figure-row">
+              <figure class="screenshot-figure">
+                <div class="shot-wrap">
+                  <a class="shot-link" href="assets/doctype-step-5-text.png" data-lightbox="manual-shots" aria-label="帳票タイプ設定 効果テストのテキスト読取を拡大表示">
+                    <img src="assets/doctype-step-5-text.png" alt="帳票タイプ設定 効果テストのテキスト読取">
+                  </a>
+      </div>
+              </figure>
+              <figure class="screenshot-figure">
+                <div class="shot-wrap">
+                  <a class="shot-link" href="assets/doctype-step-5-table.png" data-lightbox="manual-shots" aria-label="帳票タイプ設定 効果テストのテーブル情報読取を拡大表示">
+                    <img src="assets/doctype-step-5-table.png" alt="帳票タイプ設定 効果テストのテーブル情報読取">
+                  </a>
+      </div>
+              </figure>
+            </div>
+          </div>
+          <div class="notice warning">
+            <strong>適用ルール</strong>
+            帳票タイプ設定は、ファイルアップロード後の分類、OCR 抽出、人工確認前の処理段階で適用されます。画像組合の条件は、同一帳票タイプのファイルを 1 つの論理ファイルにまとめる判定に使われます。項目がデータマッピング、AI検証、出力設定から参照されている場合、削除や名称変更は下流設定に影響します。
+      </div>

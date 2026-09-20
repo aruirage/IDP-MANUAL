@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NeosAI IDP マニュアル</title>
-<link rel="stylesheet" href="common.css?v=local-i18n-2">
+<link rel="stylesheet" href="common.css?v=local-i18n-3">
 </head>
 <body>
 <div class="language-switcher" id="languageSwitcher">
@@ -258,7 +258,18 @@
           <section class="manual-subsection" id="model-function">
             <h3>機能説明</h3>
             <p><strong>権限：</strong>本機能は <span class="ui-text">admin</span> が設定します。操作員はモデル接続や用途割当を編集せず、公開済みの業務シーンを通じて割当済みモデルの処理結果を利用します。</p>
-            <p><strong>設定ロジック：</strong><span class="ui-text">API 接続</span> では外部モデルプロバイダへの接続情報を登録し、<span class="ui-text">用途割当</span> では OCR 抽出、AI 検証、データマッピングごとに使用するモデルを指定します。</p>
+            <p><strong>設定ロジック：</strong><span class="ui-text">API 接続</span> では外部モデルプロバイダへの接続情報を登録し、<span class="ui-text">用途割当</span> では機能ごとに使用するモデルを指定します。<span class="ui-text">OCR抽出</span> のみ複数モデルを選択でき、主モデルの認識結果を検証するために使用します。その他の用途は 1 用途につき 1 モデルを選択します。</p>
+            <table class="info-table model-usage-table">
+              <thead><tr><th>用途</th><th>主な利用機能</th><th>モデル選択</th><th>できること</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">AIアシスト</span></td><td>帳票タイプ設定、業務シーン設定</td><td>1 モデル</td><td>帳票の説明、抽出項目、プロンプト、ルール設定の作成を支援します。</td></tr>
+                <tr><td><span class="ui-text">OCR抽出</span></td><td>帳票タイプ設定、OCR確認</td><td>複数モデル</td><td>帳票画像から項目や表の内容を読み取り、認識結果を作成します。モデル間の結果比較にも使用します。</td></tr>
+                <tr><td><span class="ui-text">AI検証</span></td><td>AI検証設定</td><td>1 モデル</td><td>必須項目、必要書類、整合性、テキスト、データ、署名・印鑑を確認します。</td></tr>
+                <tr><td><span class="ui-text">マスターデータ照合</span></td><td>帳票タイプ設定</td><td>1 モデル</td><td>マスターデータを参照し、コード一致または名称の類似度から候補を提示します。</td></tr>
+                <tr><td><span class="ui-text">案件集約</span></td><td>業務シーン設定</td><td>1 モデル</td><td>複数の帳票を業務キーに基づいて同じ案件へまとめます。</td></tr>
+                <tr><td><span class="ui-text">データマッピング</span></td><td>データマッピング設定</td><td>1 モデル</td><td>マッピングルールに基づき、複数の OCR 値が意味的に同一かを LLM で判定し、優先順位に従って標準項目へ書き込みます。</td></tr>
+              </tbody>
+            </table>
             <p><strong>利用タイミング：</strong>OCR 抽出、AI 検証、データマッピングで使うモデルを、用途ごとに先に登録・割当しておきます。保険金請求では、診断書や診療明細書の読取、請求内容の整合性確認、出力データの変換処理で参照されます。</p>
           </section>
 
@@ -285,7 +296,7 @@
             </figure>
           </div>
           <div class="operation-step">
-            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">用途割当</span> タブで OCR 抽出・AI 検証などの用途ごとにモデルを割り当てます。</span></p>
+            <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">用途割当</span> タブで用途ごとにモデルを割り当てます。<span class="ui-text">OCR抽出</span> は複数モデル、その他の用途は 1 モデルを選択します。</span></p>
             <figure class="screenshot-figure">
               <div class="shot-wrap">
                 <a class="shot-link" href="assets/model-usage-assignment-new.png?v=8" data-lightbox="manual-shots" aria-label="モデル設定 用途割当を拡大表示">
@@ -1924,6 +1935,36 @@
       '注意事項': '注意事项',
       '権限': '权限',
       '用途': '用途',
+      '主な利用機能': '主要使用功能',
+      'できること': '可实现的功能',
+      'AI補助': 'AI辅助',
+      'AIアシスト': 'AI辅助',
+      'マスターデータ照合': '主数据匹配',
+      '主な利用機能': '主要使用功能',
+      'モデル選択': '模型选择',
+      '1 モデル': '1 个模型',
+      '複数モデル': '多个模型',
+      'OCR抽出 のみ複数モデルを選択でき、主モデルの認識結果を検証するために使用します。その他の用途は 1 用途につき 1 モデルを選択します。': '只有 OCR 抽取可以选择多个模型，用于验证主模型的识别结果；其他用途每项只能选择 1 个模型。',
+      'OCR抽出 は複数モデル、その他の用途は 1 モデルを選択します。': 'OCR 抽取选择多个模型，其他用途选择 1 个模型。',
+      'マスタ照合': '主数据匹配',
+      'AI前処理': 'AI预处理',
+      '案件集約': '案件归集',
+      'OCR抽出': 'OCR抽取',
+      '帳票タイプ設定、業務シーン設定': '账票类型设定、业务场景设定',
+      '帳票タイプ設定、OCR確認': '账票类型设定、OCR确认',
+      'AI検証設定': 'AI校验设定',
+      'データマッピング設定': '数据映射设定',
+      ' のみ複数モデルを選択でき、主モデルの認識結果を検証するために使用します。その他の用途は 1 用途につき 1 モデルを選択します。': '仅 OCR 抽取可以选择多个模型，用于验证主模型的识别结果。其他用途每项只能选择 1 个模型。',
+      'モデル間の結果比較にも使用します。': '也用于比较不同模型的识别结果。',
+      ' タブで用途ごとにモデルを割り当てます。': '页签中按用途分配模型。',
+      ' は複数モデル、その他の用途は 1 モデルを選択します。': '选择多个模型，其他用途选择 1 个模型。',
+      '帳票の説明、抽出項目、プロンプト、ルール設定の作成を支援します。': '辅助创建账票说明、抽取项目、提示词和规则设定。',
+      '帳票画像から項目や表の内容を読み取り、認識結果を作成します。': '从账票图像中读取字段和表格内容，生成识别结果。',
+      'マスターデータを参照し、コード一致または名称の類似度から候補を提示します。': '参考主数据，通过代码匹配或名称相似度推荐候选项。',
+      'マッピングルールに基づき、複数の OCR 値が意味的に同一かを LLM で判定し、優先順位に従って標準項目へ書き込みます。': '根据映射规则，由 LLM 判断多个 OCR 值在语义上是否相同，并按优先级写入标准字段。',
+      '必須項目、必要書類、整合性、テキスト、データ、署名・印鑑を確認します。': '确认必填字段、必要资料、整合性、文本、数据以及签名和印章。',
+      '画像分割、組合、整列など、後続処理に適した画像状態へ整えます。': '执行图像分割、组合和排列，使图像适合后续处理。',
+      '複数の帳票を業務キーに基づいて同じ案件へまとめます。': '根据业务键将多个账票归集到同一案件。',
       '利用タイミング': '使用时机',
       '設定ロジック': '配置逻辑',
       '実行ロジック': '执行逻辑',
@@ -2287,6 +2328,35 @@
       '注意事項': 'Notes',
       '権限': 'Permission',
       '用途': 'Purpose',
+      '主な利用機能': 'Main functions',
+      'できること': 'What it does',
+      'AI補助': 'AI assistance',
+      'AIアシスト': 'AI assistance',
+      'マスターデータ照合': 'Master data matching',
+      'モデル選択': 'Model selection',
+      '1 モデル': '1 model',
+      '複数モデル': 'Multiple models',
+      'OCR抽出 のみ複数モデルを選択でき、主モデルの認識結果を検証するために使用します。その他の用途は 1 用途につき 1 モデルを選択します。': 'Only OCR extraction supports multiple models to verify the primary model result; all other purposes allow one model each.',
+      'OCR抽出 は複数モデル、その他の用途は 1 モデルを選択します。': 'Select multiple models for OCR extraction and one model for all other purposes.',
+      'マスタ照合': 'Master data matching',
+      'AI前処理': 'AI preprocessing',
+      '案件集約': 'Case aggregation',
+      'OCR抽出': 'OCR extraction',
+      '帳票タイプ設定、業務シーン設定': 'Document Type Settings, Business Scenario Settings',
+      '帳票タイプ設定、OCR確認': 'Document Type Settings, OCR Review',
+      'AI検証設定': 'AI Verification Settings',
+      'データマッピング設定': 'Data Mapping Settings',
+      ' のみ複数モデルを選択でき、主モデルの認識結果を検証するために使用します。その他の用途は 1 用途につき 1 モデルを選択します。': 'Only OCR extraction supports multiple models to verify the primary model result. All other purposes allow one model each.',
+      'モデル間の結果比較にも使用します。': 'It is also used to compare results between models.',
+      ' タブで用途ごとにモデルを割り当てます。': ' tab, assign a model for each purpose.',
+      ' は複数モデル、その他の用途は 1 モデルを選択します。': ' supports multiple models; select one model for all other purposes.',
+      '帳票の説明、抽出項目、プロンプト、ルール設定の作成を支援します。': 'Helps create document descriptions, extraction fields, prompts, and processing rules.',
+      '帳票画像から項目や表の内容を読み取り、認識結果を作成します。': 'Reads fields and table contents from document images and creates recognition results.',
+      'マスターデータを参照し、コード一致または名称の類似度から候補を提示します。': 'References master data and suggests candidates by code match or name similarity.',
+      'マッピングルールに基づき、複数の OCR 値が意味的に同一かを LLM で判定し、優先順位に従って標準項目へ書き込みます。': 'Based on mapping rules, the LLM determines whether multiple OCR values have the same meaning and writes the result to the standard field according to priority.',
+      '必須項目、必要書類、整合性、テキスト、データ、署名・印鑑を確認します。': 'Checks required fields, required documents, consistency, text, data, signatures, and seals.',
+      '画像分割、組合、整列など、後続処理に適した画像状態へ整えます。': 'Prepares images for downstream processing through splitting, combining, and alignment.',
+      '複数の帳票を業務キーに基づいて同じ案件へまとめます。': 'Groups multiple documents into the same case based on business keys.',
       '利用タイミング': 'When to Use',
       '設定ロジック': 'Configuration Logic',
       '実行ロジック': 'Execution Logic',
@@ -2478,6 +2548,9 @@
     const links = Array.from(element.querySelectorAll('a'));
     const linkSlots = [];
     const stepCode = element.querySelector('.step-code')?.textContent.trim() || '';
+    // 原文ブロックが <br> で改行している場合に限り、翻訳文の改行も改行として復元する
+    const originalHtml = labelSnapshot ? labelSnapshot.html : element.innerHTML;
+    const hadLineBreaks = /<br\s*\/?>/i.test(originalHtml);
     const escaped = translated.replace(/[&<>"']/g, (character) => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     }[character]));
@@ -2492,9 +2565,10 @@
       linkSlots.push({ position, label: label || '' });
       return `<span data-i18n-link="${position}"></span>`;
     }).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    const withLineBreaks = hadLineBreaks ? html.replace(/\n/g, '<br>') : html;
     // リンクを落とすくらいなら翻訳を適用しない（原文のままリンクを保持する）
     if (linkSlots.length !== links.length) return false;
-    const cleanedHtml = stepCode ? html.replace(stepCode, '') : html;
+    const cleanedHtml = stepCode ? withLineBreaks.replace(stepCode, '') : withLineBreaks;
     const wrapperHtml = stepCode
       ? `<span class="step-code">${stepCode}</span><span class="step-text">${cleanedHtml}</span>`
       : cleanedHtml;
@@ -2664,7 +2738,7 @@
     if (event.key === 'Escape') setLanguageMenuOpen(false);
   });
   applyLanguage(savedLanguage);
-  Promise.all([fetch('manual-copy-to-translate.json'), fetch('manual-notices.generated.json')])
+  Promise.all([fetch('manual-copy-to-translate.json?v=4'), fetch('manual-notices.generated.json?v=4')])
     .then((responses) => Promise.all(responses.map((response) => response.json())))
     .then(([entries, noticeEntries]) => {
       completeTranslations = { 'zh-CN': {}, en: {} };

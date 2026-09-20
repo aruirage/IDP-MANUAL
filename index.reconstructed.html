@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeosAI IDP 操作手册</title>
+<link rel="stylesheet" href="common.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1>NeosAI IDP 操作手册</h1>
+  <div class="subtitle">日本保险业务文件从受理到结构化数据输出的端到端操作指引</div>
+  <nav class="nav-links">
+    <a href="index.html" class="active">首页</a>
+    <a href="admin.html">配置指引</a>
+    <a href="operator.html">业务操作</a>
+  </nav>
+</header>
+
+<div class="page-wrap">
+
+  <h2 class="hero-title">欢迎使用 NeosAI IDP</h2>
+  <p class="hero-desc">
+    本平台将保险金请求书、诊断书、收据等影像文件转化为结构化数据，供核赔等下游系统使用。<br>
+    请根据您的角色选择对应指引；首期落地场景以<strong>保险金请求</strong>为例说明。
+  </p>
+
+  <div class="role-grid">
+    <a href="admin.html" class="role-card admin">
+      <div class="role-icon">⚙️</div>
+      <h3>配置侧 · 管理员 / 业务规则配置人员</h3>
+      <p>系统上线前或业务变更时，按推荐顺序完成模型、账票、规则与业务场景配置，并发布生效版本。</p>
+      <span class="cta">进入配置指引 →</span>
+    </a>
+    <a href="operator.html" class="role-card operator">
+      <div class="role-icon">👤</div>
+      <h3>操作侧 · 操作员 / 操作管理员</h3>
+      <p>日常受理文件上传，处理我的任务中的 OCR 确认、AI 检证确认与导出，跟踪案件进度。</p>
+      <span class="cta">进入业务操作 →</span>
+    </a>
+  </div>
+
+  <h2 class="section-title">端到端数据流</h2>
+  <p class="section-lead">一次文件上传经过四个阶段；上传、案件集约、导出为平台固定能力，中间段由工作流画布编排。</p>
+  <div class="intro-cards">
+    <div class="intro-card">
+      <div class="intro-num">01</div>
+      <h4>文件受理</h4>
+      <p>经办选择已发布的业务场景，批量上传 PDF / 图片。上传时即时校验格式与分辨率。</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-num">02</div>
+      <h4>案件集约</h4>
+      <p>按场景 Step1 规则对文件分类并关联为同一案件。混合 PDF 可在此阶段做文件分割。</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-num">03</div>
+      <h4>工作流处理</h4>
+      <p>AI 前处理 → OCR 抽出 → 数据映射 → AI 检证等节点自动推进；异常时生成人工确认待办。</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-num">04</div>
+      <h4>导出</h4>
+      <p>工作流完结后生成导出待办，按场景 Step4 勾选的字段输出 CSV / JSON。</p>
+    </div>
+  </div>
+
+  <h2 class="section-title">功能模块入口</h2>
+  <p class="section-lead">点击下方卡片进入对应章节的详细操作步骤。</p>
+  <div class="modules-grid">
+
+    <a href="admin.html#admin-model" class="module-card admin">
+      <span class="mod-tag">配置</span>
+      <div class="mod-ic">🧠</div>
+      <h4>模型设置</h4>
+      <p>注册 OCR、分类、检证等 AI 模型，供账票类型与工作流节点引用。</p>
+      <div class="mod-link">查看步骤 →</div>
+    </a>
+
+    <a href="admin.html#admin-doctype" class="module-card admin">
+      <span class="mod-tag">配置</span>
+      <div class="mod-ic">📑</div>
+      <h4>账票类型设置</h4>
+      <p>定义保险金请求书、诊断书等账票的分类规则与 OCR 抽出字段模板。</p>
+      <div class="mod-link">查看步骤 →</div>
+    </a>
+
+    <a href="admin.html#admin-master" class="module-card admin">
+      <span class="mod-tag">配置</span>
+      <div class="mod-ic">🗃️</div>
+      <h4>主数据设置</h4>
+      <p>维护契约主数据、医疗机构主数据等，供 AI 检证中的主数据突合使用。</p>
+      <div class="mod-link">查看步骤 →</div>
+    </a>
+
+    <a href="admin.html#admin-mapping" class="module-card admin">
+      <span class="mod-tag">配置</span>
+      <div class="mod-ic">🔀</div>
+      <h4>数据映射设置</h4>
+      <p>将多账票 OCR 字段汇总为标准字段，在工作流「数据映射」节点应用。</p>
+      <div class="mod-link">查看步骤 →</div>
+    </a>
+
+    <a href="admin.html#admin-verify" class="module-card admin">
+      <span class="mod-tag">配置</span>
+      <div class="mod-ic">✅</div>
+      <h4>AI 检证设置</h4>
+      <p>配置必填项、跨账票一致性、主数据突合等检证规则。</p>
+      <div class="mod-link">查看步骤 →</div>
+    </a>
+
+    <a href="admin.html#admin-scene" class="module-card admin">
+      <span class="mod-tag">配置</span>
+      <div class="mod-ic">🎬</div>
+      <h4>业务场景设置</h4>
+      <p>四步向导：案件集约 → 工作流 → 通知 → 输出字段与发布。</p>
+      <div class="mod-link">查看步骤 →</div>
+    </a>
+
+    <a href="admin.html#admin-api" class="module-card admin">
+      <span class="mod-tag">配置</span>
+      <div class="mod-ic">🔐</div>
+      <h4>API 管理</h4>
+      <p>管理外部系统连携用的 API 密钥与 Webhook。</p>
+      <div class="mod-link">查看步骤 →</div>
+    </a>
+
+    <a href="operator.html#op-upload" class="module-card op">
+      <span class="mod-tag">操作</span>
+      <div class="mod-ic">📤</div>
+      <h4>文件上传</h4>
+      <p>选择业务场景并提交扫描件，触发案件集约与后续工作流。</p>
+      <div class="mod-link">查看步骤 →</div>
+    </a>
+
+    <a href="operator.html#op-case-list" class="module-card op">
+      <span class="mod-tag">操作</span>
+      <div class="mod-ic">📋</div>
+      <h4>案件列表与详情</h4>
+      <p>查看案件状态、节点进度、文件列表；处理未关联文件与补件。</p>
+      <div class="mod-link">查看步骤 →</div>
+    </a>
+
+    <a href="operator.html#op-task" class="module-card op">
+      <span class="mod-tag">操作</span>
+      <div class="mod-ic">🧾</div>
+      <h4>我的任务</h4>
+      <p>处理 OCR 抽出确认、AI 检证确认等待办。</p>
+      <div class="mod-link">查看步骤 →</div>
+    </a>
+
+    <a href="operator.html#op-export" class="module-card op">
+      <span class="mod-tag">操作</span>
+      <div class="mod-ic">💾</div>
+      <h4>导出</h4>
+      <p>工作流完结后确认并下载结构化结果。</p>
+      <div class="mod-link">查看步骤 →</div>
+    </a>
+
+    <a href="operator.html#op-message" class="module-card op">
+      <span class="mod-tag">操作</span>
+      <div class="mod-ic">🔔</div>
+      <h4>站内信</h4>
+      <p>接收 OCR 失败、人工确认、补件等事件通知。</p>
+      <div class="mod-link">查看步骤 →</div>
+    </a>
+
+  </div>
+
+  <h2 class="section-title">角色与权限概览</h2>
+  <p class="section-lead">完整权限以系统内实际配置为准；下表为典型分工。</p>
+  <div class="info-table" style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+    <table class="info-table" style="margin:0;">
+      <thead>
+        <tr><th>功能</th><th>系统管理员 / 业务规则配置人员</th><th>操作管理员</th><th>操作员</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>模型 / 账票 / 映射 / 检证 / 场景配置</td><td>编辑与发布</td><td>只读（账票、映射、检证、场景）</td><td>—</td></tr>
+        <tr><td>文件上传</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>案件列表</td><td>全部案件</td><td>全部案件</td><td>担当案件</td></tr>
+        <tr><td>我的任务（确认 / 导出）</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>案件中止 / 再执行 / 改派</td><td>✓</td><td>✓</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  NeosAI IDP 操作手册 © 2026 · 疑问请联系系统管理员
+</footer>
+
+</body>
+</html>

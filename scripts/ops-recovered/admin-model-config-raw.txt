@@ -1,0 +1,2 @@
+                <a class="shot-link" href="assets/model-usage-assignment-marked.png" data-lightbox="manual-shots" aria-label="モデル設定 用途割当を拡大表示">
+                  <img src="assets/model-usage-assignment-marked.png" alt="モデル設定 用途割当">

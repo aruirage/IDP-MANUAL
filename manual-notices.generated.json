@@ -67,8 +67,8 @@
     "ui_text": {
       "[[UI_01]]": "グループ"
     },
-    "zh-CN": "**分组与 AND / OR** 每对单据以 [[UI_01]] 为单位定义关联。 • **组内为 AND**：在同一分组内添加多个关联字段时，只有这些字段的值全部一致才视为关联成立。 • **组间为 OR**：存在多个分组时，只要满足其中 1 个分组的条件即视为关联成立。 示例：分组 A 设为“理赔申请编号＝理赔申请编号”、分组 B 设为“姓名＝姓名”时，只要理赔申请编号或姓名任意一项一致，单据之间即建立关联。",
-    "en": "Define associations in units of [[UI_01]] for each group and/or document pair. • within the group and: if you add more than one related item within the same group, it will only be considered relevant if all of those values match. • OR between groups: If there are multiple groups, one of the group conditions is met and the association is deemed to be successful. Example: If Group A says “Invoice Number = Invoice Number” or Group B says “Name = Name,” then either the invoice number matches or the name matches."
+    "zh-CN": "**分组与 AND / OR** 每对单据以 [[UI_01]] 为单位定义关联。\n• **组内为 AND**：在同一分组内添加多个关联字段时，只有这些字段的值全部一致才视为关联成立。\n• **组间为 OR**：存在多个分组时，只要满足其中 1 个分组的条件即视为关联成立。\n示例：分组 A 设为“理赔申请编号＝理赔申请编号”、分组 B 设为“姓名＝姓名”时，只要理赔申请编号或姓名任意一项一致，单据之间即建立关联。",
+    "en": "Define associations in units of [[UI_01]] for each group and/or document pair.\n• within the group and: if you add more than one related item within the same group, it will only be considered relevant if all of those values match.\n• OR between groups: If there are multiple groups, one of the group conditions is met and the association is deemed to be successful.\nExample: If Group A says “Invoice Number = Invoice Number” or Group B says “Name = Name,” then either the invoice number matches or the name matches."
   },
   {
     "source_ja": "注意事項 Step1 で設定した案件集約条件は、アップロード後の集約結果に反映されます。公開済みの設定は新規案件にのみ使われ、進行中の既存案件は開始時点の版をそのまま使います。",

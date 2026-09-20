@@ -1,0 +1,248 @@
+
+            <h4>Step2 各ノードの用途と設定項目</h4>
+            <p>Step2 キャンバスでは、案件集約完了後の処理順序と分岐を編成します。各ノードの<strong>用途</strong>（いつ何をするか）と<strong>設定項目</strong>（どこで何を決めるか）を下表に整理しました。ルール本体は帳票タイプ・データマッピング・AI検証の各設定画面で管理し、キャンバスではモジュールの配置・ON/OFF・接続・分岐のみを行います。</p>
+            <table class="info-table">
+              <thead>
+                <tr><th>ノード</th><th>用途</th><th>キャンバスで設定する項目</th><th>別画面で設定する項目</th><th>主な出力変数</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="ui-text">開始</span></td>
+                  <td>案件集約完了後にワークフローを起動する固定入口。設定は不要。</td>
+                  <td>なし（固定ノード）</td>
+                  <td>—</td>
+                  <td><span class="code-text">caseId</span>、<span class="code-text">files[]</span>（条件には不可）</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">前処理</span></td>
+                  <td>OCR 前に画像を回転・補正・整列し、読取精度を安定させる。</td>
+                  <td><span class="ui-text">画像回転</span> / <span class="ui-text">画像補正</span> / <span class="ui-text">画像整列</span> の ON/OFF と対象帳票（Step1 関連帳票から選択）</td>
+                  <td>—（帳票の前処理方針は <span class="ui-text">帳票タイプ設定</span> と連動）</td>
+                  <td><span class="code-text">preprocessStatus</span>（通知）、<span class="code-text">preprocessResult</span>（条件）</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">OCR 抽出</span></td>
+                  <td>Step1 で選んだ帳票ごとに OCR テンプレートを実行し、項目・表格列を抽出する。OFF の帳票は分類のみ。</td>
+                  <td>帳票タイプごとの抽出 ON/OFF</td>
+                  <td>抽出項目・プロンプト・読取モデル（<span class="ui-text">帳票タイプ設定</span> · <span class="ui-text">設定ページへ</span>）</td>
+                  <td><span class="code-text">ocrStatus</span>（通知）、<span class="code-text">ocrResult</span>（条件）</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">データマッピング</span></td>
+                  <td>複数帳票の OCR 項目を案件単位の標準変数に統一する。後続の AI 検証・条件分岐・出力の基盤。</td>
+                  <td>ノード配置（ON）</td>
+                  <td>標準変数とマッピングルール（<span class="ui-text">データマッピング設定</span> · <span class="ui-text">設定ページへ</span>）</td>
+                  <td><span class="code-text">mappingStatus</span>（通知）、<span class="code-text">standardFields.*</span>（条件）</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">AI 検証</span></td>
+                  <td>必須項目・必要書類・帳票間整合・テキスト/データルール・署名印鑑などを AI で検証する。</td>
+                  <td>6 検証モジュールの ON/OFF</td>
+                  <td>各検証ルール（<span class="ui-text">AI検証設定</span> · <span class="ui-text">設定ページへ</span>）</td>
+                  <td><span class="code-text">verifyStatus</span>（通知）、<span class="code-text">verifyResult</span>（条件）</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">IF/ELSE</span></td>
+                  <td>上流ノードの処理結果や標準/OCR フィールドで分岐し、主フローか人工確認かを決める。ノード自体は変数を出力しない。</td>
+                  <td>IF / ELIF / ELSE 条件式、各出口の接続先</td>
+                  <td>—</td>
+                  <td>なし</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">人工確認</span></td>
+                  <td>要確認・低信頼・検証 NG などを担当者が目視確認し、完了 / 補件 / 案件中止のいずれかで後続へ進める。</td>
+                  <td><span class="ui-text">担当ロール</span>、<span class="ui-text">完了</span> / <span class="ui-text">補件</span> / <span class="ui-text">案件中止</span> 出口の接続（補件は前序ノードへ回流必須）</td>
+                  <td>—（確認画面の項目は上流 OCR / 検証結果を表示）</td>
+                  <td><span class="code-text">hitlStatus</span>（通知）</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">カスタム関数</span></td>
+                  <td>JavaScript でファイル名生成・データ変換など任意処理を行う（任意配置）。設定チェック対象外。</td>
+                  <td><span class="ui-text">入力変数</span>（参照元の選択）、<span class="ui-text">JavaScript スクリプト</span></td>
+                  <td>—</td>
+                  <td><span class="code-text">codeStatus</span> のみ（条件不可）</td>
+                </tr>
+                <tr>
+                  <td><span class="ui-text">終了</span></td>
+                  <td>ワークフローインスタンスの終点。案件状態の集約はプラットフォーム側で処理。</td>
+                  <td>なし（固定ノード・出力線不可）</td>
+                  <td>—</td>
+                  <td>なし</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h5>処理ノード — 設定項目の詳細</h5>
+            <table class="info-table">
+              <thead><tr><th>ノード</th><th>設定項目</th><th>入力形式</th><th>必須 / 検証</th><th>保険金請求での例</th></tr></thead>
+              <tbody>
+                <tr><td rowspan="3"><span class="ui-text">前処理</span></td><td><span class="ui-text">画像回転</span></td><td>スイッチ + 対象帳票マルチ選択</td><td>3 能力のうち 1 つ以上 ON</td><td>ON · <span class="ui-text">診断書</span> ほか</td></tr>
+                <tr><td><span class="ui-text">画像補正</span></td><td>同上</td><td>同上</td><td>ON · 関連帳票すべて</td></tr>
+                <tr><td><span class="ui-text">画像整列</span></td><td>同上</td><td>同上</td><td>ON · <span class="ui-text">診療明細書</span> ほか</td></tr>
+                <tr><td><span class="ui-text">OCR 抽出</span></td><td>帳票タイプ行スイッチ</td><td>Step1 関連帳票の一覧</td><td>1 帳票以上 ON</td><td><span class="ui-text">保険金請求書</span>・<span class="ui-text">診断書</span>・<span class="ui-text">診療明細書</span> を ON</td></tr>
+                <tr><td><span class="ui-text">データマッピング</span></td><td>ノード配置</td><td>キャンバス上に 1 ノード</td><td>マッピング設定が公開済みであること</td><td>被保険者名・請求金額など標準変数へ集約</td></tr>
+                <tr><td rowspan="6"><span class="ui-text">AI 検証</span></td><td><span class="ui-text">必須フィールド</span></td><td>モジュールスイッチ</td><td>6 モジュール中 1 つ以上 ON</td><td>ON</td></tr>
+                <tr><td><span class="ui-text">必要書類</span></td><td>モジュールスイッチ</td><td>同上</td><td>ON（3 帳票の提出有無を確認）</td></tr>
+                <tr><td><span class="ui-text">標準データ整合性</span></td><td>モジュールスイッチ</td><td>同上</td><td>ON（マスタ照合・帳票間一致）</td></tr>
+                <tr><td><span class="ui-text">テキスト検証</span></td><td>モジュールスイッチ</td><td>同上</td><td>ON</td></tr>
+                <tr><td><span class="ui-text">データ検証</span></td><td>モジュールスイッチ</td><td>同上</td><td>ON（請求金額と明細合計など）</td></tr>
+                <tr><td><span class="ui-text">署名・印鑑検証</span></td><td>モジュールスイッチ</td><td>同上</td><td>ON</td></tr>
+              </tbody>
+            </table>
+
+            <h5>分岐・人工確認 — 設定項目の詳細</h5>
+            <table class="info-table">
+              <thead><tr><th>ノード</th><th>設定項目</th><th>入力形式</th><th>接続ルール</th><th>保険金請求での例</th></tr></thead>
+              <tbody>
+                <tr><td rowspan="3"><span class="ui-text">IF/ELSE</span></td><td>IF 条件</td><td>変数 · 演算子 · 値</td><td>IF 出口は 1 ノードのみ</td><td><span class="code-text">ocrResult = passed</span></td></tr>
+                <tr><td>ELIF 条件（任意）</td><td>同上</td><td>同上</td><td>—（標準フローでは未使用）</td></tr>
+                <tr><td>ELSE 出口</td><td>接続先ノード</td><td>未接続は設定チェック NG</td><td>→ <span class="ui-text">OCR 人工確認</span> 等</td></tr>
+                <tr><td rowspan="4"><span class="ui-text">人工確認</span></td><td><span class="ui-text">担当ロール</span></td><td>プルダウン（案件担当者 / 操作員 / 操作管理者 等）</td><td>必須</td><td>OCR=<span class="ui-text">操作員</span>、AI=<span class="ui-text">操作管理者</span></td></tr>
+                <tr><td><span class="ui-text">完了</span> 出口</td><td>キャンバス接続</td><td>後続処理・終了へ</td><td>OCR 確認後 → <span class="ui-text">データマッピング</span></td></tr>
+                <tr><td><span class="ui-text">補件</span> 出口</td><td>キャンバス接続</td><td>前序ノードへ回流必須</td><td>→ <span class="ui-text">OCR 抽出</span>（案件は <span class="ui-text">補件</span> 状態）</td></tr>
+                <tr><td><span class="ui-text">案件中止</span> 出口</td><td>—</td><td>キャンバス上は未接続；実行時に現在インスタンスを終了</td><td>—</td></tr>
+                <tr><td rowspan="2"><span class="ui-text">カスタム関数</span></td><td><span class="ui-text">入力変数</span></td><td>変数名 + Source（<span class="code-text">files[]</span>、OCR 項目等）</td><td>同一ノード内で変数名一意</td><td><span class="code-text">files[]</span>、<span class="ui-text">請求番号</span></td></tr>
+                <tr><td><span class="ui-text">JavaScript スクリプト</span></td><td>コードエディタ</td><td>設定チェック対象外</td><td>ファイル命名・外部コード付与など</td></tr>
+              </tbody>
+            </table>
+
+            <h5>処理結果と分岐の読み方</h5>
+            <p>各処理ノードは <strong>処理状態</strong>（<span class="code-text">*Status</span>：実行進捗・異常）と <strong>処理結果</strong>（<span class="code-text">*Result</span>：業務上通過か要確認か）を出力します。IF/ELSE では通常 <span class="code-text">*Result</span> のみを参照します。Step3 通知では <span class="code-text">*Status</span> と <span class="code-text">*Result</span> の両方をトリガーに選べます。</p>
+            <table class="info-table">
+              <thead><tr><th>変数</th><th>取り得る値</th><th>意味</th><th>保険金請求での分岐例</th></tr></thead>
+              <tbody>
+                <tr><td><span class="code-text">preprocessResult</span></td><td><span class="code-text">passed</span></td><td>前処理問題なし</td><td>標準テンプレートでは分岐に未使用（→ OCR 抽出へ直結）</td></tr>
+                <tr><td><span class="code-text">preprocessResult</span></td><td><span class="code-text">reviewRequired</span></td><td>画像品質等要確認</td><td>カスタム構成で条件判断を追加した場合のみ</td></tr>
+                <tr><td><span class="code-text">ocrResult</span></td><td><span class="code-text">passed</span></td><td>OCR 問題なし（低信頼なし）</td><td>→ データマッピングへ</td></tr>
+                <tr><td><span class="code-text">ocrResult</span></td><td><span class="code-text">reviewRequired</span></td><td>低信頼・モデル不一致等</td><td>→ OCR 人工確認 · Step3 通知</td></tr>
+                <tr><td><span class="code-text">verifyResult</span></td><td><span class="code-text">passed</span></td><td>AI 検証通過</td><td>→ 終了</td></tr>
+                <tr><td><span class="code-text">verifyResult</span></td><td><span class="code-text">reviewRequired</span></td><td>欠件・不整合・要確認</td><td>→ AI 検証人工確認 · Step3 通知</td></tr>
+              </tbody>
+            </table>
+            <div class="notice info">
+              <strong>設定チェックで確認される主な項目</strong>
+              終了ノード到達、分岐出口の接続、前処理・OCR・AI 検証の最低 1 項目 ON、人工確認の補件回流、無効な条件変数参照。設定チェックは静的検証のみで、テスト案件の実行は行いません。
+            </div>
+            <p>配置例と値の一覧は <a class="jump-link" href="#scene-default-config">デフォルト構成一覧</a>、操作手順は <a class="jump-link" href="#scene-operation">画面操作</a> を参照してください。</p>
+            <p><strong>状態：</strong>画面上の主状態は <span class="ui-text">下書き</span>、<span class="ui-text">公開可能</span>、<span class="ui-text">公開済み</span> の 3 種類です。Step1～Step4 の <span class="ui-text">保存</span> 成功後は下書きに戻ります。Step2 <span class="ui-text">設定チェック</span> 通過で公開可能になり、<span class="ui-text">公開</span> 確認後にバージョン番号が付与され公開済みになります。新規案件は公開済みバージョンのみ参照します。</p>
+
+            <h4>保険金請求ケース構成</h4>
+            <p>前章までに設定した帳票タイプ・マスターデータ・データマッピング・AI検証ルールを、次の例のとおり 1 つの業務シーンに束ねます。</p>
+            <table class="info-table">
+              <thead>
+                <tr><th>設定ブロック</th><th>保険金請求での設定例</th><th>参照モジュール</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Step1 案件集約</td>
+                  <td>関連帳票：<span class="ui-text">保険金請求書</span>（必須）、<span class="ui-text">診断書</span>（必須）、<span class="ui-text">診療明細書</span>（任意）。主帳票 <span class="ui-text">保険金請求書</span>、業務キー <span class="ui-text">請求番号</span>。</td>
+                  <td><span class="ui-text">帳票タイプ設定</span></td>
+                </tr>
+                <tr>
+                  <td>Step2 ワークフロー</td>
+                  <td>開始 → 前処理 → OCR 抽出 → 条件判断 → 人工確認 → データマッピング → AI 検証 → 条件判断 → 人工確認 → 終了。<span class="code-text">*Result = passed</span> 時は IF 側で後続へ進み、要確認時は ELSE 側の人工確認へ分岐。</td>
+                  <td><span class="ui-text">データマッピング設定</span>、<span class="ui-text">AI検証設定</span></td>
+                </tr>
+                <tr>
+                  <td>Step3 通知</td>
+                  <td>例：<span class="ui-text">OCR 抽出</span> · <span class="code-text">ocrResult = reviewRequired</span> → 操作員、<span class="ui-text">AI 検証</span> · <span class="code-text">verifyResult = reviewRequired</span> → 操作管理者、人工確認 · <span class="ui-text">補件</span> → 案件担当者。</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Step4 出力</td>
+                  <td>例：<span class="ui-text">保険金請求書</span> の被保険者氏名・請求金額・証券番号、<span class="ui-text">診断書</span> の傷病名・医療機関名、案件 ID・検証結果。</td>
+                  <td><span class="ui-text">マイタスク</span> エクスポート</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="scene-default-config">保険金請求 デフォルト構成一覧</h4>
+            <p>以下は本マニュアルで使用する <span class="ui-text">保険金請求</span> の参照構成です。実際の帳票数はテナントの <span class="ui-text">帳票タイプ設定</span> に依存しますが、主チェーンと分岐条件はこの例に沿って配置してください。</p>
+
+            <h5>Step1 — 関連帳票と案件集約（例）</h5>
+            <table class="info-table">
+              <thead><tr><th>帳票タイプ</th><th>提出区分</th><th>主帳票 / 業務キー</th><th>備考</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">保険金請求書</span></td><td>必須</td><td>主帳票 · 業務キー <span class="ui-text">請求番号</span></td><td>案件キーの基準帳票</td></tr>
+                <tr><td><span class="ui-text">診断書</span></td><td>必須</td><td>関連</td><td>—</td></tr>
+                <tr><td><span class="ui-text">診療明細書</span></td><td>任意</td><td>関連</td><td>—</td></tr>
+                <tr><td>その他（入院・通院・手術状況報告書 等）</td><td>任意</td><td>関連</td><td>Step1 で追加した帳票は Step2 OCR 候補にも出ます</td></tr>
+              </tbody>
+            </table>
+            <table class="info-table">
+              <thead><tr><th>帳票ペア</th><th>Group</th><th>フィールド関係（グループ内 AND）</th><th>グループ間</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">保険金請求書</span> ↔ <span class="ui-text">診断書</span></td><td>A</td><td><span class="ui-text">請求番号</span> ↔ <span class="ui-text">請求番号</span></td><td rowspan="2">OR</td></tr>
+                <tr><td><span class="ui-text">保険金請求書</span> ↔ <span class="ui-text">診断書</span></td><td>B</td><td><span class="ui-text">被保険者</span> ↔ <span class="ui-text">患者氏名</span></td></tr>
+                <tr><td><span class="ui-text">保険金請求書</span> ↔ <span class="ui-text">入院・通院・手術状況報告書</span></td><td>A</td><td><span class="ui-text">請求番号</span> ↔ <span class="ui-text">請求番号</span></td><td>—</td></tr>
+                <tr><td><span class="ui-text">診断書</span> ↔ <span class="ui-text">診療明細書</span></td><td>A</td><td><span class="ui-text">患者氏名</span> ↔ <span class="ui-text">患者氏名</span>、<span class="ui-text">医療機関名</span> ↔ <span class="ui-text">医療機関名</span></td><td>—</td></tr>
+              </tbody>
+            </table>
+
+            <h5>Step2 — ワークフロー全体構成（ノード配置順）</h5>
+            <p>標準テンプレートの主チェーン：<strong>開始 → 前処理 → OCR 抽出 → 条件判断 → 人工確認 → データマッピング → AI 検証 → 条件判断 → 人工確認 → 終了</strong>。条件判断の IF（<span class="code-text">*Result = passed</span>）側は人工確認を経由せず後続へ進み、ELSE 側へ OCR 人工確認・AI 検証人工確認が接続されます。</p>
+            <table class="info-table">
+              <thead><tr><th>順序</th><th>ノード名</th><th>種別</th><th>接続先（主チェーン）</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td><span class="ui-text">開始</span></td><td>固定</td><td>→ <span class="ui-text">前処理</span></td></tr>
+                <tr><td>2</td><td><span class="ui-text">前処理</span></td><td>処理</td><td>→ <span class="ui-text">OCR 抽出</span></td></tr>
+                <tr><td>3</td><td><span class="ui-text">OCR 抽出</span></td><td>処理</td><td>→ <span class="ui-text">条件判断</span>（OCR 後）</td></tr>
+                <tr><td>4</td><td><span class="ui-text">条件判断</span>（OCR 後）</td><td>分岐</td><td>IF → <span class="ui-text">データマッピング</span> / ELSE → <span class="ui-text">OCR 人工確認</span></td></tr>
+                <tr><td>5</td><td><span class="ui-text">データマッピング</span></td><td>処理</td><td>→ <span class="ui-text">AI 検証</span></td></tr>
+                <tr><td>6</td><td><span class="ui-text">AI 検証</span></td><td>処理</td><td>→ <span class="ui-text">条件判断</span>（AI 検証後）</td></tr>
+                <tr><td>7</td><td><span class="ui-text">条件判断</span>（AI 検証後）</td><td>分岐</td><td>IF → <span class="ui-text">終了</span> / ELSE → <span class="ui-text">AI 検証人工確認</span></td></tr>
+                <tr><td>8</td><td><span class="ui-text">終了</span></td><td>固定</td><td>—</td></tr>
+              </tbody>
+            </table>
+            <table class="info-table">
+              <thead><tr><th>分岐ノード</th><th>IF 条件</th><th>IF 出口</th><th>ELSE 出口</th></tr></thead>
+              <tbody>
+                <tr><td>OCR 後</td><td><span class="code-text">ocrResult = passed</span></td><td><span class="ui-text">データマッピング</span></td><td><span class="ui-text">OCR 人工確認</span></td></tr>
+                <tr><td>AI 検証後</td><td><span class="code-text">verifyResult = passed</span></td><td><span class="ui-text">終了</span></td><td><span class="ui-text">AI 検証人工確認</span></td></tr>
+              </tbody>
+            </table>
+            <table class="info-table">
+              <thead><tr><th>人工確認ノード</th><th>担当ロール</th><th>完了</th><th>補件（回流先）</th><th>案件中止</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">OCR 人工確認</span></td><td><span class="ui-text">操作員</span></td><td><span class="ui-text">データマッピング</span></td><td><span class="ui-text">OCR 抽出</span></td><td>未接続</td></tr>
+                <tr><td><span class="ui-text">AI 検証人工確認</span></td><td><span class="ui-text">操作管理者</span></td><td><span class="ui-text">終了</span></td><td><span class="ui-text">AI 検証</span></td><td>未接続</td></tr>
+              </tbody>
+            </table>
+
+            <h5>Step2 — ノード別デフォルト設定値</h5>
+            <table class="info-table">
+              <thead><tr><th>ノード</th><th>設定項目</th><th>保険金請求での例</th><th>ルール本体の編集先</th></tr></thead>
+              <tbody>
+                <tr><td rowspan="3"><span class="ui-text">前処理</span></td><td><span class="ui-text">画像回転</span></td><td>ON · 対象：Step1 関連帳票（例：<span class="ui-text">診断書</span> ほか）</td><td>キャンバス右パネル</td></tr>
+                <tr><td><span class="ui-text">画像補正</span></td><td>ON · 同上</td><td>キャンバス右パネル</td></tr>
+                <tr><td><span class="ui-text">画像整列</span></td><td>ON · 対象：例 <span class="ui-text">診療明細書</span> ほか</td><td>キャンバス右パネル</td></tr>
+                <tr><td><span class="ui-text">OCR 抽出</span></td><td>帳票スイッチ</td><td><span class="ui-text">保険金請求書</span>・<span class="ui-text">診断書</span>・<span class="ui-text">診療明細書</span> を ON</td><td>キャンバス右パネル · <span class="ui-text">設定ページへ</span> → <span class="ui-text">帳票タイプ設定</span></td></tr>
+                <tr><td><span class="ui-text">データマッピング</span></td><td>モジュール配置</td><td>ON（ルールは前章で公開済みであること）</td><td><span class="ui-text">設定ページへ</span> → <span class="ui-text">データマッピング設定</span></td></tr>
+                <tr><td><span class="ui-text">AI 検証</span></td><td>検証モジュール</td><td>6 モジュールすべて ON</td><td><span class="ui-text">設定ページへ</span> → <span class="ui-text">AI検証設定</span></td></tr>
+                <tr><td><span class="ui-text">IF/ELSE</span></td><td>分岐条件</td><td><span class="code-text">*Result = passed</span> / ELSE → 人工確認</td><td>キャンバス右パネル</td></tr>
+                <tr><td><span class="ui-text">人工確認</span></td><td>担当ロール</td><td>OCR=<span class="ui-text">操作員</span>、AI=<span class="ui-text">操作管理者</span></td><td>キャンバス右パネル</td></tr>
+                <tr><td><span class="ui-text">カスタム関数</span>（任意）</td><td>入力変数 / スクリプト</td><td>例：<span class="code-text">files[]</span>、<span class="ui-text">請求番号</span></td><td>キャンバス右パネル</td></tr>
+                <tr><td><span class="ui-text">終了</span></td><td>—</td><td>設定項目なし</td><td>—</td></tr>
+              </tbody>
+            </table>
+
+            <h5>Step3 — 通知ルール（例）</h5>
+            <table class="info-table">
+              <thead><tr><th>対象ノード</th><th>トリガーイベント</th><th>通知対象</th><th>件名 / 内容（例）</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">OCR 抽出</span></td><td><span class="code-text">ocrResult = reviewRequired</span></td><td><span class="ui-text">操作員</span></td><td>OCR 抽出要確認 · <span class="code-text">{caseId}</span> の OCR 結果を確認してください</td></tr>
+                <tr><td><span class="ui-text">AI 検証</span></td><td><span class="code-text">verifyResult = reviewRequired</span></td><td><span class="ui-text">操作管理者</span></td><td>AI 検証要確認 · <span class="code-text">{caseId}</span> の検証結果を確認してください</td></tr>
+                <tr><td><span class="ui-text">人工確認</span></td><td><span class="ui-text">補件</span></td><td><span class="ui-text">案件担当者</span></td><td>補件依頼 · <span class="code-text">{caseId}</span> に追加書類が必要です</td></tr>
+              </tbody>
+            </table>
+
+            <h5>Step4 — 出力項目（例）</h5>
+            <table class="info-table">
+              <thead><tr><th>帳票</th><th>出力フィールド（例）</th></tr></thead>
+              <tbody>
+                <tr><td><span class="ui-text">保険金請求書</span></td><td><span class="ui-text">被保険者氏名</span>、<span class="ui-text">請求金額</span>、<span class="ui-text">証券番号</span>、<span class="ui-text">請求番号</span></td></tr>
+                <tr><td><span class="ui-text">診断書</span></td><td><span class="ui-text">傷病名</span>、<span class="ui-text">医療機関名</span>、<span class="ui-text">患者氏名</span></td></tr>
+                <tr><td><span class="ui-text">診療明細書</span></td><td>明細列（任意）</td></tr>
+                <tr><td>案件共通</td><td>案件 ID、検証結果</td></tr>
+              </tbody>
+            </table>

@@ -1,0 +1,5 @@
+{
+  "new_string": "            <p><span class=\"step-code\">1</span><span class=\"step-text\"><span class=\"ui-text\">業務ルール設定</span> → <span class=\"ui-text\">マスターデータ設定</span> を開き、<span class=\"ui-text\">+ マスター追加</span> でマスター表を作成します（例：医薬品情報、銀行情報）。</span></p>",
+  "old_string": "            <p><span class=\"step-code\">1</span><span class=\"step-text\"><span class=\"ui-text\">+ マスター追加</span> — <span class=\"ui-text\">業務ルール設定</span> → <span class=\"ui-text\">マスターデータ設定</span> でマスター表を作成します（例：医薬品情報、銀行情報）。</span></p>",
+  "path": "/Users/mac/Desktop/AIPM/Projects/NeosAI/prototypes/kisoku-nintei/manual/index.html"
+}

@@ -1,0 +1,111 @@
+        <section class="section-card" id="admin-scene-config">
+          <p class="section-label">ルール設定モジュール</p>
+          <h2>業務シーン設定</h2>
+          <p>本モジュールでは、帳票タイプ・マスターデータ・データマッピング・AI検証設定を組み合わせ、保険金請求の実行フローを <span class="ui-text">Step1 案件集約</span> → <span class="ui-text">Step2 ワークフロー</span> → <span class="ui-text">Step3 通知</span> → <span class="ui-text">Step4 出力・公開</span> の 4 ステップで構成します。新規・編集・コピーは同一フローです。各ステップの <span class="ui-text">保存</span> は下書きのみ更新し、バージョン番号は生成しません。<span class="ui-text">Step2</span> の <span class="ui-text">設定チェック</span> 通過後に <span class="ui-text">公開可能</span> となり、<span class="ui-text">公開</span> 確認後に正式バージョンが確定します。</p>
+          <h3>操作ポイント</h3>
+
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text">Step1 — <span class="ui-text">案件集約ルール</span>：業務シーン名、関連帳票、主帳票・業務キー、帳票間フィールド関係を設定します。</span></p>
+            <div class="operation-substep">
+              <span class="step-code">1.1</span>
+              <span class="step-text"><span class="ui-text">業務ルール設定</span> → <span class="ui-text">業務シーン設定</span> で一覧を開き、<span class="ui-text">＋ 業務シーン追加</span>・<span class="ui-text">コピー</span>・<span class="ui-text">名称変更</span>・<span class="ui-text">削除</span>、キーワード検索（<span class="ui-text">業務シーン名で検索</span>）を行います。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">1.2</span>
+              <span class="step-text">業務シーン名（1～64 文字）、説明、<span class="ui-text">+ 帳票追加</span> で関連帳票（1～20）を選び、<span class="ui-text">主帳票</span> と <span class="ui-text">業務キー</span>（主フィールド）を指定します。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">1.3</span>
+              <span class="step-text">帳票間フィールド関係を Group（A / B / C…）単位で設定します。グループ内は AND、グループ間は OR です。関連プレビューで折りたたみ・拡大表示を確認できます。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">1.4</span>
+              <span class="step-text"><span class="ui-text">関連チェック</span> で、すべての関連帳票が主帳票に到達できるか確認します。2 帳票以上選択済みなら <span class="ui-text">AI 自動関連付け</span> で関連ルールを生成できます（失敗時は既存ルールを保持）。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">1.5</span>
+              <span class="step-text"><span class="ui-text">保存</span> は下書きのみ保存し Step1 に留まります。<span class="ui-text">次へ</span> は必須項目と帳票ネットワークを検証し、問題なければ Step2 へ進みます。</span>
+            </div>
+            <figure class="screenshot-placeholder" data-shot="business-scene-basic-related">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：Step1 <span class="ui-text">案件集約ルール</span>（一覧・基本情報・関連プレビュー）。</figcaption>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text">Step2 — <span class="ui-text">ワークフロー設定</span>：Step1 の帳票・フィールド範囲内でノードと分岐を編成します。</span></p>
+            <div class="operation-substep">
+              <span class="step-code">2.1</span>
+              <span class="step-text"><span class="ui-text">ワークフロー設定</span> でキャンバスを開きます。固定の <span class="ui-text">開始</span> ノードから、<span class="ui-text">ノードを追加</span> で処理ノードを配置します。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">2.2</span>
+              <span class="step-text">前処理、OCR 抽出、データマッピング、AI 検証、条件判断（<span class="ui-text">IF/ELSE</span>）、人工確認、カスタム関数、終了ノードを接続します。データマッピング・AI 検証は設定ページへの参照のみで、ルール本体は各設定モジュールで管理します。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">2.3</span>
+              <span class="step-text">人工確認は <span class="ui-text">完了</span>・<span class="ui-text">補件</span>・<span class="ui-text">案件中止</span> の 3 出口です。<span class="ui-text">補件</span> は上流ノードへのループバック接続が必要です（設定チェックで検証）。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">2.4</span>
+              <span class="step-text"><span class="ui-text">保存</span> はキャンバス下書きのみ保存します（設定チェックは実行しません）。<span class="ui-text">リセット</span> で開始ノード以外を削除できます。<span class="ui-text">設定チェック</span> は静的構成検証を行い、成功時に <span class="ui-text">公開可能</span> に更新します。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">2.5</span>
+              <span class="step-text"><span class="ui-text">次へ</span> で Step3 へ進みます（設定チェックは自動実行されません）。<span class="ui-text">前へ</span> で Step1 に戻れます。</span>
+            </div>
+            <figure class="screenshot-placeholder" data-shot="business-scene-workflow">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：Step2 <span class="ui-text">ワークフロー設定</span> キャンバスと <span class="ui-text">設定チェック</span>。</figcaption>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text">Step3 — <span class="ui-text">通知設定</span>：グローバル通知ルールテンプレートを定義します（Step2 キャンバスのノード実例は読みません）。</span></p>
+            <div class="operation-substep">
+              <span class="step-code">3.1</span>
+              <span class="step-text"><span class="ui-text">通知ルール追加</span> で <span class="ui-text">対象ノード</span>（前処理 / OCR 抽出 / データマッピング / AI 検証 / 人工確認）と <span class="ui-text">トリガーイベント</span>、<span class="ui-text">通知対象</span> を選びます。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">3.2</span>
+              <span class="step-text">件名・内容を編集し、変数挿入区から <span class="code-text">caseId</span> やノード出力変数を挿入します。トリガー条件は画面に表示されず、対象ノードの Status / Result または人工確認の <span class="ui-text">完了</span>・<span class="ui-text">補件</span>・<span class="ui-text">案件中止</span> で自動判定されます。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">3.3</span>
+              <span class="step-text"><span class="ui-text">通知ルール一覧</span> で有効 / 無効、<span class="ui-text">編集</span>、削除を管理します。同一対象・同一イベント・同一通知先の複数ルールも保存できます。実行時は Step2 に対応ノードが存在し、トリガーイベントに一致した有効ルールのみ送信されます。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">3.4</span>
+              <span class="step-text"><span class="ui-text">保存</span> で下書きを更新し Step3 に留まります。<span class="ui-text">次へ</span> で Step4 へ進みます（Step2 設定チェックは実行しません）。</span>
+            </div>
+            <figure class="screenshot-placeholder" data-shot="business-scene-notify">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：Step3 <span class="ui-text">通知設定</span>（ルール追加・一覧）。</figcaption>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text">Step4 — <span class="ui-text">出力項目</span> と <span class="ui-text">公開</span>：OCR 出力候補の選択とシーン公開。</span></p>
+            <div class="operation-substep">
+              <span class="step-code">4.1</span>
+              <span class="step-text"><span class="ui-text">出力項目を設定</span> で Step2 OCR 抽出が有効な帳票タイプを選び、普通フィールドとテーブル列を選択・並べ替えます。0 件選択も保存できます。候補がない場合は「出力可能な項目がありません」と表示されます。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">4.2</span>
+              <span class="step-text"><span class="ui-text">保存</span> で出力選択を下書きに固化します（ワークフロー再検証は行いません）。</span>
+            </div>
+            <div class="operation-substep">
+              <span class="step-code">4.3</span>
+              <span class="step-text"><span class="ui-text">公開</span> をクリックします。公開可能でない場合は Step2 <span class="ui-text">設定チェック</span> を自動実行し、失敗時は Step2 へ遷移、成功時は確認ダイアログ（<span class="ui-text">業務シーンを公開しますか？</span>）後に正式バージョンを生成します。公開後、新規案件はこのバージョンのみ参照します。</span>
+            </div>
+            <figure class="screenshot-placeholder" data-shot="business-scene-export">
+              <div class="shot-frame">スクリーンショット差し替え位置</div>
+              <figcaption>差し替え例：Step4 <span class="ui-text">出力項目</span> 設定と <span class="ui-text">公開</span>。</figcaption>
+            </figure>
+          </div>
+
+          <div class="notice warning">
+            <strong>適用ルール</strong>
+            各ステップの <span class="ui-text">保存</span> は下書きのみ更新し、バージョン番号は生成しません。Step2 <span class="ui-text">設定チェック</span> 通過で <span class="ui-text">公開可能</span> になります。Step3・Step4 の保存は公開ゲートに含まれません。Step4 <span class="ui-text">公開</span> 時、公開可能でなければ Step2 設定チェックを自動実行します。公開済みシーンは <span class="ui-text">現在の下書き</span> と <span class="ui-text">適用中</span> バージョンを切り替えて閲覧できます。Step1 の帳票・フィールド変更は Step2 キャンバスと Step4 出力候補に連動し、後続参照がある場合は保存がブロックされます。
+          </div>
+        </section>

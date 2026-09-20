@@ -1,0 +1,81 @@
+        <section class="section-card" id="operator-case-module">
+          <p class="section-label">業務操作モジュール</p>
+          <h2>案件一覧</h2>
+          <p>本モジュールでは、案件の集約状態、配下ファイル、詳細プレビュー、ワークフロー進捗、操作ダイアログを順に確認します。保険金請求では、<span class="ui-text">集約済み案件</span> で進行中案件を把握し、展開後のファイル、詳細画面、担当者割当、ファイルの案件変更、未集約ファイルの手動紐付けまでを確認します。</p>
+          <h3>操作ポイント</h3>
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">集約済み案件</span> タブで、案件 ID、業務シーン、業務 key、作成日時、更新日時、ファイル数、入力済書類、案件ステータス、担当者を確認します。案件 ID または <span class="ui-text">詳細</span> から詳細画面へ進めます。上部の検索条件で絞り込み、<span class="ui-text">すべて展開</span> で配下ファイルを一括表示できます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-overview-marked.png?v=3" data-lightbox="manual-shots" aria-label="案件一覧の集約済み案件を拡大表示">
+                  <img src="assets/case-list-overview-marked.png?v=3" alt="案件一覧の集約済み案件">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text">案件行を展開すると、配下ファイルのファイル名、帳票タイプ、アップロード日時、更新日時、帳票枚数、ファイルサイズ、ファイルステータスを確認できます。各行の <span class="ui-text">プレビュー</span>、<span class="ui-text">案件変更</span>、<span class="ui-text">削除</span> でファイル単位の操作が可能です。案件行では <span class="ui-text">詳細</span>、<span class="ui-text">割当</span>、<span class="ui-text">処理中止</span>、<span class="ui-text">削除</span> が利用できます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-expanded-marked.png?v=3" data-lightbox="manual-shots" aria-label="展開後の案件とファイル一覧を拡大表示">
+                  <img src="assets/case-list-expanded-marked.png?v=3" alt="展開後の案件とファイル一覧">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text">案件 ID または <span class="ui-text">詳細</span> から詳細画面を開き、<span class="ui-text">ファイル一覧</span> タブで帳票タイプ別のツリーと画像プレビューを確認します。プレビュー上のツールバーで拡大・回転ができ、不要ファイルは <span class="ui-text">削除</span> で除去できます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-file-detail-marked.png?v=3" data-lightbox="manual-shots" aria-label="案件詳細のファイル一覧タブを拡大表示">
+                  <img src="assets/case-list-file-detail-marked.png?v=3" alt="案件詳細のファイル一覧タブ">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">ワークフロー明細</span> タブでは、<span class="ui-text">処理フロー</span> で本案件の経路（実線）と未採用分岐（点線）を確認し、<span class="ui-text">経過ノード</span> で各ノードの開始・完了日時と担当者、<span class="ui-text">ファイル処理明細</span> でファイル単位の OCR 進捗を確認します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-workflow-tab-flow.png?v=3" data-lightbox="manual-shots" aria-label="ワークフロー明細タブの処理フロー・経過ノード・ファイル処理明細を拡大表示">
+                  <img src="assets/case-list-workflow-tab-flow.png?v=3" alt="ワークフロー明細タブの処理フロー・経過ノード・ファイル処理明細">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text">案件行の <span class="ui-text">割当</span> で <span class="ui-text">担当者割当</span> ダイアログを開き、担当者を指定します。<span class="ui-text">処理中止</span> では、対象案件のワークフローインスタンスを終了し、未完了タスクを無効化します（確認ダイアログで <span class="ui-text">OK</span>）。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-case-modals-flow.png?v=3" data-lightbox="manual-shots" aria-label="担当者割当と処理中止ダイアログを拡大表示">
+                  <img src="assets/case-list-case-modals-flow.png?v=3" alt="担当者割当と処理中止ダイアログ">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">6</span><span class="step-text">展開後のファイル行で <span class="ui-text">案件変更</span> をクリックし、帳票タイプ・関連 key・紐付け先案件を指定して別案件へ移動します。分類失敗などで誤った案件に紐付いたファイルの修正に使います。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-file-change-flow.png?v=3" data-lightbox="manual-shots" aria-label="ファイルの案件変更操作とダイアログを拡大表示">
+                  <img src="assets/case-list-file-change-flow.png?v=3" alt="ファイルの案件変更操作とダイアログ">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">7</span><span class="step-text"><span class="ui-text">未集約ファイル</span> タブでは、自動集約に失敗したファイル（集約ステータス <span class="ui-text">紐づけ失敗</span>、失敗理由など）を確認します。<span class="ui-text">案件集約を実行</span> で再処理するか、<span class="ui-text">手動紐付け</span> で <span class="ui-text">手動校正</span> ダイアログを開き、帳票タイプと紐付け先案件を指定します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-unaggregated-flow.png?v=3" data-lightbox="manual-shots" aria-label="未集約ファイル一覧と手動校正ダイアログを拡大表示">
+                  <img src="assets/case-list-unaggregated-flow.png?v=3" alt="未集約ファイル一覧と手動校正ダイアログ">
+                </a>
+              </div>
+            </figure>
+          </div>

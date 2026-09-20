@@ -1,0 +1,55 @@
+<div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">+ マスター追加</span> — マスター表の作成</span></p>
+            <p class="operation-substep"><span class="step-code">1.1</span><span class="step-text"><span class="ui-text">業務ルール設定</span> → <span class="ui-text">マスターデータ設定</span> を開き、左側の <span class="ui-text">+ マスター追加</span> でマスター表を作成します（例：医薬品情報、銀行情報）。</span></p>
+            <figure class="screenshot-figure" data-shot="admin-master-data-config">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/master-data-list-empty.png?v=6" data-lightbox="manual-shots" aria-label="マスターデータ設定 マスター追加を拡大表示">
+                  <img src="assets/master-data-list-empty.png?v=6" alt="マスターデータ設定 マスター追加">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">列設定</span> — 列定義と照会 code</span></p>
+            <p class="operation-substep"><span class="step-code">2.1</span><span class="step-text">作成したマスターを選択し、<span class="ui-text">列設定</span> で列名を定義します（最大 10 列、列名の重複不可）。<span class="ui-text">照会コード</span> を付けた列は、マスタ照合および一覧検索で優先的にマッチされます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap shot-wrap-narrow">
+                <a class="shot-link" href="assets/master-data-column-marked.png?v=6" data-lightbox="manual-shots" aria-label="マスターデータ設定 列設定を拡大表示">
+                  <img src="assets/master-data-column-marked.png?v=6" alt="マスターデータ設定 列設定">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text">データ登録 — <span class="ui-text">+ 項目追加</span> または <span class="ui-text">一括インポート</span></span></p>
+            <p class="operation-substep"><span class="step-code">3.1</span><span class="step-text"><span class="ui-text">+ 項目追加</span>：一覧先頭に空白行を挿入し、セル入力後に保存すると行が登録されベクトル化が開始されます（列未設定時はボタンはグレーアウト）。</span></p>
+            <p class="operation-substep"><span class="step-code">3.2</span><span class="step-text"><span class="ui-text">一括インポート</span>：テンプレート取得 → ファイル選択 → <span class="ui-text">追加更新</span> / <span class="ui-text">上書更新</span>。列未設定でもファイルのヘッダーから列構造を取り込めます。1 回の取込上限は <strong>50,000 行</strong>（ヘッダー除く）です。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/master-data-append-marked.png?v=6" data-lightbox="manual-shots" aria-label="マスターデータ設定 項目追加を拡大表示">
+                  <img src="assets/master-data-append-marked.png?v=6" alt="マスターデータ設定 項目追加">
+                </a>
+              </div>
+            </figure>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/master-data-import-flow.png?v=6" data-lightbox="manual-shots" aria-label="マスターデータ設定 一括インポートを拡大表示">
+                  <img src="assets/master-data-import-flow.png?v=6" alt="マスターデータ設定 一括インポート">
+                </a>
+              </div>
+            </figure>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/master-data-list-marked.png?v=6" data-lightbox="manual-shots" aria-label="マスターデータ設定 データ一覧を拡大表示">
+                  <img src="assets/master-data-list-marked.png?v=6" alt="マスターデータ設定 データ一覧">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="notice warning">
+            <strong>適用ルール</strong>
+            登録・インポート後、各行の <span class="ui-text">ベクトル化状態</span>（旧「AI 分析状態」）に従ってベクトル化が非同期実行されます。完了後、<span class="ui-text">マスタ照合</span> 等から参照できます。
+          </div>

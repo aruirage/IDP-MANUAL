@@ -1,0 +1,59 @@
+        <section class="section-card" id="operator-case-module">
+          <p class="section-label">業務操作モジュール</p>
+          <h2>案件一覧</h2>
+          <p>本モジュールでは、案件の集約状態、配下ファイル、処理ノード、操作ダイアログを順に確認します。保険金請求では、同一案件に集約された帳票を起点に、集約済み案件、展開後のファイル、ワークフロー、担当者割当、案件変更、処理中止、未集約ファイルの順に確認します。</p>
+          <h3>操作ポイント</h3>
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">集約済み案件</span> タブで、案件 ID、業務シーン、業務 key、作成日時、更新日時、ファイル数、案件ステータス、担当者を確認します。上部の検索条件で案件を絞り込み、必要に応じて <span class="ui-text">すべて展開</span> で配下を開きます。図では、検索条件と一覧の位置を確認します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-overview-marked.png?v=2" data-lightbox="manual-shots" aria-label="案件一覧の集約済み案件を拡大表示">
+                  <img src="assets/case-list-overview-marked.png?v=2" alt="案件一覧の集約済み案件">
+                </a>
+              </div>
+            </figure>
+      </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text">案件を展開すると、ファイル名、帳票タイプ、アップロード日時、更新日時、帳票枚数、ファイルサイズ、ファイルステータスを確認できます。案件ヘッダーでは、現在の案件 ID と案件ステータスを見ながら、詳細確認の対象を判断します。図では、案件ヘッダーと展開後の一覧を確認します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-header-flow.png?v=2" data-lightbox="manual-shots" aria-label="案件ヘッダーと展開後のファイル一覧を拡大表示">
+                  <img src="assets/case-list-header-flow.png?v=2" alt="案件ヘッダーと展開後のファイル一覧">
+                </a>
+              </div>
+            </figure>
+      </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text">案件詳細では、ファイルプレビューと処理ノードの流れを確認します。<span class="ui-text">ファイル一覧</span> タブでは画像を確認し、<span class="ui-text">ワークフロー明細</span> タブでは前処理、OCR 抽出、条件判断、データマッピング、AI検証の経路を追えます。図では、ファイル詳細エリアを確認します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-workflow-detail-flow.png?v=2" data-lightbox="manual-shots" aria-label="ファイル詳細とワークフロー明細を拡大表示">
+                  <img src="assets/case-list-workflow-detail-flow.png?v=2" alt="ファイル詳細とワークフロー明細">
+                </a>
+              </div>
+            </figure>
+      </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">4</span><span class="step-text">案件単位の操作では、<span class="ui-text">詳細</span>、<span class="ui-text">割当</span>、<span class="ui-text">案件変更</span>、<span class="ui-text">処理中止</span> を使います。<span class="ui-text">割当</span> では担当者を指定し、<span class="ui-text">案件変更</span> ではファイルを別案件へ移動し、<span class="ui-text">処理中止</span> ではワークフローを終了します。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-modals-flow.png?v=2" data-lightbox="manual-shots" aria-label="担当者割当・案件変更・処理中止ダイアログを拡大表示">
+                  <img src="assets/case-list-modals-flow.png?v=2" alt="担当者割当・案件変更・処理中止ダイアログ">
+                </a>
+              </div>
+            </figure>
+          </div>
+
+          <div class="operation-step">
+            <p><span class="step-code">5</span><span class="step-text"><span class="ui-text">未集約ファイル</span> タブでは、集約経路実行後に自動帰属できなかったファイルを確認します。再度 <span class="ui-text">分類・案件集約を実行</span> するか、手動で案件へ紐付けます。</span></p>
+            <figure class="screenshot-figure">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/case-list-unaggregated-marked.png?v=2" data-lightbox="manual-shots" aria-label="未集約ファイル一覧を拡大表示">
+                  <img src="assets/case-list-unaggregated-marked.png?v=2" alt="未集約ファイル一覧">
+                </a>
+              </div>
+            </figure>
+      </div>
