@@ -137,6 +137,7 @@
             <a href="#system-settings">システム設定モジュール</a>
             <span class="toc-caret" aria-hidden="true"></span>
           </summary>
+          <a class="toc-child" href="#system-login"><span class="toc-label">ログインとアカウント</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
           <a class="toc-child" href="#system-user-management"><span class="toc-label">ユーザー管理</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
           <a class="toc-child" href="#system-role-management"><span class="toc-label">権限管理</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
           <a class="toc-child" href="#system-security-settings"><span class="toc-label">セキュリティ設定</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
@@ -1335,6 +1336,35 @@
           <h2>システム設定モジュール</h2>
           <p><span class="ui-text">ユーザー管理</span>、<span class="ui-text">権限管理</span>、<span class="ui-text">セキュリティ設定</span> で、アカウント・メニュー権限・データ保存期限を管理します。</p>
         </section>
+<section class="section-card" id="system-login">
+          <p class="section-label">システム設定モジュール</p>
+          <h2>ログインとアカウント</h2>
+          <p>管理者から配布された企業アカウントでログインします。</p>
+          <h3>ログイン手順</h3>
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text">アカウントに企業メールアドレス（例：demo@neosai.jp）を、パスワードに規定の複雑なパスワードを入力します。管理者が発行する初期パスワードは「メールアドレスの@より前の部分＋123」（例：demo123）です。</span></p>
+            <figure class="screenshot-figure" data-shot="system-login">
+              <div class="shot-wrap">
+                <a class="shot-link" href="assets/system-login.png?v=8" data-lightbox="manual-shots" aria-label="ログイン画面を拡大表示">
+                  <img src="assets/system-login.png?v=8" alt="ログイン画面">
+                </a>
+              </div>
+            </figure>
+          </div>
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text">濃い青色の <span class="ui-text">ログイン</span> ボタンをクリックします。</span></p>
+          </div>
+          <div class="operation-step">
+            <p><span class="step-code">3</span><span class="step-text">初回ログイン時は、パスワード変更画面が自動的に表示されます。管理者が発行した初期パスワードのままにせず、規定の複雑な新しいパスワードへ速やかに変更してください。</span></p>
+          </div>
+          <h3>補助機能とトラブル対応</h3>
+          <div class="operation-step">
+            <p><span class="step-code">1</span><span class="step-text">ログイン状態を保つには <span class="ui-text">パスワードを記憶</span> をオンにします。セキュリティのため、個人専用の端末でのみ使用し、共用端末ではオンにしないでください。</span></p>
+          </div>
+          <div class="operation-step">
+            <p><span class="step-code">2</span><span class="step-text">パスワードを忘れた場合は <span class="ui-text">パスワードを忘れた</span> をクリックします。登録済みのメールアドレスに再設定リンクが届くため、メールの案内に従って再設定します。</span></p>
+          </div>
+        </section>
 <section class="section-card" id="system-user-management">
           <p class="section-label">システム設定モジュール</p>
           <h2>ユーザー管理</h2>
@@ -1485,6 +1515,10 @@
       'ユーザー管理': 'ユーザー管理',
       '権限管理': '権限管理',
       'セキュリティ設定': 'セキュリティ設定',
+      'ログインとアカウント': 'ログインとアカウント',
+      'ログイン': 'ログイン',
+      'パスワードを記憶': 'パスワードを記憶',
+      'パスワードを忘れた': 'パスワードを忘れた',
       '機能説明': '機能説明',
       '画面操作': '画面操作',
       '関連影響': '関連影響',
@@ -1581,6 +1615,10 @@
       'ユーザー管理': 'User Management',
       '権限管理': 'Permission Management',
       'セキュリティ設定': 'Security Settings',
+      'ログインとアカウント': 'Login and Accounts',
+      'ログイン': 'Log in',
+      'パスワードを記憶': 'Remember password',
+      'パスワードを忘れた': 'Forgot password',
       '機能説明': 'Function',
       '画面操作': 'Screen Operation',
       '関連影響': 'Related Impact',
@@ -1618,6 +1656,10 @@
       'ユーザー管理': '用户管理',
       '権限管理': '权限管理',
       'セキュリティ設定': '安全设定',
+      'ログインとアカウント': '登录与账号',
+      'ログイン': '登录',
+      'パスワードを記憶': '记住密码',
+      'パスワードを忘れた': '忘记密码',
       '機能説明': '功能说明',
       '画面操作': '画面操作',
       '関連影響': '关联影响',
@@ -2738,7 +2780,7 @@
     if (event.key === 'Escape') setLanguageMenuOpen(false);
   });
   applyLanguage(savedLanguage);
-  Promise.all([fetch('manual-copy-to-translate.json?v=4'), fetch('manual-notices.generated.json?v=4')])
+  Promise.all([fetch('manual-copy-to-translate.json?v=8'), fetch('manual-notices.generated.json?v=8')])
     .then((responses) => Promise.all(responses.map((response) => response.json())))
     .then(([entries, noticeEntries]) => {
       completeTranslations = { 'zh-CN': {}, en: {} };

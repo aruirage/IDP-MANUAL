@@ -3978,5 +3978,95 @@
     "ui_text": {"[[UI_01]]": "データマッピング"},
     "zh-CN": "[[UI_01]]数据映射设定1 个模型根据映射规则，由 LLM 判断多个 OCR 值在语义上是否相同，并按优先级写入标准字段。",
     "en": "[[UI_01]]Data Mapping Settings1 modelBased on mapping rules, the LLM determines whether multiple OCR values have the same meaning and writes the result to the standard field according to priority."
+  },
+  {
+    "id": "manual-0489",
+    "source_ja": "ログインとアカウント",
+    "ui_text": {},
+    "zh-CN": "登录与账号",
+    "en": "Login and Accounts"
+  },
+  {
+    "id": "manual-0490",
+    "source_ja": "管理者から配布された企業アカウントでログインします。",
+    "ui_text": {},
+    "zh-CN": "使用系统管理员分发的企业账号登录。",
+    "en": "Sign in with the corporate account issued by your system administrator."
+  },
+  {
+    "id": "manual-0491",
+    "source_ja": "ログイン手順",
+    "ui_text": {},
+    "zh-CN": "登录步骤",
+    "en": "Login steps"
+  },
+  {
+    "id": "manual-0493",
+    "source_ja": "1アカウントに企業メールアドレス（例：demo@neosai.jp）を、パスワードに規定の複雑なパスワードを入力します。管理者が発行する初期パスワードは「メールアドレスの@より前の部分＋123」（例：demo123）です。",
+    "ui_text": {},
+    "zh-CN": "1在账号栏输入企业邮箱地址（例：demo@neosai.jp），在密码栏输入符合系统安全要求的复杂密码。管理员在后台开设账号时下发的初始密码为「邮箱地址@前的部分＋123」（例：demo123）。",
+    "en": "1Enter your corporate email address (for example, demo@neosai.jp) in the account field, and a complex password that meets the system security requirements in the password field. The initial password issued when an administrator creates the account in the admin console is “the part of the email address before the @ plus 123” (for example, demo123)."
+  },
+  {
+    "id": "manual-0494",
+    "source_ja": "2濃い青色の [[UI_01]] ボタンをクリックします。",
+    "ui_text": {
+      "[[UI_01]]": "ログイン"
+    },
+    "zh-CN": "2点击深蓝色的 [[UI_01]] 按钮。",
+    "en": "2Click the dark blue [[UI_01]] button."
+  },
+  {
+    "id": "manual-0495",
+    "source_ja": "補助機能とトラブル対応",
+    "ui_text": {},
+    "zh-CN": "辅助功能与故障处理",
+    "en": "Helper Features and Troubleshooting"
+  },
+  {
+    "id": "manual-0496",
+    "source_ja": "1ログイン状態を保つには [[UI_01]] をオンにします。セキュリティのため、個人専用の端末でのみ使用し、共用端末ではオンにしないでください。",
+    "ui_text": {
+      "[[UI_01]]": "パスワードを記憶"
+    },
+    "zh-CN": "1如需保持登录状态，请勾选 [[UI_01]]。出于安全考量，仅建议在个人专用办公设备上勾选；公共设备请勿勾选。",
+    "en": "1To stay signed in, turn on [[UI_01]]. For security, enable it only on your own dedicated work device; do not enable it on shared devices."
+  },
+  {
+    "id": "manual-0497",
+    "source_ja": "2パスワードを忘れた場合は [[UI_01]] をクリックします。登録済みのメールアドレスに再設定リンクが届くため、メールの案内に従って再設定します。",
+    "ui_text": {
+      "[[UI_01]]": "パスワードを忘れた"
+    },
+    "zh-CN": "2若遗忘登录密码，请点击 [[UI_01]]。系统会将重置链接发送至注册邮箱，请按邮件指引重设密码。",
+    "en": "2If you forget your password, click [[UI_01]]. A reset link is sent to your registered email address; follow the instructions in the email to reset your password."
+  },
+  {
+    "id": "manual-0499",
+    "source_ja": "セキュリティに関する注意",
+    "ui_text": {},
+    "zh-CN": "安全提示",
+    "en": "Security Notes"
+  },
+  {
+    "id": "manual-0500",
+    "source_ja": "ログイン画面を拡大表示",
+    "ui_text": {},
+    "zh-CN": "登录画面（放大查看）",
+    "en": "Expand login screen"
+  },
+  {
+    "id": "manual-0501",
+    "source_ja": "ログイン画面",
+    "ui_text": {},
+    "zh-CN": "登录画面",
+    "en": "Login screen"
+  },
+  {
+    "id": "manual-0502",
+    "source_ja": "3初回ログイン時は、パスワード変更画面が自動的に表示されます。管理者が発行した初期パスワードのままにせず、規定の複雑な新しいパスワードへ速やかに変更してください。",
+    "ui_text": {},
+    "zh-CN": "3首次登录时，系统会自动跳转到修改密码界面。请勿继续使用管理员下发的初始密码，请尽快将其修改为符合系统安全要求的复杂新密码。",
+    "en": "3When you sign in for the first time, the system automatically opens the password change screen. Do not keep using the initial password issued by your administrator; change it promptly to a new complex password that meets the system requirements."
   }
 ]
