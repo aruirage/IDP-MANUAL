@@ -4068,5 +4068,12 @@
     "ui_text": {},
     "zh-CN": "3首次登录时，系统会自动跳转到修改密码界面。请勿继续使用管理员下发的初始密码，请尽快将其修改为符合系统安全要求的复杂新密码。",
     "en": "3When you sign in for the first time, the system automatically opens the password change screen. Do not keep using the initial password issued by your administrator; change it promptly to a new complex password that meets the system requirements."
+  },
+  {
+    "id": "manual-0503",
+    "source_ja": "右側の編集パネル：ノードや接続を選択して右側に編集パネルが表示されたとき、パネル右上の折りたたみボタンをクリックするか、キャンバスの空白部分をクリックすると、どちらの操作でもパネルを閉じられます。",
+    "ui_text": {},
+    "zh-CN": "**右侧编辑面板**：选中节点或连线、右侧出现编辑面板后，点击面板右上角的折叠按钮，或点击画布空白处，两种操作都可以收起该面板。",
+    "en": "**Right-side edit panel**: When you select a node or a connection and the edit panel appears on the right, clicking the collapse button at the top right of the panel or clicking an empty area of the canvas will both close the panel."
   }
 ]

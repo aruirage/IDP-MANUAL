@@ -752,6 +752,7 @@
               <li><strong>接続の編成</strong>：ノード間を線でつなぎ、処理順と分岐先を決めます。<span class="ui-text">開始</span> から <span class="ui-text">終了</span> まで到達できる必要があります。</li>
               <li><strong>左下の編集ツールバー</strong>：左から <span class="ui-text">元に戻す</span> / <span class="ui-text">やり直し</span> / <span class="ui-text">変更履歴</span>（この画面を開いている間のみ保持）/ <span class="ui-text">削除</span>（開始ノード以外を一括削除。確認ダイアログあり）。</li>
               <li><strong>右下のツールバー</strong>：左から <span class="ui-text">ノード追加</span> / <span class="ui-text">拡大</span> / <span class="ui-text">縮小</span> / <span class="ui-text">整列・適応サイズ</span>（ノード配置を整え、全ノードが画面に収まるよう表示を合わせる）。</li>
+              <li><strong>右側の編集パネル</strong>：ノードや接続を選択して右側に編集パネルが表示されたとき、パネル右上の折りたたみボタンをクリックするか、キャンバスの空白部分をクリックすると、どちらの操作でもパネルを閉じられます。</li>
               <li><strong>設定チェック</strong>：終了到達・分岐出口・必須 ON 項目などを静的検証し、通過すると <span class="ui-text">公開可能</span> になります（テスト案件は実行しません）。</li>
             </ul>
 
@@ -2780,7 +2781,7 @@
     if (event.key === 'Escape') setLanguageMenuOpen(false);
   });
   applyLanguage(savedLanguage);
-  Promise.all([fetch('manual-copy-to-translate.json?v=8'), fetch('manual-notices.generated.json?v=8')])
+  Promise.all([fetch('manual-copy-to-translate.json?v=9'), fetch('manual-notices.generated.json?v=9')])
     .then((responses) => Promise.all(responses.map((response) => response.json())))
     .then(([entries, noticeEntries]) => {
       completeTranslations = { 'zh-CN': {}, en: {} };
