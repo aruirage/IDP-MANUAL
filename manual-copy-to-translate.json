@@ -4075,5 +4075,19 @@
     "ui_text": {},
     "zh-CN": "**右侧编辑面板**：选中节点或连线、右侧出现编辑面板后，点击面板右上角的折叠按钮，或点击画布空白处，两种操作都可以收起该面板。",
     "en": "**Right-side edit panel**: When you select a node or a connection and the edit panel appears on the right, clicking the collapse button at the top right of the panel or clicking an empty area of the canvas will both close the panel."
+  },
+  {
+    "id": "manual-0504",
+    "source_ja": "ファイル名を生成します。入力変数で受け取った値とスクリプトの記述内容から命名し、拡張子は元ファイルを引き継ぎます。既定のスクリプトはタイムスタンプ・証券番号・請求番号・帳票ごとのファイルコード・連番を組み合わせます。",
+    "ui_text": {},
+    "zh-CN": "生成文件名。根据输入变量接收到的值与脚本中的描述进行命名，扩展名沿用原文件。默认脚本组合时间戳、保单号、理赔编号、单据类型对应的文件代码与连番。",
+    "en": "Generates file names. Names are built from the values received through the input variables and the logic written in the script, and the extension is carried over from the original file. The default script combines a timestamp, policy number, claim number, per-document-type file code, and a sequence number."
+  },
+  {
+    "id": "manual-0505",
+    "source_ja": "files[]（改名後のファイル一覧）、renamedFileCount",
+    "ui_text": {},
+    "zh-CN": "files[]（改名后的文件列表）、renamedFileCount",
+    "en": "files[] (list of renamed files), renamedFileCount"
   }
 ]

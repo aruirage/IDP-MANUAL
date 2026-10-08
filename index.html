@@ -789,6 +789,11 @@
                   <td><span class="code-text">verifyStatus</span>（通知）、<span class="code-text">verifyResult</span>（条件）</td>
                 </tr>
                 <tr>
+                  <td><span class="ui-text">カスタム関数</span></td>
+                  <td>ファイル名を生成します。入力変数で受け取った値とスクリプトの記述内容から命名し、拡張子は元ファイルを引き継ぎます。既定のスクリプトはタイムスタンプ・証券番号・請求番号・帳票ごとのファイルコード・連番を組み合わせます。</td>
+                  <td><span class="code-text">files[]</span>（改名後のファイル一覧）、<span class="code-text">renamedFileCount</span></td>
+                </tr>
+                <tr>
                   <td><span class="ui-text">IF/ELSE</span></td>
                   <td>上流の <span class="code-text">*Result</span> などで分岐（例：<span class="code-text">verifyResult = passed</span>）。主フローへ進むか人工確認へ回すかを編成します。</td>
                   <td>なし</td>
@@ -1810,6 +1815,7 @@
       'エクスポート対象': '导出对象',
       'エクスポート設定': '导出设置',
       'カスタム (OpenAI 互換)': '自定义（OpenAI 兼容）',
+      'カスタム関数': '自定义函数',
       'グループ': '分组',
       'コード照会': '代码查询',
       'システム設定': '系统设置',
@@ -2203,6 +2209,7 @@
       'エクスポート対象': 'Export targets',
       'エクスポート設定': 'Export settings',
       'カスタム (OpenAI 互換)': 'Custom (OpenAI compatible)',
+      'カスタム関数': 'Custom function',
       'グループ': 'Group',
       'コード照会': 'Code lookup',
       'システム設定': 'System settings',
@@ -2781,7 +2788,7 @@
     if (event.key === 'Escape') setLanguageMenuOpen(false);
   });
   applyLanguage(savedLanguage);
-  Promise.all([fetch('manual-copy-to-translate.json?v=9'), fetch('manual-notices.generated.json?v=9')])
+  Promise.all([fetch('manual-copy-to-translate.json?v=10'), fetch('manual-notices.generated.json?v=10')])
     .then((responses) => Promise.all(responses.map((response) => response.json())))
     .then(([entries, noticeEntries]) => {
       completeTranslations = { 'zh-CN': {}, en: {} };
