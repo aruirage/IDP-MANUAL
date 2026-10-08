@@ -950,7 +950,7 @@
                 <tr><td><span class="ui-text">帳票タイプ設定</span></td><td>マッピング元として選択できる項目は、帳票タイプ設定の <span class="ui-text">AI読取設定</span> で定義された項目です。項目名を変更・削除すると、マッピング設定に影響します。</td></tr>
                 <tr><td><span class="ui-text">業務シーン設定</span></td><td>データマッピングは、ワークフロー内の <span class="ui-text">データマッピング</span> ノードで実行されます。ノードが配置されていない場合、マッピング設定は実行されません。</td></tr>
                 <tr><td><span class="ui-text">AI検証設定</span></td><td>標準変数に複数の参照元がある場合、<span class="ui-text">標準データ整合性</span> で一致確認の対象にできます。</td></tr>
-                <tr><td><span class="ui-text">出力項目</span></td><td>マッピング後の標準変数は、業務シーン設定の出力候補として利用されます。</td></tr>
+                <tr><td><span class="ui-text">出力項目</span></td><td>マッピング後の標準変数は、業務シーン設定の条件分岐と出力項目の候補として利用されます。候補には標準変数名（例：claim_number）ではなく表示名（例：クレーム番号）が表示されます。</td></tr>
               </tbody>
             </table>
             <div class="notice info">
@@ -2788,7 +2788,7 @@
     if (event.key === 'Escape') setLanguageMenuOpen(false);
   });
   applyLanguage(savedLanguage);
-  Promise.all([fetch('manual-copy-to-translate.json?v=10'), fetch('manual-notices.generated.json?v=10')])
+  Promise.all([fetch('manual-copy-to-translate.json?v=11'), fetch('manual-notices.generated.json?v=11')])
     .then((responses) => Promise.all(responses.map((response) => response.json())))
     .then(([entries, noticeEntries]) => {
       completeTranslations = { 'zh-CN': {}, en: {} };

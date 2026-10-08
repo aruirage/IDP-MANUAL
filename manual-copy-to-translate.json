@@ -1807,10 +1807,10 @@
   },
   {
     "id": "manual-0217",
-    "source_ja": "マッピング後の標準変数は、業務シーン設定の出力候補として利用されます。",
+    "source_ja": "マッピング後の標準変数は、業務シーン設定の条件分岐と出力項目の候補として利用されます。候補には標準変数名（例：claim_number）ではなく表示名（例：クレーム番号）が表示されます。",
     "ui_text": {},
-    "zh-CN": "映射后的标准变量会作为业务场景设置的输出候选使用。",
-    "en": "Standard variables after mapping are used as output candidates for business scene settings."
+    "zh-CN": "映射后的标准变量会作为业务场景设定中条件分支与输出项目的候选项使用。候选项显示的是显示名称（例：クレーム番号），而不是标准变量名（例：claim_number）。",
+    "en": "Mapped standard variables are used as candidates in the condition branches and output items of the business scene. The candidate list shows the display name (e.g. クレーム番号), not the standard variable name (e.g. claim_number)."
   },
   {
     "id": "manual-0218",
