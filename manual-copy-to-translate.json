@@ -20,8 +20,8 @@
       "[[UI_01]]": "案件一覧",
       "[[UI_02]]": "マイタスク"
     },
-    "zh-CN": "系统基于管理员预先配置的规则，对多种单据自动完成分类、识别与校验；业务操作人员通过 [[UI_01]] 和 [[UI_02]] 进行确认、修改与导出处理。",
-    "en": "Based on pre‑configured rules set by administrators, the system automatically classifies, reads, and verifies multiple types of forms. Business operators can perform confirmation, correction, and output operations in [[UI_01]] and [[UI_02]]."
+    "zh-CN": "系统根据管理员预先设置的规则，自动对多种单据进行分类、读取和验证。业务负责人通过 [[UI_01]] 和 [[UI_02]] 进行确认、修改和输出处理。",
+    "en": "Based on rules configured in advance by the administrator, the system automatically classifies, reads, and verifies multiple document types. Business staff confirm, correct, and output results in [[UI_01]] and [[UI_02]]."
   },
   {
     "id": "manual-0004",
@@ -36,8 +36,8 @@
     "ui_text": {
       "[[UI_01]]": "マイタスク"
     },
-    "zh-CN": "管理员侧定义处理规则，业务操作侧基于已发布的设置推进案件处理。导出结果的确认及输出操作在 [[UI_01]] 中进行。",
-    "en": "Processing rules are defined on the admin side, while business users proceed with case‑based processing based on published settings. Verification of export results and output operations are performed within [[UI_01]]."
+    "zh-CN": "由 admin 侧设置处理规则，业务操作侧按已发布的设置处理案件。导出结果的确认和输出操作在 [[UI_01]] 内执行。",
+    "en": "Admins configure processing rules; operations staff process cases according to the published settings. Export result checks and output operations are performed in [[UI_01]]."
   },
   {
     "id": "manual-0006",
@@ -84,8 +84,8 @@
     "ui_text": {
       "[[UI_01]]": "割当"
     },
-    "zh-CN": "除操作员外，还可执行 [[UI_01]]（改派案件负责人与任务）。",
-    "en": "In addition to business operators, [[UI_01]] (case owners and task reallocation) is also possible."
+    "zh-CN": "除操作员外，还可进行 [[UI_01]]（案件负责人・任务重新分配）。",
+    "en": "In addition to operators, [[UI_01]] (case owner / task reassignment) is possible."
   },
   {
     "id": "manual-0012",
@@ -172,8 +172,8 @@
     "id": "manual-0023",
     "source_ja": "ユーザー、権限、セキュリティなど、システムの利用に必要な項目を設定します。",
     "ui_text": {},
-    "zh-CN": "配置用户、权限、安全设置等使用系统前需要完成的管理项。",
-    "en": "Set the management items that are assumed to use the system, such as users, permissions, and safety settings."
+    "zh-CN": "设置用户、权限、安全等系统使用所需的项目。",
+    "en": "Configure the items required to use the system, such as users, permissions, and security."
   },
   {
     "id": "manual-0024",
@@ -186,15 +186,15 @@
     "id": "manual-0025",
     "source_ja": "保険金請求業務を想定した場合、設定は次の順序で進めることを推奨します。 モデル → API → マスタデータ → 帳票タイプ → 業務シーン → データマッピング → AI検証 です。",
     "ui_text": {},
-    "zh-CN": "结合保险金理赔场景，推荐顺序为 **模型 → API → 主数据 → 单据类型 → 业务场景 → 数据映射 → AI校验**。",
-    "en": "In line with the insurance claim case, the recommended order is Model → API → Master Data → Form Type → Business Scene → Data Mapping → AI Validation."
+    "zh-CN": "以保险理赔业务为例，建议按以下顺序进行设置：**模型 → API → 主数据 → 单据类型 → 业务场景 → 数据映射 → AI 验证**。",
+    "en": "For insurance claim operations, we recommend configuring in this order: **Models → API → Master data → Document types → Business scenes → Data mapping → AI verification**."
   },
   {
     "id": "manual-0026",
     "source_ja": "各画面での設定は、次の順序で進めます。モデル設定 → API設定 → マスタデータ設定 → 帳票タイプ設定 → 業務シーン設定 → データマッピング設定 → AI検証設定。本マニュアルでは、各機能モジュールの操作手順に加え、画面上では分かりにくい設定の適用タイミングについても説明します。ロール詳細は ロール設定 を参照してください。",
     "ui_text": {},
-    "zh-CN": "各界面的访问顺序：**模型设置 → API设置 → 主数据设置 → 单据类型设置 → 业务场景设置 → 数据映射设置 → AI校验设置**。本章说明各功能模块的操作步骤，以及仅从界面难以理解的生效时机。角色详情请参阅 [[LINK_01:角色设置]]。",
-    "en": "Reach order to each screen: **Model setting → API setting → Master data setting → Form type setting → Business scene setting → Data mapping setting → AI verification setting**. Describe the operation procedure of each function module and the application timing that is difficult to understand with the screen alone. For more information on roles, see [[LINK_01:Role settings]]."
+    "zh-CN": "各画面的设置按以下顺序进行：**模型设置 → API 设置 → 主数据设置 → 单据类型设置 → 业务场景设置 → 数据映射设置 → AI 验证设置**。本手册除各功能模块的操作步骤外，还说明画面上不易理解的设置生效时机。角色详情请参阅 角色设置。",
+    "en": "Configure each screen in this order: **Model settings → API settings → Master data settings → Document type settings → Business scene settings → Data mapping settings → AI verification settings**. In addition to the operation steps for each module, this manual explains when settings take effect, which is not obvious from the screens. For role details, see Role settings."
   },
   {
     "id": "manual-0027",
@@ -216,8 +216,8 @@
     "ui_text": {
       "[[UI_01]]": "admin"
     },
-    "zh-CN": "**权限：**本功能由 [[UI_01]] 配置。操作员不编辑模型连接与用途分配，而是通过已发布的业务场景使用已分配模型的处理结果。",
-    "en": "Permissions: This function is set by [[UI_01]]. The operator does not edit the model connection or purpose assignment, but takes advantage of the assigned model's processing results through published work scenarios."
+    "zh-CN": "**权限：**本功能由 [[UI_01]] 设置。操作员不能更改模型连接信息或用途分配。通过已发布的业务场景，使用已配置模型的处理结果。",
+    "en": "**Permissions:** This function is configured by [[UI_01]]. Operators cannot change model connection information or purpose assignments. They use the processing results of configured models through published business scenes."
   },
   {
     "id": "manual-0030",
@@ -455,7 +455,7 @@
     "source_ja": "マスタデータ設定",
     "ui_text": {},
     "zh-CN": "主数据设置",
-    "en": "Master Data Settings"
+    "en": "Master data settings"
   },
   {
     "id": "manual-0053",
@@ -795,8 +795,8 @@
     "id": "manual-0092",
     "source_ja": "エクスポート設定と読み取りモデル設定。",
     "ui_text": {},
-    "zh-CN": "导出设置与识别模型设置。",
-    "en": "Export settings and read model settings."
+    "zh-CN": "导出设置和读取模型设置。",
+    "en": "Export settings and reading model settings."
   },
   {
     "id": "manual-0093",
@@ -1641,8 +1641,8 @@
     "id": "manual-0198",
     "source_ja": "公開済みの業務シーンだけが選択できます。下書きは表示されない仕様です。",
     "ui_text": {},
-    "zh-CN": "只能选择已发布的业务场景，草稿不会显示。",
-    "en": "Only published work scenarios can be selected. The draft will not be displayed."
+    "zh-CN": "只能选择已发布的业务场景。草稿不显示。",
+    "en": "Only published business scenes can be selected. Drafts are not shown."
   },
   {
     "id": "manual-0199",
@@ -4477,7 +4477,7 @@
     "id": "manual-0581",
     "source_ja": "プロバイダとモデルの両方がシンキングレベルに対応している場合だけ、接続の追加・編集画面に表示されます。モデルによっては表示されない仕様です。OpenAI 互換のカスタム接続では表示されない仕様です。",
     "ui_text": {},
-    "zh-CN": "仅当提供商和模型都支持思考等级时，才会显示在连接的添加・编辑画面。部分模型不显示。OpenAI 兼容的自定义连接不显示。",
+    "zh-CN": "仅当提供商和模型都支持思考等级时，才显示在连接的添加・编辑画面。部分模型不显示。OpenAI 兼容的自定义连接不显示。",
     "en": "Shown on the add/edit connection screen only when both the provider and model support thinking level. It is not shown for some models. It is not shown for OpenAI-compatible custom connections."
   },
   {
@@ -4641,8 +4641,8 @@
     "id": "manual-0601",
     "source_ja": "P2では、開放プラットフォームに「AI分類」が追加されます。1 ファイルの帳票タイプだけを判定し、このAPIでは、案件の作成やワークフローの起動は行いません。",
     "ui_text": {},
-    "zh-CN": "在P2中， “AI分类”被添加到开放平台，它只确定一个文件的文档类型，不创建案件或启动工作流程。",
-    "en": "In P2, “AI classification” is added to the open platform. It only determines the document type of one file, and does not create cases or launch workflows."
+    "zh-CN": "P2 中，开放平台新增「AI 分类」。仅判定 1 个文件的单据类型，该 API 不创建案件，也不启动工作流。",
+    "en": "In P2, \"AI Classification\" is added to the open platform. It only determines the document type of one file; this API does not create cases or start workflows."
   },
   {
     "id": "manual-0602",
@@ -4825,7 +4825,7 @@
     "source_ja": "QR 読み取り（LIAJ 診断書専用）",
     "ui_text": {},
     "zh-CN": "QR 读取（LIAJ 诊断书专用）",
-    "en": "QR Reading (LIAJ Diagnosis Forms Only)"
+    "en": "QR reading (LIAJ diagnosis forms only)"
   },
   {
     "id": "manual-0626",
@@ -5392,8 +5392,8 @@
     "id": "manual-0702",
     "source_ja": "読み取りソース",
     "ui_text": {},
-    "zh-CN": "读取源",
-    "en": "Read Source"
+    "zh-CN": "读取来源",
+    "en": "Read source"
   },
   {
     "id": "manual-0703",
@@ -5441,8 +5441,8 @@
     "id": "manual-0709",
     "source_ja": "マスク=ON の項目はカードに表示されない仕様です。",
     "ui_text": {},
-    "zh-CN": "卡片上不会显示蒙版= ON的物品。",
-    "en": "Items with mask = ON are not displayed on the card."
+    "zh-CN": "脱敏=ON 的项目不显示在卡片上。",
+    "en": "Fields with masking=ON are not shown on the card."
   },
   {
     "id": "manual-0710",
@@ -5500,7 +5500,7 @@
     "source_ja": "Step2 前処理ノード（画像不正検知・マスキング）",
     "ui_text": {},
     "zh-CN": "第2步预处理节点（图像不正检测/脱敏）",
-    "en": "Step 2 Pretreatment node (image fraud detection/masking)"
+    "en": "Step 2 Preprocessing node (image fraud detection/masking)"
   },
   {
     "id": "manual-0718",
@@ -5723,7 +5723,7 @@
     "source_ja": "AI前処理確認タスクの発生条件",
     "ui_text": {},
     "zh-CN": "AI预处理确认任务发生条件",
-    "en": "AI Pretreatment Confirmation Task Occurrence Conditions"
+    "en": "AI Preprocessing Confirmation Task Conditions"
   },
   {
     "id": "manual-0746",
@@ -5793,7 +5793,7 @@
     "source_ja": "AI前処理",
     "ui_text": {},
     "zh-CN": "AI预处理",
-    "en": "AI Pretreatment"
+    "en": "AI Preprocessing"
   },
   {
     "id": "manual-0756",
@@ -5820,8 +5820,8 @@
     "id": "manual-0759",
     "source_ja": "判定が基準未達",
     "ui_text": {},
-    "zh-CN": "判定不通过",
-    "en": "Judgment failed"
+    "zh-CN": "判定未达标",
+    "en": "Judgment does not meet criteria"
   },
   {
     "id": "manual-0760",
@@ -5910,7 +5910,7 @@
       "[[UI_01]]": "未分類"
     },
     "zh-CN": "显示名：在缩略图下方的下拉列表中修改文件。未分类页面显示为[[UI_01]]。",
-    "en": "Exhibit Name: Modify your file in the dropdown below the thumbnail. Uncategorized pages are displayed as [[UI_01]]."
+    "en": "Display name: Modify your file in the dropdown below the thumbnail. Uncategorized pages are displayed as [[UI_01]]."
   },
   {
     "id": "manual-0770",
@@ -5926,7 +5926,7 @@
     "source_ja": "自動採番：同じ帳票タイプが複数ある場合、「診療明細書1」「診療明細書2」のように連番を付けます。",
     "ui_text": {},
     "zh-CN": "自动编号：如果有多个相同的单据类型，则连续编号，如“诊疗明细书1”和“诊疗明细书2”。",
-    "en": "Automatic numbering: If there are multiple identical document types, they are numbered consecutively, such as \"Medical Practice Statement 1\" and \"Medical Practice Statement 2\"."
+    "en": "Automatic numbering: If there are multiple identical document types, they are numbered consecutively, such as \"Medical billing statement 1\" and \"Medical billing statement 2\"."
   },
   {
     "id": "manual-0772",
@@ -6125,7 +6125,7 @@
     "id": "manual-0796",
     "source_ja": "P2追加機能",
     "ui_text": {},
-    "zh-CN": "P2附加功能",
+    "zh-CN": "P2 附加功能",
     "en": "P2 Additional Features"
   },
   {
@@ -6161,7 +6161,7 @@
     "source_ja": "タスク一覧に「AI前処理確認」種別の絞り込みと列を追加し、操作列から実行ページへ遷移できるようにします。",
     "ui_text": {},
     "zh-CN": "将“AI预处理确认”类型的过滤器和列添加到任务列表中，以便您可以从操作列过渡到执行页面。",
-    "en": "Add a filter and column for the \"AI Pretreatment Confirmation\" type to the task list, so that you can transition from the operation column to the execution page."
+    "en": "Add a filter and column for the \"AI Preprocessing Confirmation\" type to the task list, so that you can transition from the operation column to the execution page."
   },
   {
     "id": "manual-0802",
@@ -6181,8 +6181,8 @@
     "id": "manual-0804",
     "source_ja": "7 種類の課金ノードの帳票の処理枚数とトークン消費量を、3つのタブ（利用量一覧／実行履歴／モデル呼び出し明細）または CSV エクスポートで確認します。",
     "ui_text": {},
-    "zh-CN": "在 3 个标签页（使用列表／执行历史记录／模型调用明细）或者 CSV 导出中，确认 7 种类计费节点的票据枚数与 token 消耗。",
-    "en": "Check the document counts and token consumption of the 7 billing node types in the 3 tabs (usage list / execution history / model call details) or via CSV export."
+    "zh-CN": "在 3 个标签页（利用量一览／执行履历／模型调用明细）或 CSV 导出中，确认 7 种类计费节点的票据处理枚数与 token 消耗量。",
+    "en": "Check the processed document counts and token consumption of the 7 billing node types in the 3 tabs (usage list / execution history / model call details) or via CSV export."
   },
   {
     "id": "manual-0805",
@@ -6230,8 +6230,8 @@
     "id": "manual-0811",
     "source_ja": "単一ファイルを対象に帳票タイプのみを判定する非同期APIを追加します。このAPIでは、案件の作成やワークフローの起動は行いません。",
     "ui_text": {},
-    "zh-CN": "添加仅判定单个文件单据类型的异步 API。不创建案件，也不启动工作流。",
-    "en": "Adds an asynchronous API that only determines the document type of a single file. It does not create cases or start workflows."
+    "zh-CN": "新增一个仅判定单个文件单据类型的异步 API。该 API 不创建案件，也不启动工作流。",
+    "en": "Add an asynchronous API that only determines the document type of a single file. This API does not create cases or start workflows."
   },
   {
     "id": "manual-0812",
@@ -6244,8 +6244,8 @@
     "id": "manual-0813",
     "source_ja": "未集約ファイルを「要確認／無視可」に分け、関連付けに失敗した理由に応じて自動で振り分けます。関連案件ID列を追加します。",
     "ui_text": {},
-    "zh-CN": "将未归集文件分为「需要确认／可忽略」，并按关联失败原因自动分流。新增相关案件ID列。",
-    "en": "Split unaggregated files into \"Review required / Ignorable\" and route them automatically by the related failure reason. Add a related case ID column."
+    "zh-CN": "将未归集文件分为「需要确认／可忽略」，并根据关联失败的原因自动分流。新增相关案件ID列。",
+    "en": "Split unaggregated files into \"Review required / Ignorable\" and route them automatically according to the reason association failed. Add a related case ID column."
   },
   {
     "id": "manual-0814",
@@ -6314,8 +6314,8 @@
     "id": "manual-0823",
     "source_ja": "範囲判定・比較・列挙によって値が正常かどうかを判定し、範囲外の値は確認対象とします。処理ルール適用後の値が対象です。",
     "ui_text": {},
-    "zh-CN": "确定范围/比较/枚举中的正常值，并使其超出待确认的范围。目标是应用处理规则后的值。",
-    "en": "Determine the normal value in the range/comparison/enumeration, and make it out of the range to be confirmed. The target is the value after the processing rule is applied."
+    "zh-CN": "通过范围判定、比较、列举判断值是否正常，超出范围的值作为确认对象。以处理规则应用后的值为对象。",
+    "en": "Judge whether values are normal by range check, comparison, or enumeration; out-of-range values become review targets. Applies to values after post-processing rules."
   },
   {
     "id": "manual-0824",
@@ -6335,8 +6335,8 @@
     "id": "manual-0826",
     "source_ja": "フィールド単位でマスキングを設定すると、そのフィールドはOCR抽出の対象外になります。下流の処理ルール・効果テストからも除外されます。",
     "ui_text": {},
-    "zh-CN": "逐个字段脱敏，并从 OCR 抽取中排除。也会从下游处理规则和效果测试中排除。",
-    "en": "Mask on a field-by-field basis and exclude from OCR extraction. It is also excluded from downstream processing rules and effect tests."
+    "zh-CN": "按字段单位设置脱敏后，该字段不属于 OCR 抽取对象。也会从下游处理规则和效果测试中排除。",
+    "en": "When masking is set per field, that field is excluded from OCR extraction. It is also excluded from downstream processing rules and the effect test."
   },
   {
     "id": "manual-0827",
@@ -6363,8 +6363,8 @@
     "id": "manual-0830",
     "source_ja": "各項目の読み取りソース（QR読み取り／OCR読み取り）、範囲結論、要確認、マスクの反映を確認します。",
     "ui_text": {},
-    "zh-CN": "确认每个项目的读取源（ QR读取/OCR读取）、范围结论、所需确认和脱敏反射。",
-    "en": "Confirm the read source (QR read/OCR read), range conclusion, confirmation required, and mask reflection for each item."
+    "zh-CN": "确认各项目的读取来源（QR 读取／OCR 读取）、范围结论、需要确认、脱敏的反映。",
+    "en": "Check each item's read source (QR/OCR), range conclusion, review required, and masking."
   },
   {
     "id": "manual-0831",
@@ -6419,8 +6419,8 @@
     "id": "manual-0838",
     "source_ja": "通知ルールでは、システム通知とメールを複数選択でき、メールの送信先も指定できます。",
     "ui_text": {},
-    "zh-CN": "您可以在通知规则中选择多个系统通知和电子邮件，并指定电子邮件目标。",
-    "en": "You can select multiple system notifications and emails in a notification rule, and specify the email destination."
+    "zh-CN": "通知规则中可多选系统通知和邮件，并可指定邮件发送地址。",
+    "en": "In notification rules, select system notification and/or email, and specify email recipients."
   },
   {
     "id": "manual-0839",
@@ -6433,8 +6433,8 @@
     "id": "manual-0840",
     "source_ja": "AI前処理後に発生するマニュアル確認タスクです。分類・分割の信頼度が低い場合、画像不正検知で基準を満たさなかった場合、または機微情報が検出された場合に、内容を確認してタスクを完了します。",
     "ui_text": {},
-    "zh-CN": "AI 预处理之后生成的人工确认任务。确认分类、分割的低置信度、图像不正的不通过、敏感信息检测结果后完成。",
-    "en": "Manual confirmation task generated after AI preprocessing. Confirm low confidence in classification/splitting, failed image fraud detection, and sensitive-information detection results, then complete."
+    "zh-CN": "AI 预处理后产生的人工确认任务。当分类、分割的置信度较低，图像不正检测未达标，或检测到敏感信息时，确认内容后完成任务。",
+    "en": "A manual confirmation task generated after AI preprocessing. Complete the task after reviewing the content when classification or splitting confidence is low, image fraud detection does not meet the criteria, or sensitive information is detected."
   },
   {
     "id": "manual-0841",
@@ -6447,8 +6447,8 @@
     "id": "manual-0842",
     "source_ja": "フィールド／列ごとに、マニュアル確認の要否を設定できます。OFF でも必須チェックは適用されます。正常値の比較は、マニュアル確認ルールで ⑥⑦ を選んだ場合だけ行います。",
     "ui_text": {},
-    "zh-CN": "按字段／列切换是否进入人工确认。OFF 时仍适用必填校验。正常值比较仅在人工确认规则中勾选 ⑥⑦ 时执行。",
-    "en": "Toggle manual confirmation per field/column. Required checks still apply when OFF. Normal-value comparison runs only when ⑥/⑦ are selected in the manual confirmation rules."
+    "zh-CN": "可按字段／列设置是否需要人工确认。OFF 时仍适用必填校验。正常值比较仅在人工确认规则中勾选 ⑥⑦ 时执行。",
+    "en": "Set whether manual confirmation is required per field/column. Required checks still apply when OFF. Normal-value comparison runs only when ⑥/⑦ are selected in the manual confirmation rules."
   },
   {
     "id": "manual-0844",
@@ -6461,8 +6461,8 @@
     "id": "manual-0845",
     "source_ja": "前処理ノードで、PS／AI生成／帳票の特徴／筆跡の4項目を個別に判定します。基準未達はマニュアル確認へ回します。",
     "ui_text": {},
-    "zh-CN": "在预处理节点分别判定 PS／AI 生成／票据特征／笔迹 4 项。不通过则转人工确认。",
-    "en": "The preprocessing node judges PS / AI generation / document features / handwriting individually. Failures go to manual confirmation."
+    "zh-CN": "在预处理节点分别判定 PS／AI 生成／单据特征／笔迹 4 项。未达标则转人工确认。",
+    "en": "The preprocessing node judges PS / AI generation / document features / handwriting individually. Items that do not meet the criteria go to manual confirmation."
   },
   {
     "id": "manual-0846",
@@ -7049,8 +7049,8 @@
     "id": "manual-0954",
     "source_ja": "AI前処理ノードのあとのマニュアル確認ノードで、分類・分割の低信頼度、画像不正の基準未達、敏感情報の検出結果が残っている場合。",
     "ui_text": {},
-    "zh-CN": "在 AI 预处理节点之后的人工确认节点，分类・分割低置信度、图像不正不通过、敏感信息检测结果仍存在时。",
-    "en": "When low-confidence classification/splitting, failed image fraud detection, or sensitive-information detection results remain at the manual confirmation node after the AI preprocessing node."
+    "zh-CN": "在 AI 预处理节点之后的人工确认节点，分类・分割低置信度、图像不正未达标、敏感信息检测结果仍存在时。",
+    "en": "When low-confidence classification/splitting, image fraud not meeting the criteria, or sensitive-information detection results remain at the manual confirmation node after the AI preprocessing node."
   },
   {
     "id": "manual-0955",
@@ -7191,5 +7191,26 @@
     "ui_text": {},
     "zh-CN": "当主模型与验证模型的结果不一致时，该项目会在 OCR 确认任务中成为人工确认对象。",
     "en": "When the primary and verification models disagree, the item becomes a manual confirmation target in the OCR confirmation task."
+  },
+  {
+    "id": "manual-0976",
+    "source_ja": "案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初のマニュアル確認ノードで選択したロール（操作員または操作管理者）の中から自動で指名され、以降のマニュアル確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。[[UI_01]] で操作管理者は手動で再割り当てすることもできます。",
+    "ui_text": {},
+    "zh-CN": "分配给案件的负责人用户（不是登录角色）。从工作流第 1 个人工确认节点选择的角色（操作员或操作管理员）中自动指定；之后的人工确认节点若选择同一角色，则由同一负责人继续；角色切换时从新角色重新指定。在 [[UI_01]] 中，操作管理员也可手动重新分配。",
+    "en": "The user assigned as case owner (not a login role). Automatically assigned from the role selected at the first manual confirmation node (operator or operation manager); later manual confirmation nodes with the same role continue with the same owner, and a role switch reassigns from the new role. In [[UI_01]], operation managers can also reassign manually."
+  },
+  {
+    "id": "manual-0977",
+    "source_ja": "[[UI_01]] はマニュアル確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3の通知設定は、タスクの割り当てには影響しません。通知先として選択できるのは、操作員と操作管理者のみです。",
+    "ui_text": {},
+    "zh-CN": "[[UI_01]] 由人工确认・导出节点起票，并根据 Step2 的分配设置显示给相应用户。Step3 的通知设置不影响任务分配。可作为通知对象选择的只有操作员和操作管理员。",
+    "en": "[[UI_01]] tasks are raised from manual confirmation / export nodes and shown to the relevant users based on the Step2 assignment settings. Step3 notification settings do not affect task assignment. Only operators and operation managers can be selected as notification targets."
+  },
+  {
+    "id": "manual-0978",
+    "source_ja": "AI検証通過",
+    "ui_text": {},
+    "zh-CN": "AI 验证通过",
+    "en": "AI verification passed"
   }
 ]
