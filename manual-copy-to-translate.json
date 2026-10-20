@@ -4110,7 +4110,7 @@
     "id": "manual-0520",
     "source_ja": "API接続にプロバイダ別「思考程度」を追加し、用途割当に「AI前処理」を新設する。AI前処理ノード内の大模型呼出に使用する。",
     "ui_text": {},
-    "zh-CN": "API连接按提供商新增「思考程度」，用途指派新增「AI前处理」，供AI前处理节点内大模型调用。",
+    "zh-CN": "API连接按提供商新增「思考等级」，用途指派新增「AI前处理」，供AI前处理节点内大模型调用。",
     "en": "Add a provider-based \"reasoning level\" to API connections and a new \"AI preprocessing\" usage assignment, used for large-model calls inside the AI-preprocessing node."
   },
   {
@@ -4437,20 +4437,20 @@
   },
   {
     "id": "manual-0576",
-    "source_ja": "P2では、[[UI_01]] に [[UI_02]]（思考程度）が追加されます。プロバイダとモデルが対応している場合のみ推論の深さを指定でき、後続の大模型呼び出しに反映されます。",
+    "source_ja": "P2では、[[UI_01]] に [[UI_02]]が追加されます。プロバイダとモデルが対応している場合のみ推論の深さを指定でき、後続の大模型呼び出しに反映されます。",
     "ui_text": {
       "[[UI_01]]": "API 接続",
       "[[UI_02]]": "シンキングレベル"
     },
-    "zh-CN": "P2 中，[[UI_01]] 新增 [[UI_02]]（思考程度）。仅当提供商和模型都支持时，才能指定推理深度，并会反映到后续的大模型调用。",
-    "en": "In P2, [[UI_02]] (reasoning depth) is added to [[UI_01]]. Only when both the provider and model support it can you set the inference depth, which applies to subsequent LLM calls."
+    "zh-CN": "P2 中，[[UI_01]] 新增 [[UI_02]]。仅当提供商和模型都支持时，才能指定推理深度，并会反映到后续的大模型调用。",
+    "en": "In P2, [[UI_02]] is added to [[UI_01]]. Only when both the provider and model support it can you set the inference depth, which applies to subsequent LLM calls."
   },
   {
     "id": "manual-0577",
-    "source_ja": "シンキングレベル（思考程度）",
+    "source_ja": "シンキングレベル",
     "ui_text": {},
-    "zh-CN": "思考等级（ Thinking Level ）",
-    "en": "Thinking Level (Thinking Level)"
+    "zh-CN": "思考等级",
+    "en": "Thinking level"
   },
   {
     "id": "manual-0578",
@@ -4477,7 +4477,7 @@
     "id": "manual-0581",
     "source_ja": "プロバイダとモデルの両方がシンキングレベルに対応している場合だけ、接続の追加・編集画面に表示されます。モデルによっては表示されません。OpenAI 互換のカスタム接続では表示されません。",
     "ui_text": {},
-    "zh-CN": "仅当提供商和模型都支持思考程度时，才会显示在连接的添加・编辑画面。部分模型不显示。OpenAI 兼容的自定义连接不显示。",
+    "zh-CN": "仅当提供商和模型都支持思考等级时，才会显示在连接的添加・编辑画面。部分模型不显示。OpenAI 兼容的自定义连接不显示。",
     "en": "Shown on the add/edit connection screen only when both the provider and model support thinking level. It is not shown for some models. It is not shown for OpenAI-compatible custom connections."
   },
   {
@@ -4581,7 +4581,7 @@
     "id": "manual-0594",
     "source_ja": "注意事項 プロバイダやモデルを切り替えると選択肢が更新されます。非対応のプロバイダまたはモデルに変更した場合はシンキングレベルが非表示になり、保存時にも書き込まれません。",
     "ui_text": {},
-    "zh-CN": "注意事项 切换提供商或模型时选项会更新。改为不支持的提供商或模型时，思考程度会隐藏，保存时也不会写入。",
+    "zh-CN": "注意事项 切换提供商或模型时选项会更新。改为不支持的提供商或模型时，思考等级会隐藏，保存时也不会写入。",
     "en": "Notes Options update when you switch the provider or model. If you change to an unsupported provider or model, thinking level is hidden and is not written on save."
   },
   {
@@ -6816,10 +6816,10 @@
   },
   {
     "id": "manual-0921",
-    "source_ja": "設定ロジック：[[UI_01]] では外部モデルプロバイダへの接続情報を登録し、[[UI_02]] では機能ごとに使用するモデルを指定します。[[UI_03]] のみ複数モデルを選択でき、主モデルの認識結果を検証するために使用します。その他の用途は 1 用途につき 1 モデルを選択します。プロバイダが対応している場合は [[UI_04]]（思考程度）も設定できます。",
+    "source_ja": "**設定ロジック：**[[UI_01]] では外部モデルプロバイダへの接続情報を登録し、[[UI_02]] では機能ごとに使用するモデルを指定します。[[UI_03]] のみ複数モデルを選択でき、主モデルの認識結果を検証するために使用します。その他の用途は 1 用途につき 1 モデルを選択します。プロバイダとモデルが対応している場合のみ [[UI_04]]も設定できます。",
     "ui_text": {},
-    "zh-CN": "**配置逻辑：**在 [[UI_01]] 登记外部模型提供方的连接信息，在 [[UI_02]] 按用途指定使用的模型。仅 [[UI_03]] 可选择多个模型，用于验证主模型的识别结果。其他用途每个用途选择 1 个模型。提供方支持时还可设置 [[UI_04]]（思考程度）。",
-    "en": "**Configuration logic:** [[UI_01]] registers connection information for external model providers, and [[UI_02]] assigns a model per purpose. Only [[UI_03]] can select multiple models, used to verify the primary model's recognition results. Other purposes use one model per purpose. When the provider supports it, [[UI_04]] (reasoning depth) can also be set."
+    "zh-CN": "**配置逻辑：**在 [[UI_01]] 登记外部模型提供方的连接信息，在 [[UI_02]] 按用途指定使用的模型。仅 [[UI_03]] 可选择多个模型，用于验证主模型的识别结果。其他用途每个用途选择 1 个模型。仅当提供商和模型都支持时，还可设置 [[UI_04]]。",
+    "en": "**Configuration logic:** [[UI_01]] registers connection information for external model providers, and [[UI_02]] assigns a model per purpose. Only [[UI_03]] can select multiple models, used to verify the primary model's recognition results. Other purposes use one model per purpose. Only when both the provider and model support it can [[UI_04]] also be set."
   },
   {
     "id": "manual-0922",
