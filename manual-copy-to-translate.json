@@ -6193,10 +6193,10 @@
   },
   {
     "id": "manual-0806",
-    "source_ja": "API 接続にプロバイダ別の推論の深さ（Low／Medium／High など）を設定します。非対応のプロバイダでは項目を表示しません。",
+    "source_ja": "API 接続先ごとにプロバイダ別の推論の深さ（Low／Medium／High など）を設定します。非対応のプロバイダでは推論の深さが表示されません。",
     "ui_text": {},
-    "zh-CN": "设置API连接的提供商特定推断深度（例如，低/中/高）。不受支持的提供商将不会显示该项目。",
-    "en": "Set the provider-specific inference depth (e.g. Low/Medium/High) for the API connection. Unsupported providers will not show the item."
+    "zh-CN": "按每个 API 连接目标设置各提供商的推理深度（Low／Medium／High 等）。不支持的提供商不显示推理深度。",
+    "en": "Set the provider-specific reasoning depth (Low/Medium/High, etc.) for each API connection target. The reasoning depth is not shown for unsupported providers."
   },
   {
     "id": "manual-0807",
