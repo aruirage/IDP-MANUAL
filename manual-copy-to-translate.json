@@ -7156,5 +7156,12 @@
     "ui_text": {},
     "zh-CN": "**注意事项** 图像不正检测和敏感信息检测虽属 AI 预处理的子功能，但作为单独的计费节点显示。模型调用明细不与文件关联。AI 辅助的调用案件ID 显示为「—」。重新执行时，只要枚数不增加，用量列表就不会增加。各标签页的 CSV 按当前筛选条件输出全部数据，与分页无关。",
     "en": "**Notes** Image fraud detection and sensitive information detection are sub-functions of AI preprocessing but appear as separate billing nodes. Model call details are not linked to files. Calls from AI Assist show case ID \"—\". Re-running does not increase the usage list unless the document count increases. Each tab's CSV exports all rows matching the current filters, regardless of pagination."
+  },
+  {
+    "id": "manual-0971",
+    "source_ja": "マイタスクで、タスク種別に「AI前処理確認」が追加されました。",
+    "ui_text": {},
+    "zh-CN": "在「我的任务」中，任务类型新增了「AI 预处理确认」。",
+    "en": "In My Tasks, \"AI preprocessing confirmation\" has been added as a task type."
   }
 ]
