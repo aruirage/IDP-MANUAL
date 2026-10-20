@@ -6179,10 +6179,10 @@
   },
   {
     "id": "manual-0804",
-    "source_ja": "7 類の課金ノードの帳票枚数と token 消費を、3 タブ（利用量一覧／実行履歴／モデル呼び出し明細）と CSV エクスポートで確認します。",
+    "source_ja": "7 種類の課金ノードの帳票枚数と token 消費を、3 タブ（利用量一覧／実行履歴／モデル呼び出し明細）または CSV エクスポートで確認します。",
     "ui_text": {},
-    "zh-CN": "在3个选项卡（使用列表/执行历史记录/模型调用详细信息）和CSV导出中查看7种类型计费节点的文档数量和token消耗情况。",
-    "en": "Check the number of documents and token consumption of the 7 types of billing nodes in the 3 tabs (usage list/execution history/model call details) and CSV export."
+    "zh-CN": "在 3 个标签页（使用列表／执行历史记录／模型调用明细）或者 CSV 导出中，确认 7 种类计费节点的票据枚数与 token 消耗。",
+    "en": "Check the document counts and token consumption of the 7 billing node types in the 3 tabs (usage list / execution history / model call details) or via CSV export."
   },
   {
     "id": "manual-0805",
