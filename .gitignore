@@ -7,3 +7,6 @@ __pycache__/
 backups/
 .retrans/
 .workbuddy-ai/
+
+# P2 translation tooling caches
+.p2-*.json

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:,">
+<title>既存3節の改稿案 — NeosAI IDP マニュアル</title>
+<link rel="stylesheet" href="common.css?v=local-i18n-3">
+<style>
+  html, body { height: auto; overflow: auto; background: #f2f6f8; }
+  .edits-head {
+    background: #0f2b3a; color: #e8f4f8; padding: 28px 32px 24px;
+  }
+  .edits-head .inner { max-width: 1180px; margin: 0 auto; }
+  .edits-head .kicker {
+    display: inline-block; margin-bottom: 10px; padding: 2px 10px;
+    border: 1px solid #4ebcab; border-radius: 999px;
+    color: #8fe0d3; font-size: 11px; letter-spacing: .08em;
+  }
+  .edits-head h1 { font-size: 22px; margin-bottom: 8px; }
+  .edits-head p { font-size: 13px; line-height: 1.85; color: #b9d5e1; margin: 3px 0; }
+  .edits-head code { background: rgba(255,255,255,.1); border-radius: 4px; padding: 1px 6px; font-size: 12px; }
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 14px; font-size: 12px; color: #cfe6ee; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 22px; height: 12px; border-radius: 3px; display: inline-block; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 20px 32px 70px; }
+  .toc-mini {
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 18px; margin: 18px 0 6px; font-size: 13px;
+  }
+  .toc-mini b { display: block; font-size: 12px; color: #667085; margin-bottom: 8px; letter-spacing: .06em; }
+  .toc-mini a { display: inline-block; margin: 3px 14px 3px 0; color: #0f5f8f; }
+
+  .module {
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    margin: 24px 0; overflow: hidden; box-shadow: 0 2px 10px rgba(16,24,40,.04);
+  }
+  .module > h2 {
+    font-size: 17px; padding: 15px 22px; background: #f1f7f9;
+    border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 10px;
+  }
+  .module > h2 .count {
+    font-size: 11px; font-weight: 600; color: #fff; background: #0f5f8f;
+    border-radius: 999px; padding: 2px 9px;
+  }
+  .edit { padding: 18px 22px; border-bottom: 1px dashed #e3e9ef; }
+  .edit:last-child { border-bottom: 0; }
+  .edit-label {
+    font-size: 12px; color: #0f5f8f; font-weight: 600; margin-bottom: 10px;
+    display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  }
+  .edit-label .path { color: #667085; font-weight: 500; }
+  .edit-label .badge-new {
+    font-size: 10px; background: #4ebcab; color: #fff; border-radius: 999px;
+    padding: 1px 8px; letter-spacing: .04em;
+  }
+  .compare { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 14px; }
+  @media (max-width: 860px) { .compare { grid-template-columns: 1fr; } }
+  .side {
+    border: 1px solid #dfe5ec; border-radius: 8px; padding: 12px 14px;
+    background: #fbfcfd; font-size: 13px; line-height: 1.8;
+  }
+  .side.after { background: #f3fbf8; border-color: #b9e2d8; }
+  .side h4 {
+    font-size: 10.5px; letter-spacing: .1em; color: #7a8797;
+    margin-bottom: 7px; font-weight: 700;
+  }
+  .side.after h4 { color: #2f8d7c; }
+  .side p { margin: 5px 0; }
+  .side ul { margin: 4px 0 4px 18px; }
+  .side li { margin: 3px 0; }
+  .side .ui-text { color: inherit; }
+  ins { background: #d8f3ea; color: #14614f; text-decoration: none; padding: 0 3px; border-radius: 3px; }
+  del { background: #fde3e1; color: #8a1f1a; padding: 0 3px; border-radius: 3px; }
+  .note {
+    margin-top: 10px; padding: 8px 12px; border-left: 3px solid #4ebcab;
+    background: #f3fbf9; color: #34506b; font-size: 12px; line-height: 1.75;
+  }
+  .note b { color: #0f5f8f; }
+  .row-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .row-table th, .row-table td { border: 1px solid #dfe5ec; padding: 7px 9px; text-align: left; vertical-align: top; }
+  .row-table th { background: #f1f7f9; font-weight: 600; white-space: nowrap; }
+  .row-table td:first-child { white-space: nowrap; }
+
+  .edits-foot {
+    max-width: 1180px; margin: 0 auto; padding: 22px 32px 44px;
+    color: #5b6b7f; font-size: 12px; line-height: 1.9;
+  }
+  .edits-foot code { background: #e6f3f6; border-radius: 4px; padding: 1px 5px; }
+</style>
+</head>
+<body>
+
+<header class="edits-head">
+  <div class="inner">
+    <span class="kicker">REVIEW ONLY / index.html は未変更</span>
+    <h1>既存3節の改稿案 — 機能説明・画面操作・関連影響</h1>
+    <p>二期の変更を、新規セクションを足す前に <strong>既存の「機能説明」「画面操作」「関連影響」へ反映する</strong>ための差分です。左が現行、右が改稿案です。</p>
+    <p>対象は 6 か所・全 18 件。<code>index.html</code> は変更していません。</p>
+    <div class="legend">
+      <span><i style="background:#fde3e1"></i>現行から削る文</span>
+      <span><i style="background:#d8f3ea"></i>改稿案で足す文</span>
+      <span><i style="background:#0f5f8f"></i>「本期対象外」の記述は二期で必ず更新</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="toc-mini">
+    <b>目次</b>
+    <a href="#m-overview">総覧 › 機能モジュール（1）</a>
+    <a href="#m-api">API設定（3）</a>
+    <a href="#m-doctype">帳票タイプ設定（5）</a>
+    <a href="#m-scene">業務シーン設定（4）</a>
+    <a href="#m-case">案件一覧（2）</a>
+    <a href="#m-task">マイタスク（3）</a>
+  </div>
+
+  <!-- ===================== 総覧 ===================== -->
+  <section class="module" id="m-overview">
+    <h2>総覧 › 機能モジュール <span class="count">1</span></h2>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">機能モジュール表 › システム設定モジュールの子モジュール</span><span class="badge-new">追加</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <p>ログインとアカウント / ユーザー管理 / 権限管理 / セキュリティ設定</p>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <p>ログインとアカウント / ユーザー管理 / 権限管理 / セキュリティ設定 / <ins>利用量統計</ins></p>
+          <div class="note">画面のサイドバー順（セキュリティ設定の下）に合わせて末尾へ追加します。</div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===================== API設定 ===================== -->
+  <section class="module" id="m-api">
+    <h2>API設定 <span class="count">3</span></h2>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">機能説明 › 設定ロジック</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <p>…<span class="ui-text">API URL</span> では、ファイルアップロード、案件一覧照会、バッチ別案件照会、追加資料アップロード、一括エクスポート、エクスポートタスク照会のエンドポイントを確認し、コピーできます。</p>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <p>…<span class="ui-text">API URL</span> では、ファイルアップロード、案件一覧照会、バッチ別案件照会、追加資料アップロード、一括エクスポート、エクスポートタスク照会<ins>、AI分類、AI分類タスク照会</ins>のエンドポイントを確認し、コピーできます。<ins>AI分類は 1 ファイルの帳票タイプだけを判定し、案件の作成やワークフローの起動は行いません。</ins></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">画面操作 › Step5（API URL タブ）</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <p><span class="ui-text">API URL</span> タブで、ファイルアップロード、案件一覧照会、バッチ別案件照会、追加資料アップロード、一括エクスポート、エクスポートタスク照会のエンドポイントを確認します。コピーアイコンで URL を取得できます。…</p>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <p><span class="ui-text">API URL</span> タブで、ファイルアップロード、案件一覧照会、バッチ別案件照会、追加資料アップロード、一括エクスポート、エクスポートタスク照会のエンドポイントを確認します。<ins>AI分類（送信）と AI分類タスク照会は一覧の末尾に表示されます。AI分類は非同期で、結果はタスク照会で取得します。</ins>コピーアイコンで URL を取得できます。…</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">関連影響 › 表に 1 行追加</span><span class="badge-new">追加</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <table class="row-table">
+            <thead><tr><th>影響先</th><th>影響内容</th></tr></thead>
+            <tbody>
+              <tr><td>新規アップロード</td><td>ファイルアップロードは公開済み業務シーンを必須とし、帳票分類と案件集約を起動します。</td></tr>
+              <tr><td>案件一覧</td><td>案件一覧照会・バッチ別案件照会で進捗と帰属を取得します。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <table class="row-table">
+            <thead><tr><th>影響先</th><th>影響内容</th></tr></thead>
+            <tbody>
+              <tr><td>新規アップロード</td><td>ファイルアップロードは公開済み業務シーンを必須とし、帳票分類と案件集約を起動します。</td></tr>
+              <tr><td>案件一覧</td><td>案件一覧照会・バッチ別案件照会で進捗と帰属を取得します。</td></tr>
+              <tr><td><ins>AI分類</ins></td><td><ins>帳票タイプの判定だけを行い、案件・未集約ファイル・ワークフローには反映されません。結果は呼び出し元のシステムで利用します。</ins></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===================== 帳票タイプ設定 ===================== -->
+  <section class="module" id="m-doctype">
+    <h2>帳票タイプ設定 <span class="count">5</span></h2>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">機能説明 › 設定表の「AI読取設定」行</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <p>OCR 抽出で読み取る項目・表格列・プロンプト・正解サンプル・読取モデルを定義します。</p>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <p>OCR 抽出で読み取る項目・表格列・プロンプト・正解サンプル・読取モデルを定義します。<ins>フィールド／列ごとに確認要否（HITL）とマスクを設定できます。</ins></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">機能説明 › 設定表の「処理ルール設定」行</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <p>OCR 値の後処理、<span class="ui-text">マスタ照合</span>、信頼度閾値を定義します。</p>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <p>OCR 値の後処理、<span class="ui-text">マスタ照合</span>、信頼度閾値<ins>、正常条件（正常値範囲）</ins>を定義します。<ins>正常条件は処理ルール適用後の値を対象にします。</ins></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">画面操作 › Step2（AI読取設定）</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <p><span class="ui-text">AI読取設定</span>：保存アイコンから<span class="ui-text">テンプレートをダウンロード</span>し、項目を記入して<span class="ui-text">一括インポート</span>します。プロンプトと正解サンプルはテンプレートで手書きしても、項目名だけ入れて次の手順の<span class="ui-text">AI自動生成</span>に任せても構いません。</p>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <p><span class="ui-text">AI読取設定</span>：保存アイコンから<span class="ui-text">テンプレートをダウンロード</span>し、項目を記入して<span class="ui-text">一括インポート</span>します。プロンプトと正解サンプルはテンプレートで手書きしても、項目名だけ入れて次の手順の<span class="ui-text">AI自動生成</span>に任せても構いません。<ins>インポート後、フィールド表の<span class="ui-text">HITL</span>と<span class="ui-text">マスク</span>を確認します。HITL は人工確認に出す項目、マスクは下流に出さない項目です（既定は HITL=ON、マスク=OFF）。</ins></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">画面操作 › Step5（処理ルール設定）</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <p><span class="ui-text">処理ルール設定</span>：各項目に日付整形・数値整形・<span class="ui-text">マスタ照合</span>などの後処理を割り当てます。<span class="ui-text">AIマッチング</span>で一括提案もできます。</p>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <p><span class="ui-text">処理ルール設定</span>：各項目に日付整形・数値整形・<span class="ui-text">マスタ照合</span>などの後処理を割り当てます。<span class="ui-text">AIマッチング</span>で一括提案もできます。<ins><span class="ui-text">正常条件</span>列で正常値範囲（範囲内／&lt;／≤／&gt;／≥／列挙）を設定します。マスタ照合とテキスト置換には正常条件を設定できません。</ins></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">関連影響 › 表に 1 行追加＋マイタスク行を修正</span><span class="badge-new">追加</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <table class="row-table">
+            <tbody>
+              <tr><td>マイタスク</td><td>低信頼度、マスタ照合未命中、モデル間不一致などの項目は OCR 確認タスクで確認対象になります。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <table class="row-table">
+            <tbody>
+              <tr><td>マイタスク</td><td>低信頼度、マスタ照合未命中、モデル間不一致などの項目は OCR 確認タスクで確認対象になります。<ins>HITL=OFF の項目は確認画面に表示されません。</ins></td></tr>
+              <tr><td><ins>AI前処理確認</ins></td><td><ins>HITL=ON かつ要確認の項目は人工確認の対象になります。正常値範囲を外れた値は要確認として表示され、マスク=ON の項目は確認画面と効果テストに表示されません。</ins></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===================== 業務シーン設定 ===================== -->
+  <section class="module" id="m-scene">
+    <h2>業務シーン設定 <span class="count">4</span></h2>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">機能説明 › ノード表の「前処理」行</span><span class="badge-new">本期記述の更新</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <p>OCR 前に画像を回転・補正・整列。帳票タイプの画像処理設定と連携し、対象帳票をノードで ON にします。<del>本期は前処理結果を人工確認タスク化しません。</del></p>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <p>OCR 前に画像を回転・補正・整列<ins>し、画像不正検知と敏感情報検出（脱敏）を実行します</ins>。帳票タイプの画像処理設定<ins>と Step2 マスク</ins>に連携し、対象帳票をノードで ON にします。<ins>画像不正が不通過、または敏感情報を検出した場合は AI前処理確認タスクを起票します。</ins></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">機能説明 › 処理状態・処理結果の説明</span><span class="badge-new">本期記述の更新</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <p>…Step3 通知では *Status と *Result の両方をトリガーに選べます。<del>前処理の人工確認タスク化は本期対象外です。</del></p>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <p>…Step3 通知では *Status と *Result の両方をトリガーに選べます。<ins>前処理は、画像不正の不通過または敏感情報の検出時に AI前処理確認タスクを起票します。</ins></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">画面操作 › Step5 の後に 1 ステップ追加（以降 +1）</span><span class="badge-new">追加</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <p><span class="step-code">5</span> ワークフロー・キャンバス：導入済みフローの全体（開始 → 処理ノード → 分岐 → 人工確認 → 終了）を確認します。…</p>
+          <p><span class="step-code">6</span> ノードの編成：必要に応じてノードを追加し…</p>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <p><span class="step-code">5</span> ワークフロー・キャンバス：導入済みフローの全体を確認します。…</p>
+          <p><span class="step-code">6</span> <ins>前処理ノード：画像回転・補正・整列に加え、画像不正検知（PS検出／AI生成検出／帳票特徴検出／筆跡検出）と敏感情報検出を設定します。対象帳票は検出項目ごとに選びます。</ins></p>
+          <p><span class="step-code">7</span> ノードの編成：必要に応じてノードを追加し…（以降の番号を 1 つずつ繰り下げ）</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">関連影響 › マイタスク行の修正＋1 行追加</span><span class="badge-new">追加</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <table class="row-table">
+            <tbody>
+              <tr><td>マイタスク</td><td>Step2 のノード構成で、OCR 確認、AI 検証確認、エクスポートの発生条件が決まります。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <table class="row-table">
+            <tbody>
+              <tr><td>マイタスク</td><td>Step2 のノード構成で、<ins>AI前処理確認、</ins>OCR 確認、AI 検証確認、エクスポートの発生条件が決まります。</td></tr>
+              <tr><td><ins>AI前処理確認</ins></td><td><ins>前処理ノードの画像不正検知・敏感情報検出の設定が、AI前処理確認タスクの発生条件になります。</ins></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===================== 案件一覧 ===================== -->
+  <section class="module" id="m-case">
+    <h2>案件一覧 <span class="count">2</span></h2>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">機能説明 › 確認ロジック</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <p><span class="ui-text">未集約ファイル</span> では、分類または案件集約に失敗したファイルを確認し、再集約または手動紐付けを行います。</p>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <p><span class="ui-text">未集約ファイル</span> では、<ins><span class="ui-text">要確認</span> と <span class="ui-text">無視可</span> の 2 つのサブタグに分けて</ins>確認します。<ins><span class="ui-text">要確認</span> は再集約または手動紐付けを、<span class="ui-text">無視可</span> は分類失敗のファイルとして手動紐付けまたは削除を行います。</ins></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">画面操作 › Step7（未集約ファイル）</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <p><span class="ui-text">未集約ファイル</span> タブでは、自動集約に失敗したファイル（集約ステータス <span class="ui-text">紐づけ失敗</span>、失敗理由など）を確認します。<span class="ui-text">案件集約を実行</span> で再処理するか、<span class="ui-text">手動紐付け</span> で <span class="ui-text">手動校正</span> ダイアログを開き、帳票タイプと紐付け先案件を指定します。</p>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <p><span class="ui-text">未集約ファイル</span> タブでは、自動集約に失敗したファイルを <ins><span class="ui-text">要確認</span> と <span class="ui-text">無視可</span> のサブタグで</ins>確認します。<span class="ui-text">要確認</span> では <span class="ui-text">案件集約を実行</span> で再処理するか、<span class="ui-text">手動紐付け</span> で <span class="ui-text">手動校正</span> ダイアログを開きます。<ins><span class="ui-text">無視可</span> は分類失敗のファイルで、手動紐付けと削除ができます。一覧の <span class="ui-text">関連案件ID</span> 列で、同じソースファイル内で既に紐づいた案件を確認できます。</ins></p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===================== マイタスク ===================== -->
+  <section class="module" id="m-task">
+    <h2>マイタスク <span class="count">3</span></h2>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">機能説明 › 処理対象</span><span class="badge-new">本期記述の更新</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <p><strong>処理対象：</strong>本画面では <span class="ui-text">OCR 抽出確認</span>、<span class="ui-text">AI 検証確認</span>、<span class="ui-text">エクスポート</span> の 3 種類のタスクを扱います。<del>前処理確認タスクは本期対象外です。</del></p>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <p><strong>処理対象：</strong>本画面では <ins><span class="ui-text">AI前処理確認</span>、</ins><span class="ui-text">OCR 抽出確認</span>、<span class="ui-text">AI 検証確認</span>、<span class="ui-text">エクスポート</span> の <ins>4</ins> 種類のタスクを扱います。</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">機能説明 › タスク種別表に 1 行追加</span><span class="badge-new">追加</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <table class="row-table">
+            <thead><tr><th>タスク種別</th><th>発生する場面</th><th>担当者が行うこと</th></tr></thead>
+            <tbody>
+              <tr><td>OCR 抽出確認</td><td>OCR 値の信頼度が低い、モデル間で結果が一致しない場合。</td><td>帳票画像と抽出値を照合し、必要に応じて修正します。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <table class="row-table">
+            <thead><tr><th>タスク種別</th><th>発生する場面</th><th>担当者が行うこと</th></tr></thead>
+            <tbody>
+              <tr><td><ins>AI前処理確認</ins></td><td><ins>AI 前処理ノードのあとの人工確認ノードで、分類・分割・整列の低信頼度、画像不正の不通過、敏感情報の検出結果が残っている場合。</ins></td><td><ins>左のページ一覧と右の帳票ファイル一覧で分類・順序を確認し、ページの並べ替え・削除・所属変更を行います。画像編集ドロワーで分割・マスキング・不正を確認します。</ins></td></tr>
+              <tr><td>OCR 抽出確認</td><td>OCR 値の信頼度が低い、モデル間で結果が一致しない場合。</td><td>帳票画像と抽出値を照合し、必要に応じて修正します。</td></tr>
+            </tbody>
+          </table>
+          <div class="note">完了後は <b>前処理完了</b> でタスクを閉じ、ファイルは <b>AI 前処理完了</b> となって OCR 抽出へ進みます。</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="edit">
+      <div class="edit-label"><span class="path">画面操作 › Step1 の絞り込み＋「AI前処理確認」の実行ステップ追加＋注意事項</span><span class="badge-new">追加・更新</span></div>
+      <div class="compare">
+        <div class="side">
+          <h4>現行</h4>
+          <p><span class="step-code">1</span> <span class="ui-text">未対応</span> / <span class="ui-text">対応済</span> でタスクを切り替え、タスク種別・案件キー・業務シーン・業務 key で絞り込みます。未対応行の <span class="ui-text">対応</span> で実行ページへ進みます。</p>
+          <p>注意事項：…<del>前処理の人工確認タスクは本期対象外です。</del></p>
+        </div>
+        <div class="side after">
+          <h4>改稿案</h4>
+          <p><span class="step-code">1</span> <span class="ui-text">未対応</span> / <span class="ui-text">対応済</span> でタスクを切り替え、タスク種別<ins>（AI前処理確認／OCR 抽出確認／AI 検証確認／エクスポート）</ins>・案件キー・業務シーン・業務 key で絞り込みます。未対応行の <span class="ui-text">対応</span> で実行ページへ進みます。</p>
+          <p><span class="step-code">2</span> <ins><span class="ui-text">AI前処理確認</span>：一覧の <span class="ui-text">対応</span> から実行ページを開きます。左のページ一覧で分類・順序を確認し、右の帳票ファイル一覧で所属を確認します。ページの並べ替え・削除、展示名の変更、新規分類ができます。<span class="ui-text">画像編集</span> から分割・マスキング・不正を確認し、<span class="ui-text">前処理完了</span> で閉じます。</ins></p>
+          <p>注意事項：…<ins>AI前処理確認は <span class="ui-text">前処理完了</span> で閉じ、ファイルは AI 前処理完了 となって OCR 抽出へ進みます。</ins></p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+</div>
+
+<footer class="edits-foot">
+  <strong>メモ</strong><br>
+  ・「本期対象外」と書かれている 4 か所（前処理ノード表・処理状態の説明・マイタスクの処理対象・マイタスクの注意事項）は、二期では必ず書き換えが必要です。<br>
+  ・新規に足す「二期追加機能」サブセクション（別ファイル <code>p2-proposal.html</code>）と内容が重複しないよう、こちらは<strong>既存文の更新だけ</strong>にしています。<br>
+  ・案件一覧には「関連影響」サブセクションがないため、2 件のみです。<br>
+  ・採用時は <code>index.html</code> へ差分を反映し、このファイルは削除または <code>.gitignore</code> へ追加してください。
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:,">
+<title>二期追加機能 組み込み案 — NeosAI IDP マニュアル</title>
+<link rel="stylesheet" href="common.css?v=local-i18n-3">
+<style>
+  /* 検討用プレビュー専用。index.html / common.css には影響しません。 */
+  html, body { height: auto; overflow: auto; }
+  .manual-shell { height: auto; align-items: flex-start; }
+  .toc-panel { position: sticky; top: 0; height: auto; max-height: 100vh; }
+  .manual-content { overflow: visible; }
+
+  .proposal-head {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 28px 32px 26px;
+    background: #0f2b3a;
+    color: #e8f4f8;
+  }
+  .proposal-head h1 { font-size: 22px; line-height: 1.5; margin-bottom: 8px; }
+  .proposal-head p { font-size: 13px; line-height: 1.85; color: #b9d5e1; margin: 4px 0; }
+  .proposal-head code {
+    background: rgba(255,255,255,.1); border-radius: 4px;
+    padding: 1px 6px; font-size: 12px;
+  }
+  .proposal-head .kicker {
+    display: inline-block; margin-bottom: 10px; padding: 2px 10px;
+    border: 1px solid #4ebcab; border-radius: 999px;
+    color: #8fe0d3; font-size: 11px; letter-spacing: .08em;
+  }
+  .proposal-head .cols {
+    display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 10px 28px; margin-top: 18px;
+  }
+  .proposal-head .cols div { font-size: 13px; line-height: 1.8; color: #cfe6ee; }
+  .proposal-head .cols strong { color: #fff; }
+
+  .plan-note {
+    margin: 0 0 18px;
+    padding: 12px 16px;
+    border: 1px dashed #b9d5e1;
+    border-radius: 8px;
+    background: #f4fafb;
+    color: #34506b;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .plan-note strong { color: #0f5f8f; }
+  .plan-note code {
+    background: #e6f3f6; border-radius: 4px;
+    padding: 1px 5px; font-size: 11px; color: #16627a;
+  }
+  .plan-note .tag {
+    display: inline-block; margin-right: 6px; padding: 0 7px;
+    border-radius: 4px; background: #0f5f8f; color: #fff;
+    font-size: 10px; letter-spacing: .04em; vertical-align: 1px;
+  }
+  .plan-gap {
+    display: inline-block; margin-left: 6px; padding: 0 7px;
+    border-radius: 4px; background: #fff3e0; color: #b54708;
+    font-size: 10px; border: 1px solid #f0c48a;
+  }
+
+  .figure-todo {
+    display: flex; flex-direction: column; gap: 6px;
+    align-items: flex-start; justify-content: center;
+    min-height: 150px; padding: 22px 24px;
+    border: 1px dashed #c3ccd8; border-radius: 10px;
+    background: repeating-linear-gradient(135deg, #fafcfe, #fafcfe 12px, #f3f7fa 12px, #f3f7fa 24px);
+    color: #5b6b7f; font-size: 13px;
+  }
+  .figure-todo strong { color: #b54708; font-size: 13px; }
+  .figure-todo em { font-style: normal; font-size: 11px; color: #8a97a8; }
+
+  .proposal-footer {
+    max-width: 1400px; margin: 0 auto; padding: 26px 32px 40px;
+    background: #0f2b3a; color: #b9d5e1; font-size: 12px; line-height: 1.9;
+  }
+  .proposal-footer strong { color: #fff; }
+  .proposal-footer code { background: rgba(255,255,255,.1); padding: 1px 6px; border-radius: 4px; }
+
+  .term-table td, .term-table th { font-size: 12px; }
+  .compare { display: flex; gap: 16px; flex-wrap: wrap; }
+  .compare > div { flex: 1 1 320px; min-width: 0; }
+  .compare h4 { margin: 0 0 6px; font-size: 13px; color: #0f5f8f; }
+  .compare .bad { border-left: 3px solid #d9534f; padding-left: 10px; }
+  .compare .good { border-left: 3px solid #4ebcab; padding-left: 10px; }
+  .compare p { margin: 4px 0; font-size: 12.5px; color: #445; }
+</style>
+</head>
+<body>
+
+<header class="proposal-head">
+  <span class="kicker">REVIEW ONLY / index.html は未変更</span>
+  <h1>二期追加機能の組み込み案</h1>
+  <p>本ファイルは提案用のプレビューです。<code>index.html</code> と <code>common.css</code> は変更していません。表示は現行マニュアルと同じ CSS を使っています。</p>
+  <div class="cols">
+    <div><strong>方針①</strong> 目次先頭の「二期追加機能」ショートカットは残し、飛び先を 10 項目の総表にする。</div>
+    <div><strong>方針②</strong> 既存メニューの末尾に「二期追加機能」サブセクションを足す（独立した二期章は作らない）。</div>
+    <div><strong>方針③</strong> 「利用量統計」だけは新規ページなので、システム設定の独立モジュールとして追加する。</div>
+    <div><strong>方針④</strong> 図は先に枠を用意し、未取得の 3 枚は <span style="color:#f0c48a">「図準備中」</span> のままにする。</div>
+  </div>
+</header>
+
+<div class="manual-shell">
+
+  <aside class="toc-panel" aria-label="目次（案）">
+    <div class="toc-title">目次（案）</div>
+    <nav>
+
+      <details class="toc-group" open>
+        <summary class="toc-parent">
+          <a href="#phase2-guide">二期追加機能<span class="badge phase2">NEW</span></a>
+          <span class="toc-caret" aria-hidden="true"></span>
+        </summary>
+        <a class="toc-child" href="#phase2-overview"><span class="toc-label">P2機能一覧</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+      </details>
+
+      <details class="toc-group" open>
+        <summary class="toc-parent">
+          <a href="#manual-home">総覧</a>
+          <span class="toc-caret" aria-hidden="true"></span>
+        </summary>
+        <a class="toc-child" href="#overview-system"><span class="toc-label">処理全体の流れ</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+        <a class="toc-child" href="#overview-roles"><span class="toc-label">ロール設定</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+        <a class="toc-child" href="#overview-modules"><span class="toc-label">機能モジュール</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+      </details>
+
+      <details class="toc-group" open>
+        <summary class="toc-parent">
+          <a href="#admin-guide">ルール設定モジュール</a>
+          <span class="toc-caret" aria-hidden="true"></span>
+        </summary>
+
+        <details class="toc-subgroup" open>
+          <summary class="toc-child">
+            <span class="toc-label"><a href="#admin-model-config">モデル設定</a></span>
+            <span class="toc-caret" aria-hidden="true"></span>
+          </summary>
+          <a class="toc-grandchild" href="#model-function">機能説明</a>
+          <a class="toc-grandchild" href="#model-operation">画面操作</a>
+          <a class="toc-grandchild" href="#model-impact">関連影響</a>
+        </details>
+
+        <details class="toc-subgroup" open>
+          <summary class="toc-child">
+            <span class="toc-label"><a href="#admin-api-config">API設定</a></span>
+            <span class="toc-caret" aria-hidden="true"></span>
+          </summary>
+          <a class="toc-grandchild" href="#api-function">機能説明</a>
+          <a class="toc-grandchild" href="#api-operation">画面操作</a>
+          <a class="toc-grandchild" href="#api-impact">関連影響</a>
+          <a class="toc-grandchild" href="#api-p2">二期追加機能 <span class="badge phase2">NEW</span></a>
+        </details>
+
+        <details class="toc-subgroup" open>
+          <summary class="toc-child">
+            <span class="toc-label"><a href="#admin-master-data-config">マスターデータ設定</a></span>
+            <span class="toc-caret" aria-hidden="true"></span>
+          </summary>
+          <a class="toc-grandchild" href="#master-function">機能説明</a>
+          <a class="toc-grandchild" href="#master-operation">画面操作</a>
+          <a class="toc-grandchild" href="#master-impact">関連影響</a>
+        </details>
+
+        <details class="toc-subgroup" open>
+          <summary class="toc-child">
+            <span class="toc-label"><a href="#admin-doctype-config">帳票タイプ設定</a></span>
+            <span class="toc-caret" aria-hidden="true"></span>
+          </summary>
+          <a class="toc-grandchild" href="#doctype-function">機能説明</a>
+          <a class="toc-grandchild" href="#doctype-operation">画面操作</a>
+          <a class="toc-grandchild" href="#doctype-impact">関連影響</a>
+          <a class="toc-grandchild" href="#doctype-p2">二期追加機能 <span class="badge phase2">NEW</span></a>
+        </details>
+
+        <details class="toc-subgroup" open>
+          <summary class="toc-child">
+            <span class="toc-label"><a href="#admin-scene-config">業務シーン設定</a></span>
+            <span class="toc-caret" aria-hidden="true"></span>
+          </summary>
+          <a class="toc-grandchild" href="#scene-function">機能説明</a>
+          <a class="toc-grandchild" href="#scene-operation">画面操作</a>
+          <a class="toc-grandchild" href="#scene-impact">関連影響</a>
+          <a class="toc-grandchild" href="#scene-p2">二期追加機能 <span class="badge phase2">NEW</span></a>
+        </details>
+
+        <details class="toc-subgroup" open>
+          <summary class="toc-child">
+            <span class="toc-label"><a href="#admin-data-mapping-config">データマッピング設定</a></span>
+            <span class="toc-caret" aria-hidden="true"></span>
+          </summary>
+          <a class="toc-grandchild" href="#data-mapping-function">機能説明</a>
+          <a class="toc-grandchild" href="#data-mapping-operation">画面操作</a>
+          <a class="toc-grandchild" href="#data-mapping-impact">関連影響</a>
+        </details>
+
+        <details class="toc-subgroup" open>
+          <summary class="toc-child">
+            <span class="toc-label"><a href="#admin-ai-verification-config">AI検証設定</a></span>
+            <span class="toc-caret" aria-hidden="true"></span>
+          </summary>
+          <a class="toc-grandchild" href="#ai-verification-function">機能説明</a>
+          <a class="toc-grandchild" href="#ai-verification-operation">画面操作</a>
+          <a class="toc-grandchild" href="#ai-verification-impact">関連影響</a>
+        </details>
+      </details>
+
+      <details class="toc-group" open>
+        <summary class="toc-parent">
+          <a href="#operator-guide">業務操作モジュール</a>
+          <span class="toc-caret" aria-hidden="true"></span>
+        </summary>
+
+        <details class="toc-subgroup" open>
+          <summary class="toc-child">
+            <span class="toc-label"><a href="#operator-upload-module">新規アップロード</a></span>
+            <span class="toc-caret" aria-hidden="true"></span>
+          </summary>
+          <a class="toc-grandchild" href="#upload-function">機能説明</a>
+          <a class="toc-grandchild" href="#upload-operation">画面操作</a>
+        </details>
+
+        <details class="toc-subgroup" open>
+          <summary class="toc-child">
+            <span class="toc-label"><a href="#operator-case-module">案件一覧</a></span>
+            <span class="toc-caret" aria-hidden="true"></span>
+          </summary>
+          <a class="toc-grandchild" href="#case-function">機能説明</a>
+          <a class="toc-grandchild" href="#case-operation">画面操作</a>
+          <a class="toc-grandchild" href="#case-p2">二期追加機能 <span class="badge phase2">NEW</span></a>
+        </details>
+
+        <details class="toc-subgroup" open>
+          <summary class="toc-child">
+            <span class="toc-label"><a href="#operator-task-module">マイタスク</a></span>
+            <span class="toc-caret" aria-hidden="true"></span>
+          </summary>
+          <a class="toc-grandchild" href="#task-function">機能説明</a>
+          <a class="toc-grandchild" href="#task-operation">画面操作</a>
+          <a class="toc-grandchild" href="#task-p2">二期追加機能 <span class="badge phase2">NEW</span></a>
+        </details>
+      </details>
+
+      <details class="toc-group" open>
+        <summary class="toc-parent">
+          <a href="#system-settings">システム設定モジュール</a>
+          <span class="toc-caret" aria-hidden="true"></span>
+        </summary>
+        <a class="toc-child" href="#system-login"><span class="toc-label">ログインとアカウント</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+        <a class="toc-child" href="#system-user-management"><span class="toc-label">ユーザー管理</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+        <a class="toc-child" href="#system-role-management"><span class="toc-label">権限管理</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+        <a class="toc-child" href="#system-security-settings"><span class="toc-label">セキュリティ設定</span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+        <a class="toc-child" href="#system-usage-stats"><span class="toc-label">利用量統計 <span class="badge phase2">NEW</span></span><span class="toc-caret toc-caret-static" aria-hidden="true"></span></a>
+      </details>
+
+    </nav>
+  </aside>
+
+  <main class="manual-content">
+
+    <div class="plan-note">
+      <span class="tag">構成</span>
+      目次の先頭に「二期追加機能」ショートカットを残し、本文の先頭に 10 項目の総表を置きます。各項目から該当メニューの「二期追加機能」へ飛びます。<strong>既存の 4 章・3 層目次は変更しません。</strong>
+    </div>
+
+    <section class="chapter-page" id="phase2-guide">
+      <p class="chapter-label">二期追加機能</p>
+      <h2>二期追加機能</h2>
+      <p>二期で追加・変更される機能の一覧です。各機能の詳しい設定方法と画面は、該当メニューの「二期追加機能」を参照してください。</p>
+      <p>設定端の変更（API設定・帳票タイプ設定・業務シーン設定）と、操作端の変更（案件一覧・マイタスク）、システム設定の追加（利用量統計）に分かれます。</p>
+    </section>
+
+    <section class="section-card" id="phase2-overview">
+      <p class="section-label">二期追加機能</p>
+      <h2>P2機能一覧</h2>
+      <p>二期で追加・変更される機能は全 10 項目です。機能名をクリックすると、該当メニューの「二期追加機能」へ移動します。</p>
+      <div class="table-scroll">
+        <table class="info-table phase2-table">
+          <thead>
+            <tr>
+              <th>番号</th>
+              <th>分類</th>
+              <th>機能名</th>
+              <th>機能定義</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>API設定</td>
+              <td><a href="#api-p2" class="func-jump">Open API・AI分類</a></td>
+              <td>1 ファイルの帳票タイプだけを判定する非同期 API です。案件の作成やワークフローの起動は行いません。</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>帳票タイプ設定</td>
+              <td><a href="#doctype-p2" class="func-jump">Step2 確認要否（HITL）</a></td>
+              <td>フィールド／列単位で人工確認の対象を切り替えます。OFF でも必須チェックと正常値検証は適用されます。</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>帳票タイプ設定</td>
+              <td><a href="#doctype-p2" class="func-jump">Step2 マスキング</a></td>
+              <td>フィールド単位でマスキングし、下流の処理ルール・効果テストから除外します。</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>帳票タイプ設定</td>
+              <td><a href="#doctype-p2" class="func-jump">Step3 正常値範囲</a></td>
+              <td>範囲内／比較／列挙で正常値を判定し、範囲外を要確認にします。</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>業務シーン設定</td>
+              <td><a href="#scene-p2" class="func-jump">Step2 画像不正検知</a></td>
+              <td>前処理ノードで PS／AI生成／帳票特徴／筆跡の 4 項目を個別に判定します。不通過は人工確認へ回します。</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>業務シーン設定</td>
+              <td><a href="#scene-p2" class="func-jump">Step2 敏感情報検出（脱敏）</a></td>
+              <td>前処理ノードで対象帳票にマスキングを実行します。</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>案件一覧</td>
+              <td><a href="#case-p2" class="func-jump">未集約ファイル 双キュー</a></td>
+              <td>要確認／無視可に分割し、関連失敗理由で自動振り分けします。関連案件ID列を追加します。</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>マイタスク</td>
+              <td><a href="#task-p2" class="func-jump">AI前処理確認</a></td>
+              <td>AI 前処理のあとの人工確認タスクです。分類・分割・整列・画像不正・敏感情報を確認します。</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>マイタスク</td>
+              <td><a href="#task-p2" class="func-jump">人工確認ルール（七項目）</a></td>
+              <td>読取モデル設定の確認条件を 7 項目に拡張します。HITL が ON のフィールドだけが対象です。</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>システム設定</td>
+              <td><a href="#system-usage-stats" class="func-jump">利用量統計</a></td>
+              <td>7 つの課金ノードの枚数と token を、3 タブと CSV エクスポートで確認します。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============================ API設定 ============================ -->
+    <div class="plan-note">
+      <span class="tag">挿入位置</span>
+      <code>#admin-api-config</code> 内の <code>#api-impact</code> の直後に <code>id="api-p2"</code>。<br>
+      <span class="tag">図</span> 画面キャプチャは未取得。
+      <span class="plan-gap">要補図</span> API URL タブの末尾 2 行（AI分類／AI分類タスク照会）。
+    </div>
+    <section class="section-card" id="admin-api-config">
+      <p class="section-label">ルール設定モジュール</p>
+      <h2>API設定</h2>
+      <section class="manual-subsection" id="api-p2">
+        <h3>二期追加機能 <span class="badge phase2">NEW</span></h3>
+        <p>二期では、開放プラットフォームに「AI分類」が追加されます。1 ファイルの帳票タイプだけを判定し、案件の作成やワークフローの起動は行いません。</p>
+
+        <table class="info-table">
+          <thead><tr><th>追加</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="ui-text">AI分類（送信）</span></td>
+              <td>業務シーンと 1 ファイルを送信し、分類タスク ID を受け取ります。受付は非同期です。</td>
+            </tr>
+            <tr>
+              <td><span class="ui-text">AI分類タスク照会</span></td>
+              <td>タスク ID を指定して、状態（処理中／成功／失敗）と結果を取得します。成功時は帳票タイプと信頼度が返ります。</td>
+            </tr>
+            <tr>
+              <td><span class="ui-text">API URL</span> タブ</td>
+              <td>既存のエンドポイント一覧の末尾に、上記 2 件が読み取り専用で追加されます。</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>呼び出しの流れ</h4>
+        <div class="operation-step">
+          <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">AI分類（送信）</span> に業務シーンとファイルを送り、分類タスク ID を受け取ります。</span></p>
+        </div>
+        <div class="operation-step">
+          <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">AI分類タスク照会</span> を 1〜3 秒間隔で呼び出します。処理中の間は照会を続けます。</span></p>
+        </div>
+        <div class="operation-step">
+          <p><span class="step-code">3</span><span class="step-text">成功なら帳票タイプと信頼度、失敗なら理由を取得して終了します。同じタスク ID を再度照会しても、分類は再実行されません。</span></p>
+          <figure class="screenshot-figure">
+            <div class="figure-todo">
+              <strong>図準備中</strong>
+              <span>API設定 › API URL タブ（AI分類の 2 行）</span>
+              <em>assets/api-p2-ai-classification.png</em>
+            </div>
+            <figcaption>API URL タブの末尾に 2 件が追加されます。</figcaption>
+          </figure>
+        </div>
+
+        <div class="notice info">
+          <strong>注意事項</strong>
+          1 リクエストにつき 1 ファイル、50MB までです。形式は PDF、JPG、JPEG、PNG、TIF、TIFF に対応します。業務シーンは公開済みのものだけを指定できます。120 秒を超えると処理タイムアウトとして失敗します。結果のコールバック通知はなく、分類結果は案件や未集約ファイルには反映されません。
+        </div>
+      </section>
+    </section>
+
+    <!-- ============================ 帳票タイプ設定 ============================ -->
+    <div class="plan-note">
+      <span class="tag">挿入位置</span>
+      <code>#admin-doctype-config</code> 内の <code>#doctype-impact</code> の直後に <code>id="doctype-p2"</code>。<br>
+      既存の Step1〜Step5 の本文は残し、<strong>変更点だけを Step 単位でまとめます</strong>（既存手順を書き換えるのではなく、差分を読めるようにする）。<br>
+      <span class="tag">図</span> 8 枚配置済み。
+    </div>
+    <section class="section-card" id="admin-doctype-config">
+      <p class="section-label">ルール設定モジュール</p>
+      <h2>帳票タイプ設定</h2>
+      <section class="manual-subsection" id="doctype-p2">
+        <h3>二期追加機能 <span class="badge phase2">NEW</span></h3>
+        <p>二期では、Step2 のフィールド表に <span class="ui-text">HITL</span> と <span class="ui-text">マスク</span> が追加され、Step3 で正常値範囲を設定できるようになります。</p>
+
+        <table class="info-table">
+          <thead><tr><th>Step</th><th>追加・変更</th><th>主な画面</th></tr></thead>
+          <tbody>
+            <tr><td>Step2</td><td>フィールド単位の <span class="ui-text">HITL</span>（確認要否）</td><td>フィールド表</td></tr>
+            <tr><td>Step2</td><td>フィールド単位の <span class="ui-text">マスク</span></td><td>フィールド表</td></tr>
+            <tr><td>Step3</td><td><span class="ui-text">正常条件</span>（正常値範囲）</td><td><span class="ui-text">処理ルール設定</span></td></tr>
+          </tbody>
+        </table>
+
+        <h4>Step2 確認要否（HITL）</h4>
+        <p>フィールド／列ごとに <span class="ui-text">HITL</span> スイッチが追加されます。既定は ON です。ON の項目だけが人工確認の対象になり、OFF の項目は確認画面に表示されません。ただし、必須チェックと正常値検証は OFF でも適用されます。</p>
+        <figure class="screenshot-figure">
+          <div class="shot-wrap">
+            <a class="shot-link" href="assets/doctype-p2-step2-hitl.png?v=1" data-lightbox="manual-shots" aria-label="HITL 列を拡大表示">
+              <img src="assets/doctype-p2-step2-hitl.png?v=1" alt="HITL 列">
+            </a>
+          </div>
+          <figcaption>フィールド表の右端に「HITL」列があります。</figcaption>
+        </figure>
+
+        <h4>Step2 マスキング</h4>
+        <p>テキスト読取のフィールド表に <span class="ui-text">マスク</span> スイッチが追加されます。既定は OFF です。ON にしたフィールドは、Step3 処理ルールと Step5 効果テストに表示されません。マスタ照合やテキスト置換の対象からも外れます。</p>
+        <figure class="screenshot-figure">
+          <div class="shot-wrap">
+            <a class="shot-link" href="assets/doctype-p2-step2-mask.png?v=1" data-lightbox="manual-shots" aria-label="マスク列を拡大表示">
+              <img src="assets/doctype-p2-step2-mask.png?v=1" alt="マスク列">
+            </a>
+          </div>
+          <figcaption>「マスク」列が「HITL」列の左に追加されます。</figcaption>
+        </figure>
+
+        <h4>Step3 正常値範囲</h4>
+        <p><span class="ui-text">処理ルール設定</span> の <span class="ui-text">正常条件</span> 列で、OCR 値が正常値の範囲に入っているかを判定します。「範囲内」「&lt;」「≤」「&gt;」「≥」「列挙」から選び、処理ルールを適用した後の値を比較します。数値の閾値は、プロンプトで指定した抽出単位と同じ単位で入力します。マスタ照合とテキスト置換には正常条件を設定しません。範囲を外れた値は「正常値範囲を超えています」として人工確認の対象になります。</p>
+        <figure class="screenshot-figure">
+          <div class="shot-wrap">
+            <a class="shot-link" href="assets/doctype-p2-step3-range.png?v=1" data-lightbox="manual-shots" aria-label="処理ルール設定の正常条件を拡大表示">
+              <img src="assets/doctype-p2-step3-range.png?v=1" alt="処理ルール設定の正常条件">
+            </a>
+          </div>
+          <figcaption>「処理ルール設定」画面の「正常条件」列で範囲を指定します。</figcaption>
+        </figure>
+
+      </section>
+    </section>
+
+    <!-- ============================ 業務シーン設定 ============================ -->
+    <div class="plan-note">
+      <span class="tag">挿入位置</span>
+      <code>#admin-scene-config</code> 内の <code>#scene-impact</code> の直後に <code>id="scene-p2"</code>。<br>
+      <span class="tag">図</span> 前処理ノードの 1 枚のみ。範囲選択モード・メール通知・言語切替・Step1 は今回の対象外のため削除。
+    </div>
+    <section class="section-card" id="admin-scene-config">
+      <p class="section-label">ルール設定モジュール</p>
+      <h2>業務シーン設定</h2>
+      <section class="manual-subsection" id="scene-p2">
+        <h3>二期追加機能 <span class="badge phase2">NEW</span></h3>
+        <p>二期では、前処理ノードに <strong>画像不正検知</strong> と <strong>敏感情報検出（脱敏）</strong> が追加されます。画像回転・画像補正・画像整列は一期からある機能で、変更はありません。</p>
+
+        <table class="info-table">
+          <thead><tr><th>追加</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="ui-text">画像不正検知</span></td>
+              <td>PS検出／AI生成検出／帳票特徴検出／筆跡検出の 4 項目を個別に ON/OFF できます。不通過時は不正タイプを返して人工確認へ回します。</td>
+            </tr>
+            <tr>
+              <td><span class="ui-text">敏感情報検出</span></td>
+              <td>対象帳票にマスキングを実行します。フィールド単位の範囲は、帳票タイプ設定の Step2 マスクで決まります。</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Step2 前処理ノード（画像不正検知・脱敏）</h4>
+        <figure class="screenshot-figure">
+          <div class="shot-wrap">
+            <a class="shot-link" href="assets/scene-p2-preprocess.png?v=1" data-lightbox="manual-shots" aria-label="前処理ノードの設定パネルを拡大表示">
+              <img src="assets/scene-p2-preprocess.png?v=1" alt="前処理ノードの設定パネル">
+            </a>
+          </div>
+          <figcaption>前処理ノードの設定パネル。画像不正検知の 4 項目と対象帳票を個別に選びます。</figcaption>
+        </figure>
+
+        <p>画像不正検知は、モジュール全体のスイッチと、PS検出／AI生成検出／帳票特徴検出／筆跡検出の 4 つの個別スイッチで構成されます。各項目は対象帳票を個別に選択でき、実行時は 4 項目が並列で動作します。1 つでも不通過なら不正タイプを返し、AI前処理確認に回します。</p>
+        <p>敏感情報検出（脱敏）は、画像回転・補正・整列が終わったあとに対象帳票へマスキングを実行します。フィールド単位の範囲は、帳票タイプ設定の Step2 マスクで決まります。</p>
+      </section>
+    </section>
+
+    <!-- ============================ 案件一覧 ============================ -->
+    <div class="plan-note">
+      <span class="tag">挿入位置</span>
+      <code>#operator-case-module</code> 内の <code>#case-operation</code> の直後に <code>id="case-p2"</code>。<br>
+      <span class="tag">図</span> 画面キャプチャは未取得。
+      <span class="plan-gap">要補図</span> 未集約ファイルの「要確認／無視可」サブタグ。
+    </div>
+    <section class="section-card" id="operator-case-module">
+      <p class="section-label">業務操作モジュール</p>
+      <h2>案件一覧</h2>
+      <section class="manual-subsection" id="case-p2">
+        <h3>二期追加機能 <span class="badge phase2">NEW</span></h3>
+        <p>二期では、<span class="ui-text">未集約ファイル</span> が <span class="ui-text">要確認</span> と <span class="ui-text">無視可</span> の 2 つのサブタグに分かれ、関連失敗理由に応じて自動で振り分けられます。</p>
+
+        <table class="info-table">
+          <thead><tr><th>サブタグ</th><th>対象</th><th>できること</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="ui-text">要確認</span></td>
+              <td>分類失敗以外の未集約ファイル（案件不一致、処理タイムアウト、複数案件候補、関連付け中など）</td>
+              <td><span class="ui-text">実行案件集約</span>、<span class="ui-text">手動校准</span>、プレビュー、削除</td>
+            </tr>
+            <tr>
+              <td><span class="ui-text">無視可</span></td>
+              <td>関連失敗理由が「分類失敗」のファイル</td>
+              <td><span class="ui-text">手動校准</span>、プレビュー、削除</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>振り分けと関連案件ID</h4>
+        <p>同じファイルの関連失敗理由が変わると、自動でもう一方のサブタグへ移動します。<span class="ui-text">無視可</span> のファイルは <span class="ui-text">実行案件集約</span> の対象外です。</p>
+        <p>一覧には <span class="ui-text">関連案件ID</span> 列が追加されます。同じソースファイル内で既に案件に紐づいたファイルの案件 ID を参照表示するもので、現在の行が紐づいたことを意味しません。紐づく案件がない場合は空欄です。</p>
+
+        <h4>無視可の保持期間</h4>
+        <p><span class="ui-text">無視可</span> のファイルは 7 日を過ぎると一覧から論理的に除外されます。元の影像は削除されません。</p>
+
+        <figure class="screenshot-figure">
+          <div class="figure-todo">
+            <strong>図準備中</strong>
+            <span>案件一覧 › 未集約ファイル（要確認／無視可）</span>
+            <em>assets/case-p2-queues.png</em>
+          </div>
+          <figcaption>未集約ファイルのタブ内でサブタグを切り替えます。</figcaption>
+        </figure>
+      </section>
+    </section>
+
+    <!-- ============================ マイタスク ============================ -->
+    <div class="plan-note">
+      <span class="tag">挿入位置</span>
+      <code>#operator-task-module</code> 内の <code>#task-operation</code> の直後に <code>id="task-p2"</code>。<br>
+      <span class="tag">図</span> 一覧・実行ページ・拡大・7 項目ルールの 4 枚は配置済み。<span class="plan-gap">要補図</span> 画像編集ドロワー（分割／マスキング／不正）。
+    </div>
+    <section class="section-card" id="operator-task-module">
+      <p class="section-label">業務操作モジュール</p>
+      <h2>マイタスク</h2>
+      <section class="manual-subsection" id="task-p2">
+        <h3>二期追加機能 <span class="badge phase2">NEW</span></h3>
+        <p>二期では、AI 前処理のあとに「<span class="ui-text">AI前処理確認</span>」タスクが追加され、人工確認ルールも 7 項目に拡張されます。</p>
+
+        <h4>AI前処理確認タスクの発生条件</h4>
+        <p>いずれかに該当するとタスクが起案され、ファイルの状態が「前処理確認中」になります。該当しない場合はタスクを作らず、ワークフローは先へ進みます。</p>
+        <table class="info-table">
+          <thead><tr><th>ワークフロー段階</th><th>対象処理</th><th>発生条件</th><th>実行ページのタグ</th></tr></thead>
+          <tbody>
+            <tr><td>案件集約</td><td>ファイル分類</td><td>分類の信頼度が Step1 の閾値未満</td><td><span class="ui-text">分類</span></td></tr>
+            <tr><td>案件集約</td><td>画像分割</td><td>分割の信頼度が閾値未満</td><td><span class="ui-text">分割</span></td></tr>
+            <tr><td>AI前処理</td><td>画像整列</td><td>整列の信頼度が閾値未満、または整列キーが未取得</td><td><span class="ui-text">整列</span></td></tr>
+            <tr><td>AI前処理</td><td>画像不正検知</td><td>判定が不通過</td><td><span class="ui-text">画像不正</span></td></tr>
+            <tr><td>AI前処理</td><td>敏感情報検出</td><td>サブ機能が有効で、検出が完了</td><td><span class="ui-text">敏感情報</span></td></tr>
+          </tbody>
+        </table>
+
+        <h4>実行ページ</h4>
+        <p>左に論理ページのサムネイル、右に帳票ファイルの一覧を表示します。帳票ファイルを選ぶと、左はそのファイルのページだけに絞り込まれます。</p>
+        <ul>
+          <li>並べ替え：ファイル内のページ順をドラッグで変更します。</li>
+          <li>拡大：80% 幅のドロワーで表示します。回転はプレビューのみです。</li>
+          <li>削除：誤分割したページを削除します。主帳票の最後の 1 ページは削除できません。</li>
+          <li>展示名：サムネイル下のプルダウンで所属ファイルを変更します。</li>
+          <li>新規分類：未分類のページを新しい帳票ファイルにまとめます。</li>
+          <li>自動採番：同じ帳票タイプが複数ある場合、「診療明細書1」「診療明細書2」のように連番を付けます。</li>
+        </ul>
+        <figure class="screenshot-figure">
+          <div class="shot-wrap shot-wrap-wide">
+            <a class="shot-link" href="assets/task-p2-review.png?v=1" data-lightbox="manual-shots" aria-label="AI前処理確認の実行ページを拡大表示">
+              <img src="assets/task-p2-review.png?v=1" alt="AI前処理確認の実行ページ">
+            </a>
+          </div>
+          <figcaption>左にページ、右に帳票ファイル。未確認のページには赤い枠とタグが付きます。</figcaption>
+        </figure>
+        <figure class="screenshot-figure">
+          <div class="shot-wrap shot-wrap-wide">
+            <a class="shot-link" href="assets/task-p2-enlarge.png?v=1" data-lightbox="manual-shots" aria-label="拡大表示のドロワーを拡大表示">
+              <img src="assets/task-p2-enlarge.png?v=1" alt="拡大表示のドロワー">
+            </a>
+          </div>
+          <figcaption>サムネイルをクリックすると、右から拡大表示のドロワーが開きます。</figcaption>
+        </figure>
+
+        <h4>画像編集ドロワー</h4>
+        <p>サムネイルの「画像編集」から、分割・マスキング・不正の 3 タブを開きます。分割は診療明細書、不正は診断書と診療明細書が対象です。分割では親ページ配下のサブページをまとめて確認・確定できます。マスキングでは黒塗り領域を追加・調整します。不正では命中したサブ分類ごとに枠を確認し、必要に応じて再検出します。</p>
+        <figure class="screenshot-figure">
+          <div class="figure-todo">
+            <strong>図準備中</strong>
+            <span>画像編集ドロワー（分割／マスキング／不正）</span>
+            <em>assets/task-p2-drawer.png</em>
+          </div>
+          <figcaption>3 タブを切り替えて、分割・マスキング・不正を確認します。</figcaption>
+        </figure>
+
+        <h4>人工確認ルール（七項目）</h4>
+        <p><span class="ui-text">読取モデル設定</span> のポップアップで、人工確認の条件を 7 項目から選べます。<span class="ui-text">HITL</span> が ON のフィールドだけが対象です。既定では ⑥ と ⑦ にチェックが入っています。</p>
+        <table class="info-table">
+          <thead><tr><th>番号</th><th>条件</th><th>対象</th></tr></thead>
+          <tbody>
+            <tr><td>①</td><td>信頼度が閾値未満</td><td>OCR／OCR 補完</td></tr>
+            <tr><td>②</td><td>複数モデルの結果が不一致</td><td>OCR</td></tr>
+            <tr><td>③</td><td>マスタ照合の類似度が低い</td><td>マスタ照合</td></tr>
+            <tr><td>④</td><td>マスタ照合の結果が空</td><td>マスタ照合</td></tr>
+            <tr><td>⑤</td><td>マスタ照合の信頼度が低い</td><td>マスタ照合</td></tr>
+            <tr><td>⑥</td><td>正常値範囲を超えています</td><td>QR 値を含む全経路</td></tr>
+            <tr><td>⑦</td><td>低信頼度かつ正常値範囲を超えています</td><td>OCR／OCR 補完</td></tr>
+          </tbody>
+        </table>
+        <figure class="screenshot-figure">
+          <div class="shot-wrap">
+            <a class="shot-link" href="assets/task-p2-review-rules.png?v=1" data-lightbox="manual-shots" aria-label="人工確認ルールの 7 項目を拡大表示">
+              <img src="assets/task-p2-review-rules.png?v=1" alt="人工確認ルールの 7 項目">
+            </a>
+          </div>
+          <figcaption>「人工確認ルール」に 7 項目が表示されます。</figcaption>
+        </figure>
+
+        <h4>前処理完了の条件</h4>
+        <table class="info-table">
+          <thead><tr><th>条件</th><th>可否</th></tr></thead>
+          <tbody>
+            <tr><td>対象案件に論理ページが 1 枚もない</td><td>不可</td></tr>
+            <tr><td>未分類のページがある</td><td>不可（未分類のページがあります）</td></tr>
+            <tr><td>要確認のページが残っている</td><td>不可（要確認のページが {count} 件未確認です）</td></tr>
+            <tr><td>すべて確認済み</td><td>可</td></tr>
+          </tbody>
+        </table>
+
+        <h4>タスク一覧での確認</h4>
+        <p>マイタスクの一覧では <span class="ui-text">タスク種別</span> に <span class="ui-text">AI前処理確認</span> が追加され、種別で絞り込めます。操作列の <span class="ui-text">対応</span> から実行ページを開きます。処理済みの行は参照のみになります。</p>
+        <figure class="screenshot-figure">
+          <div class="shot-wrap shot-wrap-wide">
+            <a class="shot-link" href="assets/task-p2-list.png?v=1" data-lightbox="manual-shots" aria-label="マイタスク一覧の AI前処理確認 を拡大表示">
+              <img src="assets/task-p2-list.png?v=1" alt="マイタスク一覧の AI前処理確認">
+            </a>
+          </div>
+          <figcaption>タスク種別で「AI前処理確認」を選ぶと、該当タスクだけが表示されます。</figcaption>
+        </figure>
+      </section>
+    </section>
+
+    <!-- ============================ 利用量統計 ============================ -->
+    <div class="plan-note">
+      <span class="tag">新規モジュール</span>
+      システム設定の <code>#system-security-settings</code> の後に <code>&lt;section class="section-card" id="system-usage-stats"&gt;</code> を新設（画面のサイドバー順に合わせて末尾）。目次は「セキュリティ設定」の次。<br>
+      <span class="tag">図</span> 利用量一覧・実行履歴・モデル呼び出し明細の 3 枚を配置済み。
+    </div>
+    <section class="section-card" id="system-usage-stats">
+      <p class="section-label">システム設定モジュール</p>
+      <h2>利用量統計</h2>
+      <p>二期では、システム設定に「利用量統計」が追加されます。7 つの課金ノードの帳票枚数と、大模型の token 消費を確認できます。</p>
+
+      <section class="manual-subsection" id="usage-function">
+        <h3>機能説明</h3>
+        <p>案件の処理で課金対象になるノードを 7 種類に分け、処理が成功した分だけを集計します。</p>
+        <table class="info-table">
+          <thead><tr><th>課金ノード</th><th>単位</th><th>計上の条件</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ui-text">案件集約</span></td><td>ファイル</td><td>処理が成功したとき</td></tr>
+            <tr><td><span class="ui-text">AI前処理</span></td><td>ファイル</td><td>回転・補正・整列などの通常の前処理が完了したとき（画像不正・敏感情報は含みません）</td></tr>
+            <tr><td><span class="ui-text">OCR抽出</span></td><td>ファイル</td><td>処理が成功したとき</td></tr>
+            <tr><td><span class="ui-text">データマッピング</span></td><td>案件</td><td>成功し、案件内のパラメータを実際に参照したファイル</td></tr>
+            <tr><td><span class="ui-text">AI検証</span></td><td>案件</td><td>データマッピングと同じ</td></tr>
+            <tr><td><span class="ui-text">画像不正検出</span></td><td>ファイル</td><td>当該実行で有効かつ完了したとき</td></tr>
+            <tr><td><span class="ui-text">敏感情報検出</span></td><td>ファイル</td><td>画像不正検出と同じ</td></tr>
+          </tbody>
+        </table>
+        <p>失敗した実行は課金されません。同じ案件・ファイル・ノードの組み合わせは 1 件にまとめ、枚数が増えた場合だけ更新します。</p>
+      </section>
+
+      <section class="manual-subsection" id="usage-operation">
+        <h3>画面操作</h3>
+        <div class="operation-step">
+          <p><span class="step-code">1</span><span class="step-text"><span class="ui-text">システム設定</span> → <span class="ui-text">利用量統計</span> を開きます。</span></p>
+          <figure class="screenshot-figure">
+            <div class="shot-wrap shot-wrap-wide">
+              <a class="shot-link" href="assets/usage-p2-overview.png?v=1" data-lightbox="manual-shots" aria-label="利用量統計の画面を拡大表示">
+                <img src="assets/usage-p2-overview.png?v=1" alt="利用量統計の画面">
+              </a>
+            </div>
+            <figcaption>上部に 3 つのタブ、その下にノード別の枚数カードが並びます。</figcaption>
+          </figure>
+        </div>
+        <div class="operation-step">
+          <p><span class="step-code">2</span><span class="step-text"><span class="ui-text">利用量一覧</span>、<span class="ui-text">実行履歴</span>、<span class="ui-text">モデル呼び出し明細</span> のタブを切り替えます。期間・案件ID・ファイル名・処理ノードで絞り込めます。</span></p>
+          <figure class="screenshot-figure">
+            <div class="shot-wrap shot-wrap-wide">
+              <a class="shot-link" href="assets/usage-p2-execution.png?v=1" data-lightbox="manual-shots" aria-label="実行履歴タブを拡大表示">
+                <img src="assets/usage-p2-execution.png?v=1" alt="実行履歴タブ">
+              </a>
+            </div>
+            <figcaption>実行履歴では、実行結果と集計対象を確認できます。</figcaption>
+          </figure>
+        </div>
+        <div class="operation-step">
+          <p><span class="step-code">3</span><span class="step-text"><span class="ui-text">モデル呼び出し明細</span> タブで、ノード種別ごとの入力・出力 token を確認します。</span></p>
+          <figure class="screenshot-figure">
+            <div class="shot-wrap shot-wrap-wide">
+              <a class="shot-link" href="assets/usage-p2-model-calls.png?v=1" data-lightbox="manual-shots" aria-label="モデル呼び出し明細タブを拡大表示">
+                <img src="assets/usage-p2-model-calls.png?v=1" alt="モデル呼び出し明細タブ">
+              </a>
+            </div>
+            <figcaption>入力トークン・出力トークン・呼び出し元・応答日時を確認できます。</figcaption>
+          </figure>
+        </div>
+        <div class="operation-step">
+          <p><span class="step-code">4</span><span class="step-text"><span class="ui-text">エクスポート</span> をクリックすると、現在の絞り込み条件で CSV を出力します。</span></p>
+        </div>
+      </section>
+
+      <section class="manual-subsection" id="usage-impact">
+        <h3>関連影響</h3>
+        <table class="info-table">
+          <thead><tr><th>タブ</th><th>内容</th><th>主な列</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ui-text">利用量一覧</span></td><td>課金単位ごとに 1 行</td><td>案件ID、業務シーン、ファイル名、帳票枚数、処理ノード、処理開始日時、処理完了日時</td></tr>
+            <tr><td><span class="ui-text">実行履歴</span></td><td>実行ごとに 1 行（失敗も含む）</td><td>実行結果、集計対象、帳票枚数、処理開始日時、処理完了日時</td></tr>
+            <tr><td><span class="ui-text">モデル呼び出し明細</span></td><td>大模型の token 消費</td><td>ノード種別、使用モデル、入力トークン、出力トークン、呼び出し元、呼び出し開始日時、モデル応答日時</td></tr>
+          </tbody>
+        </table>
+        <div class="notice info">
+          <strong>注意事項</strong>
+          画像不正検出と敏感情報検出は AI前処理の子機能ですが、別の課金ノードとして表示されます。モデル呼び出し明細はファイルとは紐づきません。AI アシストによる呼び出しは案件ID が「—」になります。再実行しても、枚数が増えない限り利用量一覧は増えません。各タブの CSV は現在の絞り込み条件で、ページングに関係なく全件を出力します。
+        </div>
+      </section>
+    </section>
+
+    <div style="height:40px"></div>
+
+  </main>
+</div>
+
+<footer class="proposal-footer">
+  <strong>次のステップ</strong><br>
+  1. この案でよければ、<code>index.html</code> に「目次 4 つ目の子 + 各モジュール末尾のサブセクション + 利用量統計モジュール」を追加します。<br>
+  2. 未取得の図は 3 枚：<code>case-p2-queues</code>、<code>api-p2-ai-classification</code>、<code>task-p2-drawer</code>。<br>
+  3. 中文・英文の翻訳は、日本語の文言が固まってから <code>manual-copy-to-translate.json</code> に追記します。<br>
+  ※ 本ファイルは検討用です。採用時に <code>manual/</code> から削除するか、<code>.gitignore</code> に追加してください。
+</footer>
+
+</body>
+</html>
