@@ -470,15 +470,15 @@
           </section>
                 <section class="manual-subsection" id="p2-model" data-page-node-id="iYaDWqitoY932NHah0pRbH">
           <h3 data-page-node-id="XoI2C2WBgbJuRXxA0eA6zX">P2追加機能 <span class="badge phase2" data-page-node-id="StCgP0dBJEdojJ1DjOnklX">NEW</span></h3>
-          <p data-page-node-id="U0XRqOjgSCFFxCJ6Sunl4M">P2では、<span class="ui-text" data-page-node-id="Mdb4bh1DGi76Yo8AB1rkdX">API 接続</span> に <span class="ui-text" data-page-node-id="FH43YpCz60JiKyiLrwfBT0">シンキングレベル</span>（思考程度）が追加されます。プロバイダごとに推論の深さを指定でき、後続の大模型呼び出しに反映されます。</p>
+          <p data-page-node-id="U0XRqOjgSCFFxCJ6Sunl4M">P2では、<span class="ui-text" data-page-node-id="Mdb4bh1DGi76Yo8AB1rkdX">API 接続</span> に <span class="ui-text" data-page-node-id="FH43YpCz60JiKyiLrwfBT0">シンキングレベル</span>（思考程度）が追加されます。プロバイダとモデルが対応している場合のみ推論の深さを指定でき、後続の大模型呼び出しに反映されます。</p>
 
           <h4 data-page-node-id="6amahXtxdE0j39HDCxylwL">シンキングレベル（思考程度）</h4>
           <table class="info-table" data-page-node-id="JUDmJE5Zhiyt3GMUICEMof">
             <thead data-page-node-id="WpVHrvIhuGL3pPJOCUi1v7"><tr data-page-node-id="aeEPBpuexAiLm5hUP9yz3v"><th data-page-node-id="Kp9Hd0ACTE5BFE1gWtletm">項目</th><th data-page-node-id="3fAaugldMk71BIzur6CVHq">内容</th></tr></thead>
             <tbody data-page-node-id="Awrn91FoFpRyaFeNk2uwve">
-              <tr data-page-node-id="bueQXxsC4C7Rq1RGgmbYHf"><td style="white-space: nowrap" data-page-node-id="1kOpOW26gnzG5WKFLaGV4G">表示条件</td><td data-page-node-id="VLRYtN3UinOjcF35WHfXNN">プロバイダがシンキングレベルに対応している場合だけ、接続の追加・編集画面に表示されます。OpenAI 互換のカスタム接続では表示されません。</td></tr>
-              <tr data-page-node-id="pXagYhIGUFFSxDod3bS91c"><td style="white-space: nowrap" data-page-node-id="Fdf9Iz68DB1gzdrkoeb9EY">選択肢</td><td data-page-node-id="WoEsMJ3QHUNyLmm663tDEt">OpenAI／Anthropic は Low・Medium・High、Google Gemini は Minimal・Low・Medium・High から選択します。</td></tr>
-              <tr data-page-node-id="dTOfxKPCH8L9ElerUx47M1"><td style="white-space: nowrap" data-page-node-id="riCRzedzGBu6mkdzchS4mS">必須</td><td data-page-node-id="TB91QTc1oL0LP5Gypz235G">対応プロバイダでは必須です。未選択のままでは保存できません。</td></tr>
+              <tr data-page-node-id="bueQXxsC4C7Rq1RGgmbYHf"><td style="white-space: nowrap" data-page-node-id="1kOpOW26gnzG5WKFLaGV4G">表示条件</td><td data-page-node-id="VLRYtN3UinOjcF35WHfXNN">プロバイダとモデルの両方がシンキングレベルに対応している場合だけ、接続の追加・編集画面に表示されます。モデルによっては表示されません。OpenAI 互換のカスタム接続では表示されません。</td></tr>
+              <tr data-page-node-id="pXagYhIGUFFSxDod3bS91c"><td style="white-space: nowrap" data-page-node-id="Fdf9Iz68DB1gzdrkoeb9EY">選択肢</td><td data-page-node-id="WoEsMJ3QHUNyLmm663tDEt">選択肢はプロバイダ・モデルごとに異なります（例：OpenAI／Anthropic は Low・Medium・High、Google Gemini は Minimal・Low・Medium・High）。</td></tr>
+              <tr data-page-node-id="dTOfxKPCH8L9ElerUx47M1"><td style="white-space: nowrap" data-page-node-id="riCRzedzGBu6mkdzchS4mS">必須</td><td data-page-node-id="TB91QTc1oL0LP5Gypz235G">対応しているプロバイダ・モデルでは必須です。未選択のままでは保存できません。</td></tr>
               <tr data-page-node-id="iyBcovxRKwO9Kjd3rtCoS7"><td style="white-space: nowrap" data-page-node-id="9Sld9bSBa3krIefpALEu8M">一覧表示</td><td data-page-node-id="wMlDOebeyYGhCaKguxq3Lp"><span class="ui-text" data-page-node-id="CDkeveUyaGqi2jhONfTKKg">API 接続</span> の一覧に <span class="ui-text" data-page-node-id="KEf5TxVpU3GL9ZSXEM9b8s">シンキングレベル</span> 列が追加されます。非対応の接続は「—」と表示されます。</td></tr>
               <tr data-page-node-id="bxMalyBJrzC2DgTe0wonHi"><td style="white-space: nowrap" data-page-node-id="QhMTHCzTEaPCJTuYWDEzek">適用範囲</td><td data-page-node-id="JBVZ8YU9iFYW01GJCwkOHH">保存後に新しく開始されるモデル呼び出しから反映されます。既存の接続は Low が初期値です。</td></tr>
             </tbody>
@@ -489,7 +489,7 @@
             <p data-page-node-id="CbFUWBDHym1nAokPKxbRmb"><span class="step-code" data-page-node-id="37ErM1rTFf6YPmcPLYDywF">1</span><span class="step-text" data-page-node-id="ufhtKyye1G79niXCbFBZBN"><span class="ui-text" data-page-node-id="B6DcbVNOygN4qQtJvW6sFF">業務ルール設定</span> → <span class="ui-text" data-page-node-id="LhHSpcFwPcRWz6OcLbfCON">モデル設定</span> の <span class="ui-text" data-page-node-id="kpE89Flmo5vE5D0BGwHEUx">API 接続</span> タブで、対象の接続の <span class="ui-text" data-page-node-id="Y6POIVLV16b5PGAgBdIObC">編集</span> をクリックします。</span></p>
           </div>
           <div class="operation-step" data-page-node-id="WRogKHB39E28iQykI2arXI">
-            <p data-page-node-id="hy1tKZf0pPF9uTxCymYmHr"><span class="step-code" data-page-node-id="AGYvGVvBwP1jtlJTrEOXUe">2</span><span class="step-text" data-page-node-id="B2jEJvXYapvS626wMKg8yC"><span class="ui-text" data-page-node-id="TWnnfIYHSmDb46afghWJAn">プロバイダ</span> を選ぶと <span class="ui-text" data-page-node-id="MK9yAiCf6kaYMfSUzYfElB">シンキングレベル</span> が表示されます。値を選び、<span class="ui-text" data-page-node-id="R9XBVVLPE64YjG0Cqhp6ng">保存</span> して <span class="ui-text" data-page-node-id="PUDZcS8ydW3gMAiMxqR1VV">接続テスト</span> を実行します。</span></p>
+            <p data-page-node-id="hy1tKZf0pPF9uTxCymYmHr"><span class="step-code" data-page-node-id="AGYvGVvBwP1jtlJTrEOXUe">2</span><span class="step-text" data-page-node-id="B2jEJvXYapvS626wMKg8yC">対応している <span class="ui-text" data-page-node-id="TWnnfIYHSmDb46afghWJAn">プロバイダ</span> とモデルを選ぶと <span class="ui-text" data-page-node-id="MK9yAiCf6kaYMfSUzYfElB">シンキングレベル</span> が表示されます。値を選び、<span class="ui-text" data-page-node-id="R9XBVVLPE64YjG0Cqhp6ng">保存</span> して <span class="ui-text" data-page-node-id="PUDZcS8ydW3gMAiMxqR1VV">接続テスト</span> を実行します。</span></p>
             <figure class="screenshot-figure" data-page-node-id="ONLk3sElRuigGsFkRXNtEw">
               <div class="shot-wrap shot-wrap-narrow" data-page-node-id="Cqy1OJ5ZJZ1TPaWnpHAlHV">
                 <a class="shot-link" href="assets/model-p2-thinking-level.png?v=1" data-lightbox="manual-shots" aria-label="接続を編集 シンキングレベルを拡大表示" data-page-node-id="Enaxrh0zjGyUyGliVv0yZJ">
@@ -502,7 +502,7 @@
 
           <div class="notice info" data-page-node-id="NESPm83d8tZGnNYlHemN0g">
             <strong data-page-node-id="HdyyxLsIoSkqSw1pvXQWrN">注意事項</strong>
-            プロバイダを切り替えると選択肢が更新されます。非対応のプロバイダに変更した場合はシンキングレベルが非表示になり、保存時にも書き込まれません。
+            プロバイダやモデルを切り替えると選択肢が更新されます。非対応のプロバイダまたはモデルに変更した場合はシンキングレベルが非表示になり、保存時にも書き込まれません。
           </div>
           <h4 data-page-node-id="tzF48U7Ogey2rL9AwYDMnS">用途割当 › AI前処理・座標抽出</h4>
           <p data-page-node-id="XarRUDFWflnBfQmBOwUJgB">用途割当に <span class="ui-text" data-page-node-id="13HJc46vGboTkwaw9ICtXc">AI前処理</span> と <span class="ui-text" data-page-node-id="PuUc867kF0nCIJKVyvXSdq">座標抽出</span> が追加されました。どちらも 1 つのモデルを選ぶ単一選択です。<span class="ui-text" data-page-node-id="Jsk6npGG5IxVPxNBUOFQb3">AI前処理</span> は AI 前処理ノード内の大模型呼び出しで使用し、<span class="ui-text" data-page-node-id="QbjKBQa4w6549buvf2GwXn">案件集約</span> の割当を自動では引き継ぎません。</p>
@@ -2436,6 +2436,10 @@
     }
   };
   Object.assign(languageText.zh, {
+    'プロバイダ': '提供商',
+    '選択肢': '选项',
+    '必須': '必填',
+    '座標抽出': '坐标抽取',
     '関連案件ID': '相关案件ID',
     '無視可': '可忽略',
     '実行案件集約': '执行案件归集',
@@ -2471,6 +2475,10 @@
     'モデル呼び出し明細': '模型调用明细'
   });
   Object.assign(languageText.en, {
+    'プロバイダ': 'Provider',
+    '選択肢': 'Options',
+    '必須': 'Required',
+    '座標抽出': 'Coordinate extraction',
     '関連案件ID': 'Related case ID',
     '無視可': 'Ignorable',
     '実行案件集約': 'Run case aggregation',

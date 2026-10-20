@@ -245,8 +245,8 @@
       "[[UI_03]]": "API 接続",
       "[[UI_04]]": "+ 接続を追加"
     },
-    "zh-CN": "1打开 [[UI_01]] → [[UI_02]]，在 [[UI_03]] 标签页确认已登记的连接；如需新建，请点击 [[UI_04]]。",
-    "en": "Open 1 [[UI_01]] → [[UI_02]] and check the registered connections in the [[UI_03]] tab. Click [[UI_04]] to register a new account."
+    "zh-CN": "1 打开 [[UI_01]] → [[UI_02]]，在 [[UI_03]] 标签页确认已登记的连接。需要新建时点击 [[UI_04]]。",
+    "en": "1 Open [[UI_01]] → [[UI_02]] and check registered connections in the [[UI_03]] tab. To add a new one, click [[UI_04]]."
   },
   {
     "id": "manual-0033",
@@ -4437,13 +4437,13 @@
   },
   {
     "id": "manual-0576",
-    "source_ja": "P2では、[[UI_01]] に [[UI_02]]（思考程度）が追加されます。プロバイダごとに推論の深さを指定でき、後続の大模型呼び出しに反映されます。",
+    "source_ja": "P2では、[[UI_01]] に [[UI_02]]（思考程度）が追加されます。プロバイダとモデルが対応している場合のみ推論の深さを指定でき、後続の大模型呼び出しに反映されます。",
     "ui_text": {
       "[[UI_01]]": "API 接続",
       "[[UI_02]]": "シンキングレベル"
     },
-    "zh-CN": "P2 中，[[UI_01]] 新增 [[UI_02]]（思考程度）。可按提供方指定推理深度，并反映到后续的大模型调用。",
-    "en": "In P2, [[UI_02]] (reasoning depth) is added to [[UI_01]]. The inference depth can be specified per provider and applies to subsequent LLM calls."
+    "zh-CN": "P2 中，[[UI_01]] 新增 [[UI_02]]（思考程度）。仅当提供商和模型都支持时，才能指定推理深度，并会反映到后续的大模型调用。",
+    "en": "In P2, [[UI_02]] (reasoning depth) is added to [[UI_01]]. Only when both the provider and model support it can you set the inference depth, which applies to subsequent LLM calls."
   },
   {
     "id": "manual-0577",
@@ -4475,38 +4475,38 @@
   },
   {
     "id": "manual-0581",
-    "source_ja": "プロバイダがシンキングレベルに対応している場合だけ、接続の追加・編集画面に表示されます。OpenAI 互換のカスタム接続では表示されません。",
+    "source_ja": "プロバイダとモデルの両方がシンキングレベルに対応している場合だけ、接続の追加・編集画面に表示されます。モデルによっては表示されません。OpenAI 互換のカスタム接続では表示されません。",
     "ui_text": {},
-    "zh-CN": "仅当提供者支持“思考”级别时，它才会显示在“添加/编辑连接”屏幕上。在OpenAI兼容的自定义连接上不可见。",
-    "en": "It will only appear on the Add/Edit Connection screen if the provider supports the Thinking level. Not visible on OpenAI-compatible custom connections."
+    "zh-CN": "仅当提供商和模型都支持思考程度时，才会显示在连接的添加・编辑画面。部分模型不显示。OpenAI 兼容的自定义连接不显示。",
+    "en": "Shown on the add/edit connection screen only when both the provider and model support thinking level. It is not shown for some models. It is not shown for OpenAI-compatible custom connections."
   },
   {
     "id": "manual-0582",
     "source_ja": "選択肢",
     "ui_text": {},
-    "zh-CN": "选择",
-    "en": "Choices"
+    "zh-CN": "选项",
+    "en": "Options"
   },
   {
     "id": "manual-0583",
-    "source_ja": "OpenAI／Anthropic は Low・Medium・High、Google Gemini は Minimal・Low・Medium・High から選択します。",
+    "source_ja": "選択肢はプロバイダ・モデルごとに異なります（例：OpenAI／Anthropic は Low・Medium・High、Google Gemini は Minimal・Low・Medium・High）。",
     "ui_text": {},
-    "zh-CN": "从Low、Medium、High和Google Gemini中选择OpenAI/Anthropic ，从Minimal、Low、Medium和High中选择。",
-    "en": "Select OpenAI/Anthropic from Low, Medium, High, and Google Gemini from Minimal, Low, Medium, and High."
+    "zh-CN": "选项因提供商・模型而异（例：OpenAI／Anthropic 为 Low・Medium・High，Google Gemini 为 Minimal・Low・Medium・High）。",
+    "en": "Options vary by provider and model (e.g., Low/Medium/High for OpenAI and Anthropic; Minimal/Low/Medium/High for Google Gemini)."
   },
   {
     "id": "manual-0584",
     "source_ja": "必須",
     "ui_text": {},
-    "zh-CN": "必需",
+    "zh-CN": "必填",
     "en": "Required"
   },
   {
     "id": "manual-0585",
-    "source_ja": "対応プロバイダでは必須です。未選択のままでは保存できません。",
+    "source_ja": "対応しているプロバイダ・モデルでは必須です。未選択のままでは保存できません。",
     "ui_text": {},
-    "zh-CN": "对于受支持的提供程序是必需的。如果不进行选择，则无法保存。",
-    "en": "Required for supported providers. You cannot save without making a selection."
+    "zh-CN": "支持的提供商・模型为必填。未选择时无法保存。",
+    "en": "Required for supported providers and models. It cannot be saved while unselected."
   },
   {
     "id": "manual-0586",
@@ -4536,7 +4536,7 @@
     "id": "manual-0589",
     "source_ja": "保存後に新しく開始されるモデル呼び出しから反映されます。既存の接続は Low が初期値です。",
     "ui_text": {},
-    "zh-CN": "它将在保存后从新启动的模型调用中反映出来。现有连接默认为低。",
+    "zh-CN": "它将在保存后从新启动的模型调用中反映出来。现有连接默认为 Low。",
     "en": "It will be reflected from the newly started model call after saving. Existing connections are defaulted to Low."
   },
   {
@@ -4555,41 +4555,41 @@
       "[[UI_03]]": "API 接続",
       "[[UI_04]]": "編集"
     },
-    "zh-CN": "在1 → [[UI_01]] [[UI_02]]的[[UI_03]]选项卡上，单击[[UI_04]]以获取所需的连接。",
-    "en": "On the → [[UI_03]] tab of 1 [[UI_01]] [[UI_02]], click [[UI_04]] for the desired connection."
+    "zh-CN": "在 [[UI_01]] → [[UI_02]] 的 [[UI_03]] 标签页中，点击目标连接的 [[UI_04]]。",
+    "en": "In [[UI_01]] → [[UI_02]], open the [[UI_03]] tab and click [[UI_04]] for the target connection."
   },
   {
     "id": "manual-0592",
-    "source_ja": "2[[UI_01]] を選ぶと [[UI_02]] が表示されます。値を選び、[[UI_03]] して [[UI_04]] を実行します。",
+    "source_ja": "2対応している [[UI_01]] とモデルを選ぶと [[UI_02]] が表示されます。値を選び、[[UI_03]] して [[UI_04]] を実行します。",
     "ui_text": {
       "[[UI_01]]": "プロバイダ",
       "[[UI_02]]": "シンキングレベル",
       "[[UI_03]]": "保存",
       "[[UI_04]]": "接続テスト"
     },
-    "zh-CN": "2选择[[UI_01]]以显示[[UI_02]]。选择一个值[[UI_03]]并运行[[UI_04]]。",
-    "en": "2 Select [[UI_01]] to display [[UI_02]]. Select a value, [[UI_03]] and run [[UI_04]]."
+    "zh-CN": "2 选择支持的 [[UI_01]] 和模型后，会显示 [[UI_02]]。选择值，[[UI_03]] 并执行 [[UI_04]]。",
+    "en": "2 When you select a supported [[UI_01]] and model, [[UI_02]] appears. Choose a value, [[UI_03]], and run [[UI_04]]."
   },
   {
     "id": "manual-0593",
     "source_ja": "接続を編集画面：OpenAI で Medium を選択した例。",
     "ui_text": {},
-    "zh-CN": "编辑连接屏幕：在OpenAI中选择媒体的示例。",
-    "en": "Edit Connection screen: Example of selecting Medium in OpenAI."
+    "zh-CN": "编辑连接画面：在 OpenAI 中选择 Medium 的示例。",
+    "en": "Edit connection screen: example with Medium selected in OpenAI."
   },
   {
     "id": "manual-0594",
-    "source_ja": "注意事項 プロバイダを切り替えると選択肢が更新されます。非対応のプロバイダに変更した場合はシンキングレベルが非表示になり、保存時にも書き込まれません。",
+    "source_ja": "注意事項 プロバイダやモデルを切り替えると選択肢が更新されます。非対応のプロバイダまたはモデルに変更した場合はシンキングレベルが非表示になり、保存時にも書き込まれません。",
     "ui_text": {},
-    "zh-CN": "**重要事项**切换提供商将更新您的选择。如果您更改为不受支持的提供程序，思维级别将被隐藏，并且不会在保存时写入。",
-    "en": "**Important Notes** Switching providers will update your selections. If you change to an unsupported provider, the thinking level will be hidden and will not be written on save."
+    "zh-CN": "注意事项 切换提供商或模型时选项会更新。改为不支持的提供商或模型时，思考程度会隐藏，保存时也不会写入。",
+    "en": "Notes Options update when you switch the provider or model. If you change to an unsupported provider or model, thinking level is hidden and is not written on save."
   },
   {
     "id": "manual-0595",
     "source_ja": "用途割当 › AI前処理・座標抽出",
     "ui_text": {},
-    "zh-CN": "应用作业› AI预处理/坐标抽取",
-    "en": "Application Assignment › AI Pretreatment/Coordinate Extraction"
+    "zh-CN": "用途分配 › AI预处理・坐标抽取",
+    "en": "Purpose assignment › AI preprocessing / coordinate extraction"
   },
   {
     "id": "manual-0596",
