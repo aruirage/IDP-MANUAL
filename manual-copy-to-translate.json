@@ -4641,7 +4641,7 @@
     "id": "manual-0601",
     "source_ja": "P2では、開放プラットフォームに「AI分類」が追加されます。1 ファイルの帳票タイプだけを判定し、案件の作成やワークフローの起動は行いません。",
     "ui_text": {},
-    "zh-CN": "在P2中， “AI分类”被添加到开放平台，它只确定一个文件的文档类型，不创建案例或启动工作流程。",
+    "zh-CN": "在P2中， “AI分类”被添加到开放平台，它只确定一个文件的文档类型，不创建案件或启动工作流程。",
     "en": "In P2, “AI classification” is added to the open platform. It only determines the document type of one file, and does not create cases or launch workflows."
   },
   {
@@ -4733,7 +4733,7 @@
     "id": "manual-0613",
     "source_ja": "注意事項 1 リクエストにつき 1 ファイル、50MB までです。形式は PDF、JPG、JPEG、PNG、TIF、TIFF に対応します。業務シーンは公開済みのものだけを指定できます。120 秒を超えると処理タイムアウトとして失敗します。結果のコールバック通知はなく、分類結果は案件や未集約ファイルには反映されません。",
     "ui_text": {},
-    "zh-CN": "**重要事项**每个请求1个文件，最大50MB。支持PDF、JPG、JPEG、PNG、TIF和TIFF格式。业务场景只能发布，如果超过120秒，将作为处理超时失败。没有结果回调通知，分类结果不会反映在案例或未聚合文件中。",
+    "zh-CN": "**重要事项**每个请求1个文件，最大50MB。支持PDF、JPG、JPEG、PNG、TIF和TIFF格式。业务场景只能发布，如果超过120秒，将作为处理超时失败。没有结果回调通知，分类结果不会反映在案件或未归集文件中。",
     "en": "**Important Notes** 1 file per request, up to 50MB. Supports PDF, JPG, JPEG, PNG, TIF and TIFF formats. Business Scenes can only be published. If it exceeds 120 seconds, it will fail as a processing timeout. There are no result callback notifications, and the classification results are not reflected in the case or in the unaggregated file."
   },
   {
@@ -5617,7 +5617,7 @@
       "[[UI_02]]": "要確認",
       "[[UI_03]]": "無視可"
     },
-    "zh-CN": "在P2中， [[UI_01]]分为两个子标签， [[UI_02]]和[[UI_03]] ，根据相关故障原因自动排序。",
+    "zh-CN": "在P2中， [[UI_01]]分为两个子标签， [[UI_02]]和[[UI_03]] ，根据相关故障原因自动分流。",
     "en": "In P2, [[UI_01]] is divided into two subtags, [[UI_02]] and [[UI_03]], which are automatically sorted according to the relevant failure reason."
   },
   {
@@ -5631,7 +5631,7 @@
     "id": "manual-0734",
     "source_ja": "分類失敗以外の未集約ファイル（案件不一致、処理タイムアウト、複数案件候補、関連付け中など）",
     "ui_text": {},
-    "zh-CN": "分类失败以外的未聚合文件（大小写不匹配、处理超时、多个候选案例、关联等）",
+    "zh-CN": "分类失败以外的未归集文件（大小写不匹配、处理超时、多个候选案件、关联等）",
     "en": "Unaggregated files other than classification failures (case mismatch, processing timeout, multiple case candidates, associating, etc.)"
   },
   {
@@ -5664,8 +5664,8 @@
     "id": "manual-0738",
     "source_ja": "振り分けと関連案件ID",
     "ui_text": {},
-    "zh-CN": "排序和相关问题ID",
-    "en": "Sorting and Related Issue IDs"
+    "zh-CN": "分流与相关案件ID",
+    "en": "Routing and Related Case ID"
   },
   {
     "id": "manual-0739",
@@ -5683,8 +5683,8 @@
     "ui_text": {
       "[[UI_01]]": "関連案件ID"
     },
-    "zh-CN": "列表中添加了一个[[UI_01]]列。它指已经链接到同一源文件中的案例的文件的案例ID ，并不意味着当前行已链接。如果没有链接的案例，此字段为空。",
-    "en": "A [[UI_01]] column is added to the list. It refers to the case ID of a file that is already linked to a case in the same source file, and does not mean that the current line is linked. This field is empty if there are no linked cases."
+    "zh-CN": "列表中新增 [[UI_01]] 列，显示同一源文件内已关联到案件的文件所属的案件ID。它只作参照，不代表当前行已关联；没有关联案件时为空。",
+    "en": "A [[UI_01]] column is added to the list. It shows the case ID of files already linked to a case within the same source file; it does not mean the current row is linked. If no case is linked, it is blank."
   },
   {
     "id": "manual-0741",
@@ -5706,7 +5706,7 @@
     "id": "manual-0743",
     "source_ja": "未集約ファイルのタブ内でサブタグを切り替えます。",
     "ui_text": {},
-    "zh-CN": "切换未聚合文件选项卡中的子标签。",
+    "zh-CN": "切换未归集文件选项卡中的子标签。",
     "en": "Toggles the subtags within the tab of the unaggregated file."
   },
   {
@@ -5852,7 +5852,7 @@
       "[[UI_02]]": "帳票ファイル",
       "[[UI_03]]": "要確認"
     },
-    "zh-CN": "顶部[[UI_01]]显示案例的所有页面，右侧[[UI_02]]显示自动分类的文件。[[UI_03]]的数字显示在右上角。如果选择右侧的文件，页面列表将仅缩小到该文件的页面。",
+    "zh-CN": "顶部[[UI_01]]显示案件的所有页面，右侧[[UI_02]]显示自动分类的文件。[[UI_03]]的数字显示在右上角。如果选择右侧的文件，页面列表将仅缩小到该文件的页面。",
     "en": "The top [[UI_01]] shows all the pages of the case, and the right [[UI_02]] shows the automatically categorized files. The number of [[UI_03]] is displayed in the upper right corner. If you select a file on the right, the page list will be narrowed down to the pages of that file only."
   },
   {
@@ -6044,7 +6044,7 @@
     "id": "manual-0785",
     "source_ja": "対象案件に論理ページが 1 枚もない",
     "ui_text": {},
-    "zh-CN": "案例中没有单个逻辑页面",
+    "zh-CN": "案件中没有单个逻辑页面",
     "en": "There is not a single logical page in the case"
   },
   {
@@ -6244,8 +6244,8 @@
     "id": "manual-0813",
     "source_ja": "未集約ファイルを「要確認／無視可」に分け、関連失敗理由で自動的に振り分けます。関連案件ID列を追加します。",
     "ui_text": {},
-    "zh-CN": "将未聚合的文件分为“需要确认/可忽略” ，并按相关故障原因自动排序。添加相关病例ID列",
-    "en": "Separate the unaggregated files into \"confirmation required/ignorable\" and automatically sort them by the relevant failure reason. Add the related case ID column"
+    "zh-CN": "将未归集文件分为「需要确认／可忽略」，并按关联失败原因自动分流。新增相关案件ID列。",
+    "en": "Split unaggregated files into \"Review required / Ignorable\" and route them automatically by the related failure reason. Add a related case ID column."
   },
   {
     "id": "manual-0814",
