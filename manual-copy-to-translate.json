@@ -514,12 +514,12 @@
   },
   {
     "id": "manual-0059",
-    "source_ja": "検索・返却の方針：[[UI_01]] が設定された列がある場合は、コード系の値による完全一致・優先一致を試みます。該当がない場合は、対象列に対して表記ゆれを考慮した類似検索を行います。候補が一意に確定できる場合は、命中したマスター行の標準値やコードを返却します。",
+    "source_ja": "検索・返却の方針：[[UI_01]] が設定された列がある場合も、コード系の値による完全一致と、表記ゆれを考慮した類似検索の両方を実行し、両方の結果を返却します。候補が一意に確定できる場合は、命中したマスター行の標準値やコードを返却します。",
     "ui_text": {
       "[[UI_01]]": "照会コード"
     },
-    "zh-CN": "**检索与返回策略：**若存在设置了 [[UI_01]] 的列，会优先尝试按代码类值进行完全匹配与优先匹配；若无结果，再对目标列进行考虑写法差异的相似检索。当候选可唯一确定时，返回命中的主数据行的标准值或代码。",
-    "en": "Search and return policy: If there is a column with [[UI_01]] set, we will try to match the exact match and priority match according to the value of the code system. If not applicable, perform a similar search considering the notation variation for the target column. If the candidate can be uniquely confirmed, return the standard value or code of the hit master line."
+    "zh-CN": "**检索与返回方针：**即使存在设置了 [[UI_01]] 的列，也会同时执行代码类值的完全匹配和考虑写法差异的相似检索，并返回两者结果。当候选可唯一确定时，返回命中的主数据行的标准值或代码。",
+    "en": "**Search and return policy:** Even when a column with [[UI_01]] is configured, both exact matching on code values and similarity search allowing notation variations are performed, and both results are returned. When a candidate can be uniquely determined, the standard value or code of the matched master row is returned."
   },
   {
     "id": "manual-0060",
@@ -534,13 +534,13 @@
   },
   {
     "id": "manual-0061",
-    "source_ja": "2[[UI_01]] でマスター表の列を定義します。コード検索や完全一致を優先したい列には [[UI_02]] を設定します。例：ICD10 コード、銀行コード、支店コード。",
+    "source_ja": "2[[UI_01]] でマスター表の列を定義します。コード検索や完全一致も行いたい列には [[UI_02]] を設定します。例：ICD10 コード、銀行コード、支店コード。",
     "ui_text": {
       "[[UI_01]]": "列設定",
       "[[UI_02]]": "照会コード"
     },
-    "zh-CN": "2在 [[UI_01]] 中定义主数据表的列。希望优先进行代码检索或完全匹配的列，请设置 [[UI_02]]。例如：ICD-10 代码、银行代码、支行代码。",
-    "en": "2 Define the columns in the master table in [[UI_01]]. Set [[UI_02]] to the column where you want to prioritize code searches and exact matches. Example: ICD10 code, bank code, branch code."
+    "zh-CN": "2在 [[UI_01]] 中定义主数据表的列。希望对代码检索或完全匹配的列，请设置 [[UI_02]]。例如：ICD-10 代码、银行代码、支行代码。",
+    "en": "2[[UI_01]] defines the columns of the master table. For columns where code lookup or exact matching should also be performed, set [[UI_02]]. Examples: ICD10 code, bank code, branch code."
   },
   {
     "id": "manual-0062",

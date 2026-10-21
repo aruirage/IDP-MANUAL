@@ -669,7 +669,7 @@
             <p data-page-node-id="4uxfimOSrvLVa6WdyZxBSB"><strong data-page-node-id="aYRYAQevWxtFRHO3g14ZMH">参照元：</strong><span class="ui-text" data-page-node-id="sTIgA5Uqbf0ssGuHjotAJc">マスタ照合</span> で参照するデータは、本章で登録したマスター表です。列設定で定義した列名、<span class="ui-text" data-page-node-id="ZftfHwagxcKV48fDfktmWs">照会コード</span> の有無、登録済みデータ、<span class="ui-text" data-page-node-id="qzAGHqWfW2dFT8SZsiypQx">ベクトル化状態</span> がそのまま照合に利用されます。</p>
             <p data-page-node-id="liRjBWHeoFcrhAVAPwOLxz"><strong data-page-node-id="r0sf91L3oPBEzirsGAvI4N">セル単位の照合：</strong>帳票タイプ設定でグループを指定しない場合、対象項目の OCR 値だけを使ってマスター表を検索します。例：診断書の <span class="ui-text" data-page-node-id="AEtnTi1ogL3yl8KRdxARjg">傷病名</span> を傷病名マスターに照合し、表記ゆれを標準傷病名へ寄せます。</p>
             <p data-page-node-id="RSs1yXQKw3Uv7LHBl7WC9u"><strong data-page-node-id="FfxLVoIvDJOYOneO8wM79S">グループ単位の照合：</strong>複数項目に同じグループ番号を設定した場合、それらの OCR 値を組み合わせて 1回の照合条件として扱います。例：<span class="ui-text" data-page-node-id="EU2jLSZ1LsJp5ydVy8sbT9">銀行名</span> と <span class="ui-text" data-page-node-id="1KR5lTDEgozqHVOTkFg038">支店名</span> を同じグループにし、銀行・支店マスターを行単位で照合します。</p>
-            <p data-page-node-id="EQLbThGrOqmxSKOAl80PTH"><strong data-page-node-id="fCBos2FMB412FmCUonZQUc">検索・返却の方針：</strong><span class="ui-text" data-page-node-id="xxefD9CVjC0F03sCF4AWLO">照会コード</span> が設定された列がある場合は、コード系の値による完全一致・優先一致を試みます。該当がない場合は、対象列に対して表記ゆれを考慮した類似検索を行います。候補が一意に確定できる場合は、命中したマスター行の標準値やコードを返却します。</p>
+            <p data-page-node-id="EQLbThGrOqmxSKOAl80PTH"><strong data-page-node-id="fCBos2FMB412FmCUonZQUc">検索・返却の方針：</strong><span class="ui-text" data-page-node-id="xxefD9CVjC0F03sCF4AWLO">照会コード</span> が設定された列がある場合も、コード系の値による完全一致と、表記ゆれを考慮した類似検索の両方を実行し、両方の結果を返却します。候補が一意に確定できる場合は、命中したマスター行の標準値やコードを返却します。</p>
           </section>
 
           <section class="manual-subsection" id="master-operation" data-page-node-id="PDSAcUlKJoFshltikLVj9h">
@@ -687,7 +687,7 @@
           </div>
 
           <div class="operation-step" data-page-node-id="vjsTNQHF5njEwxeAWPWVwQ">
-            <p data-page-node-id="f8YkfRDLgF3DKyDUzKntaR"><span class="step-code" data-page-node-id="nofMVm1q4VxNrEzHerpxV4">2</span><span class="step-text" data-page-node-id="tjYuNbkDjFHsnXAvBVn3DV"><span class="ui-text" data-page-node-id="YPPwCSVATZRkmD5zMV9iin">列設定</span> でマスター表の列を定義します。コード検索や完全一致を優先したい列には <span class="ui-text" data-page-node-id="FrVDKp2mjlWBAwp8AVKSeg">照会コード</span> を設定します。例：ICD10 コード、銀行コード、支店コード。</span></p>
+            <p data-page-node-id="f8YkfRDLgF3DKyDUzKntaR"><span class="step-code" data-page-node-id="nofMVm1q4VxNrEzHerpxV4">2</span><span class="step-text" data-page-node-id="tjYuNbkDjFHsnXAvBVn3DV"><span class="ui-text" data-page-node-id="YPPwCSVATZRkmD5zMV9iin">列設定</span> でマスター表の列を定義します。コード検索や完全一致も行いたい列には <span class="ui-text" data-page-node-id="FrVDKp2mjlWBAwp8AVKSeg">照会コード</span> を設定します。例：ICD10 コード、銀行コード、支店コード。</span></p>
             <figure class="screenshot-figure" data-page-node-id="88doGtMOiQxqBYngi2UxpI">
               <div class="shot-wrap shot-wrap-narrow" data-page-node-id="QHPDLWl9qryzovnDmezsfj">
                 <a class="shot-link" href="assets/master-data-column-marked.png?v=8" data-lightbox="manual-shots" aria-label="マスタデータ設定 列設定を拡大表示" data-page-node-id="CraToWRknwe4bHiIHl1FGg">
