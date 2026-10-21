@@ -4313,7 +4313,7 @@
     "id": "manual-0558",
     "source_ja": "人工確認ルール拡張（七項目）",
     "ui_text": {},
-    "zh-CN": "人工确认规则扩展（七项）",
+    "zh-CN": "告警显示规则扩展（七项）",
     "en": "Confirmation Rule Expansion (Seven Items)"
   },
   {
@@ -4814,13 +4814,6 @@
     "en": "[[UI_01]] per field"
   },
   {
-    "id": "manual-0624",
-    "source_ja": "アラート表示ルール（七項目）",
-    "ui_text": {},
-    "zh-CN": "警报显示规则（七项）",
-    "en": "Alert display rules (seven items)"
-  },
-  {
     "id": "manual-0625",
     "source_ja": "QR 読み取り（LIAJ 診断書専用）",
     "ui_text": {},
@@ -4910,13 +4903,6 @@
     "en": "[[UI_01]] and [[UI_02]] switch individually on a field-by-field basis (e.g. both patient names are ON)."
   },
   {
-    "id": "manual-0636",
-    "source_ja": "Step2 アラート表示ルール（七項目）",
-    "ui_text": {},
-    "zh-CN": "第2步警报显示规则（七项）",
-    "en": "Step 2 Alert display rules (seven items)"
-  },
-  {
     "id": "manual-0637",
     "source_ja": "Step2 の [[UI_01]] に [[UI_02]] が新設され、7 項目すべてを選択できるようになりました。Step2 のフィールド表で [[UI_03]] が ON のフィールドだけが対象です。",
     "ui_text": {
@@ -4942,13 +4928,6 @@
     },
     "zh-CN": "检查字段[[UI_01]]是否开启。如果关闭，则无需人工确认。",
     "en": "Check if the field [[UI_01]] is ON. If it is off, it is not subject to manual confirmation."
-  },
-  {
-    "id": "manual-0640",
-    "source_ja": "ON の場合、選択したアラート表示ルールを見ます。ルール同士は OR 判定です（⑦ だけは AND）。",
-    "ui_text": {},
-    "zh-CN": "如果开启，查看选定的警报显示规则。规则在彼此之间进行OR判断（ 7为且仅为）。",
-    "en": "If ON, view the selected alert display rule. The rules are OR judged between each other (7 is and only)."
   },
   {
     "id": "manual-0641",
@@ -5117,13 +5096,6 @@
     "ui_text": {},
     "zh-CN": "**规则组合**规则是**OR**。如果所选规则之一适用，将进行人工验证。仅适用于**⑦仅限和**同时满足低可靠性和超出正常范围的情况。",
     "en": "**Rule combination** The rules are **OR**. If one of the selected rules applies, it will be subject to manual verification. Only applicable if **⑦ Only and** meets both Low Reliability and Out of Normal Range."
-  },
-  {
-    "id": "manual-0665",
-    "source_ja": "「アラート表示ルール」に 7 項目が表示されます。例では 7 項目すべてにチェックが入っています。",
-    "ui_text": {},
-    "zh-CN": "警报显示规则中将显示七个项目。在示例中，所有七个项目都被选中。",
-    "en": "Seven items will appear in the Alert Display Rules. In the example, all seven items are checked."
   },
   {
     "id": "manual-0666",
@@ -5424,13 +5396,6 @@
     "en": "ATTENTION NEEDED"
   },
   {
-    "id": "manual-0707",
-    "source_ja": "HITL=ON かつアラート表示ルールに該当した項目を赤で表示します。",
-    "ui_text": {},
-    "zh-CN": "Hitl = ON ，警报显示规则对应的项目显示为红色。",
-    "en": "Hitl = ON and the item corresponding to the alert display rule is displayed in red."
-  },
-  {
     "id": "manual-0708",
     "source_ja": "マスク反映",
     "ui_text": {},
@@ -5715,7 +5680,7 @@
     "ui_text": {
       "[[UI_01]]": "AI前処理確認"
     },
-    "zh-CN": "在P2中， AI预处理后添加“[[UI_01]]”任务。在单据类型设置的步骤2中设置警报显示规则（人工确认规则，七项）。",
+    "zh-CN": "在P2中， AI预处理后添加“[[UI_01]]”任务。在单据类型设置的步骤2中设置警报显示规则（告警显示规则，七项）。",
     "en": "In P2, the \"[[UI_01]]]\" task is added after the AI preprocessing. Alert display rules (artificial confirmation rules, seven items) are set in Step 2 of the document type setting."
   },
   {
@@ -6023,7 +5988,7 @@
       "[[UI_01]]": "アラート表示ルール",
       "[[UI_02]]": "読取モデル設定"
     },
-    "zh-CN": "[[UI_01]] （人工确认规则·七个项目）在单据类型设置第2步的[[UI_02]]中设置。满足此处选择的条件的项目将接受AI预处理确认和OCR提取确认。",
+    "zh-CN": "[[UI_01]] （告警显示规则·七个项目）在单据类型设置第2步的[[UI_02]]中设置。满足此处选择的条件的项目将接受AI预处理确认和OCR提取确认。",
     "en": "[[UI_01]] (Artificial confirmation rule · Seven items) is set in [[UI_02]] in Step 2 of the document type setting. Items that meet the conditions selected here will be subject to AI pretreatment confirmation and OCR extraction confirmation."
   },
   {
@@ -6445,10 +6410,10 @@
   },
   {
     "id": "manual-0842",
-    "source_ja": "フィールド／列ごとに、マニュアル確認の要否を設定できます。OFF でも必須チェックは適用されます。正常値の比較は、マニュアル確認ルールで ⑥⑦ を選んだ場合だけ行います。",
+    "source_ja": "フィールド／列ごとに、マニュアル確認の要否を設定できます。OFF でも必須チェックは適用されます。正常値の比較は、アラート表示ルールで ⑥⑦ を選んだ場合だけ行います。",
     "ui_text": {},
-    "zh-CN": "可按字段／列设置是否需要人工确认。OFF 时仍适用必填校验。正常值比较仅在人工确认规则中勾选 ⑥⑦ 时执行。",
-    "en": "Set whether manual confirmation is required per field/column. Required checks still apply when OFF. Normal-value comparison runs only when ⑥/⑦ are selected in the manual confirmation rules."
+    "zh-CN": "可按字段／列设置是否需要人工确认。OFF 时仍适用必填校验。正常值比较仅在告警显示规则中勾选 ⑥⑦ 时执行。",
+    "en": "Set whether manual confirmation is required per field/column. Required checks still apply when OFF. Normal-value comparison runs only when ⑥/⑦ are selected in the alert display rules."
   },
   {
     "id": "manual-0844",
@@ -6515,10 +6480,10 @@
   },
   {
     "id": "manual-0857",
-    "source_ja": "マニュアル確認ルール（七項目）",
+    "source_ja": "アラート表示ルール（七項目）",
     "ui_text": {},
-    "zh-CN": "人工确认规则（七项）",
-    "en": "Manual confirmation rules (7 items)"
+    "zh-CN": "告警显示规则（七项）",
+    "en": "Alert display rules (7 items)"
   },
   {
     "id": "manual-0858",
@@ -6529,17 +6494,17 @@
   },
   {
     "id": "manual-0859",
-    "source_ja": "確認要否（HITL）：Step2 のフィールド表（テーブル）に [[UI_01]] 列が追加されます。フィールド／列ごとにスイッチで切り替え、既定は ON です。ON の項目だけがマニュアル確認の対象になり、OFF の項目は確認画面に表示されない仕様です。必須チェックは HITL の ON/OFF にかかわらず適用されます。正常値の比較は、マニュアル確認ルールで ⑥ または ⑦ を選んだ場合だけ行います。",
+    "source_ja": "確認要否（HITL）：Step2 のフィールド表（テーブル）に [[UI_01]] 列が追加されます。フィールド／列ごとにスイッチで切り替え、既定は ON です。ON の項目だけがマニュアル確認の対象になり、OFF の項目は確認画面に表示されない仕様です。必須チェックは HITL の ON/OFF にかかわらず適用されます。正常値の比較は、アラート表示ルールで ⑥ または ⑦ を選んだ場合だけ行います。",
     "ui_text": {},
-    "zh-CN": "**是否需要确认（HITL）：**Step2 的字段表（表格）中新增 [[UI_01]] 列。按字段／列用开关切换，默认 ON。仅 ON 的项目进入人工确认，OFF 的项目不显示在确认画面。必填校验不受 HITL ON/OFF 影响。正常值比较仅在人工确认规则中勾选 ⑥ 或 ⑦ 时执行。",
-    "en": "**Review required (HITL):** A [[UI_01]] column is added to the Step2 field table. Toggle per field/column; default is ON. Only ON items become manual confirmation targets; OFF items are not shown on the confirmation screen. Required checks apply regardless of HITL ON/OFF. Normal-value comparison runs only when ⑥ or ⑦ is selected in the manual confirmation rules."
+    "zh-CN": "**是否需要确认（HITL）：**Step2 的字段表（表格）中新增 [[UI_01]] 列。按字段／列用开关切换，默认 ON。仅 ON 的项目进入人工确认，OFF 的项目不显示在确认画面。必填校验不受 HITL ON/OFF 影响。正常值比较仅在告警显示规则中勾选 ⑥ 或 ⑦ 时执行。",
+    "en": "**Review required (HITL):** A [[UI_01]] column is added to the Step2 field table. Toggle per field/column; default is ON. Only ON items become manual confirmation targets; OFF items are not shown on the confirmation screen. Required checks apply regardless of HITL ON/OFF. Normal-value comparison runs only when ⑥ or ⑦ is selected in the alert display rules."
   },
   {
     "id": "manual-0860",
-    "source_ja": "Step2 マニュアル確認ルール（七項目）",
+    "source_ja": "Step2 アラート表示ルール（七項目）",
     "ui_text": {},
-    "zh-CN": "Step2 人工确认规则（七项）",
-    "en": "Step2 Manual confirmation rules (7 items)"
+    "zh-CN": "Step2 告警显示规则（七项）",
+    "en": "Step2 Alert display rules (7 items)"
   },
   {
     "id": "manual-0861",
@@ -6557,10 +6522,10 @@
   },
   {
     "id": "manual-0863",
-    "source_ja": "ON の場合、選択したマニュアル確認ルールを見ます。ルール同士は OR 判定です（⑦ だけは AND）。",
+    "source_ja": "ON の場合、選択したアラート表示ルールを見ます。ルール同士は OR 判定です（⑦ だけは AND）。",
     "ui_text": {},
-    "zh-CN": "为 ON 时，查看勾选的人工确认规则。规则之间为 OR 判定（仅 ⑦ 为 AND）。",
-    "en": "If ON, check the selected manual confirmation rules. Rules are OR-ed (only ⑦ is AND)."
+    "zh-CN": "为 ON 时，查看勾选的告警显示规则。规则之间为 OR 判定（仅 ⑦ 为 AND）。",
+    "en": "If ON, check the selected alert display rules. Rules are OR-ed (only ⑦ is AND)."
   },
   {
     "id": "manual-0864",
@@ -6571,10 +6536,10 @@
   },
   {
     "id": "manual-0865",
-    "source_ja": "「マニュアル確認ルール」に 7 項目が表示されます。例では 7 項目すべてにチェックが入っています。",
+    "source_ja": "「アラート表示ルール」に 7 項目が表示されます。例では 7 項目すべてにチェックが入っています。",
     "ui_text": {},
-    "zh-CN": "「人工确认规则」中显示 7 项。示例中 7 项全部勾选。",
-    "en": "Seven items appear under \"Manual confirmation rules\". In the example, all seven are checked."
+    "zh-CN": "「告警显示规则」中显示 7 项。示例中 7 项全部勾选。",
+    "en": "Seven items appear under \"Alert display rules\". In the example, all seven are checked."
   },
   {
     "id": "manual-0866",
@@ -6592,9 +6557,9 @@
   },
   {
     "id": "manual-0868",
-    "source_ja": "HITL=ON かつマニュアル確認ルールに該当した項目を赤で表示します。",
+    "source_ja": "HITL=ON かつアラート表示ルールに該当した項目を赤で表示します。",
     "ui_text": {},
-    "zh-CN": "HITL=ON 且命中人工确认规则的项目以红色显示。",
+    "zh-CN": "HITL=ON 且命中告警显示规则的项目以红色显示。",
     "en": "Items with HITL=ON that match a manual confirmation rule are shown in red."
   },
   {
