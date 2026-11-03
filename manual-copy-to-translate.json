@@ -4593,15 +4593,15 @@
   },
   {
     "id": "manual-0596",
-    "source_ja": "用途割当に [[UI_01]] と [[UI_02]] が追加されました。どちらも 1 つのモデルを選ぶ単一選択です。[[UI_03]] は AI前処理ノード内の大模型呼び出しで使用し、[[UI_04]] の割当を自動では引き継ぎません。",
+    "source_ja": "用途割当に [[UI_01]] と [[UI_02]] が追加されました。どちらも 1 つのモデルを選ぶ単一選択です。[[UI_03]] は、ワークフローの AI前処理ノードで大規模言語モデルを呼び出すために使用します。モデルの割当は [[UI_04]] とは独立しており、それぞれ設定する必要があります。",
     "ui_text": {
       "[[UI_01]]": "AI前処理",
       "[[UI_02]]": "座標抽出",
       "[[UI_03]]": "AI前処理",
       "[[UI_04]]": "案件集約"
     },
-    "zh-CN": "[[UI_01]] 和 [[UI_02]] 已添加到用途分配。两者都只能选择 1 个模型（单选）。[[UI_03]] 用于 AI前处理节点中的大模型调用，不会自动占用 [[UI_04]] 的分配。",
-    "en": "[[UI_01]] and [[UI_02]] have been added to purpose assignment. Both select a single model. [[UI_03]] is used for LLM calls in AI preprocessing nodes; it does not automatically take over the [[UI_04]] assignment."
+    "zh-CN": "[[UI_01]] 和 [[UI_02]] 已添加到用途分配。两者都只能选择 1 个模型（单选）。[[UI_03]] 用于工作流中 AI前处理节点的大模型调用。其模型分配与 [[UI_04]] 独立，需分别设置。",
+    "en": "[[UI_01]] and [[UI_02]] have been added to purpose assignment. Both select a single model. [[UI_03]] is used for LLM calls in workflow AI preprocessing nodes. Its model assignment is independent of [[UI_04]]; configure each separately."
   },
   {
     "id": "manual-0597",
