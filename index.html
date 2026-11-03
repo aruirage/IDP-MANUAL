@@ -336,10 +336,10 @@
               <tr data-page-node-id="jeOiCGg9twAbPk87ijcjWA"><td data-page-node-id="cPiEtaxUEP5AC8yz2DC4UO"><span class="ui-text" data-page-node-id="xJwl3bUxtpwrTCMDp0V1jz">admin</span></td><td data-page-node-id="s0siCE4h2zc86t4UTBOUmd">システム設定、ルール設定、ユーザー・権限管理を行う管理者。</td></tr>
               <tr data-page-node-id="2wghy2pLlrOGVXIfhofx6U"><td data-page-node-id="31t4NHNrgUwqcyHSmNtSaU"><span class="ui-text" data-page-node-id="3W9DZpuwwrWYDs7AumDEPU">操作員</span></td><td data-page-node-id="mgMj83EaZM1gmL48MbArYe">資料アップロード、案件確認、<span class="ui-text" data-page-node-id="a4GTeDqWA3eZ4rZFAW3SMy">マイタスク</span> <span class="ui-text" data-page-node-id="57gVNBKVpOjUlsdyd3Jz8V">対応</span>、<span class="ui-text" data-page-node-id="ZXHZjxyMk5pDGYJV3zIfSP">処理中止</span>。</td></tr>
               <tr data-page-node-id="iKhVvrC9O34pClUmheKMXi"><td data-page-node-id="1KmExQbHTyC66X1GAvD13R"><span class="ui-text" data-page-node-id="MK15mVxCsam7WRnimg8YRF">操作管理者</span></td><td data-page-node-id="XyILtm0pUcBhvNZV8kBXv7">操作員に加え、<span class="ui-text" data-page-node-id="L22jVXom2rDWJZJqeC8UlT">割当</span>（案件担当者・タスク再割り当て）が可能。</td></tr>
-              <tr data-page-node-id="uNmaBD209hADED97384HOA"><td data-page-node-id="EAKBEoDXyfXMwaxNau5xr2"><span class="ui-text" data-page-node-id="NJQWz7MTiJJ3Ne2OQeuTh9">案件担当者</span></td><td data-page-node-id="PPYIxJMSNBXpvzypWpPhGK">案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初のマニュアル確認ノードで選択したロール（操作員または操作管理者）の中から自動で指名され、以降のマニュアル確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。<span class="ui-text" data-page-node-id="rF98HLjS15aJcr2HdBBO5z">案件一覧</span> で操作管理者は手動で再割り当てすることもできます。</td></tr>
+              <tr data-page-node-id="uNmaBD209hADED97384HOA"><td data-page-node-id="EAKBEoDXyfXMwaxNau5xr2"><span class="ui-text" data-page-node-id="NJQWz7MTiJJ3Ne2OQeuTh9">案件担当者</span></td><td data-page-node-id="PPYIxJMSNBXpvzypWpPhGK">案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初のマニュアル確認ノードで選択したロール（操作員・操作管理者・admin）の中から自動で指名され、以降のマニュアル確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。<span class="ui-text" data-page-node-id="rF98HLjS15aJcr2HdBBO5z">案件一覧</span> で操作管理者は手動で再割り当てすることもできます。</td></tr>
             </tbody>
           </table>
-          <p data-page-node-id="vSjB8iBTHzyerkiyeNnX7s"><span class="ui-text" data-page-node-id="b8LFd5diHUg0HtcqNCZ4rK">マイタスク</span> はマニュアル確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3の通知設定は、タスクの割り当てには影響しません。通知先として選択できるのは、操作員と操作管理者のみです。</p>
+          <p data-page-node-id="vSjB8iBTHzyerkiyeNnX7s"><span class="ui-text" data-page-node-id="b8LFd5diHUg0HtcqNCZ4rK">マイタスク</span> はマニュアル確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3の通知設定は、タスクの割り当てには影響しません。通知先には、操作員、操作管理者、および最高権限を持つ admin を選択できます。</p>
         </section>
 
         <section class="section-card" id="overview-modules" data-page-node-id="ZeIAM4sFSDpUV0t0rsOBcV">
@@ -1204,7 +1204,7 @@
                 </tr>
                 <tr data-page-node-id="D2ed0gLHc5uQQcIYrsOYhx">
                   <td data-page-node-id="oU6LGGiTO7l5Q4jDeADk7v"><span class="ui-text" data-page-node-id="duGdow7Ybtr7A9dIeCXCRp">マニュアル確認</span></td>
-                  <td data-page-node-id="sJErF4zKnWcSqfKMwGqOL6">要確認を <span class="ui-text" data-page-node-id="WzueCVrpKaY6YDJBcvVNyq">マイタスク</span> で目視確認（完了／補件／案件中止）。担当ロールは操作員・操作管理者のみ。最初のマニュアル確認ノードのロールから案件担当者を自動指名し、同ロールは継続、ロール切替時は再指名。</td>
+                  <td data-page-node-id="sJErF4zKnWcSqfKMwGqOL6">要確認を <span class="ui-text" data-page-node-id="WzueCVrpKaY6YDJBcvVNyq">マイタスク</span> で目視確認（完了／補件／案件中止）。担当ロールは操作員・操作管理者・admin です。最初のマニュアル確認ノードのロールから案件担当者を自動指名し、同ロールは継続、ロール切替時は再指名。</td>
                   <td data-page-node-id="hepW5trgFJiCysqGIj3Qax"><span class="code-text" data-page-node-id="g16TUh4sMZWtBpqMPnwJIN">hitlStatus</span>（通知）</td>
                 </tr>
                 <tr data-page-node-id="0kkALRQMvuUKwCSWzUuQD9">
@@ -1768,7 +1768,7 @@
 
           <section class="manual-subsection" id="task-function" data-page-node-id="MDFQ5U1ODbc1XitioHvpIA">
             <h3 data-page-node-id="4fJ3nYkbXH9f7PZ8E5FjRW">機能説明</h3>
-            <p data-page-node-id="Zk5bxdf6IL5RDIl5GoHTdR"><strong data-page-node-id="bb035Vd7qSvZ3IruMAkmFh">権限：</strong>該当ロールまたは担当者に表示。操作員は <span class="ui-text" data-page-node-id="i438rTlGZWAxajWz55gK68">対応</span> のみ、<span class="ui-text" data-page-node-id="ojuGmPTUeshuva2fFBFM9F">割当</span> は操作管理者・<span class="ui-text" data-page-node-id="ZdvvsKqNXXxc60xsI4N0Am">admin</span> のみ（<span class="ui-text" data-page-node-id="8Lw5fmBKByOWiBOH4c6HtZ">案件一覧</span> の再割り当てとは独立）。マニュアル確認ノードの指派先は操作員・操作管理者のみ選択可能で、最初のマニュアル確認ノードで選択したロールから案件担当者が自動指名されます。以降同じロールのマニュアル確認ノードは同一担当者が継続処理し、ロール切替時に新ロールから再指名されます。</p>
+            <p data-page-node-id="Zk5bxdf6IL5RDIl5GoHTdR"><strong data-page-node-id="bb035Vd7qSvZ3IruMAkmFh">権限：</strong>該当ロールまたは担当者に表示。操作員は <span class="ui-text" data-page-node-id="i438rTlGZWAxajWz55gK68">対応</span> のみ、<span class="ui-text" data-page-node-id="ojuGmPTUeshuva2fFBFM9F">割当</span> は操作管理者・<span class="ui-text" data-page-node-id="ZdvvsKqNXXxc60xsI4N0Am">admin</span> のみ（<span class="ui-text" data-page-node-id="8Lw5fmBKByOWiBOH4c6HtZ">案件一覧</span> の再割り当てとは独立）。マニュアル確認ノードの指派先は操作員・操作管理者・admin を選択可能で、最初のマニュアル確認ノードで選択したロールから案件担当者が自動指名されます。以降同じロールのマニュアル確認ノードは同一担当者が継続処理し、ロール切替時に新ロールから再指名されます。</p>
             <p data-page-node-id="cuHEH3VwbiEBdEKUVPo9S0"><strong data-page-node-id="ImbDY7jSiDIWdaRAJ6gnek">処理対象：</strong>本画面では <span class="ui-text" data-page-node-id="IOUH3s2pF4JIHqO4UuFWEl">AI前処理確認</span>、<span class="ui-text" data-page-node-id="NQQmDjFYwWDfHC8bkF6D0s">OCR抽出確認</span>、<span class="ui-text" data-page-node-id="zyvGmmeKrIAJFKcsZBD5PE">AI検証確認</span>、<span class="ui-text" data-page-node-id="XCs3HvyoJAHnU02mflxnsQ">エクスポート</span> の 4 種類のタスクを扱います。</p>
             <table class="info-table" data-page-node-id="OSdoHYcaUQFt0KsCwrteOG">
               <thead data-page-node-id="TM1tURFbFv6hDCdVv3wHl4"><tr data-page-node-id="SNYiiVzr5IsNfzcrWnW9Iy"><th data-page-node-id="OpV0UZGnNrIKN6KUBBSear">タスク種別</th><th data-page-node-id="ZiiOaReibHbEyAaja6Y7Fj">発生する場面</th><th data-page-node-id="JOB9rPzRf3Kdouhy7Aq7yv">担当者が行うこと</th><th data-page-node-id="LFPK4gwiIb10kTyc4u6Wu4">完了後の動き</th></tr></thead>
@@ -1815,7 +1815,7 @@
             </figure>
             <div class="notice info" data-page-node-id="9sppbhQvdA7pMuOcnGhJzZ">
               <strong data-page-node-id="xwhqG7I7oBcqfElQLQnJnc">マニュアル確認ノードとの連動（OCR / AI検証共通）</strong>
-              実行画面フッターの <span class="ui-text" data-page-node-id="SzEk9Q35tpRzBrm8Mo2vcx">OCR抽出完了</span> / <span class="ui-text" data-page-node-id="hHLuBTWaPhZ6JI9SBjXZu2">AI検証完了</span> は、ワークフローキャンバス上の <span class="ui-text" data-page-node-id="80RcPKG9wp0B7NdCUhnHeg">マニュアル確認</span> ノードの <span class="ui-text" data-page-node-id="FpR7fD09fbWDPDHNPXIt6g">完了</span> 出口に対応し、後続ノードへ進みます。前処理のマニュアル確認タスクは本期対象外です。<span class="ui-text" data-page-node-id="G14HxKNdnNadspNaOpAx5l">補件</span> は <span class="ui-text" data-page-node-id="Pg5HDZn7x9GHMIWlAODu46">補件</span> 出口へルーティングされ、キャンバスで設定した前段ノード（例：OCR抽出）へ戻ります。案件は <span class="ui-text" data-page-node-id="GE9cS9aqygLUpXStoCs2x2">補件</span> 状態となり、<span class="ui-text" data-page-node-id="SzvD4HPxFBM4bgDq8zFlUu">案件一覧</span> から追加書類をアップロードします。<span class="ui-text" data-page-node-id="2QBv8vPYqAdsHFpk2kKG8B">案件中止</span> はキャンバス上では接続せず、選択時に現在のワークフローインスタンスを終了します（案件自体は再実行可能）。<span class="ui-text" data-page-node-id="yTWOEkAutYOo1B739JAS8h">保存</span> は進捗のみ保存し、出口は確定しません。
+              実行画面フッターの <span class="ui-text" data-page-node-id="SzEk9Q35tpRzBrm8Mo2vcx">OCR抽出完了</span> / <span class="ui-text" data-page-node-id="hHLuBTWaPhZ6JI9SBjXZu2">AI検証完了</span> は、ワークフローキャンバス上の <span class="ui-text" data-page-node-id="80RcPKG9wp0B7NdCUhnHeg">マニュアル確認</span> ノードの <span class="ui-text" data-page-node-id="FpR7fD09fbWDPDHNPXIt6g">完了</span> 出口に対応し、後続ノードへ進みます。<span class="ui-text" data-page-node-id="G14HxKNdnNadspNaOpAx5l">補件</span> は <span class="ui-text" data-page-node-id="Pg5HDZn7x9GHMIWlAODu46">補件</span> 出口へルーティングされ、キャンバスで設定した前段ノード（例：OCR抽出）へ戻ります。案件は <span class="ui-text" data-page-node-id="GE9cS9aqygLUpXStoCs2x2">補件</span> 状態となり、<span class="ui-text" data-page-node-id="SzvD4HPxFBM4bgDq8zFlUu">案件一覧</span> から追加書類をアップロードします。<span class="ui-text" data-page-node-id="2QBv8vPYqAdsHFpk2kKG8B">案件中止</span> はキャンバス上では接続せず、選択時に現在のワークフローインスタンスを終了します（案件自体は再実行可能）。<span class="ui-text" data-page-node-id="yTWOEkAutYOo1B739JAS8h">保存</span> は進捗のみ保存し、出口は確定しません。
             </div>
           </div>
 
@@ -2235,7 +2235,7 @@
       '資料アップロード、案件確認、': 'document upload, case review, ',
       '操作員に加え、': 'In addition to operators, ',
       '（案件担当者・タスク改派）が可能。': ' (case owner and task reassignment) are available.',
-      'はマニュアル確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3 通知設定は割当とは無関係です。通知先は操作員・操作管理者のみ選択可能です。': ' tasks are created from human review or export nodes and shown to the relevant users based on the Step2 assignment settings. Step3 notification settings are unrelated to assignment. Only operators and operation managers can be selected as notification targets.',
+      'はマニュアル確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3 通知設定は割当とは無関係です。通知先には操作員・操作管理者、および最高権限を持つ admin を選択できます。': ' tasks are created from human review or export nodes and shown to the relevant users based on the Step2 assignment settings. Step3 notification settings are unrelated to assignment. Operators, operation managers, and admin, who has the highest level of permissions, can be selected as notification targets.',
       '業務処理を自動化するためのモデル、帳票、業務ルールを設定します。': 'Configure the models, document types, and business rules used to automate business processing.',
       '公開済みの業務シーンに基づいて、資料アップロードから案件確認、マニュアル確認までを行います。': 'Perform the flow from document upload through case review to human review, based on published business scenarios.',
       'ユーザー、権限、安全設定など、システム利用の前提となる管理項目を設定します。': 'Configure the administrative items required to use the system, such as users, permissions, and security settings.',
@@ -2327,7 +2327,7 @@
       'で確認・修正・出力処理を行います。': 'to review, correct, and output results.',
       'admin 側で処理ルールを定義し、業務操作側では公開済みの設定に基づいて案件処理を進めます。エクスポート結果の確認や出力操作は': 'Admins define processing rules, and operations proceed based on published settings. Export result review and output operations are performed in',
       '内で実施します。': '.',
-      '案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初のマニュアル確認ノードで選択したロール（操作員または操作管理者）の中から自動で指名され、以降のマニュアル確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。': 'The user assigned to a case owner role, not a login role. The system automatically assigns a user from the role selected in the first manual review node (Operator or Operation Manager). If later manual review nodes use the same role, the same user continues to handle them. If the role changes, the system assigns a user again from the new role.',
+      '案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初のマニュアル確認ノードで選択したロール（操作員・操作管理者・admin）の中から自動で指名され、以降のマニュアル確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。': 'The user assigned to a case owner role, not a login role. The system automatically assigns a user from the role selected in the first manual review node (Operator, Operation Manager, or admin). If later manual review nodes use the same role, the same user continues to handle them. If the role changes, the system assigns a user again from the new role.',
       'で操作管理者が手動改派も可能。': 'also allows operation managers to manually reassign cases.',
       'Language': 'Language'
     },
@@ -2368,7 +2368,7 @@
       'で確認・修正・出力処理を行います。': '进行确认、修正和输出处理。',
       'admin 側で処理ルールを定義し、業務操作側では公開済みの設定に基づいて案件処理を進めます。エクスポート結果の確認や出力操作は': '管理员侧定义处理规则，业务操作侧基于已发布的设定推进案件处理。导出结果的确认和输出操作在',
       '内で実施します。': '内执行。',
-      '案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初のマニュアル確認ノードで選択したロール（操作員または操作管理者）の中から自動で指名され、以降のマニュアル確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。': '分配到案件的负责人用户（不是登录角色）。系统会从工作流第一个人工确认节点所选择的角色（操作员或操作管理员）中自动指派负责人；后续人工确认节点如果选择相同角色，则继续由同一负责人处理。如果角色发生切换，则会从新的角色中重新指派负责人。',
+      '案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初のマニュアル確認ノードで選択したロール（操作員・操作管理者・admin）の中から自動で指名され、以降のマニュアル確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。': '分配到案件的负责人用户（不是登录角色）。系统会从工作流第一个人工确认节点所选择的角色（操作员、操作管理员或 admin）中自动指派负责人；后续人工确认节点如果选择相同角色，则继续由同一负责人处理。如果角色发生切换，则会从新的角色中重新指派负责人。',
       'で操作管理者が手動改派も可能。': '界面中，操作管理员也可以手动改派。',
       'システム設定、ルール設定、ユーザー・権限管理を行う管理者。': '负责系统设定、规则设定、用户与权限管理的管理员。',
       '資料アップロード、案件確認、': '资料上传、案件确认、',
@@ -2376,7 +2376,7 @@
       '処理中止': '处理中止',
       '操作員に加え、': '除操作员权限外，还可以进行',
       '（案件担当者・タスク改派）が可能。': '（案件负责人/任务改派）。',
-      'はマニュアル確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3 通知設定は割当とは無関係です。通知先は操作員・操作管理者のみ選択可能です。': '由人工确认节点或导出节点生成，并根据 Step2 的分配设定显示给对应用户。Step3 通知设定与任务分配无关，通知对象仅可选择操作员或操作管理员。',
+      'はマニュアル確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3 通知設定は割当とは無関係です。通知先には操作員・操作管理者、および最高権限を持つ admin を選択できます。': '由人工确认节点或导出节点生成，并根据 Step2 的分配设定显示给对应用户。Step3 通知设定与任务分配无关，通知对象可选择操作员、操作管理员，以及拥有最高权限的 admin。',
       '業務処理を自動化するためのモデル、帳票、業務ルールを設定します。': '配置用于实现业务处理自动化的模型、账票与业务规则。',
       '公開済みの業務シーンに基づいて、資料アップロードから案件確認、マニュアル確認までを行います。': '基于已发布的业务场景，执行从资料上传、案件确认到人工确认的流程。',
       'ユーザー、権限、安全設定など、システム利用の前提となる管理項目を設定します。': '配置用户、权限、安全设定等作为系统使用前提的管理项目。',
@@ -2456,7 +2456,7 @@
     '無視可': '可忽略',
     '実行案件集約': '执行案件归集',
     '未集約ファイル': '未归集文件',
-    '画像不正検出': '图像不正检测',
+    '画像不正検出': '画像不正检测',
     '敏感情報検出': '敏感信息检测',
     '画像不正': '图像不正',
     '敏感情報': '敏感信息',
@@ -2465,7 +2465,7 @@
     'P2追加機能': 'P2 附加功能',
     'P2機能一覧': 'P2 功能一览',
     '利用量統計': '用量统计',
-    'AI前処理確認': 'AI 预处理确认',
+    'AI前処理確認': 'AI前处理确认',
     'マスク': '脱敏',
     'シンキングレベル': '思考等级',
     'アラート表示ルール': '人工确认规则',
@@ -2582,13 +2582,13 @@
       '7日間': '7 天',
       'AI 検証': 'AI 校验',
       'AI 検証完了': 'AI 校验完成',
-      'AI 検証確認': 'AI 校验确认',
+      'AI 検証確認': 'AI检证确认',
       'AI 検証要約結果': 'AI 校验汇总结果',
       'AIマッチング': 'AI 匹配',
       'AIルール最適化': 'AI 规则优化',
       'AI分類設定': 'AI 分类设置',
       'AI検証ノード': 'AI 校验节点',
-      'AI検証確認': 'AI 校验确认',
+      'AI検証確認': 'AI检证确认',
       'AI自動生成': 'AI 自动生成',
       'AI自動関連付け': 'AI 自动关联',
       'AI読取設定': 'AI 读取设置',
@@ -2913,7 +2913,7 @@
       , '代表サンプル': '代表样本'
       , '説明文': '说明文字'
       , 'ファイル分割ルール': '文件拆分规则'
-      , '画像分割': '图像拆分'
+      , '画像分割': '画像分割'
       , '画像整列': '图像对齐'
       , '帳票名': '账票名称'
       , 'のダイアログで': '对话框中'
@@ -3538,7 +3538,7 @@
   }
 
   const overviewLinkLabels = {
-    'AI前処理確認': ['AI 预处理确认', 'AI preprocessing confirmation'],
+    'AI前処理確認': ['AI前处理确认', 'AI preprocessing confirmation'],
     'マイタスク（拡張）': ['我的任务（扩展）', 'My Tasks (extended)'],
     '利用量統計': ['用量统计', 'Usage statistics'],
     'シンキングレベル': ['思考等级', 'Thinking level'],
@@ -3552,7 +3552,7 @@
     'マスキング': ['脱敏', 'Masking'],
     'QR 読み取り（LIAJ 診断書専用）': ['QR 读取（LIAJ 诊断书专用）', 'QR reading (LIAJ diagnosis forms only)'],
     'Step5 効果テスト': ['Step5 效果测试', 'Step5 effect test'],
-    '画像不正検知': ['图像不正检测', 'Image fraud detection'],
+    '画像不正検知': ['画像不正检测', 'Image fraud detection'],
     '範囲選択モード': ['范围选择模式', 'Range selection mode'],
     '通知メールチャネル': ['通知邮件渠道', 'Email notification channel']
   };

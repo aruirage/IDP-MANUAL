@@ -89,20 +89,20 @@
   },
   {
     "id": "manual-0012",
-    "source_ja": "案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初の人工確認ノードで選択したロール（操作員または操作管理者）の中から自動で指名され、以降の人工確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。[[UI_01]] で操作管理者が手動改派も可能。",
+    "source_ja": "案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初の人工確認ノードで選択したロール（操作員・操作管理者・admin）の中から自動で指名され、以降の人工確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。[[UI_01]] で操作管理者が手動改派も可能。",
     "ui_text": {
       "[[UI_01]]": "案件一覧"
     },
-    "zh-CN": "分配到案件的负责用户（并非登录角色）。在工作流第一个人工确认节点所选的角色（操作员或操作管理员）中自动指定；后续人工确认节点选择相同角色时沿用同一负责人，角色切换时则从新角色中重新指定。操作管理员可通过 [[UI_01]] 手动改派。",
+    "zh-CN": "分配到案件的负责用户（并非登录角色）。在工作流第一个人工确认节点所选的角色（操作员、操作管理员或 admin）中自动指定；后续人工确认节点选择相同角色时沿用同一负责人，角色切换时则从新角色中重新指定。操作管理员可通过 [[UI_01]] 手动改派。",
     "en": "Assigned user for the case (not the login role).The user is automatically designated from roles selected at the first manual‑review node of the workflow (Operator or Operation Administrator). If the same role is selected for subsequent manual‑review nodes, the same assignee will be retained.When the role is switched, a new assignee will be designated from the new role.Operation Administrators can also perform manual reassignment via [[UI_01]]."
   },
   {
     "id": "manual-0013",
-    "source_ja": "[[UI_01]] は人工確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3 通知設定は割当とは無関係です。通知先は操作員・操作管理者のみ選択可能です。",
+    "source_ja": "[[UI_01]] は人工確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3 通知設定は割当とは無関係です。通知先には操作員・操作管理者、および最高権限を持つ admin を選択できます。",
     "ui_text": {
       "[[UI_01]]": "マイタスク"
     },
-    "zh-CN": "[[UI_01]] 由人工确认与导出节点发起，并依据 Step2 的分配设置展示给相应用户。Step3 通知设置与分配无关，通知对象仅可选择操作员与操作管理员。",
+    "zh-CN": "[[UI_01]] 由人工确认与导出节点发起，并依据 Step2 的分配设置展示给相应用户。Step3 通知设置与分配无关，通知对象可选择操作员、操作管理员，以及拥有最高权限的 admin。",
     "en": "[[UI_01]] is taken from the Artificial Check/Export node and displayed to the relevant user based on the assignment settings in Step 2. Step 3 The notification settings are independent of the assignment. The notification destination can only be selected by the operator/operation manager."
   },
   {
@@ -301,7 +301,7 @@
     "id": "manual-0038",
     "source_ja": "低信頼度、モデル間不一致が発生した場合、OCR 確認や AI検証確認タスクで確認対象になります。",
     "ui_text": {},
-    "zh-CN": "出现低置信度或模型间结果不一致时，将成为 OCR 确认或 AI 校验确认任务的确认对象。",
+    "zh-CN": "出现低置信度或模型间结果不一致时，将成为 OCR 确认或 AI检证确认任务的确认对象。",
     "en": "If there is a low level of reliability or a mismatch between models, it will be checked in the OCR confirmation or AI validation confirmation task."
   },
   {
@@ -692,7 +692,7 @@
     "id": "manual-0080",
     "source_ja": "画像分割、同一帳票タイプ内のファイル組合、画像整列、OCR 実行単位を定義します。",
     "ui_text": {},
-    "zh-CN": "定义图像拆分、同一单据类型内的文件合并、图像排序与 OCR 执行单位。",
+    "zh-CN": "定义画像分割、同一单据类型内的文件合并、图像排序与 OCR 执行单位。",
     "en": "Defines image splitting, file associations within the same document type, image alignment, and OCR execution units."
   },
   {
@@ -1033,14 +1033,14 @@
     "ui_text": {
       "[[UI_01]]": "画像処理設定"
     },
-    "zh-CN": "6[[UI_01]]：设置图像拆分、合并与排序。",
+    "zh-CN": "6[[UI_01]]：设置画像分割、合并与排序。",
     "en": "6 [[UI_01]]: Set image division, association, and alignment."
   },
   {
     "id": "manual-0126",
     "source_ja": "画像分割の例：1 スキャンに含まれる複数帳票を切り分け、個別の論理ファイルとして出力します。",
     "ui_text": {},
-    "zh-CN": "图像拆分示例：将一次扫描中包含的多份单据切分开，作为独立的逻辑文件输出。",
+    "zh-CN": "画像分割示例：将一次扫描中包含的多份单据切分开，作为独立的逻辑文件输出。",
     "en": "Image Splitting Example: Splits multiple documents in one scan and outputs them as separate logical files."
   },
   {
@@ -1085,7 +1085,7 @@
     "id": "manual-0132",
     "source_ja": "画像分割・組合設定は、同一帳票タイプ内の画像をどの論理ファイルとして扱うかに使われます。帳票間を 1 件の案件としてまとめる条件は業務シーン Step1 で設定します。",
     "ui_text": {},
-    "zh-CN": "图像拆分与合并设置用于决定同一单据类型内的图像按哪些逻辑文件处理。将多份单据归为一个案件的条件在业务场景 Step1 中设置。",
+    "zh-CN": "画像分割与合并设置用于决定同一单据类型内的图像按哪些逻辑文件处理。将多份单据归为一个案件的条件在业务场景 Step1 中设置。",
     "en": "Image splitting and union settings are used to determine which logical files should be used for images within the same document type. The conditions for grouping the documents into a single issue are set in Business Scene Step 1."
   },
   {
@@ -1387,11 +1387,11 @@
   },
   {
     "id": "manual-0170",
-    "source_ja": "要確認を [[UI_01]] で目視確認（完了／補件／案件中止）。担当ロールは操作員・操作管理者のみ。最初の人工確認ノードのロールから案件担当者を自動指名し、同ロールは継続、ロール切替時は再指名。",
+    "source_ja": "要確認を [[UI_01]] で目視確認（完了／補件／案件中止）。担当ロールは操作員・操作管理者・admin です。最初の人工確認ノードのロールから案件担当者を自動指名し、同ロールは継続、ロール切替時は再指名。",
     "ui_text": {
       "[[UI_01]]": "マイタスク"
     },
-    "zh-CN": "在 [[UI_01]] 中人工核查待确认项（完成／补件／案件中止）。负责角色仅限操作员与操作管理员。从第一个人工确认节点的角色中自动指定案件负责人，相同角色沿用，角色切换时重新指定。",
+    "zh-CN": "在 [[UI_01]] 中人工核查待确认项（完成／补件／案件中止）。负责角色包括操作员、操作管理员和 admin。从第一个人工确认节点的角色中自动指定案件负责人，相同角色沿用，角色切换时重新指定。",
     "en": "Visually confirm the required confirmation in [[UI_01]] (completed/supplemented/case discontinued). The person in charge of the role is only the operator/operation manager. Automatically appoint the case manager from the role of the first manual confirmation node, continue the role, and reappoint when the role is switched."
   },
   {
@@ -1410,10 +1410,10 @@
   },
   {
     "id": "manual-0173",
-    "source_ja": "各処理ノードは 処理状態（*Status：実行進捗・異常）と 処理結果（*Result：業務上通過か要確認か）を出力します。IF/ELSE では通常 *Result のみを参照します。Step3 通知では *Status と *Result の両方をトリガーに選べます。前処理の人工確認タスク化は本期対象外です。",
+    "source_ja": "各処理ノードは 処理状態（*Status：実行進捗・異常）と 処理結果（*Result：業務上通過か要確認か）を出力します。IF/ELSE では通常 *Result のみを参照します。Step3 通知では *Status と *Result の両方をトリガーに選べます。",
     "ui_text": {},
-    "zh-CN": "各处理节点输出 **处理状态**（*Status：执行进度与异常）和 **处理结果**（*Result：业务上是通过还是待确认）。IF/ELSE 通常只引用 *Result。Step3 通知中 *Status 与 *Result 均可作为触发条件。本期暂不支持将前处理转为人工确认任务。",
-    "en": "Each processing node outputs the processing status (* Status: execution progress/error) and the processing result (* Result: whether it needs to be confirmed in business). IF/else usually only refers to * Result. Step 3 In the notification, you can select both * Status and * Result as triggers. The pre-processing manual confirmation task is not eligible for this issue."
+    "zh-CN": "各处理节点输出 **处理状态**（*Status：执行进度与异常）和 **处理结果**（*Result：业务上是通过还是待确认）。IF/ELSE 通常只引用 *Result。Step3 通知中 *Status 与 *Result 均可作为触发条件。",
+    "en": "Each processing node outputs the processing status (* Status: execution progress/error) and the processing result (* Result: whether it needs to be confirmed in business). IF/else usually only refers to * Result. Step 3 In the notification, you can select both * Status and * Result as triggers. "
   },
   {
     "id": "manual-0174",
@@ -1655,7 +1655,7 @@
     "id": "manual-0200",
     "source_ja": "Step2 のノード構成で、OCR 確認、AI 検証確認、エクスポートの発生条件が決まります。",
     "ui_text": {},
-    "zh-CN": "Step2 的节点结构决定 OCR 确认、AI 校验确认、导出的触发条件。",
+    "zh-CN": "Step2 的节点结构决定 OCR 确认、AI检证确认、导出的触发条件。",
     "en": "The node configuration in Step 2 determines the conditions for OCR confirmation, AI verification confirmation, and export."
   },
   {
@@ -2427,26 +2427,26 @@
   },
   {
     "id": "manual-0287",
-    "source_ja": "権限：該当ロールまたは担当者に表示。操作員は [[UI_01]] のみ、[[UI_02]] は操作管理者・[[UI_03]] のみ（[[UI_04]] の改派とは独立）。人工確認ノードの指派先は操作員・操作管理者のみ選択可能で、最初の人工確認ノードで選択したロールから案件担当者が自動指名されます。以降同じロールの人工確認ノードは同一担当者が継続処理し、ロール切替時に新ロールから再指名されます。",
+    "source_ja": "権限：該当ロールまたは担当者に表示。操作員は [[UI_01]] のみ、[[UI_02]] は操作管理者・[[UI_03]] のみ（[[UI_04]] の改派とは独立）。人工確認ノードの指派先は操作員・操作管理者・admin を選択可能で、最初の人工確認ノードで選択したロールから案件担当者が自動指名されます。以降同じロールの人工確認ノードは同一担当者が継続処理し、ロール切替時に新ロールから再指名されます。",
     "ui_text": {
       "[[UI_01]]": "対応",
       "[[UI_02]]": "割当",
       "[[UI_03]]": "admin",
       "[[UI_04]]": "案件一覧"
     },
-    "zh-CN": "**权限：**仅对相应角色或负责人显示。操作员仅有 [[UI_01]]；[[UI_02]] 仅限操作管理员与 [[UI_03]]（独立于 [[UI_04]] 的改派）。人工确认节点的指派对象只能选择操作员与操作管理员，案件负责人从第一个人工确认节点所选角色中自动指定。之后相同角色的人工确认节点由同一负责人继续处理，角色切换时从新角色重新指定。",
-    "en": "Permissions: visible to the applicable role or assignee. The operator is only [[UI_01]], and [[UI_02]] is only the operation administrator, [[UI_03]] (independent of the reassignment of [[UI_04]]). Only the operator/operation manager can be selected to assign the manual confirmation node, and the case manager will be automatically assigned from the role selected in the first manual confirmation node. After that, the manual confirmation node of the same role will continue to be processed by the same person in charge, and will be reappointed from the new role when the role is switched."
+    "zh-CN": "**权限：**仅对相应角色或负责人显示。操作员仅有 [[UI_01]]；[[UI_02]] 仅限操作管理员与 [[UI_03]]（独立于 [[UI_04]] 的改派）。人工确认节点的指派对象可选择操作员、操作管理员和 admin，案件负责人从第一个人工确认节点所选角色中自动指定。之后相同角色的人工确认节点由同一负责人继续处理，角色切换时从新角色重新指定。",
+    "en": "Permissions: visible to the applicable role or assignee. The operator is only [[UI_01]], and [[UI_02]] is only the operation administrator, [[UI_03]] (independent of the reassignment of [[UI_04]]). Operators, operation managers, and admin can be selected to assign the manual confirmation node, and the case manager will be automatically assigned from the role selected in the first manual confirmation node. After that, the manual confirmation node of the same role will continue to be processed by the same person in charge, and will be reappointed from the new role when the role is switched."
   },
   {
     "id": "manual-0288",
-    "source_ja": "処理対象：本画面では [[UI_01]]、[[UI_02]]、[[UI_03]] の 3 種類のタスクを扱います。前処理確認タスクは本期対象外です。",
+    "source_ja": "処理対象：本画面では [[UI_01]]、[[UI_02]]、[[UI_03]] の 3 種類のタスクを扱います。",
     "ui_text": {
       "[[UI_01]]": "OCR 抽出確認",
       "[[UI_02]]": "AI 検証確認",
       "[[UI_03]]": "エクスポート"
     },
-    "zh-CN": "**处理对象：**本界面处理 [[UI_01]]、[[UI_02]]、[[UI_03]] 三类任务。前处理确认任务不在本期范围内。",
-    "en": "Processing target: This screen handles three types of tasks: [[UI_01]], [[UI_02]], and [[UI_03]]. Preprocessing confirmation tasks are not eligible for this issue."
+    "zh-CN": "**处理对象：**本界面处理 [[UI_01]]、[[UI_02]]、[[UI_03]] 三类任务。",
+    "en": "Processing target: This screen handles three types of tasks: [[UI_01]], [[UI_02]], and [[UI_03]]. "
   },
   {
     "id": "manual-0289",
@@ -3038,28 +3038,28 @@
     "id": "manual-0361",
     "source_ja": "帳票タイプ設定 画像分割と組合キーを拡大表示",
     "ui_text": {},
-    "zh-CN": "单据类型设置 图像拆分与合并键（放大查看）",
+    "zh-CN": "单据类型设置 画像分割与合并键（放大查看）",
     "en": "Expanded display of document type setting image division and union key"
   },
   {
     "id": "manual-0362",
     "source_ja": "帳票タイプ設定 画像分割と組合キー",
     "ui_text": {},
-    "zh-CN": "单据类型设置 图像拆分与合并键",
+    "zh-CN": "单据类型设置 画像分割与合并键",
     "en": "Document Type Setting Image Splitting and Union Key"
   },
   {
     "id": "manual-0363",
     "source_ja": "画像分割の前後比較を拡大表示",
     "ui_text": {},
-    "zh-CN": "图像拆分前后对比（放大查看）",
+    "zh-CN": "画像分割前后对比（放大查看）",
     "en": "Zoom in before and after image splitting"
   },
   {
     "id": "manual-0364",
     "source_ja": "画像分割 分割前と分割後",
     "ui_text": {},
-    "zh-CN": "图像拆分 拆分前与拆分后",
+    "zh-CN": "画像分割 拆分前与拆分后",
     "en": "Before and After Image Splitting"
   },
   {
@@ -3514,14 +3514,14 @@
     "id": "manual-0429",
     "source_ja": "AI 検証確認画面を拡大表示",
     "ui_text": {},
-    "zh-CN": "AI 校验确认界面（放大查看）",
+    "zh-CN": "AI检证确认界面（放大查看）",
     "en": "Expand AI verification confirmation screen"
   },
   {
     "id": "manual-0430",
     "source_ja": "AI 検証確認の完備性・データ検証・印鑑署名検証",
     "ui_text": {},
-    "zh-CN": "AI 校验确认的完整性、数据校验、印章签名校验",
+    "zh-CN": "AI检证确认的完整性、数据校验、印章签名校验",
     "en": "AI Verification Verification Completeness, Data Verification, Seal Signature Verification"
   },
   {
@@ -4187,7 +4187,7 @@
     "id": "manual-0531",
     "source_ja": "前処理ノード内の5サブモジュールを固定順で配置：画像不正検知→画像回転→画像補正→画像整列→敏感情報検出。ファイル状態は4段のまま。画像不正検知は一級スイッチ＋二級4項目（PS検出／AI生成検知／帳票特徴検知／筆跡検知）、各スイッチ＋対象帳票別選択、実行時並列、不通過で不正タイプを返し人工確認へ。敏感情報検出は幾何完了後に対象帳票でマスキングを実行。",
     "ui_text": {},
-    "zh-CN": "前处理节点内5个子模块固定顺序：图像不正检测→图像旋转→图像补正→图像整列→敏感信息检测。文件状态保持4段。图像不正检测为一级开关+二级4项（PS/AI生成/票据特征/笔迹），各自开关+对象票据选择，运行时并行，不通过返回不正类型并进入人工确认。敏感信息检测在几何完成后对对象票据执行脱敏。",
+    "zh-CN": "前处理节点内5个子模块固定顺序：画像不正检测→图像旋转→图像补正→图像整列→敏感信息检测。文件状态保持4段。画像不正检测为一级开关+二级4项（PS/AI生成/票据特征/笔迹），各自开关+对象票据选择，运行时并行，不通过返回不正类型并进入人工确认。敏感信息检测在几何完成后对对象票据执行脱敏。",
     "en": "Five preprocessing sub-modules in fixed order: forgery detection → rotation → correction → alignment → sensitive-info detection. Image forgery detection: primary switch + 4 secondary items (PS/AI-gen/doc-feature/handwriting), each with its own switch and per-document targeting, run in parallel; on fail routes to manual confirmation. Sensitive-info detection masks target documents after geometry."
   },
   {
@@ -4327,7 +4327,7 @@
     "id": "manual-0560",
     "source_ja": "画像不正検知 人工確認待機",
     "ui_text": {},
-    "zh-CN": "图像不正检测 人工确认待办",
+    "zh-CN": "画像不正检测 人工确认待办",
     "en": "Image Forgery Detection To-do"
   },
   {
@@ -4609,7 +4609,7 @@
     "ui_text": {
       "[[UI_01]]": "AI前処理"
     },
-    "zh-CN": "[[UI_01]] ：用于AI预处理节点中的大模型调用，例如图像不正检测。",
+    "zh-CN": "[[UI_01]] ：用于AI预处理节点中的大模型调用，例如画像不正检测。",
     "en": "[[UI_01]]: Used for large model calls in AI preprocessing nodes, such as image fraud detection."
   },
   {
@@ -5420,7 +5420,7 @@
     "id": "manual-0711",
     "source_ja": "P2では、前処理ノードに 画像不正検知 と 敏感情報検出（マスキング） が追加され、キャンバスに 範囲選択モード、Step3 の通知にメール チャネルが追加されます。画像回転・画像補正・画像整列は一期からある機能で、変更はありません。",
     "ui_text": {},
-    "zh-CN": "在P2中，将**图像不正检测**和**敏感信息检测（脱敏）**添加到预处理节点，将**范围选择模式**添加到画布，并将电子邮件通道添加到步骤3中的通知。图像旋转、图像校正和图像对齐是自第一时期以来一直存在的功能，并且没有发生变化。",
+    "zh-CN": "在P2中，将**画像不正检测**和**敏感信息检测（脱敏）**添加到预处理节点，将**范围选择模式**添加到画布，并将电子邮件通道添加到步骤3中的通知。图像旋转、图像校正和图像对齐是自第一时期以来一直存在的功能，并且没有发生变化。",
     "en": "In P2, **Image Fraud Detection** and **Sensitive Information Detection (Masking)** are added to the preprocessing node, **Range Selection Mode** is added to the canvas, and the email channel is added to the notification in Step 3. Image rotation, image correction, and image alignment are functions that have existed since the first period, and have not changed."
   },
   {
@@ -5464,7 +5464,7 @@
     "id": "manual-0717",
     "source_ja": "Step2 前処理ノード（画像不正検知・マスキング）",
     "ui_text": {},
-    "zh-CN": "第2步预处理节点（图像不正检测/脱敏）",
+    "zh-CN": "第2步预处理节点（画像不正检测/脱敏）",
     "en": "Step 2 Preprocessing node (image fraud detection/masking)"
   },
   {
@@ -5473,21 +5473,21 @@
     "ui_text": {
       "[[UI_01]]": "前処理オプション"
     },
-    "zh-CN": "图像不正检测和敏感信息检测被添加到预处理节点的[[UI_01]]。",
+    "zh-CN": "画像不正检测和敏感信息检测被添加到预处理节点的[[UI_01]]。",
     "en": "Image fraud detection and sensitive information detection are added to [[UI_01]] of the preprocessing node."
   },
   {
     "id": "manual-0719",
     "source_ja": "画像不正検知の 4 項目。それぞれ対象帳票を個別に選びます。",
     "ui_text": {},
-    "zh-CN": "四项图像不正检测。分别选择每个目标文档。",
+    "zh-CN": "四项画像不正检测。分别选择每个目标文档。",
     "en": "Four items of image fraud detection. Select each target document individually."
   },
   {
     "id": "manual-0720",
     "source_ja": "画像不正検知は、モジュール全体のスイッチと、PS検出／AI生成検出／帳票特徴検出／筆跡検出の 4 つの個別スイッチで構成されます。各項目は対象帳票を個別に選択でき、実行時は 4 項目が並列で動作します。1 つでも基準未達なら不正タイプを返し、AI前処理確認に回します。",
     "ui_text": {},
-    "zh-CN": "图像不正检测由一个完整的模块开关和四个独立的开关组成： PS检测/AI生成检测/文档特征检测/手写检测。每个项目可以单独选择目标文档，在运行时有四个项目并行操作，如果其中一个失败，则返回欺诈类型并通过AI预处理确认。",
+    "zh-CN": "画像不正检测由一个完整的模块开关和四个独立的开关组成： PS检测/AI生成检测/文档特征检测/手写检测。每个项目可以单独选择目标文档，在运行时有四个项目并行操作，如果其中一个失败，则返回欺诈类型并通过AI前处理确认。",
     "en": "Image fraud detection consists of an entire module switch and four separate switches: PS detection/AI generation detection/document feature detection/handwriting detection. Each item can select the target document individually, and four items operate in parallel at runtime. If even one of them fails, it returns the fraud type and passes the AI pretreatment confirmation."
   },
   {
@@ -5687,7 +5687,7 @@
     "id": "manual-0745",
     "source_ja": "AI前処理確認タスクの発生条件",
     "ui_text": {},
-    "zh-CN": "AI预处理确认任务发生条件",
+    "zh-CN": "AI前处理确认任务发生条件",
     "en": "AI Preprocessing Confirmation Task Conditions"
   },
   {
@@ -5743,7 +5743,7 @@
     "id": "manual-0753",
     "source_ja": "画像分割",
     "ui_text": {},
-    "zh-CN": "图像拆分",
+    "zh-CN": "画像分割",
     "en": "Image Split"
   },
   {
@@ -5778,7 +5778,7 @@
     "id": "manual-0758",
     "source_ja": "画像不正検知",
     "ui_text": {},
-    "zh-CN": "图像不正检测",
+    "zh-CN": "画像不正检测",
     "en": "Image Fraud Detection"
   },
   {
@@ -5988,7 +5988,7 @@
       "[[UI_01]]": "アラート表示ルール",
       "[[UI_02]]": "読取モデル設定"
     },
-    "zh-CN": "[[UI_01]] （告警显示规则·七个项目）在单据类型设置第2步的[[UI_02]]中设置。满足此处选择的条件的项目将接受AI预处理确认和OCR提取确认。",
+    "zh-CN": "[[UI_01]] （告警显示规则·七个项目）在单据类型设置第2步的[[UI_02]]中设置。满足此处选择的条件的项目将接受AI前处理确认和OCR提取确认。",
     "en": "[[UI_01]] (Artificial confirmation rule · Seven items) is set in [[UI_02]] in Step 2 of the document type setting. Items that meet the conditions selected here will be subject to AI pretreatment confirmation and OCR extraction confirmation."
   },
   {
@@ -6083,7 +6083,7 @@
     "id": "manual-0795",
     "source_ja": "タスク種別で「AI前処理確認」を選ぶと、該当タスクだけが表示されます。",
     "ui_text": {},
-    "zh-CN": "如果为任务类型选择“AI预处理确认” ，则只会显示对应的任务。",
+    "zh-CN": "如果为任务类型选择“AI前处理确认” ，则只会显示对应的任务。",
     "en": "If you select \"AI Preprocessing Confirmation\" for the task type, only the corresponding task will be displayed."
   },
   {
@@ -6125,7 +6125,7 @@
     "id": "manual-0801",
     "source_ja": "タスク一覧に「AI前処理確認」種別の絞り込みと列を追加し、操作列から実行ページへ遷移できるようにします。",
     "ui_text": {},
-    "zh-CN": "将“AI预处理确认”类型的过滤器和列添加到任务列表中，以便您可以从操作列过渡到执行页面。",
+    "zh-CN": "将“AI前处理确认”类型的过滤器和列添加到任务列表中，以便您可以从操作列过渡到执行页面。",
     "en": "Add a filter and column for the \"AI Preprocessing Confirmation\" type to the task list, so that you can transition from the operation column to the execution page."
   },
   {
@@ -6398,7 +6398,7 @@
     "id": "manual-0840",
     "source_ja": "AI前処理後に発生するマニュアル確認タスクです。分類・分割の信頼度が低い場合、画像不正検知で基準を満たさなかった場合、または機微情報が検出された場合に、内容を確認してタスクを完了します。",
     "ui_text": {},
-    "zh-CN": "AI 预处理后产生的人工确认任务。当分类、分割的置信度较低，图像不正检测未达标，或检测到敏感信息时，确认内容后完成任务。",
+    "zh-CN": "AI 预处理后产生的人工确认任务。当分类、分割的置信度较低，画像不正检测未达标，或检测到敏感信息时，确认内容后完成任务。",
     "en": "A manual confirmation task generated after AI preprocessing. Complete the task after reviewing the content when classification or splitting confidence is low, image fraud detection does not meet the criteria, or sensitive information is detected."
   },
   {
@@ -6440,7 +6440,7 @@
     "id": "manual-0847",
     "source_ja": "AI前処理ノード内の大模型呼び出し（画像不正検知など）で使用します。案件集約とは別に割り当てます。",
     "ui_text": {},
-    "zh-CN": "用于 AI 预处理节点内的大模型调用（图像不正检测等）。与案件归集分开分配。",
+    "zh-CN": "用于 AI 预处理节点内的大模型调用（画像不正检测等）。与案件归集分开分配。",
     "en": "Used for LLM calls inside AI preprocessing nodes (e.g., image fraud detection). Assigned separately from case aggregation."
   },
   {
@@ -6475,7 +6475,7 @@
     "id": "manual-0856",
     "source_ja": "HITL=ON かつ要確認の項目はマニュアル確認の対象になります。正常値の範囲を外れた値は要確認として表示され、マスク=ON の項目は OCR抽出の対象外となり、確認画面と効果テストに表示されない仕様です。分類の信頼度が Step1 の帳票分類信頼度閾値を下回る場合も、AI前処理確認の対象になります。",
     "ui_text": {},
-    "zh-CN": "HITL=ON 且需确认的项目进入人工确认。超出正常值范围的值显示为需确认；脱敏=ON 的项目不属于 OCR 抽取对象，不显示在确认画面和效果测试中。分类置信度低于 Step1 的票据分类置信度阈值时，也会进入 AI 预处理确认。",
+    "zh-CN": "HITL=ON 且需确认的项目进入人工确认。超出正常值范围的值显示为需确认；脱敏=ON 的项目不属于 OCR 抽取对象，不显示在确认画面和效果测试中。分类置信度低于 Step1 的票据分类置信度阈值时，也会进入 AI前处理确认。",
     "en": "Fields with HITL=ON and a review flag become manual confirmation targets. Values outside the normal range are shown as needing review; fields with masking=ON are excluded from OCR extraction and are not shown on the confirmation screen or effect test. If classification confidence is below the Step1 document classification threshold, the case also goes to AI preprocessing confirmation."
   },
   {
@@ -6636,7 +6636,7 @@
     "id": "manual-0889",
     "source_ja": "未対応／対応済を切り替え、タスク種別などで絞り込みます。「AI前処理確認」の行は、操作列の「対応」から実行ページへ進みます。",
     "ui_text": {},
-    "zh-CN": "切换未处理／已处理，按任务类型等筛选。「AI 预处理确认」行可从操作列的「处理」进入执行页面。",
+    "zh-CN": "切换未处理／已处理，按任务类型等筛选。「AI前处理确认」行可从操作列的「处理」进入执行页面。",
     "en": "Switch between open/closed and filter by task type. For \"AI preprocessing confirmation\" rows, open the execution page from \"Handle\" in the actions column."
   },
   {
@@ -6706,7 +6706,7 @@
     "id": "manual-0905",
     "source_ja": "画像不正検出と同じ",
     "ui_text": {},
-    "zh-CN": "与图像不正检测相同",
+    "zh-CN": "与画像不正检测相同",
     "en": "Same as image fraud detection"
   },
   {
@@ -6846,7 +6846,7 @@
     "id": "manual-0930",
     "source_ja": "Step2 の [[UI_01]] に [[UI_02]] が新設され、7 項目すべてを選択できるようになりました。Step2 のフィールド表で [[UI_03]] が ON のフィールドだけが対象です。このルールは OCR抽出確認 に適用されます。AI前処理確認 の対象は、前処理の検出結果（分類・分割・画像不正・敏感情報）で決まります。",
     "ui_text": {},
-    "zh-CN": "在 Step2 的 [[UI_01]] 中新增 [[UI_02]]，7 项均可选择。仅 Step2 字段表中 [[UI_03]] 为 ON 的字段适用。**该规则适用于 OCR 抽取确认。**AI 预处理确认的对象由预处理的检测结果（分类・分割・图像不正・敏感信息）决定。",
+    "zh-CN": "在 Step2 的 [[UI_01]] 中新增 [[UI_02]]，7 项均可选择。仅 Step2 字段表中 [[UI_03]] 为 ON 的字段适用。**该规则适用于 OCR 抽取确认。**AI前处理确认的对象由预处理的检测结果（分类・分割・图像不正・敏感信息）决定。",
     "en": "[[UI_02]] is added to Step2 [[UI_01]], and all 7 items can be selected. Only fields with [[UI_03]] ON in the Step2 field table apply. **This rule applies to OCR extraction confirmation.** AI preprocessing confirmation targets are determined by preprocessing detection results (classification, splitting, image fraud, sensitive information)."
   },
   {
@@ -6907,16 +6907,16 @@
   },
   {
     "id": "manual-0939",
-    "source_ja": "要確認を [[UI_01]] で目視確認（完了／補件／案件中止）。担当ロールは操作員・操作管理者のみ。最初のマニュアル確認ノードのロールから案件担当者を自動指名し、同ロールは継続、ロール切替時は再指名。",
+    "source_ja": "要確認を [[UI_01]] で目視確認（完了／補件／案件中止）。担当ロールは操作員・操作管理者・admin です。最初のマニュアル確認ノードのロールから案件担当者を自動指名し、同ロールは継続、ロール切替時は再指名。",
     "ui_text": {},
-    "zh-CN": "在 [[UI_01]] 目视确认需确认项（完成／补件／案件中止）。负责角色仅为操作员・操作管理员。从第 1 个人工确认节点的角色自动指定案件负责人；同一角色继续，角色切换时重新指定。",
-    "en": "Visually confirm items needing review in [[UI_01]] (complete / request supplement / cancel case). Only operators and operation managers can be assigned. The case owner is auto-assigned from the first manual confirmation node's role; the same role continues, and a role switch triggers reassignment."
+    "zh-CN": "在 [[UI_01]] 目视确认需确认项（完成／补件／案件中止）。负责角色包括操作员、操作管理员和 admin。从第 1 个人工确认节点的角色自动指定案件负责人；同一角色继续，角色切换时重新指定。",
+    "en": "Visually confirm items needing review in [[UI_01]] (complete / request supplement / cancel case). Operators, operation managers, and admin can be assigned. The case owner is auto-assigned from the first manual confirmation node's role; the same role continues, and a role switch triggers reassignment."
   },
   {
     "id": "manual-0940",
     "source_ja": "各処理ノードは 処理状態（*Status：実行進捗・異常）と 処理結果（*Result：業務上通過か要確認か）を出力します。IF/ELSE では通常 *Result のみを参照します。Step3 通知では *Status と *Result の両方をトリガーに選べます。前処理は、画像不正の基準未達または敏感情報の検出時に AI前処理確認タスクを起票します。",
     "ui_text": {},
-    "zh-CN": "各处理节点输出 **处理状态**（*Status：执行进度・异常）和 **处理结果**（*Result：业务上通过还是需确认）。IF/ELSE 通常只参照 *Result。Step3 通知可将 *Status 和 *Result 都选为触发器。预处理在图像不正不通过或检测到敏感信息时创建 AI 预处理确认任务。",
+    "zh-CN": "各处理节点输出 **处理状态**（*Status：执行进度・异常）和 **处理结果**（*Result：业务上通过还是需确认）。IF/ELSE 通常只参照 *Result。Step3 通知可将 *Status 和 *Result 都选为触发器。预处理在图像不正不通过或检测到敏感信息时创建 AI前处理确认任务。",
     "en": "Each processing node outputs **processing status** (*Status: execution progress/errors) and **processing result** (*Result: business pass or needs review). IF/ELSE normally references only *Result. Step3 notifications can use both *Status and *Result as triggers. Preprocessing raises an AI preprocessing confirmation task when image fraud fails or sensitive information is detected."
   },
   {
@@ -6930,7 +6930,7 @@
     "id": "manual-0942",
     "source_ja": "前処理ノードの画像不正検知・敏感情報検出の設定が、AI前処理確認タスクの発生条件になります。",
     "ui_text": {},
-    "zh-CN": "预处理节点的图像不正检测・敏感信息检测设置，是 AI 预处理确认任务的发生条件。",
+    "zh-CN": "预处理节点的画像不正检测・敏感信息检测设置，是 AI前处理确认任务的发生条件。",
     "en": "The preprocessing node's image fraud detection and sensitive-information detection settings determine when AI preprocessing confirmation tasks occur."
   },
   {
@@ -6998,10 +6998,10 @@
   },
   {
     "id": "manual-0952",
-    "source_ja": "権限：該当ロールまたは担当者に表示。操作員は [[UI_01]] のみ、[[UI_02]] は操作管理者・[[UI_03]] のみ（[[UI_04]] の再割り当てとは独立）。マニュアル確認ノードの指派先は操作員・操作管理者のみ選択可能で、最初のマニュアル確認ノードで選択したロールから案件担当者が自動指名されます。以降同じロールのマニュアル確認ノードは同一担当者が継続処理し、ロール切替時に新ロールから再指名されます。",
+    "source_ja": "権限：該当ロールまたは担当者に表示。操作員は [[UI_01]] のみ、[[UI_02]] は操作管理者・[[UI_03]] のみ（[[UI_04]] の再割り当てとは独立）。マニュアル確認ノードの指派先は操作員・操作管理者・admin を選択可能で、最初のマニュアル確認ノードで選択したロールから案件担当者が自動指名されます。以降同じロールのマニュアル確認ノードは同一担当者が継続処理し、ロール切替時に新ロールから再指名されます。",
     "ui_text": {},
-    "zh-CN": "**权限：**对该角色或负责人显示。操作员仅 [[UI_01]]，[[UI_02]] 仅操作管理员・[[UI_03]]（与 [[UI_04]] 的改派独立）。人工确认节点的指派对象只能选择操作员・操作管理员，案件负责人由第 1 个人工确认节点选择的角色自动指定。之后同角色的人工确认节点由同一负责人继续处理，角色切换时由新角色重新指定。",
-    "en": "**Permissions:** Shown to the relevant role or owner. Operators have only [[UI_01]]; [[UI_02]] is limited to operation managers / [[UI_03]] (independent of [[UI_04]] reassignment). Manual confirmation nodes can only assign operators or operation managers; the case owner is auto-assigned from the role selected at the first manual confirmation node. Subsequent nodes with the same role continue with the same owner, and a role switch reassigns from the new role."
+    "zh-CN": "**权限：**对该角色或负责人显示。操作员仅 [[UI_01]]，[[UI_02]] 仅操作管理员・[[UI_03]]（与 [[UI_04]] 的改派独立）。人工确认节点的指派对象可选择操作员、操作管理员和 admin，案件负责人由第 1 个人工确认节点选择的角色自动指定。之后同角色的人工确认节点由同一负责人继续处理，角色切换时由新角色重新指定。",
+    "en": "**Permissions:** Shown to the relevant role or owner. Operators have only [[UI_01]]; [[UI_02]] is limited to operation managers / [[UI_03]] (independent of [[UI_04]] reassignment). Manual confirmation nodes can assign operators, operation managers, or admin; the case owner is auto-assigned from the role selected at the first manual confirmation node. Subsequent nodes with the same role continue with the same owner, and a role switch reassigns from the new role."
   },
   {
     "id": "manual-0953",
@@ -7033,10 +7033,10 @@
   },
   {
     "id": "manual-0957",
-    "source_ja": "マニュアル確認ノードとの連動（OCR / AI検証共通） 実行画面フッターの [[UI_01]] / [[UI_02]] は、ワークフローキャンバス上の [[UI_03]] ノードの [[UI_04]] 出口に対応し、後続ノードへ進みます。前処理のマニュアル確認タスクは本期対象外です。[[UI_05]] は [[UI_06]] 出口へルーティングされ、キャンバスで設定した前段ノード（例：OCR抽出）へ戻ります。案件は [[UI_07]] 状態となり、[[UI_08]] から追加書類をアップロードします。[[UI_09]] はキャンバス上では接続せず、選択時に現在のワークフローインスタンスを終了します（案件自体は再実行可能）。[[UI_10]] は進捗のみ保存し、出口は確定しません。",
+    "source_ja": "マニュアル確認ノードとの連動（OCR / AI検証共通） 実行画面フッターの [[UI_01]] / [[UI_02]] は、ワークフローキャンバス上の [[UI_03]] ノードの [[UI_04]] 出口に対応し、後続ノードへ進みます。[[UI_05]] は [[UI_06]] 出口へルーティングされ、キャンバスで設定した前段ノード（例：OCR抽出）へ戻ります。案件は [[UI_07]] 状態となり、[[UI_08]] から追加書類をアップロードします。[[UI_09]] はキャンバス上では接続せず、選択時に現在のワークフローインスタンスを終了します（案件自体は再実行可能）。[[UI_10]] は進捗のみ保存し、出口は確定しません。",
     "ui_text": {},
-    "zh-CN": "**与人工确认节点的联动（OCR / AI 验证通用）** 执行页面底部的 [[UI_01]] / [[UI_02]] 对应工作流画布上 [[UI_03]] 节点的 [[UI_04]] 出口，进入后续节点。前处理的人工确认任务不属于本期范围。[[UI_05]] 路由到 [[UI_06]] 出口，返回画布设置的前段节点（例：OCR 抽取）。案件进入 [[UI_07]] 状态，从 [[UI_08]] 上传追加资料。[[UI_09]] 在画布上不连接，选择时结束当前工作流实例（案件本身可重新执行）。[[UI_10]] 仅保存进度，不确定出口。",
-    "en": "**Linkage with manual confirmation nodes (common to OCR / AI verification)** The [[UI_01]] / [[UI_02]] buttons in the execution footer correspond to the [[UI_04]] exit of the [[UI_03]] node on the workflow canvas and proceed to the next node. Manual confirmation tasks for preprocessing are out of scope for this phase. [[UI_05]] is routed to the [[UI_06]] exit and returns to the preceding node configured on the canvas (e.g., OCR extraction). The case enters the [[UI_07]] state, and additional documents are uploaded from [[UI_08]]. [[UI_09]] is not connected on the canvas; selecting it ends the current workflow instance (the case itself can be rerun). [[UI_10]] only saves progress and does not fix the exit."
+    "zh-CN": "**与人工确认节点的联动（OCR / AI 验证通用）** 执行页面底部的 [[UI_01]] / [[UI_02]] 对应工作流画布上 [[UI_03]] 节点的 [[UI_04]] 出口，进入后续节点。[[UI_05]] 路由到 [[UI_06]] 出口，返回画布设置的前段节点（例：OCR 抽取）。案件进入 [[UI_07]] 状态，从 [[UI_08]] 上传追加资料。[[UI_09]] 在画布上不连接，选择时结束当前工作流实例（案件本身可重新执行）。[[UI_10]] 仅保存进度，不确定出口。",
+    "en": "**Linkage with manual confirmation nodes (common to OCR / AI verification)** The [[UI_01]] / [[UI_02]] buttons in the execution footer correspond to the [[UI_04]] exit of the [[UI_03]] node on the workflow canvas and proceed to the next node. [[UI_05]] is routed to the [[UI_06]] exit and returns to the preceding node configured on the canvas (e.g., OCR extraction). The case enters the [[UI_07]] state, and additional documents are uploaded from [[UI_08]]. [[UI_09]] is not connected on the canvas; selecting it ends the current workflow instance (the case itself can be rerun). [[UI_10]] only saves progress and does not fix the exit."
   },
   {
     "id": "manual-0958",
@@ -7119,14 +7119,14 @@
     "id": "manual-0969",
     "source_ja": "注意事項 画像不正検出と敏感情報検出は AI前処理の子機能ですが、別の課金ノードとして表示されます。モデル呼び出し明細はファイルとは紐づきません。AI アシストによる呼び出しは案件ID が「—」になります。再実行しても、枚数が増えない限り利用量一覧は増えません。各タブの CSV は現在の絞り込み条件で、ページングに関係なく全件を出力します。",
     "ui_text": {},
-    "zh-CN": "**注意事项** 图像不正检测和敏感信息检测虽属 AI 预处理的子功能，但作为单独的计费节点显示。模型调用明细不与文件关联。AI 辅助的调用案件ID 显示为「—」。重新执行时，只要枚数不增加，用量列表就不会增加。各标签页的 CSV 按当前筛选条件输出全部数据，与分页无关。",
+    "zh-CN": "**注意事项** 画像不正检测和敏感信息检测虽属 AI 预处理的子功能，但作为单独的计费节点显示。模型调用明细不与文件关联。AI 辅助的调用案件ID 显示为「—」。重新执行时，只要枚数不增加，用量列表就不会增加。各标签页的 CSV 按当前筛选条件输出全部数据，与分页无关。",
     "en": "**Notes** Image fraud detection and sensitive information detection are sub-functions of AI preprocessing but appear as separate billing nodes. Model call details are not linked to files. Calls from AI Assist show case ID \"—\". Re-running does not increase the usage list unless the document count increases. Each tab's CSV exports all rows matching the current filters, regardless of pagination."
   },
   {
     "id": "manual-0971",
     "source_ja": "マイタスクで、タスク種別に「AI前処理確認」が追加されました。",
     "ui_text": {},
-    "zh-CN": "在「我的任务」中，任务类型新增了「AI 预处理确认」。",
+    "zh-CN": "在「我的任务」中，任务类型新增了「AI前处理确认」。",
     "en": "In My Tasks, \"AI preprocessing confirmation\" has been added as a task type."
   },
   {
@@ -7159,17 +7159,17 @@
   },
   {
     "id": "manual-0976",
-    "source_ja": "案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初のマニュアル確認ノードで選択したロール（操作員または操作管理者）の中から自動で指名され、以降のマニュアル確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。[[UI_01]] で操作管理者は手動で再割り当てすることもできます。",
+    "source_ja": "案件に割り当てられる担当ユーザー（ログインロールではない）。ワークフローの最初のマニュアル確認ノードで選択したロール（操作員・操作管理者・admin）の中から自動で指名され、以降のマニュアル確認ノードで同じロールが選ばれた場合は同じ担当者が継続します。ロールが切り替わった場合は、新しいロールから改めて指名されます。[[UI_01]] で操作管理者は手動で再割り当てすることもできます。",
     "ui_text": {},
-    "zh-CN": "分配给案件的负责人用户（不是登录角色）。从工作流第 1 个人工确认节点选择的角色（操作员或操作管理员）中自动指定；之后的人工确认节点若选择同一角色，则由同一负责人继续；角色切换时从新角色重新指定。在 [[UI_01]] 中，操作管理员也可手动重新分配。",
-    "en": "The user assigned as case owner (not a login role). Automatically assigned from the role selected at the first manual confirmation node (operator or operation manager); later manual confirmation nodes with the same role continue with the same owner, and a role switch reassigns from the new role. In [[UI_01]], operation managers can also reassign manually."
+    "zh-CN": "分配给案件的负责人用户（不是登录角色）。从工作流第 1 个人工确认节点选择的角色（操作员、操作管理员或 admin）中自动指定；之后的人工确认节点若选择同一角色，则由同一负责人继续；角色切换时从新角色重新指定。在 [[UI_01]] 中，操作管理员也可手动重新分配。",
+    "en": "The user assigned as case owner (not a login role). Automatically assigned from the role selected at the first manual confirmation node (operator, operation manager, or admin); later manual confirmation nodes with the same role continue with the same owner, and a role switch reassigns from the new role. In [[UI_01]], operation managers can also reassign manually."
   },
   {
     "id": "manual-0977",
-    "source_ja": "[[UI_01]] はマニュアル確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3の通知設定は、タスクの割り当てには影響しません。通知先として選択できるのは、操作員と操作管理者のみです。",
+    "source_ja": "[[UI_01]] はマニュアル確認・エクスポートノードから起票され、Step2 の割当設定に基づき該当ユーザーに表示されます。Step3の通知設定は、タスクの割り当てには影響しません。通知先には、操作員、操作管理者、および最高権限を持つ admin を選択できます。",
     "ui_text": {},
-    "zh-CN": "[[UI_01]] 由人工确认・导出节点起票，并根据 Step2 的分配设置显示给相应用户。Step3 的通知设置不影响任务分配。可作为通知对象选择的只有操作员和操作管理员。",
-    "en": "[[UI_01]] tasks are raised from manual confirmation / export nodes and shown to the relevant users based on the Step2 assignment settings. Step3 notification settings do not affect task assignment. Only operators and operation managers can be selected as notification targets."
+    "zh-CN": "[[UI_01]] 由人工确认・导出节点起票，并根据 Step2 的分配设置显示给相应用户。Step3 的通知设置不影响任务分配。可作为通知对象选择的包括操作员、操作管理员，以及拥有最高权限的 admin。",
+    "en": "[[UI_01]] tasks are raised from manual confirmation / export nodes and shown to the relevant users based on the Step2 assignment settings. Step3 notification settings do not affect task assignment. Operators, operation managers, and admin, who has the highest level of permissions, can be selected as notification targets."
   },
   {
     "id": "manual-0978",
