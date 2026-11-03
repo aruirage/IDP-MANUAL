@@ -53,13 +53,13 @@
   {
     "source_ja": "注意事項 帳票タイプを作成しただけでは業務操作には表示されません。業務シーンに追加し、公開されたバージョンで利用されます。OCR 抽出項目を変更すると、その項目を参照している業務シーン、データマッピング、AI 検証、出力項目に影響する場合があります。マスタ照合を使う場合は、対象マスターデータのベクトル化状態が完了していることを確認してください。",
     "ui_text": {},
-    "zh-CN": "**注意事项** 仅创建单据类型不会显示在业务操作中，需添加到业务场景并以发布的版本使用。修改 OCR 提取字段时，可能影响引用该字段的业务场景、数据映射、AI 校验与输出字段。使用主数据匹配时，请确认目标主数据的向量化状态已完成。",
+    "zh-CN": "**注意事项** 仅创建单据类型不会显示在业务操作中，需添加到业务场景并以发布的版本使用。修改 OCR 提取字段时，可能影响引用该字段的业务场景、数据映射、AI检证与输出字段。使用主数据匹配时，请确认目标主数据的向量化状态已完成。",
     "en": "Precautions It is not displayed in business operations just by creating a form type. It will be added to the business scene and used in the published version. Changing an OCR extraction item may affect the job scenario, data mapping, AI validation, and output items referencing that item. When using master matching, make sure that the vectorization state of the target master data is completed."
   },
   {
     "source_ja": "設定チェックで確認される主な項目 終了ノード到達、分岐出口の接続、前処理・OCR・AI 検証の最低 1 項目 ON、人工確認の補件回流、無効な条件変数参照。設定チェックは静的検証のみで、テスト案件の実行は行いません。公開時も同じ設定チェックを使います。",
     "ui_text": {},
-    "zh-CN": "**配置检查主要确认的项目** 结束节点可达、分支出口已连接、前处理·OCR·AI 校验至少开启 1 项、人工确认的补件回流、无效的条件变量引用。配置检查仅做静态校验，不会执行测试案件。发布时使用相同的配置检查。",
+    "zh-CN": "**配置检查主要确认的项目** 结束节点可达、分支出口已连接、前处理·OCR·AI检证至少开启 1 项、人工确认的补件回流、无效的条件变量引用。配置检查仅做静态校验，不会执行测试案件。发布时使用相同的配置检查。",
     "en": "Arrival of the main item end node confirmed by the setting check, connection of the branch outlet, at least one item of pre-processing/OCR/AI verification ON, artificial confirmation supplementary reflow, invalid condition variable reference. Configuration checks are only static validations and do not execute test cases. Use the same settings check when publishing."
   },
   {
@@ -79,13 +79,13 @@
   {
     "source_ja": "注意事項 データマッピングは値を標準変数へ整理する機能です。項目の競合や業務上の整合性判定は、AI 検証設定で扱います。",
     "ui_text": {},
-    "zh-CN": "**注意事项** 数据映射是将取值整理为标准变量的功能。字段冲突与业务上的一致性判定由 AI 校验设置处理。",
+    "zh-CN": "**注意事项** 数据映射是将取值整理为标准变量的功能。字段冲突与业务上的一致性判定由 AI检证设置处理。",
     "en": "Note Data mapping is the ability to organize values into standard variables. Item conflicts and business integrity judgments are handled in the AI validation settings."
   },
   {
     "source_ja": "注意事項 適用シーンを先に選んでから帳票タイプ・フィールドを指定します。業務シーンや帳票タイプ、データマッピングを変更した場合は、AI 検証ルールの参照先が変わる可能性があるため、対象ルールを確認してください。",
     "ui_text": {},
-    "zh-CN": "**注意事项** 先选择适用场景，再指定单据类型与字段。修改业务场景、单据类型或数据映射后，AI 校验规则的引用对象可能发生变化，请确认相关规则。",
+    "zh-CN": "**注意事项** 先选择适用场景，再指定单据类型与字段。修改业务场景、单据类型或数据映射后，AI检证规则的引用对象可能发生变化，请确认相关规则。",
     "en": "Precautions Select the applicable scene first, and then specify the form type field. If you change the business scenario, document type, or data mapping, please check the applicable rules as the reference destination for AI verification rules may change."
   },
   {
@@ -102,7 +102,7 @@
       "[[UI_09]]": "案件中止",
       "[[UI_10]]": "保存"
     },
-    "zh-CN": "**与人工确认节点的联动（OCR / AI 校验通用）** 执行界面底部的 [[UI_01]] / [[UI_02]] 对应工作流画布上 [[UI_03]] 节点的 [[UI_04]] 出口，进入后续节点。前处理的人工确认任务不在本期范围内。[[UI_05]] 路由到 [[UI_06]] 出口，返回画布中配置的前置节点（例如：OCR 提取）。案件变为 [[UI_07]] 状态，通过 [[UI_08]] 上传追加材料。[[UI_09]] 不在画布上连线，选择时会结束当前工作流实例（案件本身可重新执行）。[[UI_10]] 仅保存进度，不确定出口。",
+    "zh-CN": "**与人工确认节点的联动（OCR / AI检证通用）** 执行界面底部的 [[UI_01]] / [[UI_02]] 对应工作流画布上 [[UI_03]] 节点的 [[UI_04]] 出口，进入后续节点。前处理的人工确认任务不在本期范围内。[[UI_05]] 路由到 [[UI_06]] 出口，返回画布中配置的前置节点（例如：OCR 提取）。案件变为 [[UI_07]] 状态，通过 [[UI_08]] 上传追加材料。[[UI_09]] 不在画布上连线，选择时会结束当前工作流实例（案件本身可重新执行）。[[UI_10]] 仅保存进度，不确定出口。",
     "en": "[[UI_01]]/[[UI_02]] in the execution screen footer corresponds to the [[UI_04]] exit of the [[UI_03]] node on the workflow canvas and proceeds to the subsequent node. Pre-processed manual confirmation tasks are not eligible for this issue. [[UI_05]] is routed to the [[UI_06]] exit and returns to the front node set on the canvas (e.g. OCR extraction). The case will be in [[UI_07]] state and additional documents will be uploaded from [[UI_08]]. [[UI_09]] does not connect on the canvas, but terminates the current workflow instance upon selection (the case itself is re-executable). [[UI_10]] only saves the progress and does not confirm the exit."
   }
 ]

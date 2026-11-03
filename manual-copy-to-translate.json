@@ -10,7 +10,7 @@
     "id": "manual-0002",
     "source_ja": "NeosAI IDP は、保険金請求などの業務書類を対象に、アップロードされた資料を案件単位で集約し、AI-OCR、業務ルール、AI検証、人工確認を組み合わせて処理する Intelligent Document Processing システムです。",
     "ui_text": {},
-    "zh-CN": "NeosAI IDP 是一套智能文档处理（Intelligent Document Processing）系统，以保险金理赔申请等业务单据为处理对象，将上传的资料按案件维度归集，并结合 AI-OCR、业务规则、AI 校验与人工确认进行处理。",
+    "zh-CN": "NeosAI IDP 是一套智能文档处理（Intelligent Document Processing）系统，以保险金理赔申请等业务单据为处理对象，将上传的资料按案件维度归集，并结合 AI-OCR、业务规则、AI检证与人工确认进行处理。",
     "en": "NeosAI IDP is an Intelligent Document Processing system that aggregates uploaded documents by case, and processes them using a combination of AI-OCR, business rules, AI validation, and manual review."
   },
   {
@@ -137,7 +137,7 @@
     "id": "manual-0018",
     "source_ja": "モデル設定 API設定 マスタデータ設定 帳票タイプ設定 業務シーン設定 データマッピング設定 AI検証設定",
     "ui_text": {},
-    "zh-CN": "[[LINK_01:模型设置]] [[LINK_02:API设置]] [[LINK_03:主数据设置]] [[LINK_04:单据类型设置]] [[LINK_05:业务场景设置]] [[LINK_06:数据映射设置]] [[LINK_07:AI校验设置]]",
+    "zh-CN": "[[LINK_01:模型设置]] [[LINK_02:API设置]] [[LINK_03:主数据设置]] [[LINK_04:单据类型设置]] [[LINK_05:业务场景设置]] [[LINK_06:数据映射设置]] [[LINK_07:AI检证设置]]",
     "en": "[[LINK_01:Model Setting]] [[LINK_02:API Setting]] [[LINK_03:Master Data Setting]] [[LINK_04:Document Type Setting]] [[LINK_05:Business Scene Setting]] [[LINK_06:Data Mapping Setting]] [[LINK_07:AI Verification Setting]]"
   },
   {
@@ -207,7 +207,7 @@
     "id": "manual-0028",
     "source_ja": "本モジュールでは、NeosAI IDP で利用するモデルリソースを一元管理します。OCR抽出、AI検証、データマッピングで使うモデルを、用途ごとに割り当てて管理します。",
     "ui_text": {},
-    "zh-CN": "本模块统一管理 NeosAI IDP 所使用的模型资源，按用途分配并管理用于 OCR 提取、AI 校验、数据映射的模型。",
+    "zh-CN": "本模块统一管理 NeosAI IDP 所使用的模型资源，按用途分配并管理用于 OCR 提取、AI检证、数据映射的模型。",
     "en": "In this module, you will centrally manage the model resources used by the NeosAI IDP. Assign and manage models for OCR extraction, AI validation, and data mapping by application."
   },
   {
@@ -226,14 +226,14 @@
       "[[UI_01]]": "API 接続",
       "[[UI_02]]": "用途割当"
     },
-    "zh-CN": "**配置逻辑：**[[UI_01]] 用于登记外部模型服务商的连接信息；[[UI_02]] 用于分别为 OCR 提取、AI 校验、数据映射指定所使用的模型。",
+    "zh-CN": "**配置逻辑：**[[UI_01]] 用于登记外部模型服务商的连接信息；[[UI_02]] 用于分别为 OCR 提取、AI检证、数据映射指定所使用的模型。",
     "en": "Configuration logic: [[UI_01]] registers the connection information to the external model provider, and [[UI_02]] specifies the model to use for each OCR extraction, AI verification, and data mapping."
   },
   {
     "id": "manual-0031",
     "source_ja": "利用タイミング：OCR抽出、AI検証、データマッピングで使うモデルを、用途ごとに先に登録・割当しておきます。保険金請求では、診断書や診療明細書の読み取り、請求内容の整合性確認、出力データの変換処理で参照されます。",
     "ui_text": {},
-    "zh-CN": "**使用时机：**先按用途登记并分配 OCR 提取、AI 校验、数据映射所使用的模型。在保险金理赔场景中，诊断书与诊疗明细书的识别、理赔内容的一致性校验、输出数据的转换处理都会引用这些模型。",
+    "zh-CN": "**使用时机：**先按用途登记并分配 OCR 提取、AI检证、数据映射所使用的模型。在保险金理赔场景中，诊断书与诊疗明细书的识别、理赔内容的一致性校验、输出数据的转换处理都会引用这些模型。",
     "en": "Timing of use: Register and assign models for OCR extraction, AI verification, and data mapping first for each application. Insurance claims are referenced by reading medical certificates and practice statements, checking the integrity of claims, and converting output data."
   },
   {
@@ -267,7 +267,7 @@
     "ui_text": {
       "[[UI_01]]": "用途割当"
     },
-    "zh-CN": "3在 [[UI_01]] 标签页中，按 OCR 提取、AI 校验等用途分配模型。",
+    "zh-CN": "3在 [[UI_01]] 标签页中，按 OCR 提取、AI检证等用途分配模型。",
     "en": "3 Assign the model for each application such as OCR extraction/AI verification in the [[UI_01]] tab."
   },
   {
@@ -669,7 +669,7 @@
     "ui_text": {
       "[[UI_01]]": "OCR 抽出"
     },
-    "zh-CN": "工作流的 [[UI_01]] 节点、条件分支、数据映射、AI 校验、我的任务的 OCR 确认界面。",
+    "zh-CN": "工作流的 [[UI_01]] 节点、条件分支、数据映射、AI检证、我的任务的 OCR 确认界面。",
     "en": "OCR confirmation screen for [[UI_01]] nodes, condition branches, data mapping, AI validation, and My Tasks in the workflow."
   },
   {
@@ -1099,7 +1099,7 @@
     "id": "manual-0134",
     "source_ja": "業務シーンの案件集約条件、条件分岐、データマッピング、AI検証、出力項目では、帳票タイプで定義した OCR 項目を候補として利用します。",
     "ui_text": {},
-    "zh-CN": "业务场景的案件归集条件、条件分支、数据映射、AI 校验、输出字段，均以单据类型中定义的 OCR 字段作为候选。",
+    "zh-CN": "业务场景的案件归集条件、条件分支、数据映射、AI检证、输出字段，均以单据类型中定义的 OCR 字段作为候选。",
     "en": "In the case aggregation conditions, condition branches, data mapping, AI verification, and output items of the business scene, the OCR items defined by the document type are used as candidates."
   },
   {
@@ -1184,7 +1184,7 @@
     "id": "manual-0144",
     "source_ja": "キャンバスでのノード編成・接続・設定チェック。各ノードの対象 ON/OFF と分岐条件。ルール本体は帳票タイプ／データマッピング／AI検証と連携。",
     "ui_text": {},
-    "zh-CN": "在画布中编排节点、连线与配置检查。各节点的对象启用/停用与分支条件。规则本体与单据类型／数据映射／AI 校验联动。",
+    "zh-CN": "在画布中编排节点、连线与配置检查。各节点的对象启用/停用与分支条件。规则本体与单据类型／数据映射／AI检证联动。",
     "en": "Node organization/connection/setting check on canvas. Target ON/off and branching conditions for each node. The rule body works in conjunction with document type/data mapping/AI verification."
   },
   {
@@ -1249,7 +1249,7 @@
     "ui_text": {
       "[[UI_01]]": "ノード追加"
     },
-    "zh-CN": "**添加与布置节点**：通过右下角的 [[UI_01]] 或节点列表添加前处理、OCR、数据映射、AI 校验等节点，拖拽布置。",
+    "zh-CN": "**添加与布置节点**：通过右下角的 [[UI_01]] 或节点列表添加前处理、OCR、数据映射、AI检证等节点，拖拽布置。",
     "en": "Add/place nodes: Add [[UI_01]] at the bottom right, or add preprocessing, OCR, data mapping, AI verification, etc. from the node list, and drag to place."
   },
   {
@@ -1359,7 +1359,7 @@
     "ui_text": {
       "[[UI_01]]": "データマッピング設定"
     },
-    "zh-CN": "将 OCR 字段统一为标准变量。执行 [[UI_01]] 的规则，供后续 AI 校验与输出使用。",
+    "zh-CN": "将 OCR 字段统一为标准变量。执行 [[UI_01]] 的规则，供后续 AI检证与输出使用。",
     "en": "Unify OCR items into standard variables. Execute the rules of [[UI_01]] and use it in subsequent AI verification and output."
   },
   {
@@ -1676,7 +1676,7 @@
     "id": "manual-0203",
     "source_ja": "Step2 の AI検証ノードで、ON にした検証ルールだけが実行されます。",
     "ui_text": {},
-    "zh-CN": "Step2 的 AI 校验节点只执行已开启的校验规则。",
+    "zh-CN": "Step2 的 AI检证节点只执行已开启的校验规则。",
     "en": "On the AI Validation node in Step 2, only the validation rules you set to ON will be executed."
   },
   {
@@ -1802,7 +1802,7 @@
     "id": "manual-0218",
     "source_ja": "本章では、OCR抽出結果や案件内の帳票構成を AI で検証するためのルールを設定します。保険金請求では、必須フィールド、必要書類、標準データ整合性、テキスト検証、データ検証、署名・印鑑検証の 6 モジュールで確認します。",
     "ui_text": {},
-    "zh-CN": "本章配置用于由 AI 校验 OCR 提取结果及案件内单据构成的规则。在保险金理赔中，通过必填字段、必需材料、标准数据一致性、文本校验、数据校验、签名·印章校验 6 个模块进行确认。",
+    "zh-CN": "本章配置用于由 AI检证 OCR 提取结果及案件内单据构成的规则。在保险金理赔中，通过必填字段、必需材料、标准数据一致性、文本校验、数据校验、签名·印章校验 6 个模块进行确认。",
     "en": "In this chapter, we will set rules for AI validation of OCR extraction results and document configurations in the case. Claims are reviewed in six modules: Mandatory Fields, Required Documents, Standard Data Integrity, Text Validation, Data Validation, and Signature and Seal Validation."
   },
   {
@@ -1812,7 +1812,7 @@
       "[[UI_01]]": "admin",
       "[[UI_02]]": "マイタスク"
     },
-    "zh-CN": "**权限：**本功能由 [[UI_01]] 配置。操作员不编辑 AI 校验规则，而是在 [[UI_02]] 中查看并处理校验结果。",
+    "zh-CN": "**权限：**本功能由 [[UI_01]] 配置。操作员不编辑 AI检证规则，而是在 [[UI_02]] 中查看并处理校验结果。",
     "en": "Permissions: This function is set by [[UI_01]]. The operator does not edit the AI verification rules, but confirms and corrects the verification results in [[UI_02]]."
   },
   {
@@ -1823,7 +1823,7 @@
       "[[UI_02]]": "AI検証",
       "[[UI_03]]": "AI検証設定"
     },
-    "zh-CN": "**执行逻辑：**AI 校验规则在 [[UI_01]] 工作流中布置的 [[UI_02]] 节点执行。先完成业务场景 Step1～Step2 的配置，在 [[UI_03]] 中登记规则，并在业务场景的 AI 校验节点中开启目标校验类型后，才会进入执行范围。",
+    "zh-CN": "**执行逻辑：**AI检证规则在 [[UI_01]] 工作流中布置的 [[UI_02]] 节点执行。先完成业务场景 Step1～Step2 的配置，在 [[UI_03]] 中登记规则，并在业务场景的 AI检证节点中开启目标校验类型后，才会进入执行范围。",
     "en": "Execution logic: The AI validation rules are executed in the [[UI_02]] node located within the [[UI_01]] workflow. After setting Steps 1 to 2 of the business scene, register the rule in [[UI_03]], and turn on the target verification type on the AI verification node on the business scene side."
   },
   {
@@ -2041,7 +2041,7 @@
     "ui_text": {
       "[[UI_01]]": "AI検証"
     },
-    "zh-CN": "AI 校验规则在工作流中的 [[UI_01]] 节点执行。没有节点时，即使已登记规则也不会执行。",
+    "zh-CN": "AI检证规则在工作流中的 [[UI_01]] 节点执行。没有节点时，即使已登记规则也不会执行。",
     "en": "The AI validation rules are executed in the [[UI_01]] node in the workflow. If there is no node, the rule will not be executed even if it is set."
   },
   {
@@ -2505,7 +2505,7 @@
     "ui_text": {
       "[[UI_01]]": "確認待ち"
     },
-    "zh-CN": "AI 校验节点执行后，存在 1 条以上校验规则结果为 [[UI_01]] 时（如必填字段缺失、缺少必需材料、标准数据不一致、文本校验 NG、数据校验 NG、缺少签名或印章影像等）。",
+    "zh-CN": "AI检证节点执行后，存在 1 条以上校验规则结果为 [[UI_01]] 时（如必填字段缺失、缺少必需材料、标准数据不一致、文本校验 NG、数据校验 NG、缺少签名或印章影像等）。",
     "en": "When one or more validation rules become [[UI_01]] after the AI validation node is executed (missing required fields, missing required documents, inconsistent standard data, text validation NG, data validation NG, lack of signature/imprint, etc.)."
   },
   {
@@ -3255,77 +3255,77 @@
     "id": "manual-0392",
     "source_ja": "AI検証設定 必須フィールドを拡大表示",
     "ui_text": {},
-    "zh-CN": "AI校验设置 必填字段（放大查看）",
+    "zh-CN": "AI检证设置 必填字段（放大查看）",
     "en": "Expand AI Validation Settings Required Fields"
   },
   {
     "id": "manual-0393",
     "source_ja": "AI検証設定 必須フィールド",
     "ui_text": {},
-    "zh-CN": "AI校验设置 必填字段",
+    "zh-CN": "AI检证设置 必填字段",
     "en": "AI Validation Configuration Required Fields"
   },
   {
     "id": "manual-0394",
     "source_ja": "AI検証設定 必要書類を拡大表示",
     "ui_text": {},
-    "zh-CN": "AI校验设置 必需材料（放大查看）",
+    "zh-CN": "AI检证设置 必需材料（放大查看）",
     "en": "Expand AI Validation Settings Required Documents"
   },
   {
     "id": "manual-0395",
     "source_ja": "AI検証設定 標準データ整合性を拡大表示",
     "ui_text": {},
-    "zh-CN": "AI校验设置 标准数据一致性（放大查看）",
+    "zh-CN": "AI检证设置 标准数据一致性（放大查看）",
     "en": "Expand AI Validation Settings Standards Data Integrity"
   },
   {
     "id": "manual-0396",
     "source_ja": "AI検証設定 標準データ整合性",
     "ui_text": {},
-    "zh-CN": "AI校验设置 标准数据一致性",
+    "zh-CN": "AI检证设置 标准数据一致性",
     "en": "AI Validation Settings Standard Data Integrity"
   },
   {
     "id": "manual-0397",
     "source_ja": "AI検証設定 テキスト検証を拡大表示",
     "ui_text": {},
-    "zh-CN": "AI校验设置 文本校验（放大查看）",
+    "zh-CN": "AI检证设置 文本校验（放大查看）",
     "en": "Expand AI Validation Settings Text Validation"
   },
   {
     "id": "manual-0398",
     "source_ja": "AI検証設定 テキスト検証",
     "ui_text": {},
-    "zh-CN": "AI校验设置 文本校验",
+    "zh-CN": "AI检证设置 文本校验",
     "en": "AI Validation Settings Text Validation"
   },
   {
     "id": "manual-0399",
     "source_ja": "AI検証設定 データ検証を拡大表示",
     "ui_text": {},
-    "zh-CN": "AI校验设置 数据校验（放大查看）",
+    "zh-CN": "AI检证设置 数据校验（放大查看）",
     "en": "Expand AI Validation Configuration Data Validation"
   },
   {
     "id": "manual-0400",
     "source_ja": "AI検証設定 データ検証",
     "ui_text": {},
-    "zh-CN": "AI校验设置 数据校验",
+    "zh-CN": "AI检证设置 数据校验",
     "en": "AI Validation Configuration Data Validation"
   },
   {
     "id": "manual-0401",
     "source_ja": "AI検証設定 署名・印鑑検証を拡大表示",
     "ui_text": {},
-    "zh-CN": "AI校验设置 签名·印章校验（放大查看）",
+    "zh-CN": "AI检证设置 签名·印章校验（放大查看）",
     "en": "Expand AI Validation Settings Signature/Seal Validation"
   },
   {
     "id": "manual-0402",
     "source_ja": "AI検証設定 署名・印鑑検証",
     "ui_text": {},
-    "zh-CN": "AI校验设置 签名·印章校验",
+    "zh-CN": "AI检证设置 签名·印章校验",
     "en": "AI Verification Settings Signature/Seal Verification"
   },
   {
@@ -3717,7 +3717,7 @@
     "id": "manual-0458",
     "source_ja": "AI検証",
     "ui_text": {},
-    "zh-CN": "AI校验",
+    "zh-CN": "AI检证",
     "en": "AI verification"
   },
   {
@@ -3822,7 +3822,7 @@
     "id": "manual-0479",
     "source_ja": "AI検証設定",
     "ui_text": {},
-    "zh-CN": "AI校验设定",
+    "zh-CN": "AI检证设定",
     "en": "AI Verification Settings"
   },
   {
@@ -3874,7 +3874,7 @@
     "ui_text": {
       "[[UI_01]]": "AI検証"
     },
-    "zh-CN": "[[UI_01]]AI校验设定1 个模型确认必填字段、必要资料、整合性、文本、数据以及签名和印章。",
+    "zh-CN": "[[UI_01]]AI检证设定1 个模型确认必填字段、必要资料、整合性、文本、数据以及签名和印章。",
     "en": "[[UI_01]]AI Verification Settings1 modelChecks required fields, required documents, consistency, text, data, signatures, and seals."
   },
   {
@@ -4187,7 +4187,7 @@
     "id": "manual-0531",
     "source_ja": "前処理ノード内の5サブモジュールを固定順で配置：画像不正検知→画像回転→画像補正→画像整列→敏感情報検出。ファイル状態は4段のまま。画像不正検知は一級スイッチ＋二級4項目（PS検出／AI生成検知／帳票特徴検知／筆跡検知）、各スイッチ＋対象帳票別選択、実行時並列、不通過で不正タイプを返し人工確認へ。敏感情報検出は幾何完了後に対象帳票でマスキングを実行。",
     "ui_text": {},
-    "zh-CN": "前处理节点内5个子模块固定顺序：画像不正检测→图像旋转→图像补正→图像整列→敏感信息检测。文件状态保持4段。画像不正检测为一级开关+二级4项（PS/AI生成/票据特征/笔迹），各自开关+对象票据选择，运行时并行，不通过返回不正类型并进入人工确认。敏感信息检测在几何完成后对对象票据执行脱敏。",
+    "zh-CN": "前处理节点内5个子模块固定顺序：画像不正检测→图像旋转→图像补正→图像整列→敏感情报检测。文件状态保持4段。画像不正检测为一级开关+二级4项（PS/AI生成/票据特征/笔迹），各自开关+对象票据选择，运行时并行，不通过返回不正类型并进入人工确认。敏感情报检测在几何完成后对对象票据执行脱敏。",
     "en": "Five preprocessing sub-modules in fixed order: forgery detection → rotation → correction → alignment → sensitive-info detection. Image forgery detection: primary switch + 4 secondary items (PS/AI-gen/doc-feature/handwriting), each with its own switch and per-document targeting, run in parallel; on fail routes to manual confirmation. Sensitive-info detection masks target documents after geometry."
   },
   {
@@ -4588,7 +4588,7 @@
     "id": "manual-0595",
     "source_ja": "用途割当 › AI前処理・座標抽出",
     "ui_text": {},
-    "zh-CN": "用途分配 › AI预处理・坐标抽取",
+    "zh-CN": "用途分配 › AI前处理・坐标抽取",
     "en": "Purpose assignment › AI preprocessing / coordinate extraction"
   },
   {
@@ -4600,7 +4600,7 @@
       "[[UI_03]]": "AI前処理",
       "[[UI_04]]": "案件集約"
     },
-    "zh-CN": "[[UI_01]] 和 [[UI_02]] 已添加到用途分配。两者都只能选择 1 个模型（单选）。[[UI_03]] 用于 AI 预处理节点中的大模型调用，不会自动占用 [[UI_04]] 的分配。",
+    "zh-CN": "[[UI_01]] 和 [[UI_02]] 已添加到用途分配。两者都只能选择 1 个模型（单选）。[[UI_03]] 用于 AI前处理节点中的大模型调用，不会自动占用 [[UI_04]] 的分配。",
     "en": "[[UI_01]] and [[UI_02]] have been added to purpose assignment. Both select a single model. [[UI_03]] is used for LLM calls in AI preprocessing nodes; it does not automatically take over the [[UI_04]] assignment."
   },
   {
@@ -4609,7 +4609,7 @@
     "ui_text": {
       "[[UI_01]]": "AI前処理"
     },
-    "zh-CN": "[[UI_01]] ：用于AI预处理节点中的大模型调用，例如画像不正检测。",
+    "zh-CN": "[[UI_01]] ：用于AI前处理节点中的大模型调用，例如画像不正检测。",
     "en": "[[UI_01]]: Used for large model calls in AI preprocessing nodes, such as image fraud detection."
   },
   {
@@ -4625,7 +4625,7 @@
     "id": "manual-0599",
     "source_ja": "用途割当タブ：AI前処理 と 座標抽出 が追加されています。",
     "ui_text": {},
-    "zh-CN": "用途分配选项卡：已添加AI预处理和坐标提取。",
+    "zh-CN": "用途分配选项卡：已添加AI前处理和坐标提取。",
     "en": "Application assignment tab: AI pre-processing and coordinate extraction have been added."
   },
   {
@@ -5420,7 +5420,7 @@
     "id": "manual-0711",
     "source_ja": "P2では、前処理ノードに 画像不正検知 と 敏感情報検出（マスキング） が追加され、キャンバスに 範囲選択モード、Step3 の通知にメール チャネルが追加されます。画像回転・画像補正・画像整列は一期からある機能で、変更はありません。",
     "ui_text": {},
-    "zh-CN": "在P2中，将**画像不正检测**和**敏感信息检测（脱敏）**添加到预处理节点，将**范围选择模式**添加到画布，并将电子邮件通道添加到步骤3中的通知。图像旋转、图像校正和图像对齐是自第一时期以来一直存在的功能，并且没有发生变化。",
+    "zh-CN": "在P2中，将**画像不正检测**和**敏感情报检测（脱敏）**添加到预处理节点，将**范围选择模式**添加到画布，并将电子邮件通道添加到步骤3中的通知。图像旋转、图像校正和图像对齐是自第一时期以来一直存在的功能，并且没有发生变化。",
     "en": "In P2, **Image Fraud Detection** and **Sensitive Information Detection (Masking)** are added to the preprocessing node, **Range Selection Mode** is added to the canvas, and the email channel is added to the notification in Step 3. Image rotation, image correction, and image alignment are functions that have existed since the first period, and have not changed."
   },
   {
@@ -5473,7 +5473,7 @@
     "ui_text": {
       "[[UI_01]]": "前処理オプション"
     },
-    "zh-CN": "画像不正检测和敏感信息检测被添加到预处理节点的[[UI_01]]。",
+    "zh-CN": "画像不正检测和敏感情报检测被添加到预处理节点的[[UI_01]]。",
     "en": "Image fraud detection and sensitive information detection are added to [[UI_01]] of the preprocessing node."
   },
   {
@@ -5494,14 +5494,14 @@
     "id": "manual-0721",
     "source_ja": "敏感情報検出のスイッチと対象帳票。",
     "ui_text": {},
-    "zh-CN": "敏感信息检测开关和目标表单。",
+    "zh-CN": "敏感情报检测开关和目标表单。",
     "en": "Sensitive information detection switch and target form."
   },
   {
     "id": "manual-0722",
     "source_ja": "敏感情報検出（マスキング）は、画像回転・補正・整列が終わったあとに対象帳票へマスキングを実行します。フィールド単位の範囲は、帳票タイプ設定の Step2 マスクで決まります。",
     "ui_text": {},
-    "zh-CN": "敏感信息检测（脱敏）在图像旋转、校正和对齐完成后对目标文档执行脱敏。字段单位的范围由文档类型设置中的步骤2脱敏确定。",
+    "zh-CN": "敏感情报检测（脱敏）在图像旋转、校正和对齐完成后对目标文档执行脱敏。字段单位的范围由文档类型设置中的步骤2脱敏确定。",
     "en": "Sensitive information detection (masking) performs masking on the target document after image rotation, correction, and alignment are completed. The range of field units is determined by the Step 2 mask in the document type settings."
   },
   {
@@ -5676,12 +5676,12 @@
   },
   {
     "id": "manual-0744",
-    "source_ja": "P2では、AI 前処理のあとに「[[UI_01]]」タスクが追加されます。アラート表示ルール（人工確認ルール・七項目）は、帳票タイプ設定の Step2 で設定します。",
+    "source_ja": "P2では、マイタスクに「[[UI_01]]」タスクが追加されます。アラート表示ルール（人工確認ルール・七項目）は、帳票タイプ設定の Step2 で設定します。",
     "ui_text": {
       "[[UI_01]]": "AI前処理確認"
     },
-    "zh-CN": "在P2中， AI预处理后添加“[[UI_01]]”任务。在单据类型设置的步骤2中设置警报显示规则（告警显示规则，七项）。",
-    "en": "In P2, the \"[[UI_01]]]\" task is added after the AI preprocessing. Alert display rules (artificial confirmation rules, seven items) are set in Step 2 of the document type setting."
+    "zh-CN": "P2 中，在我的任务中新增“[[UI_01]]”任务。在单据类型设置的步骤2中设置警报显示规则（告警显示规则，七项）。",
+    "en": "In P2, the \"[[UI_01]]]\" task is added to My Tasks. Alert display rules (artificial confirmation rules, seven items) are set in Step 2 of the document type setting."
   },
   {
     "id": "manual-0745",
@@ -5757,7 +5757,7 @@
     "id": "manual-0755",
     "source_ja": "AI前処理",
     "ui_text": {},
-    "zh-CN": "AI预处理",
+    "zh-CN": "AI前处理",
     "en": "AI Preprocessing"
   },
   {
@@ -5792,7 +5792,7 @@
     "id": "manual-0760",
     "source_ja": "敏感情報検出",
     "ui_text": {},
-    "zh-CN": "敏感信息检测",
+    "zh-CN": "敏感情报检测",
     "en": "Sensitive Information Detection"
   },
   {
@@ -6111,7 +6111,7 @@
     "id": "manual-0799",
     "source_ja": "AI 前処理のあとに生成される人工確認タスクです。分類・分割・整列の低信頼度、画像不正の不通過、敏感情報の検出結果を確認して完了します。",
     "ui_text": {},
-    "zh-CN": "这是AI预处理后生成的人工确认任务。确认并完成分类、划分、对齐可靠性低、图像传递不当、敏感信息检测结果。",
+    "zh-CN": "这是AI前处理后生成的人工确认任务。确认并完成分类、划分、对齐可靠性低、图像传递不当、敏感情报检测结果。",
     "en": "This is an artificial confirmation task generated after AI pre-processing. Confirm and complete the low reliability of classification, division, and alignment, improper image passing, and sensitive information detection results."
   },
   {
@@ -6174,14 +6174,14 @@
     "id": "manual-0808",
     "source_ja": "用途割当（AI前処理・座標抽出）",
     "ui_text": {},
-    "zh-CN": "用途分配（ AI预处理/坐标提取）",
+    "zh-CN": "用途分配（ AI前处理/坐标提取）",
     "en": "Application assignment (AI pretreatment/coordinate extraction)"
   },
   {
     "id": "manual-0809",
     "source_ja": "用途割当に AI前処理 と 座標抽出 を追加します。どちらも 1 モデルを選ぶ単一選択です。",
     "ui_text": {},
-    "zh-CN": "将 AI 预处理和坐标抽取添加到用途分配。两者都只能选择 1 个模型（单选）。",
+    "zh-CN": "将 AI前处理和坐标抽取添加到用途分配。两者都只能选择 1 个模型（单选）。",
     "en": "Add AI preprocessing and coordinate extraction to purpose assignment. Both select a single model."
   },
   {
@@ -6398,7 +6398,7 @@
     "id": "manual-0840",
     "source_ja": "AI前処理後に発生するマニュアル確認タスクです。分類・分割の信頼度が低い場合、画像不正検知で基準を満たさなかった場合、または機微情報が検出された場合に、内容を確認してタスクを完了します。",
     "ui_text": {},
-    "zh-CN": "AI 预处理后产生的人工确认任务。当分类、分割的置信度较低，画像不正检测未达标，或检测到敏感信息时，确认内容后完成任务。",
+    "zh-CN": "AI前处理后产生的人工确认任务。当分类、分割的置信度较低，画像不正检测未达标，或检测到敏感情报时，确认内容后完成任务。",
     "en": "A manual confirmation task generated after AI preprocessing. Complete the task after reviewing the content when classification or splitting confidence is low, image fraud detection does not meet the criteria, or sensitive information is detected."
   },
   {
@@ -6433,14 +6433,14 @@
     "id": "manual-0846",
     "source_ja": "業務シーン設定（AI前処理ノード）",
     "ui_text": {},
-    "zh-CN": "业务场景设置（AI 预处理节点）",
+    "zh-CN": "业务场景设置（AI前处理节点）",
     "en": "Business scene settings (AI preprocessing node)"
   },
   {
     "id": "manual-0847",
     "source_ja": "AI前処理ノード内の大模型呼び出し（画像不正検知など）で使用します。案件集約とは別に割り当てます。",
     "ui_text": {},
-    "zh-CN": "用于 AI 预处理节点内的大模型调用（画像不正检测等）。与案件归集分开分配。",
+    "zh-CN": "用于 AI前处理节点内的大模型调用（画像不正检测等）。与案件归集分开分配。",
     "en": "Used for LLM calls inside AI preprocessing nodes (e.g., image fraud detection). Assigned separately from case aggregation."
   },
   {
@@ -6606,10 +6606,10 @@
   },
   {
     "id": "manual-0882",
-    "source_ja": "P2では、AI前処理のあとに「[[UI_01]]」タスクが追加されます。",
+    "source_ja": "P2では、マイタスクに「[[UI_01]]」タスクが追加されます。",
     "ui_text": {},
-    "zh-CN": "P2 中，在 AI 预处理之后新增「[[UI_01]]」任务。",
-    "en": "In P2, an \"[[UI_01]]\" task is added after AI preprocessing."
+    "zh-CN": "P2 中，在我的任务中新增「[[UI_01]]」任务。",
+    "en": "In P2, an \"[[UI_01]]\" task is added to My Tasks."
   },
   {
     "id": "manual-0883",
@@ -6846,7 +6846,7 @@
     "id": "manual-0930",
     "source_ja": "Step2 の [[UI_01]] に [[UI_02]] が新設され、7 項目すべてを選択できるようになりました。Step2 のフィールド表で [[UI_03]] が ON のフィールドだけが対象です。このルールは OCR抽出確認 に適用されます。AI前処理確認 の対象は、前処理の検出結果（分類・分割・画像不正・敏感情報）で決まります。",
     "ui_text": {},
-    "zh-CN": "在 Step2 的 [[UI_01]] 中新增 [[UI_02]]，7 项均可选择。仅 Step2 字段表中 [[UI_03]] 为 ON 的字段适用。**该规则适用于 OCR 抽取确认。**AI前处理确认的对象由预处理的检测结果（分类・分割・图像不正・敏感信息）决定。",
+    "zh-CN": "在 Step2 的 [[UI_01]] 中新增 [[UI_02]]，7 项均可选择。仅 Step2 字段表中 [[UI_03]] 为 ON 的字段适用。**该规则适用于 OCR 抽取确认。**AI前处理确认的对象由预处理的检测结果（分类・分割・画像不正・敏感情报）决定。",
     "en": "[[UI_02]] is added to Step2 [[UI_01]], and all 7 items can be selected. Only fields with [[UI_03]] ON in the Step2 field table apply. **This rule applies to OCR extraction confirmation.** AI preprocessing confirmation targets are determined by preprocessing detection results (classification, splitting, image fraud, sensitive information)."
   },
   {
@@ -6895,7 +6895,7 @@
     "id": "manual-0937",
     "source_ja": "OCR 前に画像を回転・補正・整列し、[[UI_01]] と [[UI_02]]（マスキング）を実行します。帳票タイプの画像処理設定と Step2 マスクに連携し、対象帳票をノードで ON にします。画像不正が基準未達、または敏感情報を検出した場合は [[UI_03]] タスクを起票します。",
     "ui_text": {},
-    "zh-CN": "在 OCR 前旋转・校正・对齐图像，并执行 [[UI_01]] 和 [[UI_02]]（脱敏）。与单据类型的图像处理设置和 Step2 脱敏联动，在节点中开启对象票据。图像不正不通过或检测到敏感信息时，创建 [[UI_03]] 任务。",
+    "zh-CN": "在 OCR 前旋转・校正・对齐图像，并执行 [[UI_01]] 和 [[UI_02]]（脱敏）。与单据类型的图像处理设置和 Step2 脱敏联动，在节点中开启对象票据。画像不正不通过或检测到敏感情报时，创建 [[UI_03]] 任务。",
     "en": "Rotate, correct, and align images before OCR, and run [[UI_01]] and [[UI_02]] (masking). Linked with the document type's image processing settings and Step2 masking; enable target documents at the node. If image fraud fails or sensitive information is detected, raise an [[UI_03]] task."
   },
   {
@@ -6916,7 +6916,7 @@
     "id": "manual-0940",
     "source_ja": "各処理ノードは 処理状態（*Status：実行進捗・異常）と 処理結果（*Result：業務上通過か要確認か）を出力します。IF/ELSE では通常 *Result のみを参照します。Step3 通知では *Status と *Result の両方をトリガーに選べます。前処理は、画像不正の基準未達または敏感情報の検出時に AI前処理確認タスクを起票します。",
     "ui_text": {},
-    "zh-CN": "各处理节点输出 **处理状态**（*Status：执行进度・异常）和 **处理结果**（*Result：业务上通过还是需确认）。IF/ELSE 通常只参照 *Result。Step3 通知可将 *Status 和 *Result 都选为触发器。预处理在图像不正不通过或检测到敏感信息时创建 AI前处理确认任务。",
+    "zh-CN": "各处理节点输出 **处理状态**（*Status：执行进度・异常）和 **处理结果**（*Result：业务上通过还是需确认）。IF/ELSE 通常只参照 *Result。Step3 通知可将 *Status 和 *Result 都选为触发器。预处理在画像不正不通过或检测到敏感情报时创建 AI前处理确认任务。",
     "en": "Each processing node outputs **processing status** (*Status: execution progress/errors) and **processing result** (*Result: business pass or needs review). IF/ELSE normally references only *Result. Step3 notifications can use both *Status and *Result as triggers. Preprocessing raises an AI preprocessing confirmation task when image fraud fails or sensitive information is detected."
   },
   {
@@ -6930,7 +6930,7 @@
     "id": "manual-0942",
     "source_ja": "前処理ノードの画像不正検知・敏感情報検出の設定が、AI前処理確認タスクの発生条件になります。",
     "ui_text": {},
-    "zh-CN": "预处理节点的画像不正检测・敏感信息检测设置，是 AI前处理确认任务的发生条件。",
+    "zh-CN": "预处理节点的画像不正检测・敏感情报检测设置，是 AI前处理确认任务的发生条件。",
     "en": "The preprocessing node's image fraud detection and sensitive-information detection settings determine when AI preprocessing confirmation tasks occur."
   },
   {
@@ -7014,7 +7014,7 @@
     "id": "manual-0954",
     "source_ja": "AI前処理ノードのあとのマニュアル確認ノードで、分類・分割の低信頼度、画像不正の基準未達、敏感情報の検出結果が残っている場合。",
     "ui_text": {},
-    "zh-CN": "在 AI 预处理节点之后的人工确认节点，分类・分割低置信度、图像不正未达标、敏感信息检测结果仍存在时。",
+    "zh-CN": "在 AI前处理节点之后的人工确认节点，分类・分割低置信度、画像不正未达标、敏感情报检测结果仍存在时。",
     "en": "When low-confidence classification/splitting, image fraud not meeting the criteria, or sensitive-information detection results remain at the manual confirmation node after the AI preprocessing node."
   },
   {
@@ -7077,7 +7077,7 @@
     "id": "manual-0963",
     "source_ja": "回転・補正・整列などの通常の前処理が完了したとき（画像不正・敏感情報は含みません）",
     "ui_text": {},
-    "zh-CN": "旋转・校正・对齐等常规预处理完成时（不含图像不正・敏感信息）",
+    "zh-CN": "旋转・校正・对齐等常规预处理完成时（不含画像不正・敏感情报）",
     "en": "When normal preprocessing such as rotation, correction, and alignment completes (excluding image fraud and sensitive information)"
   },
   {
@@ -7119,7 +7119,7 @@
     "id": "manual-0969",
     "source_ja": "注意事項 画像不正検出と敏感情報検出は AI前処理の子機能ですが、別の課金ノードとして表示されます。モデル呼び出し明細はファイルとは紐づきません。AI アシストによる呼び出しは案件ID が「—」になります。再実行しても、枚数が増えない限り利用量一覧は増えません。各タブの CSV は現在の絞り込み条件で、ページングに関係なく全件を出力します。",
     "ui_text": {},
-    "zh-CN": "**注意事项** 画像不正检测和敏感信息检测虽属 AI 预处理的子功能，但作为单独的计费节点显示。模型调用明细不与文件关联。AI 辅助的调用案件ID 显示为「—」。重新执行时，只要枚数不增加，用量列表就不会增加。各标签页的 CSV 按当前筛选条件输出全部数据，与分页无关。",
+    "zh-CN": "**注意事项** 画像不正检测和敏感情报检测虽属 AI前处理的子功能，但作为单独的计费节点显示。模型调用明细不与文件关联。AI 辅助的调用案件ID 显示为「—」。重新执行时，只要枚数不增加，用量列表就不会增加。各标签页的 CSV 按当前筛选条件输出全部数据，与分页无关。",
     "en": "**Notes** Image fraud detection and sensitive information detection are sub-functions of AI preprocessing but appear as separate billing nodes. Model call details are not linked to files. Calls from AI Assist show case ID \"—\". Re-running does not increase the usage list unless the document count increases. Each tab's CSV exports all rows matching the current filters, regardless of pagination."
   },
   {
